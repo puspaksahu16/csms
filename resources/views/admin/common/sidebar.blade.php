@@ -17,7 +17,7 @@
             </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Addmission">Addmission</span></a>
                 <ul class="menu-content">
-                    <li><a href="{{url('/preAddmission')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreAddmission">Pre Addmission</span></a></li>
+                    <li><a href="{{url('/pre_admissions')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreAddmission">Pre Addmission</span></a></li>
                     <li><a href="app-ecommerce-shop.html"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAddmission">New Addmission</span></a></li>
                     <li><a href="app-ecommerce-shop.html"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>
                 </ul>

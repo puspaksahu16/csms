@@ -19,9 +19,7 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/preAddmission', function () {
-    return view('admin.preAddmission');
-});
+Route::resource('pre_admissions', 'PreAdmissionController');
 
 Route::get('/classSetting', function () {
     return view('admin.classSetting');
