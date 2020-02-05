@@ -5,7 +5,6 @@
             <li class="nav-item mr-auto"><a class="navbar-brand" href="index-2.html">
                     <div class="brand-logo"></div>
                     <h2 class="brand-text mb-0">CSMS</h2></a></li>
-            <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0 shepherd-modal-target" data-toggle="collapse"><i class="icon-x d-block d-xl-none font-medium-4 primary toggle-icon feather icon-disc"></i><i class="toggle-icon icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary feather" data-ticon="icon-disc" tabindex="0"></i></a></li>
         </ul>
     </div>
     <div class="shadow-bottom"></div>
@@ -24,8 +23,8 @@
             </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="GeneralSetting">General Setting</span></a>
                 <ul class="menu-content">
-                    <li><a href="{{url('/classSetting')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Class</span></a></li>
-                    <li><a href="{{url('/idproofSetting')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Id Proof</span></a></li>
+                    <li><a href="{{url('/classes')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Class</span></a></li>
+                    <li><a href="{{url('/idproof')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Id Proof</span></a></li>
                     <li><a href="{{url('/qualificationSetting')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Qualification</span></a></li>
                     <li><a href="{{url('/stateSetting')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create State</span></a></li>
                     <li><a href="{{url('/distSetting')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Dist</span></a></li>
