@@ -13,9 +13,9 @@
                             <div class="card bg-analytics text-white">
                                 <div class="card-content">
                                     <div class="card-body text-center">
-                                        <img src="../../../admin_assets/images/elements/decore-left.png" class="img-left" alt="
+                                        <img src="{{asset('admin_assets/images/elements/decore-left.png')}}" class="img-left" alt="
             card-img-left">
-                                        <img src="../../../admin_assets/images/elements/decore-right.png" class="img-right" alt="
+                                        <img src="{{asset('admin_assets/images/elements/decore-right.png')}}" class="img-right" alt="
             card-img-right">
                                         <div class="avatar avatar-xl bg-primary shadow mt-0">
                                             <div class="avatar-content">
