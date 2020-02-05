@@ -21,12 +21,10 @@ Route::get('/dashboard', function () {
 
 Route::resource('pre_admissions', 'PreAdmissionController');
 
-Route::get('/classSetting', function () {
-    return view('admin.classSetting');
-});
-Route::get('/idproofSetting', function () {
-    return view('admin.idproofSetting');
-});
+Route::resource('classes', 'CreateClassController');
+
+Route::resource('idproof', 'IdproofControler');
+
 Route::get('/qualificationSetting', function () {
     return view('admin.qualificationSetting');
 });

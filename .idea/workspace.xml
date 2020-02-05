@@ -1,17 +1,399 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49fc7045-9a71-44be-9dff-f7710220c357" name="Default Changelist" comment="" />
+    <list default="true" id="49fc7045-9a71-44be-9dff-f7710220c357" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/classes/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/classes/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/classes/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/idproof/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/idproof/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/idproof/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/bootstrap-extended.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/colors.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/components.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/core/colors/palette-gradient.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/core/colors/palette-noui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/core/menu/menu-types/vertical-menu.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/aggrid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/app-chat.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/app-ecommerce-details.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/app-ecommerce-shop.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/app-email.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/app-todo.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/app-user.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/authentication.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/card-analytics.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/colors.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/coming-soon.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/dashboard-analytics.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/dashboard-ecommerce.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/data-list-view.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/error.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/faq.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/invoice.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/knowledge-base.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/search.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/pages/users.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/animate/animate.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/calendars/fullcalendar.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/extensions/context-menu.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/extensions/drag-and-drop.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/extensions/media-plyr.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/extensions/noui-slider.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/extensions/swiper.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/extensions/toastr.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/file-uploaders/dropzone.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/forms/validation/form-validation.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/forms/wizard.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/plugins/tour/tour.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/themes/dark-layout.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/css/themes/semi-dark-layout.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/feather.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-21.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-22.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-23.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-24.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-26.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-29.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-30.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-31.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-32.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-33.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-34.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-35.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-36.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-37.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-38.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-39.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/banner-9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/banner/parallax-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/dropzone/spritemap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/apple-watch.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/beats-headphones.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/decore-left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/decore-right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/homepod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/ipad-pro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/iphone-x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/jbl-speaker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/macbook-pro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/elements/magic-mouse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/ico/apple-icon-120.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/icons/doc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/icons/jpg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/icons/pdf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/icons/xls.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/logo/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/logo/vuexy-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/1-apex.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/2-stack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/3-convex.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/4-materialize.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/404.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/500.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/arrow-down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/card-image-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/card-image-6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/content-img-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/content-img-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/content-img-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/content-img-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/eCommerce/bank.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/faq.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/forgot-password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/graphic-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/graphic-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/graphic-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/graphic-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/graphic-5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/graphic-6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/kb-article.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/knowledge-base-cover.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/lock-screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/maintenance-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/modern.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/not-authorized.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/register.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/reset-password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/rocket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/search-result.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/pages/vuexy-login-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-21.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-23.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/portrait/small/avatar-s-9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/pages/page-01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/pages/page-02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/pages/page-03.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/pages/page-04.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/pages/page-05.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/pages/page-06.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/pages/page-07.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/pages/page-08.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/pages/page-09.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/post-media/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/post-media/25.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/cover.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-03.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-04.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-05.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-06.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-07.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-08.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-09.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/profile/user-uploads/user-13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/slider/01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/slider/02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/slider/03.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/slider/04.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/slider/05.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/images/slider/06.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/core/app-menu.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/core/app.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/ag-grid/ag-grid.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/cards/card-analytics.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/cards/card-statistics.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/charts/chart-apex.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/charts/chart-chartjs.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/charts/chart-echart.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/charts/gmaps/maps.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/components.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/customizer.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/datatables/datatable.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/editors/editor-quill.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/context-menu.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/copy-to-clipboard.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/drag-drop.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/dropzone.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/fullcalendar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/i18n.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/media-plyr.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/noui-slider.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/sweet-alerts.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/swiper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/toastr.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/extensions/tour.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/footer.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/forms/form-tooltip-valid.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/forms/number-input.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/forms/select/form-select2.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/forms/validation/form-validation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/forms/wizard-steps.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/modal/components-modal.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/navs/navs.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/account-setting.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/app-chat.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/app-ecommerce-details.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/app-ecommerce-shop.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/app-email.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/app-todo.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/app-user.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/bootstrap-toast.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/coming-soon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/dashboard-analytics.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/dashboard-ecommerce.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/faq-kb.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/invoice.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pages/user-profile.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pagination/pagination.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/pickers/dateTime/pick-a-datetime.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/popover/popover.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/tooltip/tooltip.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/js/scripts/ui/data-list-view.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/animate/animate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/calendars/extensions/daygrid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/calendars/extensions/timegrid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/calendars/fullcalendar.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/charts/apexcharts.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_AMS-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_AMS-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Caligraphic-Bold-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Caligraphic-Bold.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Caligraphic-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Caligraphic-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Fraktur-Bold-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Fraktur-Bold.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Fraktur-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Fraktur-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Main-Bold-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Main-Bold.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Main-Italic-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Main-Italic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Main-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Main-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Main-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Math-Italic-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Math-Italic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Math-Italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_SansSerif-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_SansSerif-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Script-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Script-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Size1-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Size1-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Size2-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Size2-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Size3-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Size3-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Size4-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Size4-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Typewriter-Regular-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/fonts/KaTeX_Typewriter-Regular.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/katex.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/monokai-sublime.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/quill.bubble.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/editors/quill/quill.snow.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/dragula.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/font/context-menu-icons6a65-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/font/context-menu-icons6a65.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/jquery.contextMenu.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/nouislider.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/plyr.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/shepherd-theme-default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/sweetalert2.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/swiper.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/tether-theme-arrows.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/tether.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/extensions/toastr.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/file-uploaders/dropzone.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/forms/select/select2.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/pickers/pickadate/pickadate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/tables/ag-grid/ag-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/tables/ag-grid/ag-theme-material.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/tables/datatable/datatables.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/ui/prism.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/css/vendors.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/calendar/extensions/daygrid.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/calendar/extensions/interactions.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/calendar/extensions/timegrid.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/calendar/fullcalendar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/charts/apexcharts.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/charts/chart.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/charts/echarts/echarts.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/charts/gmaps.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/coming-soon/jquery.countdown.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/editors/quill/highlight.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/editors/quill/katex.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/editors/quill/quill.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/dragula.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/dropzone.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/jquery.contextMenu.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/jquery.steps.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/jquery.ui.position.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/moment.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/nouislider.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/polyfill.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/shepherd.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/sweetalert2.all.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/swiper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/tether.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/toastr.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/extensions/wNumb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/forms/select/select2.full.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/forms/validation/jqBootstrapValidation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/forms/validation/jquery.validate.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/media/plyr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/media/plyr.polyfilled.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/pagination/jquery.bootpag.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/pagination/jquery.twbsPagination.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/pickers/pickadate/legacy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/pickers/pickadate/picker.date.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/pickers/pickadate/picker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/pickers/pickadate/picker.time.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/ag-grid/ag-grid-community.min.noStyle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/buttons.bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/buttons.html5.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/buttons.print.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/dataTables.select.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/datatables.bootstrap4.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/datatables.buttons.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/datatables.checkboxes.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/datatables.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/pdfmake.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/tables/datatable/vfs_fonts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/ui/prism.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/New folder/vendors/js/vendors.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/js/core/app.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/js/core/app.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin_assets/js/scripts/navs/navs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/js/scripts/navs/navs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/common/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/common/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/common/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/common/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/preAddmission.blade - Copy.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pre_admissions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pre_admissions/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pre_admissions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pre_admissions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -109,6 +491,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../power" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -148,6 +531,7 @@
       <option name="presentableId" value="Default" />
       <updated>1580634512440</updated>
       <workItem from="1580634546979" duration="18674000" />
+      <workItem from="1580811067006" duration="18620000" />
     </task>
     <servers />
   </component>
@@ -155,6 +539,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="263" y="43" key="#CLI_Interpreters" timestamp="1580833963571">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="263" y="43" key="#CLI_Interpreters/0.0.1366.768@0.0.1366.768" timestamp="1580833963571" />
+    <state x="406" y="0" key="#PHP" timestamp="1580833966795">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="406" y="0" key="#PHP/0.0.1366.768@0.0.1366.768" timestamp="1580833966795" />
+    <state x="448" y="195" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580818363238">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="448" y="195" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1580818363238" />
+    <state x="413" y="126" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580902998996">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="413" y="126" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1580902998996" />
     <state x="441" y="225" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1580635405177">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -163,13 +563,33 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1580739303109" />
+    <state x="476" y="200" key="NewPhpClassDialog" timestamp="1580901420440">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="476" y="200" key="NewPhpClassDialog/0.0.1366.768@0.0.1366.768" timestamp="1580901420440" />
     <state x="671" y="220" key="NewPhpFileDialog" timestamp="1580658179940">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="671" y="220" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1580658179940" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1580657134122">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="391" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1580811118830">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="391" y="213" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1580811118830" />
+    <state x="346" y="52" width="672" height="716" key="search.everywhere.popup" timestamp="1580814120846">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1580657134122" />
+    <state x="346" y="52" width="672" height="716" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1580814120846" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/admin/common/header.blade.php</url>
+          <line>32</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
