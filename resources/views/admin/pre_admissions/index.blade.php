@@ -29,7 +29,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Striped rows</h4>
+                                <h4 class="card-title"></h4>
                                 <a class="btn btn-primary" href="{{url('/pre_admissions/create')}}">Add</a>
                             </div>
                             <div class="card-content">

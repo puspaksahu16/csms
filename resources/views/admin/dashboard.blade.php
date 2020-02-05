@@ -335,19 +335,19 @@
                                                     <ul class="list-unstyled users-list m-0  d-flex align-items-center">
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Vinnie Mostowy" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-5.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Elicia Rieske" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-7.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Julee Rossignol" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-10.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-10.jp')}}g" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Darcey Nooner" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-8.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                     </ul>
                                                 </td>
@@ -368,15 +368,15 @@
                                                     <ul class="list-unstyled users-list m-0  d-flex align-items-center">
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Trina Lynes" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-1.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-1.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Lilian Nenez" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-2.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-2.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Alberto Glotzbach" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-3.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-3.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                     </ul>
                                                 </td>
@@ -397,23 +397,23 @@
                                                     <ul class="list-unstyled users-list m-0  d-flex align-items-center">
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Lai Lewandowski" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-6.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Elicia Rieske" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-7.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Darcey Nooner" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-8.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Julee Rossignol" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-10.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-10.jp')}}g" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Jeffrey Gerondale" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-9.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                     </ul>
                                                 </td>
@@ -434,11 +434,11 @@
                                                     <ul class="list-unstyled users-list m-0  d-flex align-items-center">
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Vinnie Mostowy" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-5.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                         <li data-toggle="tooltip" data-popup="tooltip-custom"  data-placement="bottom"
                                                             data-original-title="Elicia Rieske" class="avatar pull-up">
-                                                            <img class="media-object rounded-circle" src="../../../admin_assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar" height="30" width="30">
+                                                            <img class="media-object rounded-circle" src="{{asset('admin_assets/images/portrait/small/avatar-s-7.jpg')}}" alt="Avatar" height="30" width="30">
                                                         </li>
                                                     </ul>
                                                 </td>

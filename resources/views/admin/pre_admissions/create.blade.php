@@ -97,15 +97,15 @@
                                                         </div>
                                                     </div>
 
-{{--                                                    <div class="col-md-6 col-12">--}}
-{{--                                                        <div class="form-label-group">--}}
-{{--                                                            <select class="form-control">--}}
-{{--                                                                <option>-Student Type-</option>--}}
-{{--                                                                <option>Anwesha</option>--}}
-{{--                                                                <option>General</option>--}}
-{{--                                                            </select>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
+                                                    {{--                                                    <div class="col-md-6 col-12">--}}
+                                                    {{--                                                        <div class="form-label-group">--}}
+                                                    {{--                                                            <select class="form-control">--}}
+                                                    {{--                                                                <option>-Student Type-</option>--}}
+                                                    {{--                                                                <option>Anwesha</option>--}}
+                                                    {{--                                                                <option>General</option>--}}
+                                                    {{--                                                            </select>--}}
+                                                    {{--                                                        </div>--}}
+                                                    {{--                                                    </div>--}}
                                                 </div>
 
 
@@ -114,180 +114,71 @@
                                     </div>
                                 </div>
 
-{{--                                <div class="col-12">--}}
-{{--                                    <div class="card">--}}
-{{--                                        <div class="card-header">--}}
-{{--                                            <h4 class="card-title">Mother's Details</h4>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="card-content">--}}
-{{--                                            <div class="card-body">--}}
-{{--                                                <form class="form">--}}
-{{--                                                    <div class="form-body">--}}
-
-{{--                                                        <div class="row">--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text" id="first-name-column" class="form-control" placeholder="Mother's First Name" name="fname-column">--}}
-{{--                                                                    <label for="first-name-column">Mother's First Name</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="lname-column">--}}
-{{--                                                                    <label for="last-name-column">Mother's Last Name</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text"  class="form-control" placeholder="Mother's Qualification"  name="">--}}
-{{--                                                                    <label for="Qualification">Qualification</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text"  class="form-control" placeholder="Mother's Occupation"  name="">--}}
-{{--                                                                    <label for="Occupation">Occupation</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="">--}}
-{{--                                                                    <label for="Mother's Mobile">Mother's Mobile Number</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <select  class="form-control">--}}
-{{--                                                                        <option>-Select Salary-</option>--}}
-{{--                                                                        <option> > 1 Lakh</option>--}}
-{{--                                                                        <option> < 1 Lakh</option>--}}
-{{--                                                                    </select>--}}
-{{--                                                                    <label for="Mother's Mobile">Mother's Anual Salary</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <select class="form-control">--}}
-{{--                                                                        <option>-Id Proof-</option>--}}
-{{--                                                                        <option>Adhar</option>--}}
-{{--                                                                        <option>Pan Card</option>--}}
-{{--                                                                        <option>Vote Card</option>--}}
-{{--                                                                        <option>Passport</option>--}}
-{{--                                                                    </select>--}}
-
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text"  class="form-control" placeholder="Id Number"  name="">--}}
-{{--                                                                    <label for="Id Number">Id Number</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text"  class="form-control" placeholder="Email Id"  name="">--}}
-{{--                                                                    <label for="Email Id">Email Id</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-
-
-
-{{--                                                    </div>--}}
-
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-12">--}}
-{{--                                    <div class="card">--}}
-{{--                                        <div class="card-header">--}}
-{{--                                            <h4 class="card-title">Father's Details</h4>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="card-content">--}}
-{{--                                            <div class="card-body">--}}
-
-{{--                                                <div class="form-body">--}}
-
-{{--                                                    <div class="row">--}}
-{{--                                                        <div class="col-md-6 col-12">--}}
-{{--                                                            <div class="form-label-group">--}}
-{{--                                                                <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="fname-column">--}}
-{{--                                                                <label for="first-name-column">Father's First Name</label>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="col-md-6 col-12">--}}
-{{--                                                            <div class="form-label-group">--}}
-{{--                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="lname-column">--}}
-{{--                                                                <label for="last-name-column">Father's Last Name</label>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="col-md-6 col-12">--}}
-{{--                                                            <div class="form-label-group">--}}
-{{--                                                                <input type="text"  class="form-control" placeholder="Father's Qualification"  name="">--}}
-{{--                                                                <label for="Qualification">Qualification</label>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="col-md-6 col-12">--}}
-{{--                                                            <div class="form-label-group">--}}
-{{--                                                                <input type="text"  class="form-control" placeholder="Father's Occupation"  name="">--}}
-{{--                                                                <label for="Occupation">Occupation</label>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="col-md-6 col-12">--}}
-{{--                                                            <div class="form-label-group">--}}
-{{--                                                                <input type="text"  class="form-control" placeholder="Father's Mobile"  name="">--}}
-{{--                                                                <label for="Mother's Mobile">Father's Mobile Number</label>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="col-md-6 col-12">--}}
-{{--                                                            <div class="form-label-group">--}}
-{{--                                                                <select  class="form-control">--}}
-{{--                                                                    <option>-Select Salary-</option>--}}
-{{--                                                                    <option> > 1 Lakh</option>--}}
-{{--                                                                    <option> < 1 Lakh</option>--}}
-{{--                                                                </select>--}}
-{{--                                                                <label for="Mother's Mobile">Father's Anual Salary</label>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-
-{{--                                                        <div class="col-md-6 col-12">--}}
-{{--                                                            <div class="form-label-group">--}}
-{{--                                                                <select class="form-control">--}}
-{{--                                                                    <option>-Id Proof-</option>--}}
-{{--                                                                    <option>Adhar</option>--}}
-{{--                                                                    <option>Pan Card</option>--}}
-{{--                                                                    <option>Vote Card</option>--}}
-{{--                                                                    <option>Passport</option>--}}
-{{--                                                                </select>--}}
-
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="col-md-6 col-12">--}}
-{{--                                                            <div class="form-label-group">--}}
-{{--                                                                <input type="text"  class="form-control" placeholder="Id Number"  name="">--}}
-{{--                                                                <label for="Id Number">Id Number</label>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="col-md-6 col-12">--}}
-{{--                                                            <div class="form-label-group">--}}
-{{--                                                                <input type="text"  class="form-control" placeholder="Email Id"  name="">--}}
-{{--                                                                <label for="Email Id">Email Id</label>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-
-{{--                                                    </div>--}}
-
-
-{{--                                                </div>--}}
-
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Parent's Details</h4>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="form-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Mother's First Name" name="mother_first_name">
+                                                                <label for="first-name-column">Mother's First Name</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name">
+                                                                <label for="last-name-column">Mother's Last Name</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="mother_mobile">
+                                                                <label for="Mother's Mobile">Mother's Mobile Number</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Email Id"  name="mother_email">
+                                                                <label for="Email Id">Email Id</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name">
+                                                                <label for="first-name-column">Father's First Name</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name">
+                                                                <label for="last-name-column">Father's Last Name</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile">
+                                                                <label for="Mother's Mobile">Father's Mobile Number</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Email Id"  name="father_email">
+                                                                <label for="Email Id">Email Id</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="col-12">
                                     <div class="card">
@@ -299,38 +190,44 @@
                                                 <form class="form">
                                                     <div class="form-body">
 
-{{--                                                        <div class="row">--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <textarea class="form-control"></textarea>--}}
-{{--                                                                    <label for="first-name-column">Resedence Address</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text" id="Post" class="form-control" placeholder="Post" name="lname-column">--}}
-{{--                                                                    <label for="Post">Post</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text" id="Dist" class="form-control" placeholder="Dist" name="Dist">--}}
-{{--                                                                    <label for="Dist">Dist</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text" id="Zip Code" class="form-control" placeholder="Zip Code" name="Zip Code">--}}
-{{--                                                                    <label for="Zip Code">Zip Code</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-md-6 col-12">--}}
-{{--                                                                <div class="form-label-group">--}}
-{{--                                                                    <input type="text" id="State" class="form-control" placeholder="State" name="State">--}}
-{{--                                                                    <label for="State">State</label>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <textarea name="address" class="form-control"></textarea>
+                                                                    <label for="first-name-column">Residence Address</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="City" name="city">
+                                                                    <label for="Post">City</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="District" name="district">
+                                                                    <label for="Dist">District</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="zip">
+                                                                    <label for="Zip Code">Zip Code</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="State" name="state">
+                                                                    <label for="State">State</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="Country" name="country">
+                                                                    <label for="State">Country</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
 
                                                         <div class="col-12">

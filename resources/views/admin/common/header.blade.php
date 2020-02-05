@@ -105,7 +105,7 @@
             <h6 class="text-primary mb-0">Files</h6></a></li>
     <li class="auto-suggestion d-flex align-items-center cursor-pointer"><a class="d-flex align-items-center justify-content-between w-100" href="#">
             <div class="d-flex">
-                <div class="mr-50"><img src="../../../admin_assets/images/icons/xls.png" alt="png" height="32"></div>
+                <div class="mr-50"><img src="{{asset('admin_assets/images/icons/xls.png')}}" alt="png" height="32"></div>
                 <div class="search-data">
                     <p class="search-data-title mb-0">Two new item submitted</p><small class="text-muted">Marketing Manager</small>
                 </div>
