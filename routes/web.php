@@ -25,9 +25,8 @@ Route::resource('classes', 'CreateClassController');
 
 Route::resource('idproof', 'IdproofControler');
 
-Route::get('/qualificationSetting', function () {
-    return view('admin.qualificationSetting');
-});
+Route::resource('qualification', 'QualificationController');
+
 Route::get('/stateSetting', function () {
     return view('admin.stateSetting');
 });

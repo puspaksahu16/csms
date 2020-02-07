@@ -25,10 +25,7 @@
                 <ul class="menu-content">
                     <li><a href="{{url('/classes')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Class</span></a></li>
                     <li><a href="{{url('/idproof')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Id Proof</span></a></li>
-                    <li><a href="{{url('/qualificationSetting')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Qualification</span></a></li>
-{{--                    <li><a href="{{url('/stateSetting')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create State</span></a></li>--}}
-{{--                    <li><a href="{{url('/distSetting')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Dist</span></a></li>--}}
-{{--                    <li><a href="{{url('/citySetting')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create City</span></a></li>--}}
+                    <li><a href="{{url('/qualification')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Qualification</span></a></li>
                 </ul>
             </li>
         </ul>
