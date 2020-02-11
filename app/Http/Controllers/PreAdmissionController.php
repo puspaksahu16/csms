@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Address;
+use App\Createclass;
 use App\PreAdmission;
 use App\StudentParent;
 use Illuminate\Http\Request;
@@ -28,7 +29,9 @@ class PreAdmissionController extends Controller
      */
     public function create()
     {
-        return view('admin.pre_admissions.create');
+        $classes = CreateClass::all();
+        return view ('admin.pre_admissions.create', compact('classes'));
+
     }
 
     /**

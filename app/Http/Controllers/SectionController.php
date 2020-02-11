@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Qualification;
+use App\Createclass;
+use App\Section;
 use Illuminate\Http\Request;
 
-class QualificationController extends Controller
+class SectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class QualificationController extends Controller
      */
     public function index()
     {
-        $qualification = Qualification::all();
-        return view('admin.qualification.index', compact('qualification'));
+        $section =  Section::all();
+        return view("admin.section.index" , compact('section'));
     }
 
     /**
@@ -25,7 +26,8 @@ class QualificationController extends Controller
      */
     public function create()
     {
-        return view('admin.qualification.index');
+        $classes = CreateClass::all();
+        return view('admin.section.create', compact('classes'));
     }
 
     /**
@@ -36,8 +38,8 @@ class QualificationController extends Controller
      */
     public function store(Request $request)
     {
-        $qualification = Qualification::create($request->all());
-        return redirect('/qualification')->with('success', "Qualification Created successfully!");
+        $section = Section::create($request->all());
+        return redirect('/section')->with('success', "Section Created successfully!");
     }
 
     /**
@@ -59,8 +61,9 @@ class QualificationController extends Controller
      */
     public function edit($id)
     {
-        $qualification = Qualification::find($id);
-        return view('admin.qualification.edit',compact('qualification'));
+        $classes = CreateClass::all();
+        $section = Section::find($id);
+        return view('admin.section.edit',compact('section','classes'));
     }
 
     /**
@@ -72,8 +75,8 @@ class QualificationController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $qualification = Qualification::find($id)->update($request->all());
-        return redirect('/qualification')->with("success", "Qualification updated successfully!");
+        $section = Section::find($id)->update($request->all());
+        return redirect('/section')->with("success", "Section updated successfully!");
     }
 
     /**
