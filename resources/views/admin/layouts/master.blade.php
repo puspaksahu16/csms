@@ -35,12 +35,24 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/css/pages/dashboard-analytics.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/css/pages/card-analytics.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/css/plugins/tour/tour.min.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+    <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
 {{--    <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">--}}
 {{--    <script src="https://unpkg.com/feather-icons"></script>--}}
 {{--    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>--}}
+    <style>
+        .tippy-popper{
+            display: none;
+        }
+        .table-card-header{
+            margin-bottom:17px ;
+        }
+    </style>
     <!-- END: Custom CSS-->
 
 </head>
@@ -70,7 +82,7 @@
 <!-- BEGIN: Footer-->
 @include('admin.common.footer')
 <!-- END: Footer-->
-
+@stack('scripts')
 
 <!-- BEGIN: Vendor JS-->
 <script src="{{asset('admin_assets/vendors/js/vendors.min.js')}}"></script>
@@ -92,5 +104,6 @@
 
 <!-- BEGIN: Page JS-->
 <script src="{{asset('admin_assets/js/scripts/pages/dashboard-analytics.min.js')}}"></script>
+
 </body>
 </html>

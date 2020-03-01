@@ -27,6 +27,13 @@ Route::resource('idproof', 'IdproofControler');
 
 Route::resource('qualification', 'QualificationController');
 
+Route::resource('products', 'ProductController');
+
+Route::resource('stocks', 'StockController');
+Route::post('/fetchProductDetails','StockController@fetchProductDetails');
+
+Route::resource('damages', 'DamageController');
+
 Route::get('/stateSetting', function () {
     return view('admin.stateSetting');
 });

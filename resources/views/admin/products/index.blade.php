@@ -8,12 +8,15 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-{{--                            <h2 class="content-header-title float-left mb-0">Pre Admission</h2>--}}
+                            {{--                            <h2 class="content-header-title float-left mb-0">Pre Admission</h2>--}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Pre Admission</a>
+                                    <li class="breadcrumb-item"><a href="#">Store</a>
+                                    </li>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="#">Product</a>
                                     </li>
 
                                 </ol>
@@ -29,8 +32,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Pre Admission</h4>
-                                <a class="btn btn-primary" href="{{url('/pre_admissions/create')}}">Add</a>
+                                <h4 class="card-title">Products</h4>
+                                <a class="btn btn-primary" href="{{url('/products/create')}}">Add</a>
                             </div>
                             <div class="card-content">
 
@@ -40,19 +43,19 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Class</th>
+                                            <th scope="col">Unit</th>
                                             <th scope="col">action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($pre_admissions as $key => $pre_admission)
-                                        <tr>
-                                            <th scope="row">{{$key+1}}</th>
-                                            <td>{{$pre_admission->first_name." ".$pre_admission->last_name}}</td>
-                                            <td>{{$pre_admission->class_id}}</td>
-                                            <td><a href="{{route('pre_admissions.edit', $pre_admission->id)}}" class="btn btn-primary">Edit</a></td>
-                                        </tr>
-                                            @endforeach
+                                        @foreach($products as $key => $product)
+                                            <tr>
+                                                <td>{{$key+1}}</td>
+                                                <td>{{$product->name}}</td>
+                                                <td>{{$product->unit}}</td>
+                                                <td><a href="{{route('products.edit', $product->id)}}" class="btn btn-primary">Edit</a></td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
