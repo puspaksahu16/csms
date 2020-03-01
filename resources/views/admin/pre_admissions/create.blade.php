@@ -77,8 +77,12 @@
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <select name="class_id" class="form-control">
-                                                                <option disabled value="">-Select Class-</option>
-                                                                <option value="1">Class 1</option>
+                                                                <option>-SELECT CLASS-</option>
+
+                                                                @foreach($classes as $class)
+                                                                    <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                @endforeach
+
                                                             </select>
 
                                                         </div>

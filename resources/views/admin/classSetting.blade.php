@@ -15,7 +15,8 @@
                     </li>
                     <li class="breadcrumb-item"><a href="#">Create Class</a>
                     </li>
-                    
+                    <li class="breadcrumb-item"><a href="#">Create Class</a>
+                    </li>
                   </ol>
                 </div>
               </div>

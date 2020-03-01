@@ -25,7 +25,7 @@ class IdproofControler extends Controller
      */
     public function create()
     {
-        return view('admin.idproof.create');
+        return view('admin.idproof.index');
     }
 
     /**

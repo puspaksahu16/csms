@@ -25,7 +25,7 @@ class CreateClassController extends Controller
      */
     public function create()
     {
-        return view('admin.classes.create');
+        return view('admin.classes.index');
     }
 
     /**

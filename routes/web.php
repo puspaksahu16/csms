@@ -23,6 +23,8 @@ Route::resource('pre_admissions', 'PreAdmissionController');
 
 Route::resource('classes', 'CreateClassController');
 
+Route::resource('section','SectionController');
+
 Route::resource('idproof', 'IdproofControler');
 
 Route::resource('qualification', 'QualificationController');
