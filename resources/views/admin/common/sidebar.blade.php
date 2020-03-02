@@ -42,6 +42,9 @@
                     <li><a href="{{url('/section')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Section</span></a></li>
                     <li><a href="{{url('/idproof')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Id Proof</span></a></li>
                     <li><a href="{{url('/qualification')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Qualification</span></a></li>
+                    <li><a href="{{url('/publisher')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Publisher</span></a></li>
+                    <li><a href="{{url('/standard')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Standard</span></a></li>
+                    <li><a href="{{url('/subject')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Subject</span></a></li>
                 </ul>
             </li>
         </ul>

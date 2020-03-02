@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Subject;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
@@ -13,7 +14,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $subject = Subject::all();
+        return view('admin.subject.index', compact('subject'));
     }
 
     /**
@@ -23,7 +25,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.subject.create');
     }
 
     /**
@@ -34,7 +36,8 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Subject::create($request->all());
+        return redirect()->route('subject.index')->with('success', 'subject created Successfully');
     }
 
     /**

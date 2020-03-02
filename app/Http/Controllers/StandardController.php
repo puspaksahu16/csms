@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Standard;
 use Illuminate\Http\Request;
 
 class StandardController extends Controller
@@ -13,7 +14,8 @@ class StandardController extends Controller
      */
     public function index()
     {
-        //
+        $standard = Standard::all();
+        return view('admin.standard.index', compact('standard'));
     }
 
     /**
@@ -23,7 +25,7 @@ class StandardController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.standard.create');
     }
 
     /**
@@ -34,7 +36,8 @@ class StandardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Standard::create($request->all());
+        return redirect()->route('standard.index')->with('success', 'standard created Successfully');
     }
 
     /**

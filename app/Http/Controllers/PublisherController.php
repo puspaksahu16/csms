@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Publisher;
 use Illuminate\Http\Request;
 
 class PublisherController extends Controller
@@ -13,7 +14,8 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        //
+        $publisher = Publisher::all();
+        return view('admin.publisher.index', compact('publisher'));
     }
 
     /**
@@ -23,7 +25,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.publisher.create');
     }
 
     /**
@@ -34,7 +36,8 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Publisher::create($request->all());
+        return redirect()->route('publisher.index')->with('success', 'publisher created Successfully');
     }
 
     /**

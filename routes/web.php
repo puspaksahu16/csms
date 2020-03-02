@@ -32,6 +32,12 @@ Route::resource('qualification', 'QualificationController');
 Route::resource('products', 'ProductController');
 Route::get('products/book', 'ProductController@book');
 
+Route::resource('publisher', 'PublisherController');
+
+Route::resource('standard', 'StandardController');
+
+Route::resource('subject', 'SubjectController');
+
 Route::resource('stocks', 'StockController');
 Route::post('/fetchProductDetails','StockController@fetchProductDetails');
 
