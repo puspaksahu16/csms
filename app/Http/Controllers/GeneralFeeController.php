@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class GeneralFeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('admin.products.index', compact('products'));
+        //
     }
 
     /**
@@ -25,15 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function book()
-    {
-        return view('admin.products.book');
+        //
     }
 
     /**
@@ -44,8 +34,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($request->all());
-        return redirect()->route('products.index')->with('success', 'Product created Successfully');
+        //
     }
 
     /**
@@ -67,7 +56,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        dd('comming soon');
+        //
     }
 
     /**

@@ -33,7 +33,8 @@
                         <div class="card">
                             <div class="card-header table-card-header">
                                 <h4 class="card-title">Products</h4>
-                                <a class="btn btn-primary" href="{{url('/products/create')}}">Add</a>
+                                <a class="btn btn-primary" href="{{url('/products/book')}}">Add Book</a>
+                                <a class="btn btn-primary" href="{{url('/products/create')}}">Add Product</a>
                             </div>
                             <div class="card-content">
 
