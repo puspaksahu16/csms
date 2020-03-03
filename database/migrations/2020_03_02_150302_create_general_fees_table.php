@@ -15,6 +15,11 @@ class CreateGeneralFeesTable extends Migration
     {
         Schema::create('general_fees', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->bigInteger('class_id');
+            $table->integer('price');
+            $table->bigInteger('type'); //1 = per annum / 2 = per month
+            $table->bigInteger('is_active')->default(1);
             $table->timestamps();
         });
     }

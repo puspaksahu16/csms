@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Createclass;
+use App\Publisher;
 use App\Standard;
+use App\Subject;
 use Illuminate\Http\Request;
 
-class CreateClassController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,7 @@ class CreateClassController extends Controller
      */
     public function index()
     {
-        $classes = CreateClass::all();
-        $standards = Standard::all();
-        return view('admin.classes.index', compact(['classes','standards']));
+        return view('admin.books.index');
     }
 
     /**
@@ -27,7 +27,16 @@ class CreateClassController extends Controller
      */
     public function create()
     {
-        return view('admin.classes.index');
+        $standards = Standard::all();
+        $publishers = Publisher::all();
+        $subjects = Subject::all();
+        return view('admin.books.create', compact(['standards', 'publishers', 'subjects']));
+    }
+
+    public function fetchClass(Request $request)
+    {
+        $classes = Createclass::where('standard_id', $request->standard_id)->first();
+        return response(['classes' => $classes]);
     }
 
     /**
@@ -38,9 +47,7 @@ class CreateClassController extends Controller
      */
     public function store(Request $request)
     {
-        $classes = CreateClass::create($request->all());
-
-        return redirect('/classes')->with("success", "Pre admission Created successfully!");
+        //
     }
 
     /**
@@ -62,9 +69,7 @@ class CreateClassController extends Controller
      */
     public function edit($id)
     {
-       $classes = Createclass::find($id);
-       return view('admin.classes.edit', compact('classes'));
-
+        //
     }
 
     /**
@@ -76,8 +81,7 @@ class CreateClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $classes = Createclass::find($id)->update($request->all());
-        return redirect('/classes')->with("success", "class updated successfully!");
+        //
     }
 
     /**

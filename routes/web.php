@@ -30,7 +30,9 @@ Route::resource('idproof', 'IdproofControler');
 Route::resource('qualification', 'QualificationController');
 
 Route::resource('products', 'ProductController');
-Route::get('products/book', 'ProductController@book');
+
+Route::resource('books', 'BookController');
+Route::post('/fetch_class', 'BookController@fetchClass');
 
 Route::resource('publisher', 'PublisherController');
 

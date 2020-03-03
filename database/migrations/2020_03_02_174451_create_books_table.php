@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCreateclassesTable extends Migration
+class CreateBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateCreateclassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('createclasses', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('create_class');
+            $table->string('name');
             $table->bigInteger('standard_id');
+            $table->bigInteger('class_id');
+            $table->bigInteger('subject_id');
+            $table->bigInteger('publisher_id');
+            $table->integer('quantity');
+            $table->bigInteger('is_active')->default(1);
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ class CreateCreateclassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('createclasses');
+        Schema::dropIfExists('books');
     }
 }
