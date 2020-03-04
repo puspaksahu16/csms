@@ -78,7 +78,6 @@ class StockController extends Controller
         foreach ($request->stock as $stock) {
             $stock['stock_in'] = $stock['quantity'];
             $availables = Stock::where('product_id', $stock['product_id'])
-            ->where('price', $stock['price'])
             ->where('color_id', $stock['color_id'])
             ->where('type_id', $stock['type_id'])
             ->where('gender_id', $stock['gender_id'])

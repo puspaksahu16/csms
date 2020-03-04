@@ -41,6 +41,8 @@
                 <ul class="menu-content">
                     <li><a href="{{url('/general')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">General Fee</span></a></li>
                     <li><a href="{{url('/extraclasses')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Extra Classes</span></a></li>
+                    <li><a href="{{url('/book_price')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Book</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Stock</span></a></li>
 
                 </ul>
             </li>

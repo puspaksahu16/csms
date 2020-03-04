@@ -22,4 +22,10 @@ class Book extends Model
     {
         return $this->belongsTo(Publisher::class, 'publisher_id');
     }
+
+    public function standard()
+    {
+        return $this->belongsTo(Standard::class, 'standard_id');
+    }
+
 }

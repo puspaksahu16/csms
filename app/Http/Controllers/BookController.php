@@ -18,7 +18,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('admin.books.index');
+        $books = Book::all();
+        return view('admin.books.index', compact('books'));
     }
 
     /**
@@ -34,6 +35,32 @@ class BookController extends Controller
         return view('admin.books.create', compact(['standards', 'publishers', 'subjects']));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function bookFee()
+    {
+        $books = Book::all();
+        return view('admin.books.book_fee', compact(['books']));
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function updatePrice(Request $request)
+    {
+        foreach($request->books as $book)
+        {
+            $stock = Book::find($book['book_id']);
+            $stock->update(['price' => $book['price']]);
+        }
+        return response(['success']);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function fetchClass(Request $request)
     {
         $classes = Createclass::where('standard_id', $request->standard_id)->first();

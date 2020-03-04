@@ -30,11 +30,13 @@ class BookStockController extends Controller
         return view('admin.book_stocks.create', compact(['books']));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function fetchBookDetails(Request $request)
     {
         $selectedbook = Book::find($request->book_id);
-
-//        return $selectedbook;
 
         return response([
             'class_id' => $selectedbook->classes->create_class,
