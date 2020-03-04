@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Book;
-use App\Createclass;
-use App\Publisher;
-use App\Standard;
-use App\Subject;
+use App\BookStock;
 use Illuminate\Http\Request;
 
-class BookController extends Controller
+class BookStockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +15,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('admin.books.index');
+        $stocks = BookStock::all();
+        return view('admin.book_stocks.index', compact('stocks'));
     }
 
     /**
@@ -28,16 +26,22 @@ class BookController extends Controller
      */
     public function create()
     {
-        $standards = Standard::all();
-        $publishers = Publisher::all();
-        $subjects = Subject::all();
-        return view('admin.books.create', compact(['standards', 'publishers', 'subjects']));
+        $books = Book::all();
+        return view('admin.book_stocks.create', compact(['books']));
     }
 
-    public function fetchClass(Request $request)
+    public function fetchBookDetails(Request $request)
     {
-        $classes = Createclass::where('standard_id', $request->standard_id)->first();
-        return response(['classes' => $classes]);
+        $selectedbook = Book::find($request->book_id);
+
+//        return $selectedbook;
+
+        return response([
+            'class_id' => $selectedbook->classes->create_class,
+            'publisher_id' => $selectedbook->publisher->name,
+            'subject_id' => $selectedbook->subject->name,
+            'book_id' => $request->book_id
+        ]);
     }
 
     /**
@@ -48,13 +52,19 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        if (!empty($request->books)){
-            foreach ($request->books as $book) {
-                $createbook = new Book();
-                $createbook->create($book);
+        foreach($request->books as $book)
+        {
+            $stock = BookStock::find($book['book_id']);
+            if (!empty($stock))
+            {
+                $stock_in = $stock->stock_in + $book['quantity'];
+                $stock->update(['stock_in' => $stock_in]);
+            }else{
+                $book_stock = new BookStock();
+                $book_stock->create(['book_id' => $book['book_id'], 'stock_in' => $book['quantity']]);
             }
-            return response(["success"]);
         }
+        return response(['success']);
     }
 
     /**
