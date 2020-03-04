@@ -20,7 +20,7 @@ class CreateBooksTable extends Migration
             $table->bigInteger('class_id');
             $table->bigInteger('subject_id');
             $table->bigInteger('publisher_id');
-            $table->integer('quantity');
+            $table->integer('price')->nullable();
             $table->bigInteger('is_active')->default(1);
             $table->timestamps();
         });

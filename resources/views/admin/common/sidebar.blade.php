@@ -31,6 +31,7 @@
                     <li><a href="{{ url('/products') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="products">Products</span></a></li>
                     <li><a href="{{ url('/stocks') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="stock">Stock</span></a></li>
                     <li><a href="{{ url('/books') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="stock">Book</span></a></li>
+                    <li><a href="{{ url('/book_stocks') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="stock">Books Stock</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="assigning">Assigning</span></a></li>
                     <li><a href="{{url('/damages')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="damage">Damage</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="report">Report</span></a></li>

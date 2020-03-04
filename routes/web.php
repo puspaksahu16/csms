@@ -43,6 +43,9 @@ Route::resource('subject', 'SubjectController');
 Route::resource('stocks', 'StockController');
 Route::post('/fetchProductDetails','StockController@fetchProductDetails');
 
+Route::resource('book_stocks', 'BookStockController');
+Route::post('/fetch_book_details','BookStockController@fetchBookDetails');
+
 Route::resource('damages', 'DamageController');
 
 Route::get('/stateSetting', function () {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExtraClassesTable extends Migration
+class CreateBookStocksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateExtraClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('extra_classes', function (Blueprint $table) {
+        Schema::create('book_stocks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->bigInteger('class_id');
-            $table->integer('price');
-            $table->bigInteger('type'); //1 = per annum / 2 = per month
-            $table->bigInteger('is_active')->default(1);
+            $table->bigInteger('book_id');
+            $table->integer('stock_in');
+            $table->integer('stock_out')->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateExtraClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('extra_classes');
+        Schema::dropIfExists('book_stocks');
     }
 }
