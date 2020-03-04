@@ -32,6 +32,7 @@ Route::resource('qualification', 'QualificationController');
 Route::resource('products', 'ProductController');
 
 Route::resource('books', 'BookController');
+
 Route::post('/fetch_class', 'BookController@fetchClass');
 
 Route::resource('publisher', 'PublisherController');
@@ -40,7 +41,12 @@ Route::resource('standard', 'StandardController');
 
 Route::resource('subject', 'SubjectController');
 
+Route::resource('general','GeneralFeeController');
+
+Route::resource('extraclasses','ExtraClassController');
+
 Route::resource('stocks', 'StockController');
+
 Route::post('/fetchProductDetails','StockController@fetchProductDetails');
 
 Route::resource('damages', 'DamageController');

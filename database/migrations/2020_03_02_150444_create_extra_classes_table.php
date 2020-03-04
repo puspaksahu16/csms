@@ -14,6 +14,7 @@ class CreateExtraClassesTable extends Migration
     public function up()
     {
         Schema::create('extra_classes', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('class_id');
             $table->integer('price');
