@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Createclass;
+use App\GeneralFee;
 use Illuminate\Http\Request;
 
 class GeneralFeeController extends Controller
@@ -13,7 +15,8 @@ class GeneralFeeController extends Controller
      */
     public function index()
     {
-        //
+        $general = GeneralFee::all();
+        return view('admin.general.index' , compact('general'));
     }
 
     /**
@@ -23,7 +26,8 @@ class GeneralFeeController extends Controller
      */
     public function create()
     {
-        //
+        $classes = CreateClass::all();
+        return view('admin.general.create' , compact('classes'));
     }
 
     /**
@@ -34,7 +38,8 @@ class GeneralFeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        GeneralFee::create($request->all());
+        return redirect()->route('general.index')->with('success', 'Fees created Successfully');
     }
 
     /**
