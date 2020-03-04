@@ -43,7 +43,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="General Name" name="name">
+                                                            <input type="text" class="form-control" placeholder=" Name" name="name">
                                                             <label for="name">Extra Class Name</label>
                                                         </div>
                                                     </div>
