@@ -47,26 +47,21 @@
                                             <th scope="col">Class</th>
                                             <th scope="col">Publisher</th>
                                             <th scope="col">Subject</th>
-                                            <th scope="col">Stock in</th>
-                                            <th scope="col">Stock out</th>
-                                            <th scope="col">Available</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {{--@foreach($stocks as $key => $stock)--}}
-                                            {{--<tr>--}}
-                                                {{--<td>{{$key+1}}</td>--}}
-                                                {{--<td>{{!empty($stock->products->name) ? $stock->products->name : "--"}}</td>--}}
-                                                {{--<td>{{!empty($stock->colors->name) ? $stock->colors->name : "--"}}</td>--}}
-                                                {{--<td>{{!empty($stock->types->name) ? $stock->types->name : "--"}}</td>--}}
-                                                {{--<td>{{!empty($stock->sizes->name) ? $stock->sizes->name : "--"}}</td>--}}
-                                                {{--<td>{{!empty($stock->gender_id) ? $stock->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>--}}
-                                                {{--<td>{{!empty($stock->stock_in) ? $stock->stock_in : "--"}}</td>--}}
-                                                {{--<td>{{empty($stock->stock_out) ? 0 : $stock->stock_out}}</td>--}}
-                                                {{--<td>{{$stock->available_stocks}}</td>--}}
-                                                {{----}}
-                                            {{--</tr>--}}
-                                        {{--@endforeach--}}
+                                        @foreach($books as $key => $book)
+                                            <tr>
+                                                <td>{{$key+1}}</td>
+                                                <td>{{!empty($book->name) ? $book->name : "--"}}</td>
+                                                <td>{{!empty($book->standard->name) ? $book->standard->name : "--"}}</td>
+                                                <td>{{!empty($book->classes->create_class) ? $book->classes->create_class : "--"}}</td>
+                                                <td>{{!empty($book->publisher->name) ? $book->publisher->name : "--"}}</td>
+                                                <td>{{!empty($book->subject->name) ? $book->subject->name : "--"}}</td>
+                                                <td><a href="#" class="btn btn-primary">Edit</a></td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

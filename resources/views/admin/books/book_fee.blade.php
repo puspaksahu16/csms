@@ -13,9 +13,9 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Store</a>
+                                    <li class="breadcrumb-item"><a href="#">Fee Structure</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Stock</a>
+                                    <li class="breadcrumb-item"><a href="#">Books</a>
                                     </li>
                                 </ol>
                             </div>
@@ -31,7 +31,7 @@
                         <div class="col-12" style="margin: auto">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Create Stock</h4>
+                                    <h4 class="card-title">Create Book price</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -41,55 +41,38 @@
                                                 <div class="row" v-for="(item, index) in rowData">
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <select @change="fetchProductDetails(index)" class="form-control" v-model="item.product_id">
-                                                                <option disabled value="">Select Products</option>
-                                                                <option v-for=" product in products" :value="product.id">@{{product.name}}</option>
+                                                            <select @change="fetchBook(index)" class="form-control" v-model="item.book_id">
+                                                                <option disabled value="">Select Book</option>
+                                                                <option v-for=" book in books" :value="book.id">@{{book.name}}</option>
                                                             </select>
-                                                            <label for="name">Product</label>
+                                                            <label for="name">Book</label>
                                                         </div>
                                                     </div>
-                                                    <div v-if="sp[index].colors" class="col-md-2 col-12">
+                                                    <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <select class="form-control" v-model="item.color_id">
-                                                                <option disabled value=""> color</option>
-                                                                <option v-for=" color in sp[index].colors" :value="color.id">@{{color.name}}</option>
-                                                            </select>
-                                                            <label for="color">Color</label>
+                                                            <input disabled v-model="item.class_id" type="text" class="form-control">
+                                                            <label for="color">Class</label>
                                                         </div>
                                                     </div>
-                                                    <div v-if="sp[index].genders" class="col-md-2 col-12">
+                                                    <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <select class="form-control" v-model="item.gender_id">
-                                                                <option disabled value=""> Gender</option>
-                                                                <option v-for=" gender in sp[index].genders" :value="gender.id">@{{gender.name}}</option>
-                                                            </select>
-                                                            <label for="gender">Gender</label>
+                                                            <input disabled v-model="item.subject_id" type="text" class="form-control">
+                                                            <label for="gender">Subject</label>
                                                         </div>
                                                     </div>
-                                                    <div v-if="sp[index].sizes" class="col-md-1 col-12">
+                                                    <div class="col-md-1 col-12">
                                                         <div class="form-label-group">
-                                                            <select class="form-control" v-model="item.size_id">
-                                                                <option disabled value=""> size</option>
-                                                                <option v-for=" size in sp[index].sizes" :value="size.id">@{{size.name}}</option>
-                                                            </select>
-                                                            <label for="size">size</label>
-                                                        </div>
-                                                    </div>
-                                                    <div v-if="sp[index].types" class="col-md-1 col-12">
-                                                        <div class="form-label-group">
-                                                            <select class="form-control" v-model="item.type_id">
-                                                                <option disabled value=""> type</option>
-                                                                <option v-for=" type in sp[index].types" :value="type.id">@{{type.name}}</option>
-                                                            </select>
-                                                            <label for="type">Type</label>
+                                                            <input disabled v-model="item.publisher_id" type="text" class="form-control">
+                                                            <label for="size">Publisher</label>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Quantity" v-model="item.quantity">
-                                                            <label for="quantity">Quantity</label>
+                                                            <input type="text" class="form-control" placeholder="Price" v-model="item.price">
+                                                            <label for="quantity">Price</label>
                                                         </div>
+
                                                     </div>
                                                     <div class="col-md-1 col-12">
                                                         <span class="btn btn-text btn-danger" @click="removeItem(index)">X</span>
@@ -116,17 +99,14 @@
         </div>
     </div>
     <script> 
-        var PRODUCTS = {!! $products !!}
-        var COLORS = {!! $colors !!}
-        var TYPES = {!! $types !!}
-        var SIZES = {!! $sizes !!}
+        var BOOKS = {!! $books !!}
 
 </script>
 @endsection
 @push('scripts')
 
 <!-- <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.css"> -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{{--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>--}}
 <script>
     // import Swal from 'sweetalert2';
     // import Swal from 'sweetalert/dist/sweetalert.min.js'
@@ -135,50 +115,44 @@
     var app = new Vue({
         el: '#app',
         data: {
-            products:PRODUCTS,
+            books:BOOKS,
             
-            sp:[{}],
+            sb:[{}],
             rowData:[
             {
-                product_id: '',
-                color_id: '',
-                type_id: '',
-                size_id: '',
-                gender_id: '',
-                unit:'',
+                book_id: '',
+                class_id: '',
+                publisher_id: '',
+                subject_id: '',
                 price: '',
-                quantity: '',
             }] //the declared array
         },
         methods:{
                 addItem(){
                     var my_object = {
-                        product_id: '',
-                        color_id: '',
-                        type_id: '',
-                        size_id: '',
-                        gender_id: '',
-                        unit:'',
+                        book_id: '',
+                        class_id: '',
+                        publisher_id: '',
+                        subject_id: '',
                         price: '',
-                        quantity: '',
                     };
                     var my_sp = {};
                         this.rowData.push(my_object);
-                        this.sp.push(my_sp);
+                        this.sb.push(my_sp);
                 },
                 removeItem(index){
                         this.rowData.splice(index, 1);
-                        this.sp.splice(index, 1);
+                        this.sb.splice(index, 1);
                 },
-                fetchProductDetails(sid){
+            fetchBook(bid){
                 let that = this;
-                axios.post('/fetchProductDetails', {
-                    product_id: that.rowData[sid].product_id,
+                axios.post('/fetch_book_details', {
+                    book_id: that.rowData[bid].book_id,
                   })
                   .then(function (response) {
                     console.log(response);
-                    let index = sid;
-                    that.$set(that.sp, [index],response.data);
+                    let index = bid;
+                    that.$set(that.rowData, [index],response.data);
                   })
                   .catch(function (error) {
                     console.log(error);
@@ -186,12 +160,12 @@
                 },
                 submitData(){
                     let that = this;
-                    axios.post('/stocks', {
-                    stock: that.rowData,
+                    axios.post('/update_price', {
+                    books: that.rowData,
                   })
                   .then(function (response) {
                     console.log(response);
-                    window.location ="/stocks";
+                    window.location ="/book_price";
                     // swal("Good job!", "You clicked the button!", "success");
                   })
                   .catch(function (error) {

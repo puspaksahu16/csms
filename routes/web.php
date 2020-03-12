@@ -32,6 +32,8 @@ Route::resource('qualification', 'QualificationController');
 Route::resource('products', 'ProductController');
 
 Route::resource('books', 'BookController');
+Route::get('book_price', 'BookController@bookFee');
+Route::post('update_price', 'BookController@updatePrice');
 
 Route::post('/fetch_class', 'BookController@fetchClass');
 
