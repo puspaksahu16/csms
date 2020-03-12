@@ -58,6 +58,8 @@ Route::resource('damages', 'DamageController');
 
 Route::resource('pre_exam','PreexamController');
 
+Route::resource('result','ResultController');
+
 Route::get('/stateSetting', function () {
     return view('admin.stateSetting');
 });
