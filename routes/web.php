@@ -56,6 +56,8 @@ Route::post('/fetch_book_details','BookStockController@fetchBookDetails');
 
 Route::resource('damages', 'DamageController');
 
+Route::resource('pre_exam','PreexamController');
+
 Route::get('/stateSetting', function () {
     return view('admin.stateSetting');
 });
