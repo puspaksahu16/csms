@@ -13,11 +13,18 @@
             </li>
             <li class=" nav-item"><a href="{{url('/dashboard')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
             </li>
+            <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Addmission">Pre Addmission</span></a>
+                <ul class="menu-content">
+                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAddmission">Pre Exam</span></a></li>
+                    <li><a href="{{url('/pre_admissions')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreAddmission">Register</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Result</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Shortlisted</span></a></li>
+                </ul>
+            </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Addmission">Addmission</span></a>
                 <ul class="menu-content">
-                    <li><a href="{{url('/pre_admissions')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreAddmission">Pre Addmission</span></a></li>
-                    <li><a href="app-ecommerce-shop.html"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAddmission">New Addmission</span></a></li>
-                    <li><a href="app-ecommerce-shop.html"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAddmission">New Addmission</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>
                 </ul>
             </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Employee">Employee</span></a>

@@ -39,11 +39,31 @@
                                         <div class="card-body">
 
                                             <div class="form-body">
-                                                <div class="profilephoto1">
-                                                    <img id="blahid" height="150px" width="130px"  />
+                                                <div class="row">
+                                                   <div class="col-md-4">
+                                                       <div class="student_photo">
+                                                           <img id="p1" height="150px" width="130px"  />
+                                                       </div>
+                                                       <br/>
+                                                       Student photo :<input type="file" name='student_photo'  id="student_photo" onchange="pic(this);"/><p><br/></p>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                       <div class="mother_photo">
+                                                           <img id="p2" height="150px" width="130px"  />
+                                                       </div>
+                                                       <br/>
+                                                       Mother photo :<input type="file" name='mother_photo'  id="mother_photo" onchange="pic2(this);"/><p><br/></p>
+                                                   </div>
+                                                   <div class="col-md-4">
+                                                       <div class="father_photo">
+                                                           <img id="p3" height="150px" width="130px"  />
+                                                       </div>
+                                                       <br/>
+                                                       Father photo :<input type="file" name='father_photo'  id="father_photo" onchange="pic3(this);"/><p><br/></p>
+                                                   </div>
                                                 </div>
-                                                <br/>
-                                                scan photo:* <input type="file" name='photo'  id="profilephoto1" onchange="readURL1(this);"/><p><br/></p>
+
+
                                                 <div class="row">
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
@@ -89,6 +109,19 @@
                                                     </div>
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
+                                                            <select name="exam_id" class="form-control">
+                                                                <option>-SELECT EXAM-</option>
+
+                                                                {{--@foreach($classes as $class)--}}
+                                                                    {{--<option value="{{ $class->id }}">{{ $class->create_class }}</option>--}}
+                                                                {{--@endforeach--}}
+
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
 
                                                             <tr>
                                                                 <br/>
@@ -133,48 +166,53 @@
                                                                 <label for="first-name-column">Mother's First Name</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name">
-                                                                <label for="last-name-column">Mother's Last Name</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="mother_mobile">
-                                                                <label for="Mother's Mobile">Mother's Mobile Number</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Email Id"  name="mother_email">
-                                                                <label for="Email Id">Email Id</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
+
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
                                                                 <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name">
                                                                 <label for="first-name-column">Father's First Name</label>
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name">
+                                                                <label for="last-name-column">Mother's Last Name</label>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
                                                                 <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name">
                                                                 <label for="last-name-column">Father's Last Name</label>
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="mother_mobile">
+                                                                <label for="Mother's Mobile">Mother's Mobile Number</label>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
                                                                 <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile">
                                                                 <label for="Mother's Mobile">Father's Mobile Number</label>
                                                             </div>
                                                         </div>
+
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Email Id"  name="father_email">
-                                                                <label for="Email Id">Email Id</label>
+                                                                <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email">
+                                                                <label for="Email Id">Mother Email Id</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Father Email Id"  name="father_email">
+                                                                <label for="Email Id">Father Email Id</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -256,17 +294,43 @@
         </div>
     </div>
     <script>
-        function readURL1(input) {
+        function pic(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#blahid')
+                    $('#p1')
                         .attr('src', e.target.result)
                         .width(130)
                         .height(150);
                 };
 
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function pic2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#p2')
+                        .attr('src', e.target.result)
+                        .width(130)
+                        .height(150);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function pic3(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#p3')
+                        .attr('src', e.target.result)
+                        .width(130)
+                        .height(150);
+                };
                 reader.readAsDataURL(input.files[0]);
             }
         }
