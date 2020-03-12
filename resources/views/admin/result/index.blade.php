@@ -13,10 +13,10 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Store</a>
+                                    <li class="breadcrumb-item"><a href="#">Result</a>
                                     </li>
 
-                                    <li class="breadcrumb-item"><a href="#">Standard</a>
+                                    <li class="breadcrumb-item"><a href="#">Result List</a>
                                     </li>
 
                                 </ol>
@@ -32,9 +32,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Standard</h4>
+                                <h4 class="card-title">Result</h4>
 
-                                <a class="btn btn-primary" href="{{url('/standard/create')}}">Add Standard</a>
+                                <a class="btn btn-primary" href="{{url('/result/create')}}">Add Result</a>
                             </div>
                             <div class="card-content">
 
@@ -43,25 +43,22 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Class Name</th>
+                                            <th scope="col">Roll No</th>
+                                            <th scope="col">Percentage</th>
+
                                             <th scope="col">action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($standard as $key => $standards)
+                                        @foreach($result as $key => $results)
                                             <tr>
-                                                <td>{{$key+1}}</td>
-                                                <td>{{$standards->name}}</td>
+                                                <th scope="row">{{$key+1}}</th>
+                                                <td>{{$results->class_id}}</td>
+                                                <td>{{$results->rollno}}</td>
+                                                <td>{{$results->percentage}}</td>
 
-                                                @if($standards->is_active)
-                                                    <td style="color:green;">Active</td>
-                                                @else
-                                                    <td>Inactive</td>
-                                                @endif
-
-
-                                                <td><a href="{{route('standard.edit', $standards->id)}}" class="btn btn-primary">Edit</a></td>
+                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

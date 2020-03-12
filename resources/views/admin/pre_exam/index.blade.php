@@ -13,10 +13,10 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Store</a>
+                                    <li class="breadcrumb-item"><a href="#">Pre Exam</a>
                                     </li>
 
-                                    <li class="breadcrumb-item"><a href="#">Standard</a>
+                                    <li class="breadcrumb-item"><a href="#">Pre Exam List</a>
                                     </li>
 
                                 </ol>
@@ -32,9 +32,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Standard</h4>
+                                <h4 class="card-title">Pre Exam</h4>
 
-                                <a class="btn btn-primary" href="{{url('/standard/create')}}">Add Standard</a>
+                                <a class="btn btn-primary" href="{{url('/pre_exam/create')}}">Add Exam</a>
                             </div>
                             <div class="card-content">
 
@@ -43,25 +43,22 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Exam Name</th>
+                                            <th scope="col">Full Mark</th>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Year</th>
                                             <th scope="col">action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($standard as $key => $standards)
+                                        @foreach($pre_exam as $key => $pre_exams)
                                             <tr>
-                                                <td>{{$key+1}}</td>
-                                                <td>{{$standards->name}}</td>
-
-                                                @if($standards->is_active)
-                                                    <td style="color:green;">Active</td>
-                                                @else
-                                                    <td>Inactive</td>
-                                                @endif
-
-
-                                                <td><a href="{{route('standard.edit', $standards->id)}}" class="btn btn-primary">Edit</a></td>
+                                                <th scope="row">{{$key+1}}</th>
+                                                <td>{{$pre_exams->exam_name}}</td>
+                                                <td>{{$pre_exams->full_mark}}</td>
+                                                <td>{{$pre_exams->class_id}}</td>
+                                                <td>{{$pre_exams->current_year}}</td>
+                                                <td><a href="{{route('pre_exam.edit', $pre_exams->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

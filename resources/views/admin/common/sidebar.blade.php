@@ -65,6 +65,14 @@
                 </ul>
             </li>
 
+            <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="GeneralSetting">Exam Management</span></a>
+                <ul class="menu-content">
+                    <li><a href="{{url('/pre_exam')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Pre Exam</span></a></li>
+                    <li><a href="{{url('/result')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Pre Exam Result</span></a></li>
+
+                </ul>
+            </li>
+
         </ul>
     </div>
 </div>

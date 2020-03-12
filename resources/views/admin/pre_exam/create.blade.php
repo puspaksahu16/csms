@@ -13,9 +13,9 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Fees Structure</a>
+                                    <li class="breadcrumb-item"><a href="#">Pre Exam Management</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Extra Class Fee</a>
+                                    <li class="breadcrumb-item"><a href="#">Pre Exam</a>
                                     </li>
 
                                 </ol>
@@ -33,18 +33,18 @@
                         <div class="col-6" style="margin: auto">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Create Extra Class Fee</h4>
+                                    <h4 class="card-title">Create Pre Exam</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('extraclasses.store')}}" method="POST">
+                                        <form class="form" action="{{route('pre_exam.store')}}" method="POST">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder=" Name" name="name">
-                                                            <label for="name">Extra Class Name</label>
+                                                            <input type="text" class="form-control" placeholder="Exam Name" name="exam_name">
+                                                            <label for="name">Exam Name</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 col-12">
@@ -61,19 +61,19 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Price" name="price">
-                                                            <label for="name">Price</label>
+                                                            <input type="number" class="form-control" placeholder="Full Mark" name="full_mark">
+                                                            <label for="name">Full Mark</label>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <select name="type" class="form-control">
-                                                                <option>-SELECT TYPE-</option>
-
-                                                                <option value="2">Monthly</option>
-                                                                <option value="1">Annually</option>
-
+                                                            <select id="year" class="form-control" name="current_year" >
+                                                                <option value="">Current Year</option>
+                                                                {{ $year = date('Y') }}
+                                                                @for ($year = 2020; $year <= 2030; $year++)
+                                                                    <option value="{{ $year }}">{{ $year }}</option>
+                                                                @endfor
                                                             </select>
                                                         </div>
                                                     </div>

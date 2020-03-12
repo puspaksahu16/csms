@@ -13,9 +13,9 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Fees Structure</a>
+                                    <li class="breadcrumb-item"><a href="#">Pre Exam Management</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Extra Class Fee</a>
+                                    <li class="breadcrumb-item"><a href="#">Result</a>
                                     </li>
 
                                 </ol>
@@ -33,20 +33,15 @@
                         <div class="col-6" style="margin: auto">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Create Extra Class Fee</h4>
+                                    <h4 class="card-title">Create Result</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('extraclasses.store')}}" method="POST">
+                                        <form class="form" action="{{route('result.store')}}" method="POST">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
-                                                    <div class="col-md-12 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder=" Name" name="name">
-                                                            <label for="name">Extra Class Name</label>
-                                                        </div>
-                                                    </div>
+
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <select name="class_id" class="form-control">
@@ -61,22 +56,18 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Price" name="price">
-                                                            <label for="name">Price</label>
+                                                            <input type="text" class="form-control" placeholder="Roll Number" name="rollno">
+                                                            <label for="name">Roll Number/label>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <select name="type" class="form-control">
-                                                                <option>-SELECT TYPE-</option>
-
-                                                                <option value="2">Monthly</option>
-                                                                <option value="1">Annually</option>
-
-                                                            </select>
+                                                            <input type="number" class="form-control" placeholder="Percentage" name="percentage">
+                                                            <label for="name">Percentage</label>
                                                         </div>
                                                     </div>
+
+
 
                                                     <div class="col-12 pt-2">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
