@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Createclass;
+use App\PreAdmission;
 use App\Result;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,11 @@ class ResultController extends Controller
     {
         $result = Result::all();
         return view('admin.result.index', compact('result'));
+    }
+
+    public function getRoll(Request $request)
+    {
+        return $rolls = PreAdmission::where('class_id', $request->class_id)->pluck('roll_no', 'id');
     }
 
     /**

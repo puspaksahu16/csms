@@ -40,6 +40,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">Roll No</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">action</th>
                                         </tr>
@@ -49,7 +50,8 @@
                                         <tr>
                                             <th scope="row">{{$key+1}}</th>
                                             <td>{{$pre_admission->first_name." ".$pre_admission->last_name}}</td>
-                                            <td>{{$pre_admission->class_id}}</td>
+                                            <td>{{$pre_admission->roll_no}}</td>
+                                            <td>{{$pre_admission->classes->create_class}}</td>
                                             <td><a href="{{route('pre_admissions.edit', $pre_admission->id)}}" class="btn btn-primary">Edit</a></td>
                                         </tr>
                                             @endforeach

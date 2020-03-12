@@ -56,7 +56,7 @@
                                                 <th scope="row">{{$key+1}}</th>
                                                 <td>{{$pre_exams->exam_name}}</td>
                                                 <td>{{$pre_exams->full_mark}}</td>
-                                                <td>{{$pre_exams->class_id}}</td>
+                                                <td>{{$pre_exams->classes->create_class}}</td>
                                                 <td>{{$pre_exams->current_year}}</td>
                                                 <td><a href="{{route('pre_exam.edit', $pre_exams->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>

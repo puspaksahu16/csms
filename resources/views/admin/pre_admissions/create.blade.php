@@ -48,18 +48,11 @@
                                                        Student photo :<input type="file" name='student_photo'  id="student_photo" onchange="pic(this);"/><p><br/></p>
                                                    </div>
                                                    <div class="col-md-4">
-                                                       <div class="mother_photo">
+                                                       <div class="family_photo">
                                                            <img id="p2" height="150px" width="130px"  />
                                                        </div>
                                                        <br/>
-                                                       Mother photo :<input type="file" name='mother_photo'  id="mother_photo" onchange="pic2(this);"/><p><br/></p>
-                                                   </div>
-                                                   <div class="col-md-4">
-                                                       <div class="father_photo">
-                                                           <img id="p3" height="150px" width="130px"  />
-                                                       </div>
-                                                       <br/>
-                                                       Father photo :<input type="file" name='father_photo'  id="father_photo" onchange="pic3(this);"/><p><br/></p>
+                                                       Family photo :<input type="file" name='family_photo'  id="family_photo" onchange="pic2(this);"/><p><br/></p>
                                                    </div>
                                                 </div>
 
@@ -109,20 +102,16 @@
                                                     </div>
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <select name="exam_id" class="form-control">
+                                                            <select name="pre_exam_id" class="form-control">
                                                                 <option>-SELECT EXAM-</option>
-
-                                                                {{--@foreach($classes as $class)--}}
-                                                                    {{--<option value="{{ $class->id }}">{{ $class->create_class }}</option>--}}
-                                                                {{--@endforeach--}}
-
+                                                                @foreach($pre_exams as $pre_exam)
+                                                                    <option value="{{ $pre_exam->id }}">{{ $pre_exam->exam_name }}</option>
+                                                                @endforeach
                                                             </select>
-
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-
                                                             <tr>
                                                                 <br/>
                                                                 <td><input type="radio" name="caste" value="4">ST</td>
@@ -314,19 +303,6 @@
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     $('#p2')
-                        .attr('src', e.target.result)
-                        .width(130)
-                        .height(150);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        function pic3(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#p3')
                         .attr('src', e.target.result)
                         .width(130)
                         .height(150);

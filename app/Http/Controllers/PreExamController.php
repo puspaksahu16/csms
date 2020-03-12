@@ -6,7 +6,7 @@ use App\Createclass;
 use App\PreExam;
 use Illuminate\Http\Request;
 
-class PreexamController extends Controller
+class PreExamController extends Controller
 {
     /**
      * Display a listing of the resource.

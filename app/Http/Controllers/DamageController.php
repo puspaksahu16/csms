@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Stock;
 use Illuminate\Http\Request;
 use App\Damage;
 use App\Product;
@@ -47,17 +48,26 @@ class DamageController extends Controller
             ->where('gender_id', $stock['gender_id'])
             ->where('size_id', $stock['size_id'])
             ->get();
-
-            if (count($availables) <= 0) {
-                $createstock = new Damage();
-                $createstock->create($stock);
+            $stockavailables = Stock::where('product_id', $stock['product_id'])
+                ->where('color_id', $stock['color_id'])
+                ->where('type_id', $stock['type_id'])
+                ->where('gender_id', $stock['gender_id'])
+                ->where('size_id', $stock['size_id'])
+                ->get();
+            if (count($stockavailables) <= 0) {
+                return response(["success", "Stock is not Available"]);
             }else{
-                $update = Damage::find($availables[0]['id']);
-                $update->damage = $availables[0]['damage'] + $stock['quantity'];
-                $update->update();
+                if (count($availables) <= 0) {
+                    $createstock = new Damage();
+                    $createstock->create($stock);
+                }else{
+                    $update = Damage::find($availables[0]['id']);
+                    $update->damage = $availables[0]['damage'] + $stock['quantity'];
+                    $update->update();
+                }
+                return response(["success"]);
             }
         }
-        return response(["success"]);
     }
 
     /**

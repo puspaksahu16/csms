@@ -8,6 +8,7 @@
 
     <meta name="author" content="Web Garage">
     <title> Welcome to CSMS Pro</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" href="{{asset('admin_assets/images/ico/apple-icon-120.html')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin_assets/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">

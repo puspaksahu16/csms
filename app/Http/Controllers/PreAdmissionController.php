@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Createclass;
 use App\PreAdmission;
+use App\PreExam;
 use App\StudentParent;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class PreAdmissionController extends Controller
     public function index()
     {
         $pre_admissions = PreAdmission::all();
-        return view('admin.pre_admissions.index', compact('pre_admissions'));
+        return view('admin.pre_admissions.index', compact(['pre_admissions']));
     }
 
     /**
@@ -30,7 +31,8 @@ class PreAdmissionController extends Controller
     public function create()
     {
         $classes = CreateClass::all();
-        return view ('admin.pre_admissions.create', compact('classes'));
+        $pre_exams = PreExam::all();
+        return view ('admin.pre_admissions.create', compact(['classes', 'pre_exams']));
 
     }
 
@@ -42,6 +44,14 @@ class PreAdmissionController extends Controller
      */
     public function store(Request $request)
     {
+        $r = PreAdmission::orderBy('id', 'DESC')->get('roll_no');
+        if (count($r) <= 0)
+        {
+            $roll_no = 101;
+        }else{
+            $roll_no = $r[0]["roll_no"] + 1;
+        }
+
 //        return $request;
         $pre_admission = new PreAdmission();
         $pre_admission->first_name = $request->first_name;
@@ -49,8 +59,11 @@ class PreAdmissionController extends Controller
         $pre_admission->dob = $request->dob;
         $pre_admission->gender = $request->gender;
         $pre_admission->class_id = $request->class_id;
+        $pre_admission->pre_exam_id = $request->pre_exam_id;
         $pre_admission->caste = $request->caste;
         $pre_admission->photo = $request->photo;
+        $pre_admission->family_photo = $request->family_photo;
+        $pre_admission->roll_no = $roll_no;
         $pre_admission->save();
 
         $parent = new StudentParent();

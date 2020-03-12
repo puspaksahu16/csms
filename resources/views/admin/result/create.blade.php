@@ -44,7 +44,7 @@
 
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <select name="class_id" class="form-control">
+                                                            <select onchange="getRoll(this.value)" name="class_id" class="form-control">
                                                                 <option>-SELECT CLASS-</option>
 
                                                                 @foreach($classes as $class)
@@ -56,7 +56,9 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Roll Number" name="rollno">
+                                                            <select id="roll_id" name="roll_no" class="form-control">
+                                                                <option>-Roll Number-</option>
+                                                            </select>
                                                             <label for="name">Roll Number/label>
                                                         </div>
                                                     </div>
@@ -87,20 +89,34 @@
             </div>
         </div>
     </div>
-    <script>
-        function readURL1(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#blahid')
-                        .attr('src', e.target.result)
-                        .width(130)
-                        .height(150);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
 @endsection
+@push('scripts')
+    <script>
+       function getRoll(id) {
+           // alert(id);
+           $.ajax({
+               url: "/get_roll",
+               type: "post",
+               data:{
+                   "_token": "{{ csrf_token() }}",
+                   class_id: id
+               },
+               success: function(result){
+                   console.log(result);
+                   $('#roll_id').empty();
+                   // $("#roll_id").append('<option>--Select Nation--</option>');
+                   if(result)
+                   {
+                       $.each(result,function(key,value){
+                           $('#roll_id').append($("<option/>", {
+                               value: key,
+                               text: value
+                           }));
+                       });
+                   }
+                   // $("#div1").html(result);
+               }});
+       }
+    </script>
+@endpush

@@ -54,8 +54,8 @@
                                         @foreach($result as $key => $results)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
-                                                <td>{{$results->class_id}}</td>
-                                                <td>{{$results->rollno}}</td>
+                                                <td>{{$results->classes->create_class}}</td>
+                                                <td>{{$results->roll_no}}</td>
                                                 <td>{{$results->percentage}}</td>
 
                                                 <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-primary">Edit</a></td>
