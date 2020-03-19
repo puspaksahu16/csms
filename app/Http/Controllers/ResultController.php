@@ -32,8 +32,9 @@ class ResultController extends Controller
      */
     public function create()
     {
+        $rolls = PreAdmission::all();
         $classes = Createclass::all();
-        return view('admin.result.create',compact('classes'));
+        return view('admin.result.create',compact(['classes', 'rolls']));
     }
 
     /**
@@ -69,7 +70,8 @@ class ResultController extends Controller
     {
        $result = Result::find($id);
         $classes = Createclass::all();
-       return view('admin.result.edit',compact(['result','classes']));
+        $rolls = PreAdmission::get();
+       return view('admin.result.edit',compact(['result','classes','rolls']));
     }
 
     /**

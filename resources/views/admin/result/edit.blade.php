@@ -49,7 +49,7 @@
                                                                 <option>-SELECT CLASS-</option>
 
                                                                 @foreach($classes as $class)
-                                                                    <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    <option {{ $result->class_id == $class->id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
                                                                 @endforeach
 
                                                             </select>
@@ -59,6 +59,9 @@
                                                         <div class="form-label-group">
                                                             <select id="roll_id" name="roll_no" class="form-control">
                                                                 <option>-Roll Number-</option>
+                                                                @foreach($rolls as $roll)
+                                                                    <option {{ $result->roll_no == $roll->id ? "selected" : " " }} value="{{ $roll->id }}">{{ $roll->roll_no }}</option>
+                                                                @endforeach
                                                             </select>
                                                             <label for="name">Roll Number/label>
                                                         </div>
