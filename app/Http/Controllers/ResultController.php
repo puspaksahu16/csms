@@ -67,7 +67,9 @@ class ResultController extends Controller
      */
     public function edit($id)
     {
-        //
+       $result = Result::find($id);
+        $classes = Createclass::all();
+       return view('admin.result.edit',compact(['result','classes']));
     }
 
     /**
@@ -79,7 +81,8 @@ class ResultController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $result = Result::find($id)->update($request->all());
+        return redirect('/result')->with("success", "Result updated successfully!");
     }
 
     /**

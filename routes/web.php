@@ -61,6 +61,8 @@ Route::post('fetch_damage_product_details', 'DamageController@fetchDamageProduct
 
 Route::resource('pre_exam','PreExamController');
 
+Route::resource('new_admission','NewAdmissionController');
+
 Route::resource('result','ResultController');
 Route::post('/get_roll','ResultController@getRoll');
 
