@@ -63,8 +63,8 @@ class BookController extends Controller
      */
     public function fetchClass(Request $request)
     {
-        $classes = Createclass::where('standard_id', $request->standard_id)->first();
-        return response(['classes' => $classes]);
+        $classes = Createclass::where('standard_id', $request->standard_id)->get();
+        return response($classes);
     }
 
     /**

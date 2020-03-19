@@ -41,23 +41,29 @@
                                                 <div class="row" v-for="(item, index) in rowData">
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <select @change="fetchBook(index)" class="form-control" v-model="item.book_id">
-                                                                <option disabled value="">Select Book</option>
-                                                                <option v-for=" book in books" :value="book.id">@{{book.name}}</option>
+                                                            <select @change="fetchSub(index)" class="form-control" v-model="item.class_id">
+                                                                <option disabled value="">Select Class</option>
+                                                                <option v-for=" cclass in classes" :value="cclass.id">@{{cclass.create_class}}</option>
                                                             </select>
-                                                            <label for="name">Book</label>
+                                                            <label for="name">Class</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <input disabled v-model="item.class_id" type="text" class="form-control">
-                                                            <label for="color">Class</label>
+                                                            <select @change="fetchBook(index)" class="form-control" v-model="item.subject_id">
+                                                                <option disabled value="">Select subjects</option>
+                                                                <option v-for=" subject in subject[index]" :value="subject.id">@{{subject.name}}</option>
+                                                            </select>
+                                                            <label for="color">Subject</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <input disabled v-model="item.subject_id" type="text" class="form-control">
-                                                            <label for="gender">Subject</label>
+                                                            <select @change="fetchBookDetails(index)" class="form-control" v-model="item.book_id">
+                                                                <option disabled value="">Select book</option>
+                                                                <option v-for=" book in books[index]" :value="book.id">@{{book.name}}</option>
+                                                            </select>
+                                                            <label for="color">Book</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1 col-12">
@@ -99,7 +105,7 @@
         </div>
     </div>
     <script> 
-        var BOOKS = {!! $books !!}
+        var CLASSES = {!! $classes !!}
 
 </script>
 @endsection
@@ -115,8 +121,10 @@
     var app = new Vue({
         el: '#app',
         data: {
-            books:BOOKS,
-            
+            classes: CLASSES,
+            subject: [],
+            books: [],
+
             sb:[{}],
             rowData:[
             {
@@ -144,19 +152,55 @@
                         this.rowData.splice(index, 1);
                         this.sb.splice(index, 1);
                 },
-            fetchBook(bid){
+            fetchSub(bid){
                 let that = this;
-                axios.post('/fetch_book_details', {
-                    book_id: that.rowData[bid].book_id,
+                app.rowData[bid].subject_id = '';
+                app.rowData[bid].book_id = '';
+                app.rowData[bid].publisher_id = '';
+                axios.post('/fetch_sub', {
+                    class_id: that.rowData[bid].class_id,
                   })
                   .then(function (response) {
                     console.log(response);
                     let index = bid;
-                    that.$set(that.rowData, [index],response.data);
+                      that.$set(that.subject, [index],response.data.subject);
                   })
                   .catch(function (error) {
                     console.log(error);
                   });
+                },
+                fetchBook(bid){
+                let that = this;
+                app.rowData[bid].book_id = '';
+                app.rowData[bid].publisher_id = '';
+                axios.post('/fetch_book', {
+                    subject_id: that.rowData[bid].subject_id,
+                    class_id: that.rowData[bid].class_id,
+                })
+                    .then(function (response) {
+                        console.log(response);
+                        let index = bid;
+
+                        that.$set(that.books, [index],response.data.books);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                },
+                fetchBookDetails(bid){
+                    let that = this;
+                    axios.post('/fetch_book_details', {
+                        book_id: that.rowData[bid].book_id,
+                    })
+                        .then(function (response) {
+                            console.log(response);
+                            let index = bid;
+                            // that.$set(that.rowData.subject_id, [index],response.data.subject_id);
+                            that.$set(that.rowData, [index],response.data);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
                 },
                 submitData(){
                     let that = this;

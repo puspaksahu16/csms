@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\BookStock;
+use App\Createclass;
+use App\Subject;
 use Illuminate\Http\Request;
 
 class BookStockController extends Controller
@@ -26,26 +28,49 @@ class BookStockController extends Controller
      */
     public function create()
     {
-        $books = Book::all();
-        return view('admin.book_stocks.create', compact(['books']));
+        $classes = Createclass::all();
+        return view('admin.book_stocks.create', compact(['classes']));
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function fetchBookDetails(Request $request)
+    public function fetchSub(Request $request)
     {
-        $selectedbook = Book::find($request->book_id);
+        $ss = Book::where('class_id', $request->class_id)->distinct('subject_id')->get('subject_id');
+        $subject = Subject::whereIn('id', $ss)->get();
 
         return response([
-            'class_id' => $selectedbook->classes->create_class,
-            'publisher_id' => $selectedbook->publisher->name,
-            'subject_id' => $selectedbook->subject->name,
-            'book_id' => $request->book_id
+            'class_id' => $request->class_id,
+            'subject_id' => null,
+//            'publisher_id' => '',
+//            'book_id' => '',
+            'subject' => $subject
         ]);
     }
 
+    public function fetchBook(Request $request)
+    {
+        $books = Book::where('subject_id', $request->subject_id)->where('class_id', $request->class_id)->get();
+
+        return response([
+            'subject_id' => $request->subject_id,
+            'books' => $books,
+        ]);
+    }
+
+    public function fetchBookDetails(Request $request)
+    {
+        $books = Book::find($request->book_id);
+
+        return response([
+            'class_id' => $books->class_id,
+            'subject_id' => $books->subject_id,
+            'book_id' => $books->id,
+            'publisher_id' => $books->publisher->name,
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      *

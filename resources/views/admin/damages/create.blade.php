@@ -167,7 +167,7 @@
                 },
                 fetchProductDetails(sid){
                 let that = this;
-                axios.post('/fetchProductDetails', {
+                axios.post('/fetch_damage_product_details', {
                     product_id: that.rowData[sid].product_id,
                   })
                   .then(function (response) {
