@@ -58,6 +58,8 @@ Route::resource('damages', 'DamageController');
 
 Route::resource('pre_exam','PreExamController');
 
+Route::resource('new_admission','NewAdmissionController');
+
 Route::resource('result','ResultController');
 Route::post('/get_roll','ResultController@getRoll');
 

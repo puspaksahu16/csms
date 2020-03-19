@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Createclass;
-use App\PreExam;
+use App\idproof;
 use Illuminate\Http\Request;
 
-class PreExamController extends Controller
+class NewAdmissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class PreExamController extends Controller
      */
     public function index()
     {
-        $pre_exam = PreExam::all();
-        return view('admin.pre_exam.index', compact('pre_exam'));
+       return view('admin.new_admission.index');
     }
 
     /**
@@ -26,8 +24,8 @@ class PreExamController extends Controller
      */
     public function create()
     {
-        $classes = Createclass::all();
-        return  view('admin.pre_exam.create', compact('classes'));
+        $id_proof = idproof::all();
+        return view('admin.new_admission.create',compact(['id_proof']));
     }
 
     /**
@@ -38,9 +36,7 @@ class PreExamController extends Controller
      */
     public function store(Request $request)
     {
-
-        PreExam::create($request->all());
-        return redirect()->route('pre_exam.index')->with('success', 'Exam created Successfully');
+        //
     }
 
     /**
@@ -62,10 +58,7 @@ class PreExamController extends Controller
      */
     public function edit($id)
     {
-        $pre_exam = PreExam::find($id);
-        $classes = Createclass::all();
-        return view('admin.pre_exam.edit', compact(['pre_exam','classes']));
-
+        //
     }
 
     /**
@@ -77,8 +70,7 @@ class PreExamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pre_exam = PreExam::find($id)->update($request->all());
-        return redirect('/pre_exam')->with("success", "Pre Exam updated successfully!");
+        //
     }
 
     /**
