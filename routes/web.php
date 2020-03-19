@@ -52,9 +52,12 @@ Route::resource('stocks', 'StockController');
 Route::post('/fetchProductDetails','StockController@fetchProductDetails');
 
 Route::resource('book_stocks', 'BookStockController');
+Route::post('/fetch_sub','BookStockController@fetchSub');
+Route::post('/fetch_book','BookStockController@fetchBook');
 Route::post('/fetch_book_details','BookStockController@fetchBookDetails');
 
 Route::resource('damages', 'DamageController');
+Route::post('fetch_damage_product_details', 'DamageController@fetchDamageProductDetails');
 
 Route::resource('pre_exam','PreExamController');
 

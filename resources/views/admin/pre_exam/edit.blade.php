@@ -54,7 +54,7 @@
                                                                 <option>-SELECT CLASS-</option>
 
                                                                 @foreach($classes as $class)
-                                                                    <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    <option {{ $pre_exam->class_id == $class->id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
                                                                 @endforeach
 
                                                             </select>
@@ -71,9 +71,11 @@
                                                         <div class="form-label-group">
                                                             <select id="year" class="form-control" name="current_year" >
                                                                 <option value="">Current Year</option>
-                                                                {{ $year = date('Y') }}
+                                                                @php()
+                                                                    $year = date('Y') ;
+                                                                @endphp
                                                                 @for ($year = 2020; $year <= 2030; $year++)
-                                                                    <option value="{{ $year }}">{{ $year }}</option>
+                                                                    <option {{ $pre_exam->current_year == $year ? "selected" : "" }} value="{{ $year }}">{{ $year }}</option>
                                                                 @endfor
                                                             </select>
                                                         </div>

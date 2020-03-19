@@ -106,7 +106,7 @@
         }
     </style>
     <!-- END: Custom CSS-->
-
+@stack('css')
 </head>
 <!-- END: Head-->
 

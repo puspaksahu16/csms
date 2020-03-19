@@ -58,6 +58,9 @@
                                                         <div class="form-label-group">
                                                             <select id="roll_id" name="roll_no" class="form-control">
                                                                 <option>-Roll Number-</option>
+                                                                @foreach($rolls as $roll)
+                                                                    <option value="{{ $roll->id }}">{{ $roll->roll_no }}</option>
+                                                                @endforeach
                                                             </select>
                                                             <label for="name">Roll Number/label>
                                                         </div>

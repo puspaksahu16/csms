@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\ProductColor;
+use App\ProductSize;
+use App\ProductType;
 use App\Stock;
 use Illuminate\Http\Request;
 use App\Damage;
@@ -21,6 +24,55 @@ class DamageController extends Controller
         return view('admin.damages.index', compact('damages'));
     }
 
+    public function fetchDamageProductDetails(Request $request)
+    {
+        // return $request;
+        $product_id = $request->product_id;
+        $selectedproduct = Product::find($product_id);
+        $colors = '';
+        $sizes = '';
+        $types = '';
+        $genders = '';
+
+        if ($selectedproduct->color == 1) {
+            $sc = Stock::where('product_id', $request->product_id)->distinct('color_id')->get('color_id');
+            $colors = ProductColor::whereIn('id', $sc)->get();
+        }
+
+        if ($selectedproduct->size == 1) {
+            $ss = Stock::where('product_id', $request->product_id)->distinct('size_id')->get('size_id');
+            $sizes = ProductSize::whereIn('id', $ss)->get();
+        }
+
+        if ($selectedproduct->type == 1) {
+            $st = Stock::where('product_id', $request->product_id)->distinct('type_id')->get('type_id');
+            $types = ProductType::whereIn('id', $st)->get();
+        }
+
+        if ($selectedproduct->gender == 1) {
+            $sg = Stock::where('product_id', $request->product_id)->distinct('gender_id')->get('gender_id');
+//            return $sg;
+            if (count($sg) == 2)
+            {
+                $genders = [['id' => 1, 'name' => 'boys'],['id' => 2, 'name' => 'girls']];
+            }
+            elseif (count($sg) == 1)
+            {
+                if ($sg[0]['gender_id'] == 1)
+                {
+                    $genders = [['id' => 1, 'name' => 'boys']];
+                }
+                elseif (count($sg) == 2)
+                {
+                    $genders = [['id' => 2, 'name' => 'girls']];
+                }
+            }
+
+        }
+
+        return response(['colors' => $colors, 'sizes' => $sizes, 'types' => $types, 'genders' => $genders]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +80,8 @@ class DamageController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
+        $sp = Stock::distinct('product_id')->get('product_id');
+        $products = Product::whereIn('id', $sp)->get();
         return view('admin.damages.create', compact(['products']));
     }
 
