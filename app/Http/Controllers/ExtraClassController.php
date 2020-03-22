@@ -61,7 +61,9 @@ class ExtraClassController extends Controller
      */
     public function edit($id)
     {
-        //
+        $extraclass = ExtraClass::find($id);
+        $classes = Createclass::all();
+        return view('admin.extraclasses.edit', compact(['extraclass','classes']));
     }
 
     /**
@@ -73,7 +75,8 @@ class ExtraClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $extraclass = ExtraClass::find($id)->update($request->all());
+        return redirect('/extraclasses')->with("success", "Extra Classes updated successfully!");
     }
 
     /**
