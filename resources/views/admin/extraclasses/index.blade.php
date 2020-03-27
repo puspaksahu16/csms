@@ -56,7 +56,7 @@
                                                 <tr>
                                                     <td>{{$key+1}}</td>
                                                     <td>{{$extraclasses->name}}</td>
-                                                    <td>{{$extraclasses->class_id}}</td>
+                                                    <td>{{$extraclasses->classes->create_class}}</td>
                                                     <td>{{$extraclasses->price}}</td>
                                                     @if($extraclasses->type == '1')
                                                         <td>Annually</td>
@@ -69,7 +69,7 @@
                                                     @else
                                                         <td>Inactive</td>
                                                     @endif
-                                                    <td><a href="{{route('general.edit', $extraclasses->id)}}" class="btn btn-primary">Edit</a></td>
+                                                    <td><a href="{{route('extraclasses.edit', $extraclasses->id)}}" class="btn btn-primary">Edit</a></td>
                                                 </tr>
                                                 @endforeach
                                         </tbody>

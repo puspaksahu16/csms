@@ -61,7 +61,9 @@ class GeneralFeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $general = GeneralFee::find($id);
+        $classes = CreateClass::all();
+        return view('admin.general.edit',compact(['general','classes']));
     }
 
     /**
@@ -73,7 +75,8 @@ class GeneralFeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $general = GeneralFee::find($id)->update($request->all());
+        return redirect('/general')->with("success", "General Fee updated successfully!");
     }
 
     /**

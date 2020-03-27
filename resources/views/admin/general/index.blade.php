@@ -56,7 +56,7 @@
                                             <tr>
                                                 <td>{{$key+1}}</td>
                                                 <td>{{$generals->name}}</td>
-                                                <td>{{$generals->class_id}}</td>
+                                                <td>{{$generals->classes->create_class}}</td>
                                                 <td>{{$generals->price}}</td>
                                                 @if($generals->type == '1')
                                                     <td>Annually</td>
