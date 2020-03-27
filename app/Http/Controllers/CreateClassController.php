@@ -63,7 +63,8 @@ class CreateClassController extends Controller
     public function edit($id)
     {
        $classes = Createclass::find($id);
-       return view('admin.classes.edit', compact('classes'));
+        $standards = Standard::all();
+       return view('admin.classes.edit', compact(['classes','standards']));
 
     }
 

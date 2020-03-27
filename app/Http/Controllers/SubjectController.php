@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Subject;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view('admin.subject.create');
+        return view('admin.subject.index');
     }
 
     /**
@@ -59,7 +60,8 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subject = Subject::find($id);
+        return view('admin.subject.edit', compact('subject'));
     }
 
     /**
@@ -71,7 +73,8 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subject = Subject::find($id)->update($request->all());
+        return redirect('/subject')->with("success", "Subject updated successfully!");
     }
 
     /**

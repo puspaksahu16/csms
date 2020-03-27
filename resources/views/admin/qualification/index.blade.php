@@ -85,7 +85,7 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
+
                                             <th scope="col">Qualification</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -95,7 +95,7 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 <th>{{$qualification->qualification}}</th>
-                                                <th>{{$qualification->created_at}}</th>
+                                                
                                                 <td><a href="{{route('qualification.edit', $qualification->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach

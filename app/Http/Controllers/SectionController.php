@@ -16,7 +16,8 @@ class SectionController extends Controller
     public function index()
     {
         $section =  Section::all();
-        return view("admin.section.index" , compact('section'));
+        $classes = CreateClass::all();
+        return view("admin.section.index" , compact(['section','classes']));
     }
 
     /**
@@ -26,8 +27,8 @@ class SectionController extends Controller
      */
     public function create()
     {
-        $classes = CreateClass::all();
-        return view('admin.section.create', compact('classes'));
+
+        return view('admin.section.index');
     }
 
     /**

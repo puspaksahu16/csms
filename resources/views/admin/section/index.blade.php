@@ -26,12 +26,78 @@
 
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
 
+                <section id="multiple-column-form">
+                    <div class="row match-height">
+
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Section Setting</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form" method="POST" action="{{route('section.store')}}">
+                                            @csrf
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-md-4 col-12">
+                                                        <div class="form-label-group">
+                                                            <select name="class_id" class="form-control">
+                                                                <option>-SELECT CLASS-</option>
+
+                                                                @foreach($classes as $class)
+                                                                    <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="section" class="form-control" placeholder="Create New Section" name="section">
+                                                            <label for="first-name-column">Create Section</label>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                    <div class="col-4">
+                                                        <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
+
+                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                </section>
+
                 <div class="row" id="table-striped">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Section List</h4>
-                                <a href="{{url('/section/create')}}"><button class="btn btn-primary waves-effect waves-light">Add</button></a>
                             </div>
                             <div class="card-content">
 
@@ -40,7 +106,7 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
+
                                             <th scope="col">Class</th>
                                             <th scope="col">Section</th>
                                             <th scope="col">Action</th>
@@ -50,9 +116,9 @@
                                         @foreach($section as $key => $section)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
-                                                <th>{{$section->class_id}}</th>
+                                                <th>{{$section->class->create_class}}</th>
                                                 <th>{{$section->section}}</th>
-                                                <th>{{$section->created_at}}</th>
+
                                                 <td><a href="{{route('section.edit', $section->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach

@@ -44,20 +44,20 @@
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
-                                                    <div class="col-md-6 col-12">
+                                                    <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
                                                             <select name="class_id" class="form-control">
                                                                 <option>-SELECT CLASS-</option>
 
                                                                 @foreach($classes as $class)
-                                                                    <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    <option {{ $class->id == $section->class_id  ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
                                                                 @endforeach
 
                                                             </select>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-6 col-12">
+                                                    <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="section" class="form-control" value="{{$section->section}}" placeholder="Create New Section" name="section">
                                                             <label for="first-name-column">Create Section</label>
@@ -68,10 +68,10 @@
 
 
 
-                                                    <div class="col-6">
+                                                    <div class="col-4">
                                                         <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
+                                                        <a href="{{url('/section')}}"><input type="button" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light" value="Back"></a>
 
-                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                                     </div>
 
                                                 </div>
