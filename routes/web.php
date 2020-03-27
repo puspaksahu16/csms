@@ -33,6 +33,7 @@ Route::resource('products', 'ProductController');
 
 Route::resource('books', 'BookController');
 Route::get('book_price', 'BookController@bookFee');
+Route::get('book_price_update', 'BookController@bookFeeUpdate');
 Route::post('update_price', 'BookController@updatePrice');
 
 Route::post('/fetch_class', 'BookController@fetchClass');

@@ -38,10 +38,16 @@ class BookController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+    public function bookFeeUpdate()
+    {
+        $classes = Createclass::all();
+        return view('admin.books.book_fee_update', compact(['classes']));
+    }
+
     public function bookFee()
     {
         $books = Book::all();
-        return view('admin.books.book_fee', compact(['books']));
+        return view('admin.books.book_fee', compact('books'));
     }
 
     /**

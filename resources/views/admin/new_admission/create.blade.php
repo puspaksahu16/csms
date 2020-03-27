@@ -2,6 +2,13 @@
 @push('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('admin_assets/css/plugins/forms/wizard.min.css') }}">
     <script src="{{ asset('admin_assets/js/scripts/forms/wizard-steps.min.js') }}"></script>
+    <style>
+        .btn{
+            color: #fffdfd;
+            background-color: #7b7b7d;
+            border: 2px solid #7367f0;
+            }
+    </style>
 @endpush
 @section('content')
     <div class="app-content content">
@@ -43,21 +50,20 @@
 
 {{--                                                    Wizard start                      --}}
 
-
                                                     <div class="container">
                                                         <div class="stepwizard">
                                                             <div class="stepwizard-row setup-panel">
                                                                 <div class="stepwizard-step">
                                                                     <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-                                                                    <p>Step 1</p>
+                                                                    <p>Student Details</p>
                                                                 </div>
                                                                 <div class="stepwizard-step">
                                                                     <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                                                                    <p>Step 2</p>
+                                                                    <p>Parent Details</p>
                                                                 </div>
                                                                 <div class="stepwizard-step">
                                                                     <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                                                                    <p>Step 3</p>
+                                                                    <p>Address</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -86,8 +92,6 @@
                                                                             <br/>
                                                                             Family photo :<input type="file" name='family_photo'  id="family_photo" onchange="pic2(this);"/><p><br/></p>
                                                                         </div>
-
-
                                                                 </div>
                                                                     <div class="row">
                                                                         <div class="col-md-6 col-12">
@@ -123,13 +127,10 @@
                                                                             <div class="form-label-group">
                                                                                 <select name="id_proof" class="form-control">
                                                                                     <option>-choose id proof-</option>
-
                                                                                     @foreach($id_proof as $id_proofs)
                                                                                         <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                     @endforeach
-
                                                                                 </select>
-
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
@@ -145,7 +146,6 @@
                                                                                     <option value="yes">Yes</option>
                                                                                     <option value="no">No</option>
                                                                                 </select>
-
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12" id="ifYes"  style="display: none;">
@@ -154,7 +154,6 @@
                                                                                 <label for="last-name-column">Tc Number</label>
                                                                             </div>
                                                                         </div>
-
                                                                         <script>
                                                                             function yesnoCheck(that) {
                                                                                 if (that.value == "yes") {
@@ -177,7 +176,6 @@
                                                                                 <label for="email-id-column">Caste</label>
                                                                             </div>
                                                                         </div>
-
                                                                     </div>
                                                                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
                                                             </div>
@@ -187,11 +185,9 @@
                                                                     <h4 class="card-title">Parent's Details</h4>
                                                                 </div>
                                                                 <div class="col-xs-12">
-
                                                                     <div class="col-md-12">
                                                                         <br/><br/>
                                                                         <div class="row">
-
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
                                                                                     <input type="text"  class="form-control" placeholder="Mother's First Name" name="mother_first_name">
@@ -370,30 +366,13 @@
                                                             </div>
                                                         </form>
                                                     </div>
-
 {{--                                                    Wizard end                       --}}
-
-
-
-
-
                                                 </div>
-
-
-
-
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
                             </div>
-
-
                     </div>
                 </section>
                 <!-- // Basic Floating Label Form section end -->

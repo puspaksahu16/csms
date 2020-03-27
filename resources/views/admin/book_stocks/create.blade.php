@@ -80,7 +80,7 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="col-md-1 col-12">
+                                                    <div class="col-md-2 col-12">
                                                         <span class="btn btn-text btn-danger" @click="removeItem(index)">X</span>
                                                     </div>
 

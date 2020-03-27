@@ -69,6 +69,7 @@ class BookStockController extends Controller
             'subject_id' => $books->subject_id,
             'book_id' => $books->id,
             'publisher_id' => $books->publisher->name,
+            'price' => $books->price,
         ]);
     }
     /**
