@@ -111,7 +111,11 @@ class PreAdmissionController extends Controller
     public function edit($id)
     {
         $pre_admission = PreAdmission::find($id);
-        return view('admin.pre_admissions.edit', compact('pre_admission'));
+        $classes = Createclass::all();
+        $pre_exams = PreExam::all();
+        $parents = StudentParent::where('student_id', $id)->first();
+        $address = Address::where('user_id',$id)->first();
+        return view('admin.pre_admissions.edit', compact(['pre_admission','classes','pre_exams','parents','address']));
     }
 
     /**
@@ -123,7 +127,41 @@ class PreAdmissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pre_admission = PreAdmission::find($id)->update($request->all());
+        $pre_admission = PreAdmission::find($id);
+        $pre_admission = PreAdmission::where('id', $id)->first();
+        $pre_admission->first_name = $request->input('first_name');
+        $pre_admission->last_name = $request->input('last_name');
+        $pre_admission->dob = $request->input('dob');
+        $pre_admission->gender = $request->input('gender');
+        $pre_admission->class_id = $request->input('class_id');
+        $pre_admission->pre_exam_id = $request->input('pre_exam_id');
+        $pre_admission->caste = $request->input('caste');
+        $pre_admission->save();
+
+        $parents = StudentParent::find($id);
+        $parents = StudentParent::where('student_id', $id)->first();
+        $parents->mother_first_name = $request->input('mother_first_name');
+        $parents->father_first_name = $request->input('father_first_name');
+        $parents->mother_last_name = $request->input('mother_last_name');
+        $parents->father_last_name = $request->input('father_last_name');
+        $parents->mother_mobile = $request->input('mother_mobile');
+        $parents->father_mobile = $request->input('father_mobile');
+        $parents->mother_email = $request->input('mother_email');
+        $parents->father_email = $request->input('father_email');
+        $parents->save();
+
+
+        $address = Address::find($id);
+        $address = Address::where('user_id',$id)->first();
+        $address->address = $request->input('address');
+        $address->city = $request->input('city');
+        $address->district = $request->input('district');
+        $address->state = $request->input('state');
+        $address->country = $request->input('country');
+        $address->zip = $request->input('zip');
+        $address->save();
+
+
 
         return redirect('/pre_admissions')->with("success", "Pre admission Created successfully!");
     }

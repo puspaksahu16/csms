@@ -12,4 +12,8 @@ class PreAdmission extends Model
     {
         return $this->belongsTo(Createclass::class, 'class_id');
     }
+    public function parents()
+    {
+        return $this->belongsTo(PreExam::class,'pre_exam_id');
+    }
 }
