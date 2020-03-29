@@ -96,37 +96,36 @@
                                                                     <div class="row">
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="first_name">
+                                                                                <input type="text" class="form-control" placeholder="First Name" name="first_name">
                                                                                 <label for="first-name-column">First Name</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="last_name">
+                                                                                <input type="text" class="form-control" placeholder="Last Name" name="last_name">
                                                                                 <label for="last-name-column">Last Name</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="date"  class="form-control"  name="dob">
+                                                                                <input type="date"  class="form-control" name="dob">
                                                                                 <label for="DOB">DOB</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <select name="gender" class="form-control">
+                                                                                <select name="gender_id" class="form-control">
                                                                                     <option disabled value="">-Select Gender-</option>
                                                                                     <option value="1">MALE</option>
                                                                                     <option value="2">FEMALE</option>
                                                                                 </select>
-
                                                                                 <label for="country-floating">Gender</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <select name="id_proof" class="form-control">
-                                                                                    <option>-choose id proof-</option>
+                                                                                    <option value="">-choose id proof-</option>
                                                                                     @foreach($id_proof as $id_proofs)
                                                                                         <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                     @endforeach
@@ -135,14 +134,14 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text" id="id-number-column" class="form-control" placeholder="Id Number" name="id_number">
-                                                                                <label for="last-name-column">Id Number</label>
+                                                                                <input type="text" class="form-control" placeholder="Id Proof Number" name="id_proof_no">
+                                                                                <label for="last-name-column">Id Proof Number</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <select class="form-control" onchange="yesnoCheck(this);">
-                                                                                    <option>- select tc-</option>
+                                                                                    <option value="">- select tc-</option>
                                                                                     <option value="yes">Yes</option>
                                                                                     <option value="no">No</option>
                                                                                 </select>
@@ -150,20 +149,21 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-12" id="ifYes"  style="display: none;">
                                                                             <div class="form-label-group">
-                                                                                <input type="text" id="id-number-column" class="form-control" placeholder="Tc Number" name="tc_number">
+                                                                                <input type="text" id="id-number-column" class="form-control" placeholder="Tc Number" name="tc_no">
                                                                                 <label for="last-name-column">Tc Number</label>
                                                                             </div>
                                                                         </div>
-                                                                        <script>
-                                                                            function yesnoCheck(that) {
-                                                                                if (that.value == "yes") {
-                                                                                    // alert("check");
-                                                                                    document.getElementById("ifYes").style.display = "block";
-                                                                                } else {
-                                                                                    document.getElementById("ifYes").style.display = "none";
-                                                                                }
-                                                                            }
-                                                                        </script>
+                                                                        <div class="col-md-6 col-12">
+                                                                            <div class="form-label-group">
+                                                                                <select class="form-control" name="class_id">
+                                                                                    <option value="">-Select class-</option>
+                                                                                    @foreach($classes as $class)
+                                                                                        <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                                <label for="last-name-column">Class</label>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <tr>
@@ -182,7 +182,7 @@
                                                             </div>
                                                             <div class="row setup-content" id="step-2">
                                                                 <div class="card-header">
-                                                                    <h4 class="card-title">Parent's Details</h4>
+                                                                    <h4 class="card-title">Mother's Details</h4>
                                                                 </div>
                                                                 <div class="col-xs-12">
                                                                     <div class="col-md-12">
@@ -197,22 +197,8 @@
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name">
-                                                                                    <label for="first-name-column">Father's First Name</label>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
                                                                                     <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name">
                                                                                     <label for="last-name-column">Mother's Last Name</label>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name">
-                                                                                    <label for="last-name-column">Father's Last Name</label>
                                                                                 </div>
                                                                             </div>
 
@@ -225,13 +211,6 @@
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile">
-                                                                                    <label for="Mother's Mobile">Father's Mobile Number</label>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
                                                                                     <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email">
                                                                                     <label for="Email Id">Mother Email Id</label>
                                                                                 </div>
@@ -239,14 +218,79 @@
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Father Email Id"  name="father_email">
-                                                                                    <label for="Email Id">Father Email Id</label>
+                                                                                    <input type="text"  class="form-control" placeholder="Mother Occupation"  name="mother_occupation">
+                                                                                    <label for="Occupation">Mother's Occupation</label>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <input type="text"  class="form-control" placeholder="Mother Salary"  name="mother_salary">
+                                                                                    <label for="Income">Mother's Salary</label>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <input type="text"  class="form-control" placeholder="Mother Qualification"  name="mother_qualification">
+                                                                                    <label for="Income">Mother's Qualification</label>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <select name="mother_id_type" class="form-control">
+                                                                                        <option value="">-choose id proof-</option>
+                                                                                        @foreach($id_proof as $id_proofs)
+                                                                                            <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <input type="text" class="form-control" placeholder="Id Proof Number" name="mother_id_no">
+                                                                                    <label for="last-name-column">Id Proof Number</label>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="card-header">
+                                                                    <h4 class="card-title">Father's Details</h4>
+                                                                </div>
+
+                                                                <div class="col-xs-12">
+                                                                    <div class="col-md-12">
+                                                                        <br/><br/>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name">
+                                                                                    <label for="first-name-column">Father's First Name</label>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name">
+                                                                                    <label for="last-name-column">Father's Last Name</label>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile">
+                                                                                    <label for="Mother's Mobile">Father's Mobile Number</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Mother Occupation"  name="mother_occupation">
-                                                                                    <label for="Occupation">Mother's Occupation</label>
+                                                                                    <input type="text"  class="form-control" placeholder="Father Email Id"  name="father_email">
+                                                                                    <label for="Email Id">Father Email Id</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
@@ -257,14 +301,32 @@
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Mother Income"  name="mother_income">
-                                                                                    <label for="Income">Mother's Income</label>
+                                                                                    <input type="text"  class="form-control" placeholder="Father Salary"  name="father_salary">
+                                                                                    <label for="Income">Father's Salary</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Father Income"  name="father_income">
-                                                                                    <label for="Income">Father's Income</label>
+                                                                                    <input type="text"  class="form-control" placeholder="Father Qualification"  name="father_qualification">
+                                                                                    <label for="Income">Father's Qualification</label>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <select name="father_id_type" class="form-control">
+                                                                                        <option value="">-choose id proof-</option>
+                                                                                        @foreach($id_proof as $id_proofs)
+                                                                                            <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <input type="text" class="form-control" placeholder="Id Proof Number" name="father_id_no">
+                                                                                    <label for="last-name-column">Id Proof Number</label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -274,7 +336,7 @@
                                                             </div>
                                                             <div class="row setup-content" id="step-3">
                                                                 <div class="card-header">
-                                                                    <h4 class="card-title">Permanent Address</h4>
+                                                                    <h4 class="card-title">Resident Address</h4>
                                                                 </div>
                                                                 <div class="col-xs-12">
                                                                     <div class="col-md-12">
@@ -282,81 +344,83 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <textarea name="address" class="form-control"></textarea>
-                                                                                    <label for="first-name-column">Permanent Address</label>
+                                                                                    <textarea name="addresses[resident][address]" class="form-control"></textarea>
+                                                                                    <label for="first-name-column">Resident Address</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="City" name="city">
+                                                                                    <input type="text"  class="form-control" placeholder="City" name="addresses[resident][city]">
                                                                                     <label for="Post">City</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="District" name="district">
+                                                                                    <input type="text"  class="form-control" placeholder="District" name="addresses[resident][district]">
                                                                                     <label for="Dist">District</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="zip">
+                                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="addresses[resident][zip]">
                                                                                     <label for="Zip Code">Zip Code</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="State" name="state">
+                                                                                    <input type="text"  class="form-control" placeholder="State" name="addresses[resident][state]">
                                                                                     <label for="State">State</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Country" name="country">
+                                                                                    <input type="text"  class="form-control" placeholder="Country" name="addresses[resident][country]">
                                                                                     <label for="State">Country</label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <input type="checkbox" value=""><label>Same as Permanent</label>
-                                                                        <div class="card-header">
-                                                                            <h4 class="card-title">Residence Address</h4>
-                                                                        </div>
-                                                                        <br/><br/><br/>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <textarea name="address" class="form-control"></textarea>
-                                                                                    <label for="first-name-column">Residence Address</label>
-                                                                                </div>
+                                                                        <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" checked value="1"><label>Same as Permanent</label>
+                                                                        <div id="permanent" style="display: none">
+                                                                            <div class="card-header">
+                                                                                <h4 class="card-title">Permanent Address</h4>
                                                                             </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="City" name="city">
-                                                                                    <label for="Post">City</label>
+                                                                            <br/><br/><br/>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6 col-12">
+                                                                                    <div class="form-label-group">
+                                                                                        <textarea name="addresses[permanent][address]" class="form-control"></textarea>
+                                                                                        <label for="first-name-column">Permanent Address</label>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="District" name="district">
-                                                                                    <label for="Dist">District</label>
+                                                                                <div class="col-md-6 col-12">
+                                                                                    <div class="form-label-group">
+                                                                                        <input type="text"  class="form-control" placeholder="City" name="addresses[permanent][city]">
+                                                                                        <label for="Post">City</label>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="zip">
-                                                                                    <label for="Zip Code">Zip Code</label>
+                                                                                <div class="col-md-6 col-12">
+                                                                                    <div class="form-label-group">
+                                                                                        <input type="text"  class="form-control" placeholder="District" name="addresses[permanent][district]">
+                                                                                        <label for="Dist">District</label>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="State" name="state">
-                                                                                    <label for="State">State</label>
+                                                                                <div class="col-md-6 col-12">
+                                                                                    <div class="form-label-group">
+                                                                                        <input type="text"  class="form-control" placeholder="Zip Code" name="addresses[permanent][zip]">
+                                                                                        <label for="Zip Code">Zip Code</label>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Country" name="country">
-                                                                                    <label for="State">Country</label>
+                                                                                <div class="col-md-6 col-12">
+                                                                                    <div class="form-label-group">
+                                                                                        <input type="text"  class="form-control" placeholder="State" name="addresses[permanent][state]">
+                                                                                        <label for="State">State</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 col-12">
+                                                                                    <div class="form-label-group">
+                                                                                        <input type="text"  class="form-control" placeholder="Country" name="addresses[permanent][country]">
+                                                                                        <label for="State">Country</label>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -384,6 +448,18 @@
 @endsection
 @push('scripts')
     <script>
+        function permanent() {
+            var a = $('#is_same').is(':checked') ? 1 : 0;
+            if (a == 0)
+            {
+                $('#permanent').css('display', 'block');
+            }
+            else
+            {
+                $('#permanent').css('display', 'none');
+            }
+            // alert(a);
+        }
         function pic(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -398,8 +474,6 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-<<<<<<< HEAD
-
         function pic2(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -412,10 +486,17 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-=======
->>>>>>> b67ce6f295b254f99bc75dd02309c8401d8096a2
     </script>
-
+    <script>
+        function yesnoCheck(that) {
+            if (that.value == "yes") {
+                // alert("check");
+                document.getElementById("ifYes").style.display = "block";
+            } else {
+                document.getElementById("ifYes").style.display = "none";
+            }
+        }
+    </script>
     <script src="{{ asset('admin_assets/vendors/js/extensions/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('admin_assets/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
 @endpush

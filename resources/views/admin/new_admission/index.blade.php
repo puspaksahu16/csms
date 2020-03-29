@@ -40,22 +40,21 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Roll No</th>
+                                            <th scope="col">Student ID</th>
                                             <th scope="col">Class</th>
-                                            <th scope="col">Status</th>
                                             <th scope="col">action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-{{--                                        @foreach($pre_admissions as $key => $pre_admission)--}}
-{{--                                            <tr>--}}
-{{--                                                <th scope="row">{{$key+1}}</th>--}}
-{{--                                                <td>{{$pre_admission->first_name." ".$pre_admission->last_name}}</td>--}}
-{{--                                                <td>{{$pre_admission->roll_no}}</td>--}}
-{{--                                                <td>{{$pre_admission->classes->create_class}}</td>--}}
-{{--                                                <td><a href="{{route('pre_admissions.edit', $pre_admission->id)}}" class="btn btn-primary">Edit</a></td>--}}
-{{--                                            </tr>--}}
-{{--                                        @endforeach--}}
+                                        @foreach($students as $key => $student)
+                                            <tr>
+                                                <th scope="row">{{$key+1}}</th>
+                                                <td>{{$student->first_name." ".$student->last_name}}</td>
+                                                <td>{{$student->student_unique_id}}</td>
+                                                <td>{{$student->classes->create_class}}</td>
+                                                <td><a href="#" class="btn btn-primary">Edit</a></td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

@@ -22,6 +22,9 @@ class CreateAddressesTable extends Migration
             $table->string('state');
             $table->string('country');
             $table->integer('zip');
+            $table->string('address_type');
+            $table->string('register_type');
+            $table->integer('is_same')->default(0);
             $table->timestamps();
         });
     }

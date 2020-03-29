@@ -76,6 +76,7 @@ class PreAdmissionController extends Controller
         $parent->mother_last_name = $request->mother_last_name;
         $parent->mother_mobile = $request->mother_mobile;
         $parent->mother_email = $request->mother_email;
+        $parent->parent_type = 'pre';
         $parent->save();
 
         $adress = new Address();
@@ -86,6 +87,7 @@ class PreAdmissionController extends Controller
         $adress->state = $request->state;
         $adress->country = $request->country;
         $adress->zip = $request->zip;
+        $adress->register_type = 'pre';
         $adress->save();
 
         return redirect('/pre_admissions')->with("success", "Pre admission Created successfully!");

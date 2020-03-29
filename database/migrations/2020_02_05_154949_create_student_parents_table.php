@@ -34,6 +34,7 @@ class CreateStudentParentsTable extends Migration
             $table->bigInteger('mother_id_type')->nullable();
             $table->string('mother_id_no')->nullable();
             $table->string('mother_email');
+            $table->string('parent_type');
             $table->timestamps();
         });
     }
