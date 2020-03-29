@@ -10,6 +10,6 @@ class Createclass extends Model
 
     public function standard()
     {
-        return $this->belongsTo(Standard::class);
+        return $this->belongsTo(Standard::class,'standard_id');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Standard;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,7 @@ class StandardController extends Controller
      */
     public function create()
     {
-        return view('admin.standard.create');
+        return view('admin.standard.index');
     }
 
     /**
@@ -59,7 +61,8 @@ class StandardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $standard = Standard::find($id);
+        return view('admin.standard.edit', compact('standard'));
     }
 
     /**
@@ -71,7 +74,8 @@ class StandardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $standard = Standard::find($id)->update($request->all());
+        return redirect('/standard')->with("success", "Standard updated successfully!");
     }
 
     /**
