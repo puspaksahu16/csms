@@ -71,9 +71,9 @@
                                                         <div class="form-label-group">
                                                             <select id="year" class="form-control" name="current_year" >
                                                                 <option value="">Current Year</option>
-                                                                @php()
+                                                                <?php
                                                                     $year = date('Y') ;
-                                                                @endphp
+                                                                ?>
                                                                 @for ($year = 2020; $year <= 2030; $year++)
                                                                     <option {{ $pre_exam->current_year == $year ? "selected" : "" }} value="{{ $year }}">{{ $year }}</option>
                                                                 @endfor

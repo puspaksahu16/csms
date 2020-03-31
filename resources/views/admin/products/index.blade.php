@@ -33,7 +33,6 @@
                         <div class="card">
                             <div class="card-header table-card-header">
                                 <h4 class="card-title">Products</h4>
-                                <a class="btn btn-primary" href="{{url('/products/book')}}">Add Book</a>
                                 <a class="btn btn-primary" href="{{url('/products/create')}}">Add Product</a>
                             </div>
                             <div class="card-content">
@@ -45,7 +44,7 @@
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Unit</th>
-                                            <th scope="col">action</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
