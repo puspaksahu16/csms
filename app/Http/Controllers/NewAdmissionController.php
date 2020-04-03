@@ -144,7 +144,21 @@ class NewAdmissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id_proof = idproof::all();
+        $classes = Createclass::all();
+        $students = Student::find($id);
+        $studentparents = StudentParent::where('student_id', $id)->first();
+        $address = Address::where('user_id', $id)->get();
+        $a = [];
+        foreach($address as $key => $adr)
+        {
+            array_push($a,  $adr);
+//            array_push($a, [$adr->address_type => $adr ]);
+//            return $adr->address_type;
+
+        }
+        return $a;
+       return view('admin.new_admission.edit', compact(['id_proof','classes','students','studentparents','address']));
     }
 
     /**
@@ -156,7 +170,7 @@ class NewAdmissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $students = Student::find($id);
     }
 
     /**

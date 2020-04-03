@@ -109,7 +109,12 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $books = Book::find($id);
+        $classes = Createclass::all();
+        $subject = Subject::all();
+        $publisher = Publisher::all();
+        $standard = Standard::all();
+        return view('admin.books.edit', compact(['books','standard','publisher','subject','classes']));
     }
 
     /**
@@ -121,7 +126,8 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Book::find($id)->update($request->all());
+        return redirect('/books')->with('message', 'Status changed!');
     }
 
     /**
