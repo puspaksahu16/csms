@@ -25,6 +25,48 @@ class StockController extends Controller
     }
 
     /**
+     * Product price index return view
+     */
+    public function productPriceIndex()
+    {
+        $stocks = Stock::with(['products:id,name','colors:id,name','types:id,name','sizes:id,name'])
+            ->get();
+        return view('admin.stocks.product_price', compact(['stocks']));
+    }
+
+    public function productPrice()
+    {
+        $products = Product::all();
+        $colors = ProductColor::all();
+        $sizes = ProductSize::all();
+        $types = ProductType::all();
+        return view('admin.stocks.product_price_update', compact(['products', 'colors', 'sizes', 'types']));
+    }
+
+    public function productPriceUpdate(Request $request)
+    {
+        foreach ($request->stock as $stock) {
+            $stockavailables = Stock::where('product_id', $stock['product_id'])
+                ->where('color_id', $stock['color_id'])
+                ->where('type_id', $stock['type_id'])
+                ->where('gender_id', $stock['gender_id'])
+                ->where('size_id', $stock['size_id'])
+                ->get();
+            if (count($stockavailables) <= 0) {
+                return response(["success", "Stock is not Available"]);
+            }else{
+//                foreach ($stockavailables as $sa)
+//                {
+//
+//                }
+                $stockavailables[0]->price =  $stock['price'];
+                $stockavailables[0]->update();
+            }
+        }
+        return response(["success"]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

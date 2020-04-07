@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Createclass;
 use App\PreExam;
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
 class PreExamController extends Controller
@@ -17,6 +18,11 @@ class PreExamController extends Controller
     {
         $pre_exam = PreExam::all();
         return view('admin.pre_exam.index', compact('pre_exam'));
+    }
+
+    public function laraPreExam()
+    {
+        return Laratables::recordsOf(PreExam::class);
     }
 
     /**

@@ -31,23 +31,11 @@
                                                             <label for="qualification-column">Create Qualification</label>
                                                         </div>
                                                     </div>
-
-
-
-
-
-
-
                                                     <div class="col-6">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Submit</button>
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                                     </div>
-
                                                 </div>
-
-
-
-
                                             </div>
                                         </form>
                                     </div>

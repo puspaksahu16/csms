@@ -30,6 +30,9 @@ Route::resource('idproof', 'IdproofControler');
 Route::resource('qualification', 'QualificationController');
 
 Route::resource('products', 'ProductController');
+Route::get('/product_price', 'StockController@productPriceIndex');
+Route::post('/product_price_update', 'StockController@productPriceUpdate');
+Route::get('/product_price_update', 'StockController@productPrice');
 
 Route::resource('books', 'BookController');
 Route::get('book_price', 'BookController@bookFee');
@@ -61,6 +64,7 @@ Route::resource('damages', 'DamageController');
 Route::post('fetch_damage_product_details', 'DamageController@fetchDamageProductDetails');
 
 Route::resource('pre_exam','PreExamController');
+Route::get('lara_pre_exam','PreExamController@laraPreExam')->name('lara_pre_exam');
 
 Route::resource('admission_payment','AdmissionPaymentController');
 

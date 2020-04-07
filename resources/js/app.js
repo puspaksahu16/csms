@@ -5,7 +5,9 @@
  */
 
 require('./bootstrap');
-
+require( 'jquery' );
+require('jquery-ui-dist/jquery-ui');
+require('datatables.net');
 window.Vue = require('vue');
 
 /**
@@ -31,5 +33,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 //     el: '#app',
 // });
 
-
+$(document).ready(function(){
+    $('#pre_exam').DataTable({
+        serverSide: true,
+        processing: true,
+        responsive: true,
+        ajax: "/lara_pre_exam",
+        columns: [
+            { name: 'exam_name' },
+            { name: 'full_mark' },
+            { name: 'classes.create_class', orderable: false },
+            { name: 'current_year' },
+            { name: 'action', orderable: false, searchable: false }
+        ],
+    });
+});
 

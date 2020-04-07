@@ -15,10 +15,8 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Store</a>
                                     </li>
-
                                     <li class="breadcrumb-item"><a href="#">Standard</a>
                                     </li>
-
                                 </ol>
                             </div>
                         </div>
@@ -47,8 +45,6 @@
                                                             <label for="name">Standard Name</label>
                                                         </div>
                                                     </div>
-
-
                                                     <div class="col-6 ">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
@@ -62,17 +58,13 @@
                         </div>
                     </div>
                 </section>
-
-
                 <div class="row" id="table-striped">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
                                 <h4 class="card-title">Standard</h4>
-
                             </div>
                             <div class="card-content">
-
                                 <div class="table-responsive">
                                     <table class="table table-striped mb-0">
                                         <thead>
@@ -80,7 +72,7 @@
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">action</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -88,14 +80,11 @@
                                             <tr>
                                                 <td>{{$key+1}}</td>
                                                 <td>{{$standards->name}}</td>
-
                                                 @if($standards->is_active)
                                                     <td style="color:green;">Active</td>
                                                 @else
                                                     <td>Inactive</td>
                                                 @endif
-
-
                                                 <td><a href="{{route('standard.edit', $standards->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach
@@ -106,7 +95,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

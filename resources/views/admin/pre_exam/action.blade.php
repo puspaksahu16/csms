@@ -1,0 +1,1 @@
+<a href="{{route('pre_exam.edit', $pre_exam->id)}}" class="btn btn-primary">Edit</a>

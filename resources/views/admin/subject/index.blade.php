@@ -15,10 +15,8 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Store</a>
                                     </li>
-                                    </li>
                                     <li class="breadcrumb-item"><a href="#">Subject</a>
                                     </li>
-
                                 </ol>
                             </div>
                         </div>
@@ -79,7 +77,7 @@
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">action</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -87,14 +85,11 @@
                                             <tr>
                                                 <td>{{$key+1}}</td>
                                                 <td>{{$subjects->name}}</td>
-
                                                 @if($subjects->is_active)
                                                     <td style="color:green;">Active</td>
                                                 @else
                                                     <td>Inactive</td>
                                                 @endif
-
-
                                                 <td><a href="{{route('subject.edit', $subjects->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach
@@ -105,7 +100,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
