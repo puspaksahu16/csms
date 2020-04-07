@@ -59,7 +59,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        dd('comming soon');
+        $product = Product::find($id);
+        return view('admin.products.edit',compact('product'));
     }
 
     /**
@@ -71,7 +72,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id)->update($request->all());
+        return redirect('/products')->with('message', 'Status changed!');
     }
 
     /**
