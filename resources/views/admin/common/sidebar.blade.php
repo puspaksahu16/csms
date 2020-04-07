@@ -23,6 +23,7 @@
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Addmission">Addmission</span></a>
                 <ul class="menu-content">
                     <li><a href="{{url('/new_admission')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAddmission">New Addmission</span></a></li>
+                    <li><a href="{{url('/admission_payment')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Fee">Admission Payment</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>
                 </ul>
             </li>
