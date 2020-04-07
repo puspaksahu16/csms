@@ -23,6 +23,7 @@
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Addmission">Addmission</span></a>
                 <ul class="menu-content">
                     <li><a href="{{url('/new_admission')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAddmission">New Addmission</span></a></li>
+                    <li><a href="{{url('/issue_materials')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="">Issue Material</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>
                 </ul>
             </li>
@@ -47,9 +48,8 @@
                 <ul class="menu-content">
                     <li><a href="{{url('/general')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">General Fee</span></a></li>
                     <li><a href="{{url('/extraclasses')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Extra Classes</span></a></li>
-                    <li><a href="{{url('/book_price')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Book</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Stock</span></a></li>
-
+                    <li><a href="{{url('/book_price')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Books</span></a></li>
+                    <li><a href="{{ url('/product_price') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Products</span></a></li>
                 </ul>
             </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="GeneralSetting">Class and Section</span></a>
@@ -57,13 +57,10 @@
                     <li><a href="{{url('/classes')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Class</span></a></li>
                     <li><a href="{{url('/section')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Section</span></a></li>
                     <li><a href="{{url('/standard')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Standard</span></a></li>
-
                 </ul>
             </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="GeneralSetting">General Setting</span></a>
                 <ul class="menu-content">
-
-
                     <li><a href="{{url('/idproof')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Id Proof</span></a></li>
                     <li><a href="{{url('/qualification')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Qualification</span></a></li>
                     <li><a href="{{url('/publisher')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Publisher</span></a></li>

@@ -40,7 +40,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.css">
-
+    <script src="{{ asset('js/app.js') }}" defer></script>
 <style>
     .stepwizard-step p {
         margin-top: 10px;
@@ -87,6 +87,17 @@
         font-size: 12px;
         line-height: 1.428571429;
         border-radius: 15px;
+    }
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+        color: #fff !important;
+        margin: 2px !important;
+    }
+    #pre_exam_length{
+        margin-bottom: 20px !important;
     }
 </style>
 
@@ -160,8 +171,25 @@
 {{--<script src="{{asset('admin_assets/js/scripts/forms/wizard-steps.js')}}"></script>--}}
 <script src="{{asset('admin_assets/vendors/js/extensions/jquery.steps.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
+{{--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />--}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+<script src="https//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function () {
+
+        // $('#pre_exam').DataTable({
+        //     serverSide: true,
+        //     processing: true,
+        //     responsive: true,
+        //     ajax: "/lara_pre_exam",
+        //     columns: [
+        //         { name: 'exam_name' },
+        //         { name: 'full_mark' },
+        //         { name: 'classes.create_class', orderable: false },
+        //         { name: 'current_year' },
+        //         { name: 'action', orderable: false, searchable: false }
+        //     ],
+        // });
 
         var navListItems = $('div.setup-panel div a'),
             allWells = $('.setup-content'),

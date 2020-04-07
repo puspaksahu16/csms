@@ -42,7 +42,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Student ID</th>
                                             <th scope="col">Class</th>
-                                            <th scope="col">action</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>

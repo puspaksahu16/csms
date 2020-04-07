@@ -24,6 +24,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "feather-icons": "^4.25.0"
+        "datatables.net": "^1.10.20",
+        "datatables.net-dt": "^1.10.20",
+        "feather-icons": "^4.25.0",
+        "jquery-ui-dist": "^1.12.1"
     }
 }

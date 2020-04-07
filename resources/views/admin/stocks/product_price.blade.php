@@ -13,7 +13,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Store</a>
+                                    <li class="breadcrumb-item"><a href="#">Product Price</a>
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Stock</a>
                                     </li>
@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-header table-card-header">
                                 <h4 class="card-title">Stocks</h4>
-                                <a class="btn btn-primary" href="{{url('/stocks/create')}}">Add</a>
+                                <a class="btn btn-primary" href="{{ url('/product_price_update') }}">Update</a>
                             </div>
                             <div class="card-content">
 
@@ -45,9 +45,7 @@
                                             <th scope="col">Type</th>
                                             <th scope="col">Size</th>
                                             <th scope="col">Gender</th>
-                                            <th scope="col">Stock in</th>
-                                            <th scope="col">Stock out</th>
-                                            <th scope="col">Available</th>
+                                            <th scope="col">Price</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -59,10 +57,7 @@
                                                 <td>{{!empty($stock->types->name) ? $stock->types->name : "--"}}</td>
                                                 <td>{{!empty($stock->sizes->name) ? $stock->sizes->name : "--"}}</td>
                                                 <td>{{!empty($stock->gender_id) ? $stock->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
-                                                <td>{{!empty($stock->stock_in) ? $stock->stock_in : "--"}}</td>
-                                                <td>{{empty($stock->stock_out) ? 0 : $stock->stock_out}}</td>
-                                                <td>{{$stock->available_stocks}}</td>
-                                            </tr>
+                                                <td>{{!empty($stock->price) ? $stock->price : "--"}}</td>
                                         @endforeach
                                         </tbody>
                                     </table>

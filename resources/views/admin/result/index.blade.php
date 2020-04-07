@@ -15,16 +15,13 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Result</a>
                                     </li>
-
                                     <li class="breadcrumb-item"><a href="#">Result List</a>
                                     </li>
-
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
 
@@ -33,11 +30,9 @@
                         <div class="card">
                             <div class="card-header table-card-header">
                                 <h4 class="card-title">Result</h4>
-
                                 <a class="btn btn-primary" href="{{url('/result/create')}}">Add Result</a>
                             </div>
                             <div class="card-content">
-
                                 <div class="table-responsive">
                                     <table class="table table-striped mb-0">
                                         <thead>
@@ -47,8 +42,7 @@
                                             <th scope="col">Roll No</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Result</th>
-
-                                            <th scope="col">action</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -59,7 +53,6 @@
                                                 <td>{{$results->roll_no}}</td>
                                                 <td>{{$results->students->first_name." ".$results->students->last_name}}</td>
                                                 <td>{{$results->percentage}}%</td>
-
                                                 <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach
@@ -70,7 +63,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
