@@ -29,7 +29,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Pre Exam</a>
+                                    <li class="breadcrumb-item"><a href="#">Pre admission</a>
                                     </li>
 
                                     <li class="breadcrumb-item"><a href="#">Pre Exam</a>
@@ -66,18 +66,6 @@
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
-                                        {{--<tbody>--}}
-                                        {{--@foreach($pre_exam as $key => $pre_exams)--}}
-                                            {{--<tr>--}}
-                                                {{--<th scope="row">{{$key+1}}</th>--}}
-                                                {{--<td>{{$pre_exams->exam_name}}</td>--}}
-                                                {{--<td>{{$pre_exams->full_mark}}</td>--}}
-                                                {{--<td>{{$pre_exams->classes->create_class}}</td>--}}
-                                                {{--<td>{{$pre_exams->current_year}}</td>--}}
-                                                {{--<td><a href="{{route('pre_exam.edit', $pre_exams->id)}}" class="btn btn-primary">Edit</a></td>--}}
-                                            {{--</tr>--}}
-                                        {{--@endforeach--}}
-                                        {{--</tbody>--}}
                                     </table>
                                 </div>
                             </div>

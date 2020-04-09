@@ -69,7 +69,7 @@
                                                     </div>
                                                     <form class="form" method="POST" action="{{route('new_admission.update', $students->id)}}}">
                                                         @csrf
-
+                                                        @method('put')
                                                         <div class="row setup-content" id="step-1">
                                                             <div class="card-header">
                                                                 <h4 class="card-title">Student Details</h4>
@@ -336,43 +336,43 @@
                                                                     <div class="row">
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <textarea name="addresses[resident][address]" class="form-control">{{$address->address}}</textarea>
+                                                                                <textarea name="addresses[resident][address]" class="form-control">{{$r_address->address}}</textarea>
                                                                                 <label for="first-name-column">Resident Address</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text"  class="form-control" placeholder="City" name="addresses[resident][city]" value="{{$address->city}}">
+                                                                                <input type="text"  class="form-control" placeholder="City" name="addresses[resident][city]" value="{{$r_address->city}}">
                                                                                 <label for="Post">City</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text"  class="form-control" placeholder="District" name="addresses[resident][district]" value="{{$address->district}}">
+                                                                                <input type="text"  class="form-control" placeholder="District" name="addresses[resident][district]" value="{{$r_address->district}}">
                                                                                 <label for="Dist">District</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text"  class="form-control" placeholder="Zip Code" name="addresses[resident][zip]" value="{{$address->zip}}">
+                                                                                <input type="text"  class="form-control" placeholder="Zip Code" name="addresses[resident][zip]" value="{{$r_address->zip}}">
                                                                                 <label for="Zip Code">Zip Code</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text"  class="form-control" placeholder="State" name="addresses[resident][state]" value="{{$address->state}}">
+                                                                                <input type="text"  class="form-control" placeholder="State" name="addresses[resident][state]" value="{{$r_address->state}}">
                                                                                 <label for="State">State</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text"  class="form-control" placeholder="Country" name="addresses[resident][country]" value="{{$address->country}}">
+                                                                                <input type="text"  class="form-control" placeholder="Country" name="addresses[resident][country]" value="{{$r_address->country}}">
                                                                                 <label for="State">Country</label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" checked value="1"><label>Same as Permanent</label>
-                                                                    <div id="permanent" style="display: none">
+                                                                    <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" {{$r_address->is_same == 1 ? 'checked' : ''}} value="1"><label>Same as Permanent</label>
+                                                                    <div id="permanent" style="display: {{ $r_address->is_same == 1 ? 'none' : '' }}">
                                                                         <div class="card-header">
                                                                             <h4 class="card-title">Permanent Address</h4>
                                                                         </div>
@@ -380,37 +380,37 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <textarea name="addresses[permanent][address]" class="form-control">{{$address->address}}</textarea>
+                                                                                    <textarea name="addresses[permanent][address]" class="form-control">{{empty($p_address->address) ? '' :  $p_address->address}}</textarea>
                                                                                     <label for="first-name-column">Permanent Address</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="City" name="addresses[permanent][city]" value="{{$address->city}}">
+                                                                                    <input type="text"  class="form-control" placeholder="City" name="addresses[permanent][city]" value="{{empty($p_address->city) ? '' : $p_address->city}}">
                                                                                     <label for="Post">City</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="District" name="addresses[permanent][district]"  value="{{$address->district}}">
+                                                                                    <input type="text"  class="form-control" placeholder="District" name="addresses[permanent][district]"  value="{{empty($p_address->district) ? '' : $p_address->district}}">
                                                                                     <label for="Dist">District</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="addresses[permanent][zip]" value="{{$address->zip}}">
+                                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="addresses[permanent][zip]" value="{{empty($p_address->zip) ? '' : $p_address->zip}}">
                                                                                     <label for="Zip Code">Zip Code</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="State" name="addresses[permanent][state]" value="{{$address->state}}">
+                                                                                    <input type="text"  class="form-control" placeholder="State" name="addresses[permanent][state]" value="{{empty($p_address->state) ? '' : $p_address->state}}">
                                                                                     <label for="State">State</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Country" name="addresses[permanent][country]" value="{{$address->country}}">
+                                                                                    <input type="text"  class="form-control" placeholder="Country" name="addresses[permanent][country]" value="{{empty($p_address->country) ? '' : $p_address->country}}">
                                                                                     <label for="State">Country</label>
                                                                                 </div>
                                                                             </div>
@@ -440,6 +440,18 @@
 @endsection
 @push('scripts')
     <script>
+        // $(document).ready(function () {
+        //     var a = $('#is_same').is(':checked') ? 1 : 0;
+        //     alert(a);
+        //     if (a == 0)
+        //     {
+        //         $('#permanent').css('display', 'block');
+        //     }
+        //     else
+        //     {
+        //         $('#permanent').css('display', 'none');
+        //     }
+        // });
         function permanent() {
             var a = $('#is_same').is(':checked') ? 1 : 0;
             if (a == 0)

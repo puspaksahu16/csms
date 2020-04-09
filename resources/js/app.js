@@ -34,6 +34,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 // });
 
 $(document).ready(function(){
+
     $('#pre_exam').DataTable({
         serverSide: true,
         processing: true,
@@ -47,5 +48,7 @@ $(document).ready(function(){
             { name: 'action', orderable: false, searchable: false }
         ],
     });
+
+
 });
 
