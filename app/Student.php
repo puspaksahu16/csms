@@ -10,4 +10,8 @@ class Student extends Model
     {
         return $this->belongsTo(Createclass::class, 'class_id');
     }
+    public static function laratablesCustomAction($student)
+    {
+        return view('admin.new_admission.action', compact('student'))->render();
+    }
 }

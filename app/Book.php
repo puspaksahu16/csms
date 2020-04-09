@@ -27,5 +27,9 @@ class Book extends Model
     {
         return $this->belongsTo(Standard::class, 'standard_id');
     }
+    public static function laratablesCustomAction($books)
+    {
+        return view('admin.books.action', compact('books'))->render();
+    }
 
 }

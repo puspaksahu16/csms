@@ -20,6 +20,8 @@ Route::get('/dashboard', function () {
 });
 
 Route::resource('pre_admissions', 'PreAdmissionController');
+Route::get('lara_pre_admission','PreAdmissionController@laraPreAdmission')->name('lara_pre_admission');
+
 
 Route::resource('classes', 'CreateClassController');
 
@@ -33,11 +35,13 @@ Route::resource('products', 'ProductController');
 Route::get('/product_price', 'StockController@productPriceIndex');
 Route::post('/product_price_update', 'StockController@productPriceUpdate');
 Route::get('/product_price_update', 'StockController@productPrice');
+Route::get('lara_product','ProductController@laraProduct')->name('lara_product');
 
 Route::resource('books', 'BookController');
 Route::get('book_price', 'BookController@bookFee');
 Route::get('book_price_update', 'BookController@bookFeeUpdate');
 Route::post('update_price', 'BookController@updatePrice');
+Route::get('lara_books','BookController@laraBooks')->name('lara_books');
 
 Route::post('/fetch_class', 'BookController@fetchClass');
 
@@ -52,6 +56,7 @@ Route::resource('general','GeneralFeeController');
 Route::resource('extraclasses','ExtraClassController');
 
 Route::resource('stocks', 'StockController');
+Route::get('lara_stocks','StockController@laraStock')->name('lara_stocks');
 
 Route::post('/fetchProductDetails','StockController@fetchProductDetails');
 
@@ -59,9 +64,11 @@ Route::resource('book_stocks', 'BookStockController');
 Route::post('/fetch_sub','BookStockController@fetchSub');
 Route::post('/fetch_book','BookStockController@fetchBook');
 Route::post('/fetch_book_details','BookStockController@fetchBookDetails');
+Route::get('lara_book_stock','BookStockController@laraBookStock')->name('lara_book_stock');
 
 Route::resource('damages', 'DamageController');
 Route::post('fetch_damage_product_details', 'DamageController@fetchDamageProductDetails');
+Route::get('lara_damages','DamageController@laraDamages')->name('lara_damages');
 
 Route::resource('pre_exam','PreExamController');
 Route::get('lara_pre_exam','PreExamController@laraPreExam')->name('lara_pre_exam');
@@ -69,9 +76,12 @@ Route::get('lara_pre_exam','PreExamController@laraPreExam')->name('lara_pre_exam
 Route::resource('admission_payment','AdmissionPaymentController');
 
 Route::resource('new_admission','NewAdmissionController');
+Route::get('lara_new_admission','NewAdmissionController@laraNewAdmission')->name('lara_new_admission');
+
 
 Route::resource('result','ResultController');
 Route::post('/get_roll','ResultController@getRoll');
+Route::get('lara_result','ResultController@laraResult')->name('lara_result');
 
 Route::get('/stateSetting', function () {
     return view('admin.stateSetting');

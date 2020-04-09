@@ -36,10 +36,10 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table table-striped mb-0" id="stocks">
                                         <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+{{--                                            <th scope="col">#</th>--}}
                                             <th scope="col">Product</th>
                                             <th scope="col">Color</th>
                                             <th scope="col">Type</th>
@@ -50,21 +50,21 @@
                                             <th scope="col">Available</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        @foreach($stocks as $key => $stock)
-                                            <tr>
-                                                <td>{{$key+1}}</td>
-                                                <td>{{!empty($stock->products->name) ? $stock->products->name : "--"}}</td>
-                                                <td>{{!empty($stock->colors->name) ? $stock->colors->name : "--"}}</td>
-                                                <td>{{!empty($stock->types->name) ? $stock->types->name : "--"}}</td>
-                                                <td>{{!empty($stock->sizes->name) ? $stock->sizes->name : "--"}}</td>
-                                                <td>{{!empty($stock->gender_id) ? $stock->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
-                                                <td>{{!empty($stock->stock_in) ? $stock->stock_in : "--"}}</td>
-                                                <td>{{empty($stock->stock_out) ? 0 : $stock->stock_out}}</td>
-                                                <td>{{$stock->available_stocks}}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
+{{--                                        <tbody>--}}
+{{--                                        @foreach($stocks as $key => $stock)--}}
+{{--                                            <tr>--}}
+{{--                                                <td>{{$key+1}}</td>--}}
+{{--                                                <td>{{!empty($stock->products->name) ? $stock->products->name : "--"}}</td>--}}
+{{--                                                <td>{{!empty($stock->colors->name) ? $stock->colors->name : "--"}}</td>--}}
+{{--                                                <td>{{!empty($stock->types->name) ? $stock->types->name : "--"}}</td>--}}
+{{--                                                <td>{{!empty($stock->sizes->name) ? $stock->sizes->name : "--"}}</td>--}}
+{{--                                                <td>{{!empty($stock->gender_id) ? $stock->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>--}}
+{{--                                                <td>{{!empty($stock->stock_in) ? $stock->stock_in : "--"}}</td>--}}
+{{--                                                <td>{{empty($stock->stock_out) ? 0 : $stock->stock_out}}</td>--}}
+{{--                                                <td>{{$stock->available_stocks}}</td>--}}
+{{--                                            </tr>--}}
+{{--                                        @endforeach--}}
+{{--                                        </tbody>--}}
                                     </table>
                                 </div>
                             </div>

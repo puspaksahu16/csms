@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Createclass;
 use App\PreAdmission;
 use App\Result;
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
@@ -18,6 +19,11 @@ class ResultController extends Controller
     {
         $result = Result::all();
         return view('admin.result.index', compact('result'));
+    }
+
+    public function laraResult()
+    {
+        return Laratables::recordsOf(Result::class);
     }
 
     public function getRoll(Request $request)

@@ -11,5 +11,8 @@ class Product extends Model
     public function stock(){
     	return $this->hasMany('App\Stock');
     }
-
+    public static function laratablesCustomAction($products)
+    {
+        return view('admin.products.action', compact('products'))->render();
+    }
 }

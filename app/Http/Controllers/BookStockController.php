@@ -6,6 +6,8 @@ use App\Book;
 use App\BookStock;
 use App\Createclass;
 use App\Subject;
+
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
 class BookStockController extends Controller
@@ -21,6 +23,10 @@ class BookStockController extends Controller
         return view('admin.book_stocks.index', compact('stocks'));
     }
 
+    public function laraBookStock()
+    {
+       return Laratables::recordsOf(BookStock::class);
+    }
     /**
      * Show the form for creating a new resource.
      *

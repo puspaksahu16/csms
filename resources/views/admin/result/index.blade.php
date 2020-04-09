@@ -34,10 +34,10 @@
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table table-striped mb-0" id="result">
                                         <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+{{--                                            <th scope="col">#</th>--}}
                                             <th scope="col">Class Name</th>
                                             <th scope="col">Roll No</th>
                                             <th scope="col">Name</th>
@@ -45,18 +45,18 @@
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        @foreach($result as $key => $results)
-                                            <tr>
-                                                <th scope="row">{{$key+1}}</th>
-                                                <td>{{$results->classes->create_class}}</td>
-                                                <td>{{$results->roll_no}}</td>
-                                                <td>{{$results->students->first_name." ".$results->students->last_name}}</td>
-                                                <td>{{$results->percentage}}%</td>
-                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-primary">Edit</a></td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
+{{--                                        <tbody>--}}
+{{--                                        @foreach($result as $key => $results)--}}
+{{--                                            <tr>--}}
+{{--                                                <th scope="row">{{$key+1}}</th>--}}
+{{--                                                <td>{{$results->classes->create_class}}</td>--}}
+{{--                                                <td>{{$results->roll_no}}</td>--}}
+{{--                                                <td>{{$results->students->first_name." ".$results->students->last_name}}</td>--}}
+{{--                                                <td>{{$results->percentage}}%</td>--}}
+{{--                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-primary">Edit</a></td>--}}
+{{--                                            </tr>--}}
+{{--                                        @endforeach--}}
+{{--                                        </tbody>--}}
                                     </table>
                                 </div>
                             </div>

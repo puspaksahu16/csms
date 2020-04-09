@@ -17,4 +17,8 @@ class Result extends Model
     {
         return $this->belongsTo(PreAdmission::class, 'roll_no');
     }
+    public static function laratablesCustomAction($results)
+    {
+        return view('admin.result.action', compact('results'))->render();
+    }
 }

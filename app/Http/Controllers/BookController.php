@@ -7,6 +7,7 @@ use App\Createclass;
 use App\Publisher;
 use App\Standard;
 use App\Subject;
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -20,6 +21,11 @@ class BookController extends Controller
     {
         $books = Book::all();
         return view('admin.books.index', compact('books'));
+    }
+
+    public function laraBooks()
+    {
+        return Laratables::recordsOf(Book::class);
     }
 
     /**

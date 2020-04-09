@@ -17,4 +17,5 @@ class BookStock extends Model
     {
         return $this->stock_in - $this->stock_out;
     }
+
 }

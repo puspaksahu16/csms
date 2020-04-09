@@ -8,6 +8,7 @@ use App\Createclass;
 use App\PreAdmission;
 use App\PreExam;
 use App\StudentParent;
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
 class PreAdmissionController extends Controller
@@ -23,6 +24,10 @@ class PreAdmissionController extends Controller
         return view('admin.pre_admissions.index', compact(['pre_admissions']));
     }
 
+    public function laraPreAdmission()
+    {
+        return Laratables::recordsOf(PreAdmission::class);
+    }
     /**
      * Show the form for creating a new resource.
      *

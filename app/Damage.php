@@ -23,4 +23,5 @@ class Damage extends Model
     public function sizes(){
     	return $this->belongsTo('App\ProductSize', 'size_id');
     }
+
 }

@@ -8,6 +8,7 @@ use App\idproof;
 use App\Student;
 use App\StudentParent;
 use App\Subject;
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
 class NewAdmissionController extends Controller
@@ -21,6 +22,11 @@ class NewAdmissionController extends Controller
     {
         $students = Student::all();
        return view('admin.new_admission.index', compact('students'));
+    }
+
+    public function laraNewAdmission()
+    {
+        return Laratables::recordsOf(Student::class);
     }
 
     /**

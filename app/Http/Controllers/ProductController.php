@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -18,6 +19,10 @@ class ProductController extends Controller
         return view('admin.products.index', compact('products'));
     }
 
+    public function laraProduct()
+    {
+        return Laratables::recordsOf(Product::class);
+    }
     /**
      * Show the form for creating a new resource.
      *

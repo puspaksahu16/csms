@@ -35,27 +35,27 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table table-striped mb-0" id="pre_admission">
                                         <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+{{--                                            <th scope="col">#</th>--}}
                                             <th scope="col">Name</th>
                                             <th scope="col">Roll No</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        @foreach($pre_admissions as $key => $pre_admission)
-                                        <tr>
-                                            <th scope="row">{{$key+1}}</th>
-                                            <td>{{$pre_admission->first_name." ".$pre_admission->last_name}}</td>
-                                            <td>{{$pre_admission->roll_no}}</td>
-                                            <td>{{$pre_admission->classes->create_class}}</td>
-                                            <td><a href="{{route('pre_admissions.edit', $pre_admission->id)}}" class="btn btn-primary">Edit</a></td>
-                                        </tr>
-                                            @endforeach
-                                        </tbody>
+{{--                                        <tbody>--}}
+{{--                                        @foreach($pre_admissions as $key => $pre_admission)--}}
+{{--                                        <tr>--}}
+{{--                                            <th scope="row">{{$key+1}}</th>--}}
+{{--                                            <td>{{$pre_admission->first_name." ".$pre_admission->last_name}}</td>--}}
+{{--                                            <td>{{$pre_admission->roll_no}}</td>--}}
+{{--                                            <td>{{$pre_admission->classes->create_class}}</td>--}}
+{{--                                            <td><a href="{{route('pre_admissions.edit', $pre_admission->id)}}" class="btn btn-primary">Edit</a></td>--}}
+{{--                                        </tr>--}}
+{{--                                            @endforeach--}}
+{{--                                        </tbody>--}}
                                     </table>
                                 </div>
                             </div>
