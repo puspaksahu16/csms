@@ -66,6 +66,8 @@ Route::post('fetch_damage_product_details', 'DamageController@fetchDamageProduct
 Route::resource('pre_exam','PreExamController');
 Route::get('lara_pre_exam','PreExamController@laraPreExam')->name('lara_pre_exam');
 
+Route::resource('admission_payment','AdmissionPaymentController');
+
 Route::resource('new_admission','NewAdmissionController');
 
 Route::resource('result','ResultController');
