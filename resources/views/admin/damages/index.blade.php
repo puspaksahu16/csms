@@ -37,7 +37,7 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table zero-configuration" >
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -62,9 +62,9 @@
                                                 <td>{{!empty($damage->sizes->name) ? $damage->sizes->name : "--"}}</td>
                                                 <td>{{!empty($damage->gender_id) ? $damage->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
                                                 <td>{{!empty($damage->damage) ? $damage->damage : "--"}}</td>
-                                                
+
                                                 <!-- <td>{{$damage->available_stocks}}</td> -->
-                                                
+
                                             </tr>
                                         @endforeach
                                         </tbody>

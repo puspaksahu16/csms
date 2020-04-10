@@ -9,7 +9,7 @@ class Damage extends Model
     protected $guarded = ['quantity'];
 
     public function products(){
-    	return $this->belongsTo('App\Product', 'product_id');
+    	return $this->belongsTo(Product::class, 'product_id');
     }
 
     public function colors(){

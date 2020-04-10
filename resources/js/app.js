@@ -49,6 +49,126 @@ $(document).ready(function(){
         ],
     });
 
+    $('#new_admission').DataTable({
+        serverSide: true,
+        processing: true,
+        responsive: true,
+        ajax: "/lara_new_admission",
+        columns: [
+            { name: 'first_name' },
+            { name: 'student_unique_id' },
+            { name: 'classes.create_class', orderable: false },
+            { name: 'action', orderable: false, searchable: false }
+        ],
+    });
+
+    $('#pre_admission').DataTable({
+        serverSide: true,
+        processing: true,
+        responsive: true,
+        ajax: "/lara_pre_admission",
+        columns: [
+            { name: 'first_name' },
+            { name: 'roll_no' },
+            { name: 'classes.create_class', orderable: false },
+            { name: 'action', orderable: false, searchable: false }
+        ],
+    });
+
+    $('#result').DataTable({
+        serverSide: true,
+        processing: true,
+        responsive: true,
+        ajax: "/lara_result",
+        columns: [
+            { name: 'roll_no' },
+            { name: 'classes.create_class', orderable: false },
+            { name: 'students.first_name' , orderable: false },
+            { name: 'percentage' },
+            { name: 'action', orderable: false, searchable: false }
+        ],
+    });
+
+    $('#product').DataTable({
+        serverSide: true,
+        processing: true,
+        responsive: true,
+        ajax: "/lara_product",
+        columns: [
+            { name: 'name' },
+            { name: 'unit' },
+            { name: 'action', orderable: false, searchable: false }
+        ],
+    });
+
+    $('#stocks').DataTable({
+        serverSide: true,
+        processing: true,
+        responsive: true,
+        ajax: "/lara_stocks",
+        columns: [
+            { name: 'id' },
+            { name: 'id' },
+            { name: 'id' },
+            { name: 'id' },
+            { name: 'id' },
+            { name: 'id' },
+            { name: 'id' },
+            { name: 'id' },
+
+        ],
+    });
+
+    $('#books').DataTable({
+        serverSide: true,
+        processing: true,
+        responsive: true,
+        ajax: "/lara_books",
+        columns: [
+            { name: 'name' },
+            { name: 'standard.name' , orderable: false },
+            { name: 'classes.create_class' , orderable: false },
+            { name: 'publisher.name' , orderable: false },
+            { name: 'subject.name' , orderable: false },
+            { name: 'action', orderable: false, searchable: false }
+
+        ],
+    });
+
+    $('#damages').DataTable({
+        serverSide: true,
+        processing: true,
+        responsive: true,
+        ajax: "/lara_damages",
+        columns: [
+            { name: 'product' , orderable: true },
+            { name: 'colors.name' , orderable: false },
+            { name: 'types.name' , orderable: false },
+            { name: 'sizes.name' , orderable: false },
+            { name: 'gender_id'  },
+            { name: 'damage'  }
+
+
+        ],
+    });
+
+
+    $('#book_stock').DataTable({
+        serverSide: true,
+        processing: true,
+        responsive: true,
+        ajax: "/lara_book_stock",
+        columns: [
+            { name: 'book_id' },
+            { name: 'stock_in' },
+            { name: 'stock_out' },
+            { name: 'stock_in' },
+            { name: 'stock_in' },
+            { name: 'stock_out' },
+            { name: 'available_stocks' },
+
+        ],
+    });
 
 });
 

@@ -6,6 +6,7 @@ use App\ProductColor;
 use App\ProductSize;
 use App\ProductType;
 use App\Stock;
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 use App\Damage;
 use App\Product;
@@ -22,6 +23,11 @@ class DamageController extends Controller
        $damages = Damage::with('products:id,name','colors:id,name','types:id,name','sizes:id,name')
         ->get();
         return view('admin.damages.index', compact('damages'));
+    }
+
+    public function laraDamages()
+    {
+        return Laratables::recordsOf(Damage::class);
     }
 
     public function fetchDamageProductDetails(Request $request)

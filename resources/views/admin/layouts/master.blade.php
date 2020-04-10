@@ -14,8 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('/admin_assets/feather.woff')}}">
+    {{--<link rel="stylesheet" type="text/css" href="{{asset('/admin_assets/feather.woff')}}">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('/admin_assets/vendors/css/vendors.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/admin_assets/vendors/css/tables/datatable/datatables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/vendors/css/charts/apexcharts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/vendors/css/extensions/tether-theme-arrows.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/vendors/css/extensions/tether.min.css')}}">
@@ -39,7 +40,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
-    <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.css">
+    {{--<link rel="stylesheet" href="sweetalert2/dist/sweetalert2.css">--}}
     <script src="{{ asset('js/app.js') }}" defer></script>
 <style>
     .stepwizard-step p {
@@ -87,14 +88,6 @@
         font-size: 12px;
         line-height: 1.428571429;
         border-radius: 15px;
-    }
-    .dataTables_wrapper .dataTables_length,
-    .dataTables_wrapper .dataTables_filter,
-    .dataTables_wrapper .dataTables_info,
-    .dataTables_wrapper .dataTables_processing,
-    .dataTables_wrapper .dataTables_paginate {
-        color: #fff !important;
-        margin: 2px !important;
     }
     #pre_exam_length{
         margin-bottom: 20px !important;
@@ -155,6 +148,14 @@
 <script src="{{asset('admin_assets/vendors/js/charts/apexcharts.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/extensions/tether.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/extensions/shepherd.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/tables/datatable/pdfmake.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/tables/datatable/vfs_fonts.js')}}"></script>
+<script src="{{asset('admin/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/tables/datatable/buttons.html5.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/tables/datatable/buttons.bootstrap.min.js')}}"></script>
+<script src="{{asset('admin/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
@@ -168,12 +169,12 @@
 <!-- BEGIN: Page JS-->
 <script src="{{asset('admin_assets/js/scripts/pages/dashboard-analytics.min.js')}}"></script>
 <script src="{{asset('admin_assets/js/scripts/forms/wizard-steps.min.js')}}"></script>
-{{--<script src="{{asset('admin_assets/js/scripts/forms/wizard-steps.js')}}"></script>--}}
+<script src="{{asset('admin_assets/js/scripts/datatables/datatable.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/extensions/jquery.steps.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
 {{--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />--}}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-<script src="https//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+{{--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">--}}
+{{--<script src="https//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>--}}
 <script>
     $(document).ready(function () {
 

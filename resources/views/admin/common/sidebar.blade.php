@@ -23,11 +23,6 @@
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Addmission">Addmission</span></a>
                 <ul class="menu-content">
                     <li><a href="{{url('/new_admission')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAddmission">New Addmission</span></a></li>
-<<<<<<< HEAD
-                    <li><a href="{{url('/admission_payment')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Fee">Admission Payment</span></a></li>
-=======
-                    <li><a href="{{url('/issue_materials')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="">Issue Material</span></a></li>
->>>>>>> a382180a5d39e2bf8ed40402121f34a7f2c4eb99
                     <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>
                 </ul>
             </li>

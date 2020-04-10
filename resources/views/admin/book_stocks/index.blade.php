@@ -38,17 +38,19 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table zero-configuration" id="">
                                         <thead>
                                         <tr>
+
                                             <th scope="col">#</th>
-                                            <th scope="col">Book</th>
+                                            <th scope="col">Book Name</th>
                                             <th scope="col">class</th>
                                             <th scope="col">Subject</th>
                                             <th scope="col">Publisher</th>
                                             <th scope="col">Stock in</th>
                                             <th scope="col">Stock out</th>
                                             <th scope="col">Available</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>

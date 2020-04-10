@@ -16,4 +16,8 @@ class PreAdmission extends Model
     {
         return $this->belongsTo(PreExam::class,'pre_exam_id');
     }
+    public static function laratablesCustomAction($pre_admission)
+    {
+        return view('admin.pre_admissions.action', compact('pre_admission'))->render();
+    }
 }

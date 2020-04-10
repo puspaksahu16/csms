@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Stock;
@@ -22,6 +23,11 @@ class StockController extends Controller
         ->get();
         // return$available_stock = $stocks->stock_in - $stocks->stock_out;
         return view('admin.stocks.index', compact(['stocks']));
+    }
+
+    public function laraStock()
+    {
+        return Laratables::recordsOf(Stock::class);
     }
 
     /**

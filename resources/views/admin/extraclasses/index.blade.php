@@ -18,7 +18,6 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Extra Classes</a>
                                     </li>
-
                                 </ol>
                             </div>
                         </div>

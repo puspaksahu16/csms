@@ -8,6 +8,11 @@ class Book extends Model
 {
     protected  $guarded = [];
 
+    public function stock()
+    {
+        return $this->belongsTo(BookStock::class, 'class_id');
+    }
+
     public function classes()
     {
         return $this->belongsTo(Createclass::class, 'class_id');
@@ -26,6 +31,10 @@ class Book extends Model
     public function standard()
     {
         return $this->belongsTo(Standard::class, 'standard_id');
+    }
+    public static function laratablesCustomAction($books)
+    {
+        return view('admin.books.action', compact('books'))->render();
     }
 
 }
