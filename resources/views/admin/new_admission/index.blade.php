@@ -75,7 +75,9 @@
                                                 <td>
                                                     <a href="{{route('new_admission.edit', $student->id)}}" class="btn btn-sm btn-primary">Edit</a>
                                                     @if(empty($student->fee))
-                                                        <a href="{{url('/admission_fee/'. $student->id)}}" class="btn btn-sm btn-warning">Fee</a>
+                                                        <a href="{{url('/admission_fee_create/'. $student->id)}}" class="btn btn-sm btn-success">Fee</a>
+                                                    @else
+                                                        <a href="{{url('/admission_fee_edit/'. $student->id)}}" class="btn btn-sm btn-warning">Edit Fee</a>
                                                     @endif
                                                 </td>
                                             </tr>

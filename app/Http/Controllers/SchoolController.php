@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Createclass;
-use App\PreExam;
 use App\School;
-use Freshbitsweb\Laratables\Laratables;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class PreExamController extends Controller
+class SchoolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +16,8 @@ class PreExamController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role->name == "super_admin")
-        {
-            $pre_exams = PreExam::all();
-        }else{
-            $pre_exams = PreExam::where('school_id', auth()->user()->school->id)->get();
-        }
-
-        return view('admin.pre_exam.index', compact('pre_exams'));
+        $schools = School::all();
+        return view('admin.schools.index', compact('schools'));
     }
 
     /**
@@ -34,9 +27,7 @@ class PreExamController extends Controller
      */
     public function create()
     {
-        $classes = Createclass::all();
-        $schools = School::all();
-        return  view('admin.pre_exam.create', compact(['classes', 'schools']));
+        return view('admin.schools.create');
     }
 
     /**
@@ -47,10 +38,29 @@ class PreExamController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
-        PreExam::create($data);
-        return redirect()->route('pre_exam.index')->with('success', 'Exam created Successfully');
+        $data =$request->all();
+        $s = School::orderBy('id', 'DESC')->get('registration_no');
+        if (count($s) <= 0 )
+        {
+            $s_id = 1001;
+        }else{
+            $s_id = $s[0]["registration_no"] + 1;
+        }
+        $data['registration_no'] = $s_id;
+
+        $user = new User();
+        $user->name = $request->full_name;
+        $user->email = $request->email;
+        $user->role_id = 2;
+        $user->password = Hash::make($s_id);
+        if ($user->save())
+        {
+            $data['user_id'] = $user->id;
+            $school = School::create($data);
+            return redirect()->route('schools.index')->with('success', 'School created successfully');
+        }else{
+            return redirect()->back()->with('error', 'Something Went Wrong');
+        }
     }
 
     /**
@@ -72,10 +82,8 @@ class PreExamController extends Controller
      */
     public function edit($id)
     {
-        $pre_exam = PreExam::find($id);
-        $classes = Createclass::all();
-        return view('admin.pre_exam.edit', compact(['pre_exam','classes']));
-
+        $school = School::find($id);
+        return view('admin.schools.edit', compact('school'));
     }
 
     /**
@@ -87,8 +95,8 @@ class PreExamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pre_exam = PreExam::find($id)->update($request->all());
-        return redirect('/pre_exam')->with("success", "Pre Exam updated successfully!");
+        $school = School::find($id)->update($request->all());
+        return redirect()->route('schools.index')->with('success', 'School created successfully');
     }
 
     /**

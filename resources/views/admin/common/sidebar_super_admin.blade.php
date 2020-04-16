@@ -13,17 +13,25 @@
             </li>
             <li class=" nav-item"><a href="{{url('/dashboard')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
             </li>
-            <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAddmission">Pre Addmission</span></a>
+            <li class=" nav-item"><a href="{{url('/schools')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Schools">Schools</span></a>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Pre Admission</span></a>
                 <ul class="menu-content">
                     <li><a href="{{url('/pre_exam')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreExam">Pre Exam</span></a></li>
                     <li><a href="{{url('/pre_admissions')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Register">Register</span></a></li>
                     <li><a href="{{url('/result')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Result">Result</span></a></li>
                 </ul>
             </li>
-            <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Addmission">Addmission</span></a>
+            <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Admission">Admission</span></a>
                 <ul class="menu-content">
-                    <li><a href="{{url('/new_admission')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAddmission">New Addmission</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>
+                    <li><a href="{{url('/new_admission')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAdmission">New Admission</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAdmission">Re Admission</span></a></li>
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Account">Accounts</span></a>
+                <ul class="menu-content">
+                    <li><a href="{{url('/admission_fee')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Admissionfee">Admission fee</span></a></li>
+                    {{--<li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>--}}
                 </ul>
             </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Employee">Employee</span></a>

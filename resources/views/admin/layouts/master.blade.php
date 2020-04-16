@@ -123,7 +123,11 @@
 
 
 <!-- BEGIN: Main Menu-->
-@include('admin.common.sidebar')
+@if(auth()->user()->role->name == 'super_admin')
+    @include('admin.common.sidebar_super_admin')
+@elseif(auth()->user()->role->name == 'admin')
+    @include('admin.common.sidebar_school')
+@endif
 <!-- END: Main Menu-->
 
 <!-- BEGIN: Content-->

@@ -47,36 +47,6 @@ class NewAdmissionController extends Controller
         return view('admin.new_admission.create',compact(['id_proof', 'classes']));
     }
 
-    public function AdmissionFeeStore($id, Request $request)
-    {
-        $af = AdmissionFee::where('student_id', $id)->first();
-        if (empty($af))
-        {
-            $admission_fee = new AdmissionFee();
-            $admission_fee->student_id = $id;
-            $admission_fee->general = json_encode($request->general);
-            $admission_fee->product = json_encode($request->product);
-            $admission_fee->ecc = json_encode($request->ecc);
-            $admission_fee->book = json_encode($request->book);
-            $admission_fee->save();
-            return redirect()->route('new_admission.index')->with('success', 'Admission Fee Created Successfully');
-        }else{
-            return redirect()->route('new_admission.index')->with('error', 'Student have Registered Already');
-        }
-
-    }
-
-    public function AdmissionFee($id)
-    {
-        $student = Student::find($id);
-        $std_id = $student->class_id;
-        $general_fees = GeneralFee::where('class_id', $std_id)->get();
-        $products = Stock::all();
-        $extra_classes = ExtraClass::where('class_id', $std_id)->get();
-        $book = Book::with('stock')->where('class_id', $std_id)->get();
-
-        return view('admin.new_admission.fee',compact(['id', 'general_fees', 'products', 'extra_classes', 'book']));
-    }
 
     /**
      * Store a newly created resource in storage.
