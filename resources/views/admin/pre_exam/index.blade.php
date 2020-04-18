@@ -70,12 +70,11 @@
                                             @foreach($pre_exams as $key => $pre_exam)
                                                 <tr>
                                                     <td>{{$key+1}}</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>{{ $pre_exam->exam_name }}</td>
+                                                    <td>{{ $pre_exam->full_mark }}</td>
+                                                    <td>{{ $pre_exam->classes->create_class }}</td>
+                                                    <td>{{ $pre_exam->current_year }}</td>
+                                                    <td><a href="{{route('pre_exam.edit', $pre_exam->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

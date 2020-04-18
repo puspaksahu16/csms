@@ -1,9 +1,10 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="index-2.html">
-                    <div class="brand-logo"></div>
-                    <h2 class="brand-text mb-0">CSMS</h2></a></li>
+            <li class="nav-item mr-auto"><a class="navbar-brand" href="{{url('/')}}">
+                    {{--<div class="brand-logo"></div>--}}
+                    <h2 class="brand-text mb-0">CSMS</h2></a>
+            </li>
         </ul>
     </div>
     <div class="shadow-bottom"></div>

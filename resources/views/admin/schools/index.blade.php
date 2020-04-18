@@ -36,6 +36,7 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            <th scope="col">Registration No</th>
                                             <th scope="col">Full Name</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Mobile</th>

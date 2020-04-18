@@ -152,14 +152,14 @@
 <script src="{{asset('admin_assets/vendors/js/charts/apexcharts.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/extensions/tether.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/extensions/shepherd.min.js')}}"></script>
-<script src="{{asset('admin/vendors/js/tables/datatable/pdfmake.min.js')}}"></script>
-<script src="{{asset('admin/vendors/js/tables/datatable/vfs_fonts.js')}}"></script>
-<script src="{{asset('admin/vendors/js/tables/datatable/datatables.min.js')}}"></script>
-<script src="{{asset('admin/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script>
-<script src="{{asset('admin/vendors/js/tables/datatable/buttons.html5.min.js')}}"></script>
-<script src="{{asset('admin/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>
-<script src="{{asset('admin/vendors/js/tables/datatable/buttons.bootstrap.min.js')}}"></script>
-<script src="{{asset('admin/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
+{{--<script src="{{asset('admin/vendors/js/tables/datatable/pdfmake.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin/vendors/js/tables/datatable/vfs_fonts.js')}}"></script>--}}
+{{--<script src="{{asset('admin/vendors/js/tables/datatable/datatables.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin/vendors/js/tables/datatable/buttons.html5.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin/vendors/js/tables/datatable/buttons.bootstrap.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>--}}
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
@@ -176,9 +176,6 @@
 <script src="{{asset('admin_assets/js/scripts/datatables/datatable.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/extensions/jquery.steps.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
-{{--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />--}}
-{{--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">--}}
-{{--<script src="https//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>--}}
 <script>
     $(document).ready(function () {
 
