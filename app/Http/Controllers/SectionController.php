@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Createclass;
+use App\School;
 use App\Section;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,15 @@ class SectionController extends Controller
      */
     public function index()
     {
-        $section =  Section::all();
-        $classes = CreateClass::all();
-        return view("admin.section.index" , compact(['section','classes']));
+        if (auth()->user()->role->name == "super_admin") {
+            $section = Section::all();
+            $classes = CreateClass::all();
+            $schools = School::all();
+        }else{
+            $section = Section::where('school_id', auth()->user()->school->id)->get();
+            $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
+        }
+        return view("admin.section.index" , compact(['section','classes','schools']));
     }
 
     /**
@@ -28,7 +35,8 @@ class SectionController extends Controller
     public function create()
     {
 
-        return view('admin.section.index');
+        $schools = School::all();
+        return view('admin.section.index',compact(['schools']));
     }
 
     /**
@@ -39,7 +47,9 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        $section = Section::create($request->all());
+        $data = $request->all();
+        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        Section::create($data);
         return redirect('/section')->with('success', "Section Created successfully!");
     }
 

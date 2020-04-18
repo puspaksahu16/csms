@@ -7,6 +7,8 @@ use App\Address;
 use App\Createclass;
 use App\PreAdmission;
 use App\PreExam;
+use App\Qualification;
+use App\School;
 use App\StudentParent;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
@@ -20,7 +22,13 @@ class PreAdmissionController extends Controller
      */
     public function index()
     {
-        $pre_admissions = PreAdmission::all();
+        if (auth()->user()->role->name == "super_admin")
+        {
+            $pre_admissions = PreAdmission::all();
+        }else{
+            $pre_admissions = PreAdmission::where('school_id', auth()->user()->school->id)->get();
+        }
+
         return view('admin.pre_admissions.index', compact(['pre_admissions']));
     }
 
@@ -37,7 +45,8 @@ class PreAdmissionController extends Controller
     {
         $classes = CreateClass::all();
         $pre_exams = PreExam::all();
-        return view ('admin.pre_admissions.create', compact(['classes', 'pre_exams']));
+        $schools = School::all();
+        return view ('admin.pre_admissions.create', compact(['classes', 'pre_exams','schools']));
 
     }
 
@@ -69,6 +78,7 @@ class PreAdmissionController extends Controller
         $pre_admission->photo = $request->photo;
         $pre_admission->family_photo = $request->family_photo;
         $pre_admission->roll_no = $roll_no;
+        $pre_admission->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id:auth()->user()->school->id;
         $pre_admission->save();
 
         $parent = new StudentParent();
@@ -122,7 +132,7 @@ class PreAdmissionController extends Controller
         $pre_exams = PreExam::all();
         $parents = StudentParent::where('student_id', $id)->first();
         $address = Address::where('user_id',$id)->first();
-        return view('admin.pre_admissions.edit', compact(['pre_admission','classes','pre_exams','parents','address']));
+        return view('admin.pre_admissions.edit', compact(['pre_admission','classes','pre_exams','parents','address','qualifications']));
     }
 
     /**

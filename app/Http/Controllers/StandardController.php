@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 
+use App\School;
 use App\Standard;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,13 @@ class StandardController extends Controller
      */
     public function index()
     {
-        $standard = Standard::all();
-        return view('admin.standard.index', compact('standard'));
+        if (auth()->user()->role->name == "super_admin") {
+            $standard = Standard::all();
+            $schools = School::all();
+        }else{
+            $standard = Standard::where('school_id', auth()->user()->school->id)->get();
+        }
+        return view('admin.standard.index', compact(['standard','schools']));
     }
 
     /**
@@ -27,7 +33,8 @@ class StandardController extends Controller
      */
     public function create()
     {
-        return view('admin.standard.index');
+        $schools = School::all();
+        return view('admin.standard.index',compact('schools'));
     }
 
     /**
@@ -38,7 +45,9 @@ class StandardController extends Controller
      */
     public function store(Request $request)
     {
-        Standard::create($request->all());
+        $data = $request->all();
+        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        Standard::create($data);
         return redirect()->route('standard.index')->with('success', 'standard created Successfully');
     }
 

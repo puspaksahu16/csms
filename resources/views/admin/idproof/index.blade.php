@@ -4,11 +4,20 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    @if(is_array(session()->get('success')))
+                        <ul>
+                            @foreach (session()->get('success') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @else
+                        {{ session()->get('success') }}
+                    @endif
+                </div>
+            @endif
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
-
-
-
-
                 <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">
                     <div class="row match-height">

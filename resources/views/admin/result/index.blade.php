@@ -4,6 +4,19 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    @if(is_array(session()->get('success')))
+                        <ul>
+                            @foreach (session()->get('success') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @else
+                        {{ session()->get('success') }}
+                    @endif
+                </div>
+            @endif
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
@@ -34,10 +47,10 @@
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0" id="result">
+                                    <table class="table table-striped mb-0 zero-configuration" id="">
                                         <thead>
                                         <tr>
-{{--                                            <th scope="col">#</th>--}}
+                                            <th scope="col">#</th>
                                             <th scope="col">Roll No</th>
                                             <th scope="col">Class Name</th>
                                             <th scope="col">Name</th>
@@ -45,18 +58,18 @@
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
-{{--                                        <tbody>--}}
-{{--                                        @foreach($result as $key => $results)--}}
-{{--                                            <tr>--}}
-{{--                                                <th scope="row">{{$key+1}}</th>--}}
-{{--                                                <td>{{$results->classes->create_class}}</td>--}}
-{{--                                                <td>{{$results->roll_no}}</td>--}}
-{{--                                                <td>{{$results->students->first_name." ".$results->students->last_name}}</td>--}}
-{{--                                                <td>{{$results->percentage}}%</td>--}}
-{{--                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-primary">Edit</a></td>--}}
-{{--                                            </tr>--}}
-{{--                                        @endforeach--}}
-{{--                                        </tbody>--}}
+                                        <tbody>
+                                        @foreach($result as $key => $results)
+                                            <tr>
+                                                <th scope="row">{{$key+1}}</th>
+                                                <td>{{$results->classes->create_class}}</td>
+                                                <td>{{$results->roll_no}}</td>
+                                                <td>{{$results->students->first_name." ".$results->students->last_name}}</td>
+                                                <td>{{$results->percentage}}%</td>
+                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-primary">Edit</a></td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

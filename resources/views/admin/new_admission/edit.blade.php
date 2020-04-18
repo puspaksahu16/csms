@@ -224,8 +224,12 @@
 
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text"  class="form-control" placeholder="Mother Qualification"  name="mother_qualification" value="{{$studentparents->mother_qualification}}">
-                                                                                <label for="Income">Mother's Qualification</label>
+                                                                                <select name="mother_qualification" class="form-control">
+                                                                                    <option value="">-choose Mother's Qualification-</option>
+                                                                                    @foreach($qualifications as $qualification)
+                                                                                        <option {{ $qualification->id == $studentparents->mother_qualification ? "selected" : " " }} value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
+                                                                                    @endforeach
+                                                                                </select>
                                                                             </div>
                                                                         </div>
 
@@ -299,8 +303,12 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text"  class="form-control" placeholder="Father Qualification"  name="father_qualification" value="{{$studentparents->father_qualification}}">
-                                                                                <label for="Income">Father's Qualification</label>
+                                                                                <select name="father_qualification" class="form-control">
+                                                                                    <option value="">-choose Father's Qualification-</option>
+                                                                                    @foreach($qualifications as $qualification)
+                                                                                        <option {{ $qualification->id == $studentparents->father_qualification ? "selected" : " " }} value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
+                                                                                    @endforeach
+                                                                                </select>
                                                                             </div>
                                                                         </div>
 

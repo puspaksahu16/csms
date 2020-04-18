@@ -41,6 +41,20 @@
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
+                                                    @if(auth()->user()->role->name == "super_admin")
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <select name="school_id" class="form-control">
+                                                                    <option>-SELECT School-</option>
+
+                                                                    @foreach($schools as $school)
+                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder=" Name" name="name">

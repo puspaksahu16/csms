@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Createclass;
 use App\ExtraClass;
+use App\School;
 use Illuminate\Http\Request;
 
 class ExtraClassController extends Controller
@@ -15,7 +16,12 @@ class ExtraClassController extends Controller
      */
     public function index()
     {
-        $extraclass = ExtraClass::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $extraclass = ExtraClass::all();
+        }else{
+            $extraclass = ExtraClass::where('school_id', auth()->user()->school->id)->get();
+        }
+
         return view('admin.extraclasses.index', compact('extraclass'));
     }
 
@@ -27,7 +33,8 @@ class ExtraClassController extends Controller
     public function create()
     {
         $classes = Createclass::all();
-        return view('admin.extraclasses.create',compact('classes'));
+        $schools = School::all();
+        return view('admin.extraclasses.create',compact(['classes','schools']));
     }
 
     /**
@@ -38,7 +45,9 @@ class ExtraClassController extends Controller
      */
     public function store(Request $request)
     {
-        $extraclass = ExtraClass::create($request->all());
+        $data = $request->all();
+        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        ExtraClass::create($data);
         return redirect()->route('extraclasses.index')->with('success', 'Fees created Successfully');
     }
 

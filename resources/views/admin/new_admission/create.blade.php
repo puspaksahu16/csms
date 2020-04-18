@@ -50,6 +50,7 @@
 
 {{--                                                    Wizard start                      --}}
 
+
                                                     <div class="container">
                                                         <div class="stepwizard">
                                                             <div class="stepwizard-row setup-panel">
@@ -94,6 +95,18 @@
                                                                         </div>
                                                                 </div>
                                                                     <div class="row">
+                                                                        @if(auth()->user()->role->name == "super_admin")
+                                                                            <div class="col-md-6 col-12">
+                                                                                <select name="school_id" class="form-control">
+                                                                                    <option>-SELECT School-</option>
+
+                                                                                    @foreach($schools as $school)
+                                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                                    @endforeach
+
+                                                                                </select>
+                                                                            </div>
+                                                                        @endif
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <input type="text" class="form-control" placeholder="First Name" name="first_name">
@@ -232,8 +245,12 @@
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Mother Qualification"  name="mother_qualification">
-                                                                                    <label for="Income">Mother's Qualification</label>
+                                                                                    <select name="mother_qualification" class="form-control">
+                                                                                        <option value="">-choose Mother's Qualification-</option>
+                                                                                        @foreach($qualifications as $qualification)
+                                                                                            <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
 
@@ -307,8 +324,12 @@
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Father Qualification"  name="father_qualification">
-                                                                                    <label for="Income">Father's Qualification</label>
+                                                                                    <select name="father_qualification" class="form-control">
+                                                                                        <option value="">-choose Father's Qualification-</option>
+                                                                                        @foreach($qualifications as $qualification)
+                                                                                            <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
 
