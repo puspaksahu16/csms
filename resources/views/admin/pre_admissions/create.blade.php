@@ -58,6 +58,18 @@
 
 
                                                 <div class="row">
+                                                    @if(auth()->user()->role->name == "super_admin")
+                                                        <div class="col-md-6 col-12">
+                                                            <select name="school_id" class="form-control">
+                                                                <option>-SELECT School-</option>
+
+                                                                @foreach($schools as $school)
+                                                                    <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                        </div>
+                                                    @endif
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="first_name">
@@ -70,6 +82,7 @@
                                                             <label for="last-name-column">Last Name</label>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <input type="date"  class="form-control"  name="dob">

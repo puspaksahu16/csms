@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\School;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $products = Product::all();
+        }
+        else{
+            $products = Product::where('school_id', auth()->user()->school->id)->get();
+        }
         return view('admin.products.index', compact('products'));
     }
 
@@ -30,7 +36,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $schools = School::all();
+        return view('admin.products.create', compact(['schools']));
     }
 
     /**
@@ -41,7 +48,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($request->all());
+        $data = $request->all();
+        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        Product::create($data);
         return redirect()->route('products.index')->with('success', 'Product created Successfully');
     }
 

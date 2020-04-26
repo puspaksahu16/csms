@@ -5,7 +5,6 @@
                     {{--<div class="brand-logo"></div>--}}
                     <h2 class="brand-text mb-0">CSMS</h2></a>
             </li>
-        </ul>
     </div>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">

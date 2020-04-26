@@ -4,6 +4,19 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    @if(is_array(session()->get('success')))
+                        <ul>
+                            @foreach (session()->get('success') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @else
+                        {{ session()->get('success') }}
+                    @endif
+                </div>
+            @endif
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
 
 
@@ -83,7 +96,7 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 <th>{{$qualification->qualification}}</th>
-                                                
+
                                                 <td><a href="{{route('qualification.edit', $qualification->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach

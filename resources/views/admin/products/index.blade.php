@@ -4,6 +4,19 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    @if(is_array(session()->get('success')))
+                        <ul>
+                            @foreach (session()->get('success') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @else
+                        {{ session()->get('success') }}
+                    @endif
+                </div>
+            @endif
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
@@ -38,25 +51,25 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0" id="product">
+                                    <table class="table table-striped mb-0 zero-configuration" id="">
                                         <thead>
                                         <tr>
-{{--                                            <th scope="col">#</th>--}}
+                                            <th scope="col">#</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Unit</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
-{{--                                        <tbody>--}}
-{{--                                        @foreach($products as $key => $product)--}}
-{{--                                            <tr>--}}
-{{--                                                <td>{{$key+1}}</td>--}}
-{{--                                                <td>{{$product->name}}</td>--}}
-{{--                                                <td>{{$product->unit}}</td>--}}
-{{--                                                <td><a href="{{route('products.edit', $product->id)}}" class="btn btn-primary">Edit</a></td>--}}
-{{--                                            </tr>--}}
-{{--                                        @endforeach--}}
-{{--                                        </tbody>--}}
+                                        <tbody>
+                                        @foreach($products as $key => $product)
+                                            <tr>
+                                                <td>{{$key+1}}</td>
+                                                <td>{{$product->name}}</td>
+                                                <td>{{$product->unit}}</td>
+                                                <td><a href="{{route('products.edit', $product->id)}}" class="btn btn-primary">Edit</a></td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

@@ -4,6 +4,19 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    @if(is_array(session()->get('success')))
+                        <ul>
+                            @foreach (session()->get('success') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @else
+                        {{ session()->get('success') }}
+                    @endif
+                </div>
+            @endif
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
@@ -39,13 +52,27 @@
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
-                                                    <div class="col-md-6 col-12">
+                                                    @if(auth()->user()->role->name == "super_admin")
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
+                                                                <select name="school_id" class="form-control">
+                                                                    <option>-SELECT School-</option>
+
+                                                                    @foreach($schools as $school)
+                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder="Standard Name" name="name">
                                                             <label for="name">Standard Name</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-6 ">
+                                                    <div class="col-4 ">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
                                                     </div>

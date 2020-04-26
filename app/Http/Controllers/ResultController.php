@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Createclass;
 use App\PreAdmission;
 use App\Result;
+use App\School;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,11 @@ class ResultController extends Controller
      */
     public function index()
     {
-        $result = Result::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $result = Result::all();
+        }else{
+            $result = Result::where('school_id', auth()->user()->school->id)->get();
+        }
         return view('admin.result.index', compact('result'));
     }
 
@@ -40,7 +45,8 @@ class ResultController extends Controller
     {
         $rolls = PreAdmission::all();
         $classes = Createclass::all();
-        return view('admin.result.create',compact(['classes', 'rolls']));
+        $schools = School::all();
+        return view('admin.result.create',compact(['classes', 'rolls','schools']));
     }
 
     /**
@@ -51,7 +57,9 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-        Result::create($request->all());
+        $data = $request->all();
+        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        Result::create($data);
         return redirect()->route('result.index')->with('success', 'Result created Successfully');
     }
 

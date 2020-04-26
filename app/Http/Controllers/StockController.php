@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\School;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 use App\Product;
@@ -79,11 +80,28 @@ class StockController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
+        if (auth()->user()->role->name == "admin")
+        {
+//            return auth()->user()->school->id;
+            $products = Product::where('school_id', auth()->user()->school->id)->get();
+        }else{
+            $products = [];
+        }
+
+        $schools = School::all();
         $colors = ProductColor::all();
         $sizes = ProductSize::all();
         $types = ProductType::all();
-        return view('admin.stocks.create', compact(['products', 'colors', 'sizes', 'types']));
+        return view('admin.stocks.create', compact([ 'products', 'colors', 'sizes', 'types', 'schools']));
+    }
+
+    /**
+     * fetch products of selected schools..
+     */
+    public function fetchschoolProduct(Request $request)
+    {
+        $products = Product::where('school_id', $request->school_id)->get();
+        return response($products);
     }
 
 
@@ -125,12 +143,15 @@ class StockController extends Controller
     {
         foreach ($request->stock as $stock) {
             $stock['stock_in'] = $stock['quantity'];
+            $stock['school_id'] = $request->school_id;
             $availables = Stock::where('product_id', $stock['product_id'])
             ->where('color_id', $stock['color_id'])
             ->where('type_id', $stock['type_id'])
             ->where('gender_id', $stock['gender_id'])
             ->where('size_id', $stock['size_id'])
+            ->where('school_id', $stock['school_id'])
             ->get();
+
 
             if (count($availables) <= 0) {
                 $createstock = new Stock();

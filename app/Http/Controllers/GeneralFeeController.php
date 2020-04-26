@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Createclass;
 use App\GeneralFee;
+use App\School;
 use Illuminate\Http\Request;
 
 class GeneralFeeController extends Controller
@@ -15,7 +16,12 @@ class GeneralFeeController extends Controller
      */
     public function index()
     {
-        $general = GeneralFee::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $general = GeneralFee::all();
+        }else{
+            $general = GeneralFee::where('school_id', auth()->user()->school->id)->get();
+        }
+
         return view('admin.general.index' , compact('general'));
     }
 
@@ -27,7 +33,8 @@ class GeneralFeeController extends Controller
     public function create()
     {
         $classes = CreateClass::all();
-        return view('admin.general.create' , compact('classes'));
+        $schools = School::all();
+        return view('admin.general.create' , compact(['classes','schools']));
     }
 
     /**
@@ -38,7 +45,9 @@ class GeneralFeeController extends Controller
      */
     public function store(Request $request)
     {
-        GeneralFee::create($request->all());
+        $data = $request->all();
+        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        GeneralFee::create($data);
         return redirect()->route('general.index')->with('success', 'Fees created Successfully');
     }
 

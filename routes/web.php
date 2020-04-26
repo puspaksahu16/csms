@@ -72,6 +72,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('stocks', 'StockController');
     Route::get('lara_stocks','StockController@laraStock')->name('lara_stocks');
+    Route::post('/fetch_school_products','StockController@fetchschoolProduct');
 
     Route::post('/fetchProductDetails','StockController@fetchProductDetails');
 

@@ -10,6 +10,8 @@ use App\Createclass;
 use App\ExtraClass;
 use App\GeneralFee;
 use App\idproof;
+use App\Qualification;
+use App\School;
 use App\Stock;
 use App\Student;
 use App\StudentParent;
@@ -26,7 +28,12 @@ class NewAdmissionController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->role->name == "super_admin")
+        {
         $students = Student::with('fee')->get();
+        }else{
+            $students = Student::where('school_id', auth()->user()->school->id)->get();
+        }
        return view('admin.new_admission.index', compact('students'));
     }
 
@@ -44,7 +51,9 @@ class NewAdmissionController extends Controller
     {
         $id_proof = idproof::all();
         $classes = Createclass::all();
-        return view('admin.new_admission.create',compact(['id_proof', 'classes']));
+        $schools = School::all();
+        $qualifications = Qualification::all();
+        return view('admin.new_admission.create',compact(['id_proof', 'classes','schools','qualifications']));
     }
 
 
@@ -76,6 +85,7 @@ class NewAdmissionController extends Controller
         $students->class_id = $request->class_id;
         $students->caste = $request->caste;
         $students->student_unique_id = $student_id;
+        $students->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id:auth()->user()->school->id;
         $students->save();
 
         $parents = new StudentParent();
@@ -160,6 +170,7 @@ class NewAdmissionController extends Controller
         $id_proof = idproof::all();
         $classes = Createclass::all();
         $students = Student::find($id);
+        $qualifications = Qualification::all();
         $studentparents = StudentParent::where('student_id', $id)->first();
         $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
         if ($r_address->is_same == 1)
@@ -171,7 +182,7 @@ class NewAdmissionController extends Controller
             $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
         }
 
-       return view('admin.new_admission.edit', compact(['id_proof','classes','students','studentparents','r_address', 'p_address']));
+       return view('admin.new_admission.edit', compact(['id_proof','classes','students','studentparents','r_address', 'p_address','qualifications']));
     }
 
     /**

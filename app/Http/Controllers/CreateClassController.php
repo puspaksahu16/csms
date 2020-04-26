@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Createclass;
+use App\School;
 use App\Standard;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,16 @@ class CreateClassController extends Controller
      */
     public function index()
     {
-        $classes = CreateClass::all();
-        $standards = Standard::all();
-        return view('admin.classes.index', compact(['classes','standards']));
+        if (auth()->user()->role->name == "super_admin") {
+            $classes = CreateClass::all();
+            $standards = Standard::all();
+            $schools = School::all();
+        }else{
+            $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
+            $standards = Standard::where('school_id', auth()->user()->school->id)->get();
+
+        }
+        return view('admin.classes.index', compact(['classes','standards','schools']));
     }
 
     /**
@@ -27,7 +35,8 @@ class CreateClassController extends Controller
      */
     public function create()
     {
-        return view('admin.classes.index');
+        $schools = School::all();
+        return view('admin.classes.index',compact(['schools']));
     }
 
     /**
@@ -38,7 +47,9 @@ class CreateClassController extends Controller
      */
     public function store(Request $request)
     {
-        $classes = CreateClass::create($request->all());
+        $data = $request->all();
+        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        CreateClass::create($data);
 
         return redirect('/classes')->with("success", "Pre admission Created successfully!");
     }

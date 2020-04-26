@@ -13,7 +13,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#"><Cr>Create School</Cr></a>
+                                    <li class="breadcrumb-item"><a href="#">Create School</a>
                                     </li>
 
                                 </ol>
