@@ -32,6 +32,12 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Create Book</h4>
+                                    @if(auth()->user()->role->name == "super_admin")
+                                        <select @change="school()" class="form-control" v-model="school_id">
+                                            <option disabled value="">Select School</option>
+                                            <option v-for=" school in schools" :value="school.id">@{{school.full_name}}</option>
+                                        </select>
+                                    @endif
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -105,10 +111,11 @@
             </div>
         </div>
     </div>
-    <script> 
+    <script>
         var STANDARDS = {!! $standards !!}
         var PUBLISHERS = {!! $publishers !!}
         var SUBJECTS = {!! $subjects !!}
+        var SCHOOLS = {!! $schools!!}
 
 </script>
 @endsection
@@ -127,6 +134,8 @@
             standards: STANDARDS,
             publishers: PUBLISHERS,
             subjects: SUBJECTS,
+            schools: SCHOOLS,
+            school_id: '',
             ss:[{}],
             rowData:[
             {
@@ -168,10 +177,24 @@
                     console.log(error);
                   });
                 },
+            school(){
+                let that = this;
+                axios.post('/fetch_school_books', {
+                    school_id: that.school_id,
+                })
+                    .then(function (response) {
+                        console.log(response);
+                        that.standards = response.data;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
                 submitData(){
                     let that = this;
                     axios.post('/books', {
                     books: that.rowData,
+                        school_id: that.school_id,
                   })
                   .then(function (response) {
                     console.log(response);

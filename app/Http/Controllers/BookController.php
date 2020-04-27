@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Createclass;
 use App\Publisher;
+use App\School;
 use App\Standard;
 use App\Subject;
 use Freshbitsweb\Laratables\Laratables;
@@ -19,7 +20,12 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $books = Book::all();
+        }
+        else{
+            $books = Book::where('school_id', auth()->user()->school->id)->get();
+        }
         return view('admin.books.index', compact('books'));
     }
 
@@ -35,10 +41,21 @@ class BookController extends Controller
      */
     public function create()
     {
-        $standards = Standard::all();
+        if (auth()->user()->role->name == "admin")
+        {
+            $standards = Standard::where('school_id', auth()->user()->school->id)->get();
+        }else{
+            $standards = Standard::all();
+        }
+        $schools = School::all();
         $publishers = Publisher::all();
         $subjects = Subject::all();
-        return view('admin.books.create', compact(['standards', 'publishers', 'subjects']));
+        return view('admin.books.create', compact(['standards', 'publishers', 'subjects', 'schools']));
+    }
+    public function fetchschoolBook(Request $request)
+    {
+        $standards = Standard::where('school_id', $request->school_id)->get();
+        return response($standards);
     }
 
     /**
@@ -46,13 +63,29 @@ class BookController extends Controller
      */
     public function bookFeeUpdate()
     {
-        $classes = Createclass::all();
-        return view('admin.books.book_fee_update', compact(['classes']));
-    }
+        if (auth()->user()->role->name == "admin")
+        {
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+        }else{
+            $classes = Createclass::all();
+        }
+        $schools = School::all();
 
+        return view('admin.books.book_fee_update', compact(['classes','schools']));
+    }
+    public function fetchschoolBookPrice(Request $request)
+    {
+        $classes = Createclass::where('school_id', $request->school_id)->get();
+        return response($classes);
+    }
     public function bookFee()
     {
-        $books = Book::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $books = Book::all();
+        }else{
+            $books = Book::where('school_id', auth()->user()->school->id)->get();
+        }
+
         return view('admin.books.book_fee', compact('books'));
     }
 
@@ -89,6 +122,7 @@ class BookController extends Controller
     {
         if (!empty($request->books)){
             foreach ($request->books as $book) {
+                $book['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id;
                 $createbook = new Book();
                 $createbook->create($book);
             }

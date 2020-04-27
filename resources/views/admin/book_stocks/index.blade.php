@@ -56,6 +56,9 @@
                                         <tr>
 
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <th scope="col">School</th>
+                                            @endif
                                             <th scope="col">Book Name</th>
                                             <th scope="col">class</th>
                                             <th scope="col">Subject</th>
@@ -70,6 +73,9 @@
                                         @foreach($stocks as $key => $stock)
                                             <tr>
                                                 <td>{{$key+1}}</td>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                    <td>{{!empty($stock->schools->full_name) ? $stock->schools->full_name : "--"}}</td>
+                                                @endif
                                                 <td>{{!empty($stock->book->name) ? $stock->book->name : "--"}}</td>
                                                 <td>{{!empty($stock->book->classes->create_class) ? $stock->book->classes->create_class : "--"}}</td>
                                                 <td>{{!empty($stock->book->subject->name) ? $stock->book->subject->name : "--"}}</td>

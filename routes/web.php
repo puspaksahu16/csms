@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', 'ProductController');
     Route::get('/product_price', 'StockController@productPriceIndex');
     Route::post('/product_price_update', 'StockController@productPriceUpdate');
+    Route::post('/fetch_school_productprice','StockController@fetchschoolProductPrice');
     Route::get('/product_price_update', 'StockController@productPrice');
     Route::get('lara_product','ProductController@laraProduct')->name('lara_product');
 
@@ -56,6 +57,8 @@ Route::middleware('auth')->group(function () {
     Route::get('book_price', 'BookController@bookFee');
     Route::get('book_price_update', 'BookController@bookFeeUpdate');
     Route::post('update_price', 'BookController@updatePrice');
+    Route::post('/fetch_school_books','BookController@fetchschoolBook');
+    Route::post('/fetch_school_bookprice','BookController@fetchschoolBookPrice');
     Route::get('lara_books','BookController@laraBooks')->name('lara_books');
 
     Route::post('/fetch_class', 'BookController@fetchClass');
@@ -79,11 +82,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('book_stocks', 'BookStockController');
     Route::post('/fetch_sub','BookStockController@fetchSub');
     Route::post('/fetch_book','BookStockController@fetchBook');
+    Route::post('/fetch_school_bookstock','BookStockController@fetchschoolBookstock');
     Route::post('/fetch_book_details','BookStockController@fetchBookDetails');
     Route::get('lara_book_stock','BookStockController@laraBookStock')->name('lara_book_stock');
 
     Route::resource('damages', 'DamageController');
     Route::post('fetch_damage_product_details', 'DamageController@fetchDamageProductDetails');
+    Route::post('/fetch_school_dproducts','DamageController@fetchschoolProductDamage');
     Route::get('lara_damages','DamageController@laraDamages')->name('lara_damages');
 
     Route::resource('pre_exam','PreExamController');

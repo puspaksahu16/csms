@@ -54,6 +54,9 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <th scope="col">School</th>
+                                            @endif
                                             <th scope="col">Product</th>
                                             <!-- <th scope="col">Unit</th> -->
                                             <th scope="col">Color</th>
@@ -69,6 +72,9 @@
                                         @foreach($damages as $key => $damage)
                                             <tr>
                                                 <td>{{$key+1}}</td>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                    <td>{{!empty($damage->schools->full_name) ? $damage->schools->full_name : "--"}}</td>
+                                                @endif
                                                 <td>{{empty($damage->products->name) ? "--" : $damage->products->name}}</td>
                                                 <td>{{!empty($damage->colors->name) ? $damage->colors->name : "--"}}</td>
                                                 <td>{{!empty($damage->types->name) ? $damage->types->name : "--"}}</td>

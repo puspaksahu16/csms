@@ -51,10 +51,13 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0" id="books">
+                                    <table class="table zero-configuration" id="">
                                         <thead>
                                         <tr>
-{{--                                            <th scope="col">#</th>--}}
+                                            <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <th scope="col">School</th>
+                                            @endif
                                             <th scope="col">Book Name</th>
                                             <th scope="col">Standard</th>
                                             <th scope="col">Class</th>
@@ -63,19 +66,22 @@
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
-{{--                                        <tbody>--}}
-{{--                                        @foreach($books as $key => $book)--}}
-{{--                                            <tr>--}}
-{{--                                                <td>{{$key+1}}</td>--}}
-{{--                                                <td>{{!empty($book->name) ? $book->name : "--"}}</td>--}}
-{{--                                                <td>{{!empty($book->standard->name) ? $book->standard->name : "--"}}</td>--}}
-{{--                                                <td>{{!empty($book->classes->create_class) ? $book->classes->create_class : "--"}}</td>--}}
-{{--                                                <td>{{!empty($book->publisher->name) ? $book->publisher->name : "--"}}</td>--}}
-{{--                                                <td>{{!empty($book->subject->name) ? $book->subject->name : "--"}}</td>--}}
-{{--                                                <td><a href="{{route('books.edit', $book->id)}}" class="btn btn-primary">Edit</a></td>--}}
-{{--                                            </tr>--}}
-{{--                                        @endforeach--}}
-{{--                                        </tbody>--}}
+                                        <tbody>
+                                        @foreach($books as $key => $book)
+                                            <tr>
+                                                <td>{{$key+1}}</td>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                    <td>{{!empty($book->schools->full_name) ? $book->schools->full_name : "--"}}</td>
+                                                @endif
+                                                <td>{{!empty($book->name) ? $book->name : "--"}}</td>
+                                                <td>{{!empty($book->standard->name) ? $book->standard->name : "--"}}</td>
+                                                <td>{{!empty($book->classes->create_class) ? $book->classes->create_class : "--"}}</td>
+                                                <td>{{!empty($book->publisher->name) ? $book->publisher->name : "--"}}</td>
+                                                <td>{{!empty($book->subject->name) ? $book->subject->name : "--"}}</td>
+                                                <td><a href="{{route('books.edit', $book->id)}}" class="btn btn-primary">Edit</a></td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

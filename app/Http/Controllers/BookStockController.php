@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\BookStock;
 use App\Createclass;
+use App\School;
 use App\Subject;
 
 use Freshbitsweb\Laratables\Laratables;
@@ -19,7 +20,12 @@ class BookStockController extends Controller
      */
     public function index()
     {
-        $stocks = BookStock::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $stocks = BookStock::all();
+        }else{
+            $stocks = BookStock::where('school_id', auth()->user()->school->id)->get();
+        }
+
         return view('admin.book_stocks.index', compact('stocks'));
     }
 
@@ -34,8 +40,20 @@ class BookStockController extends Controller
      */
     public function create()
     {
-        $classes = Createclass::all();
-        return view('admin.book_stocks.create', compact(['classes']));
+        if (auth()->user()->role->name == "admin")
+        {
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+        }else{
+            $classes = Createclass::all();
+        }
+        $schools = School::all();
+
+        return view('admin.book_stocks.create', compact(['classes','schools']));
+    }
+    public function fetchschoolBookstock(Request $request)
+    {
+        $classes = Createclass::where('school_id', $request->school_id)->get();
+        return response($classes);
     }
 
     /**
@@ -69,7 +87,6 @@ class BookStockController extends Controller
     public function fetchBookDetails(Request $request)
     {
         $books = Book::find($request->book_id);
-
         return response([
             'class_id' => $books->class_id,
             'subject_id' => $books->subject_id,
@@ -88,14 +105,17 @@ class BookStockController extends Controller
     {
         foreach($request->books as $book)
         {
+
             $stock = BookStock::find($book['book_id']);
             if (!empty($stock))
             {
+
                 $stock_in = $stock->stock_in + $book['quantity'];
                 $stock->update(['stock_in' => $stock_in]);
             }else{
+
                 $book_stock = new BookStock();
-                $book_stock->create(['book_id' => $book['book_id'], 'stock_in' => $book['quantity']]);
+                $book_stock->create(['book_id' => $book['book_id'], 'stock_in' => $book['quantity'],'school_id' => $book['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id]);
             }
         }
         return response(['success']);

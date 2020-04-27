@@ -32,6 +32,12 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Create price</h4>
+                                    @if(auth()->user()->role->name == "super_admin")
+                                        <select @change="school()" class="form-control" v-model="school_id">
+                                            <option disabled value="">Select School</option>
+                                            <option v-for=" school in schools" :value="school.id">@{{school.full_name}}</option>
+                                        </select>
+                                    @endif
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -103,6 +109,8 @@
     </div>
     <script>
         var CLASSES = {!! $classes !!}
+        var SCHOOLS = {!! $schools!!}
+
 
     </script>
 @endsection
@@ -119,6 +127,8 @@
             el: '#app',
             data: {
                 classes: CLASSES,
+                schools: SCHOOLS,
+                school_id: '',
                 subject: [],
                 books: [],
 
@@ -199,10 +209,24 @@
                             console.log(error);
                         });
                 },
+                school(){
+                    let that = this;
+                    axios.post('/fetch_school_bookprice', {
+                        school_id: that.school_id,
+                    })
+                        .then(function (response) {
+                            console.log(response);
+                            that.classes = response.data;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                },
                 submitData(){
                     let that = this;
                     axios.post('/update_price', {
                         books: that.rowData,
+                        school_id: that.school_id,
                     })
                         .then(function (response) {
                             console.log(response);

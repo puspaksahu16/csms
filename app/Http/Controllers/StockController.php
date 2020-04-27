@@ -20,8 +20,14 @@ class StockController extends Controller
      */
     public function index()
     {
-        $stocks = Stock::with(['products:id,name','colors:id,name','types:id,name','sizes:id,name'])
-        ->get();
+        if (auth()->user()->role->name == "super_admin") {
+
+              $stocks = Stock::with(['products:id,name', 'colors:id,name', 'types:id,name', 'sizes:id,name'])->with('schools')
+                ->get();
+
+        }else{
+            $stocks = Stock::where('school_id', auth()->user()->school->id)->with(['products:id,name', 'colors:id,name', 'types:id,name', 'sizes:id,name'])->with('schools')->get();
+        }
         // return$available_stock = $stocks->stock_in - $stocks->stock_out;
         return view('admin.stocks.index', compact(['stocks']));
     }
@@ -36,18 +42,31 @@ class StockController extends Controller
      */
     public function productPriceIndex()
     {
-        $stocks = Stock::with(['products:id,name','colors:id,name','types:id,name','sizes:id,name'])
-            ->get();
+        if (auth()->user()->role->name == "super_admin") {
+            $stocks = Stock::with(['products:id,name','colors:id,name','types:id,name','sizes:id,name'])
+                ->get();
+        }else{
+            $stocks = Stock::where('school_id', auth()->user()->school->id)->with(['products:id,name','colors:id,name','types:id,name','sizes:id,name'])
+                ->get();
+        }
+
         return view('admin.stocks.product_price', compact(['stocks']));
     }
 
     public function productPrice()
     {
-        $products = Product::all();
+        if (auth()->user()->role->name == "admin")
+        {
+            $products = Product::where('school_id', auth()->user()->school->id)->get();
+        }else{
+            $products = Product::all();
+        }
+        $schools = School::all();
+
         $colors = ProductColor::all();
         $sizes = ProductSize::all();
         $types = ProductType::all();
-        return view('admin.stocks.product_price_update', compact(['products', 'colors', 'sizes', 'types']));
+        return view('admin.stocks.product_price_update', compact(['products', 'colors', 'sizes', 'types','schools']));
     }
 
     public function productPriceUpdate(Request $request)
@@ -104,6 +123,11 @@ class StockController extends Controller
         return response($products);
     }
 
+    public function fetchschoolProductPrice(Request $request)
+    {
+        $products = Product::where('school_id', $request->school_id)->get();
+        return response($products);
+    }
 
     public function fetchProductDetails(Request $request)
     {
@@ -143,7 +167,7 @@ class StockController extends Controller
     {
         foreach ($request->stock as $stock) {
             $stock['stock_in'] = $stock['quantity'];
-            $stock['school_id'] = $request->school_id;
+            $stock['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id;
             $availables = Stock::where('product_id', $stock['product_id'])
             ->where('color_id', $stock['color_id'])
             ->where('type_id', $stock['type_id'])
