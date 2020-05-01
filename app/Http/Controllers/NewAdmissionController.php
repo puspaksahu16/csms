@@ -16,8 +16,10 @@ use App\Stock;
 use App\Student;
 use App\StudentParent;
 use App\Subject;
+use App\User;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class NewAdmissionController extends Controller
 {
@@ -73,6 +75,7 @@ class NewAdmissionController extends Controller
             $s_id = substr($s[0]["student_unique_id"], 8) + 1;
         }
         $student_id = date('Y').'CSMS'.$s_id;
+        $parent_id = date('Y').$s_id;
 
         $students = new Student();
         $students->first_name = $request->first_name;
@@ -100,6 +103,8 @@ class NewAdmissionController extends Controller
         $parents->mother_id_type = $request->mother_id_type;
         $parents->mother_id_no = $request->mother_id_no;
 
+        $parents->parent_id = $parent_id;
+
         $parents->father_first_name = $request->father_first_name;
         $parents->father_last_name = $request->father_last_name;
         $parents->father_mobile = $request->father_mobile;
@@ -110,6 +115,13 @@ class NewAdmissionController extends Controller
         $parents->father_id_type = $request->father_id_type;
         $parents->father_id_no = $request->father_id_no;
         $parents->parent_type = 'new';
+        $parents->save();
+
+        $user = new User();
+        $user->name = $request->mother_first_name." ".$request->mother_last_name;
+        $user->email = $request->mother_email;
+        $user->role_id = 4;
+        $user->password = Hash::make($parent_id);
         $parents->save();
 
         foreach ($request->addresses as $key => $add)

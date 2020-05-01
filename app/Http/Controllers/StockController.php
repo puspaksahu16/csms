@@ -143,7 +143,7 @@ class StockController extends Controller
     {
         foreach ($request->stock as $stock) {
             $stock['stock_in'] = $stock['quantity'];
-            $stock['school_id'] = $request->school_id;
+            $stock['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id ;
             $availables = Stock::where('product_id', $stock['product_id'])
             ->where('color_id', $stock['color_id'])
             ->where('type_id', $stock['type_id'])

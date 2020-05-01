@@ -16,6 +16,8 @@ class CreateStudentParentsTable extends Migration
         Schema::create('student_parents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('student_id');
+            $table->string('parent_id');
+            $table->integer('user_id');
             $table->string('father_first_name');
             $table->string('father_last_name');
             $table->string('father_qualification')->nullable();
