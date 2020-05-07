@@ -67,7 +67,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <form class="form" method="POST" action="{{route('new_admission.update', $students->id)}}}">
+                                                    <form class="form" method="POST" action="{{route('new_admission.update', $students->id)}}">
                                                         @csrf
                                                         @method('put')
                                                         <div class="row setup-content" id="step-1">

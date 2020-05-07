@@ -147,7 +147,21 @@ class AdmissionFeeController extends Controller
      */
     public function edit($id)
     {
-        //
+         $addmision_fee = AdmissionFee::find($id);
+         $selected_product = json_decode($addmision_fee->product);
+         $selected_general = json_decode($addmision_fee->general);
+         $selected_classes = json_decode($addmision_fee->ecc);
+         $selected_books = json_decode($addmision_fee->book);
+          $student = Student::find($addmision_fee->student_id);
+         $std_id = $student->class_id;
+        $general_fees = GeneralFee::where('class_id', $std_id)->get();
+        $products = Stock::all();
+        $extra_classes = ExtraClass::where('class_id', $std_id)->get();
+        $book = Book::with('stock')->where('class_id', $std_id)->get();
+
+        return view('admin.new_admission.edit_fee',compact(['id', 'general_fees', 'products', 'extra_classes', 'book','selected_product','addmision_fee','selected_general','selected_classes','selected_books']));
+
+
     }
 
     /**
@@ -159,7 +173,14 @@ class AdmissionFeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $af = AdmissionFee::where('id', $id)->first();
+        $af->general = json_encode($request->general);
+        $af->product = json_encode($request->product);
+        $af->ecc = json_encode($request->ecc);
+        $af->book = json_encode($request->book);
+        $af->update();
+            return redirect()->route('new_admission.index')->with('success', 'Admission Fee updated Successfully');
+
     }
 
     /**
