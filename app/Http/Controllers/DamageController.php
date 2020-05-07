@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ProductColor;
 use App\ProductSize;
 use App\ProductType;
+use App\School;
 use App\Stock;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
@@ -20,8 +21,14 @@ class DamageController extends Controller
      */
     public function index()
     {
-       $damages = Damage::with('products:id,name','colors:id,name','types:id,name','sizes:id,name')
-        ->get();
+        if (auth()->user()->role->name == "super_admin") {
+            $damages = Damage::with('products:id,name','colors:id,name','types:id,name','sizes:id,name')
+                ->get();
+        }else{
+            $damages = Damage::where('school_id', auth()->user()->school->id)->with('products:id,name','colors:id,name','types:id,name','sizes:id,name')
+                ->get();
+        }
+
         return view('admin.damages.index', compact('damages'));
     }
 
@@ -86,11 +93,24 @@ class DamageController extends Controller
      */
     public function create()
     {
-        $sp = Stock::distinct('product_id')->get('product_id');
-        $products = Product::whereIn('id', $sp)->get();
-        return view('admin.damages.create', compact(['products']));
-    }
+        if (auth()->user()->role->name == "admin")
+        {
+            $products = Product::where('school_id', auth()->user()->school->id)->get();
+        }
+        else{
+            $sp = Stock::distinct('product_id')->get('product_id');
+            $products = Product::whereIn('id', $sp)->get();
+        }
+        $schools = School::all();
 
+
+        return view('admin.damages.create', compact(['products','schools']));
+    }
+    public function fetchschoolProductDamage(Request $request)
+    {
+        $products = Product::where('school_id', $request->school_id)->get();
+        return response($products);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -101,6 +121,7 @@ class DamageController extends Controller
     {
         foreach ($request->stock as $stock) {
             $stock['damage'] = $stock['quantity'];
+            $stock['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id;
             $availables = Damage::where('product_id', $stock['product_id'])
             ->where('color_id', $stock['color_id'])
             ->where('type_id', $stock['type_id'])

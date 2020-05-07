@@ -19,7 +19,10 @@ class Damage extends Model
     public function types(){
     	return $this->belongsTo('App\ProductType', 'type_id');
     }
-
+    public function schools()
+    {
+        return $this->belongsTo(School::class, 'school_id');
+    }
     public function sizes(){
     	return $this->belongsTo('App\ProductSize', 'size_id');
     }

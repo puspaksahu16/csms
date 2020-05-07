@@ -21,17 +21,13 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            {{--                            <h2 class="content-header-title float-left mb-0">Pre Admission</h2>--}}
+{{--                            <h2 class="content-header-title float-left mb-0">Pre Admission</h2>--}}
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Store</a>
+                                    <li class="breadcrumb-item"><a href="#">Payment</a>
                                     </li>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="#">Books</a>
-                                    </li>
-
                                 </ol>
                             </div>
                         </div>
@@ -45,8 +41,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Books</h4>
-                                <a class="btn btn-primary" href="{{url('/books/create')}}">Add</a>
+                                <h4 class="card-title">Payment </h4>
+                                <a class="btn btn-primary" href="{{url('/admission_fee/')}}">Back</a>
                             </div>
                             <div class="card-content">
 
@@ -55,32 +51,26 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            @if(auth()->user()->role->name == "super_admin")
-                                                <th scope="col">School</th>
-                                            @endif
-                                            <th scope="col">Book Name</th>
-                                            <th scope="col">Standard</th>
-                                            <th scope="col">Class</th>
-                                            <th scope="col">Publisher</th>
-                                            <th scope="col">Subject</th>
+                                            <th scope="col">Payment Type</th>
+                                            <th scope="col">Transaction ID</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($books as $key => $book)
-                                            <tr>
-                                                <td>{{$key+1}}</td>
-                                                @if(auth()->user()->role->name == "super_admin")
-                                                    <td>{{!empty($book->schools->full_name) ? $book->schools->full_name : "--"}}</td>
-                                                @endif
-                                                <td>{{!empty($book->name) ? $book->name : "--"}}</td>
-                                                <td>{{!empty($book->standard->name) ? $book->standard->name : "--"}}</td>
-                                                <td>{{!empty($book->classes->create_class) ? $book->classes->create_class : "--"}}</td>
-                                                <td>{{!empty($book->publisher->name) ? $book->publisher->name : "--"}}</td>
-                                                <td>{{!empty($book->subject->name) ? $book->subject->name : "--"}}</td>
-                                                <td><a href="{{route('books.edit', $book->id)}}" class="btn btn-primary">Edit</a></td>
-                                            </tr>
-                                        @endforeach
+                                        @foreach($payment as $key => $p)
+                                        <tr>
+                                            <th scope="row">{{$key+1}}</th>
+                                            <td>{{$p->type == 1 ? "Cash" : "Online"}}</td>
+                                            <td>{{empty($p->transaction_id) ? "--" : $p->transaction_id}}</td>
+                                            <td>{{ $p->amount }}</td>
+                                            <td>{{ $p->created_at->format('j F Y') }}</td>
+                                            <td>
+                                                <a href="#" class="btn btn-sm btn-success">Receive</a>
+                                            </td>
+                                        </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

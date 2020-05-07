@@ -32,6 +32,12 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Product Price</h4>
+                                    @if(auth()->user()->role->name == "super_admin")
+                                        <select @change="school()" class="form-control" v-model="school_id">
+                                            <option disabled value="">Select School</option>
+                                            <option v-for=" school in schools" :value="school.id">@{{school.full_name}}</option>
+                                        </select>
+                                    @endif
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -117,6 +123,7 @@
     </div>
     <script>
         var PRODUCTS = {!! $products !!}
+        var SCHOOLS = {!! $schools!!}
 
     </script>
 @endsection
@@ -133,7 +140,8 @@
             el: '#damage_stock',
             data: {
                 products:PRODUCTS,
-
+                schools: SCHOOLS,
+                school_id: '',
                 sp:[{}],
                 rowData:[
                     {
@@ -179,10 +187,24 @@
                             console.log(error);
                         });
                 },
+                school(){
+                    let that = this;
+                    axios.post('/fetch_school_productprice', {
+                        school_id: that.school_id,
+                    })
+                        .then(function (response) {
+                            console.log(response);
+                            that.products = response.data;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                },
                 submitData(){
                     let that = this;
                     axios.post('/product_price_update', {
                         stock: that.rowData,
+                        school_id: that.school_id,
                     })
                         .then(function (response) {
                             console.log(response);

@@ -32,6 +32,12 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Create Damage Stock</h4>
+                                    @if(auth()->user()->role->name == "super_admin")
+                                        <select @change="school()" class="form-control" v-model="school_id">
+                                            <option disabled value="">Select School</option>
+                                            <option v-for=" school in schools" :value="school.id">@{{school.full_name}}</option>
+                                        </select>
+                                    @endif
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -89,7 +95,7 @@
                                                             <input type="text" class="form-control" placeholder="Quntity" v-model="item.quantity">
                                                             <label for="quantity">Quntity</label>
                                                         </div>
-                                                        
+
                                                     </div>
                                                     <div class="col-md-1 col-12">
                                                         <span class="btn btn-text btn-danger" @click="removeItem(index)">X</span>
@@ -115,8 +121,9 @@
             </div>
         </div>
     </div>
-    <script> 
+    <script>
         var PRODUCTS = {!! $products !!}
+        var SCHOOLS = {!! $schools!!}
 
 </script>
 @endsection
@@ -133,7 +140,8 @@
         el: '#damage_stock',
         data: {
             products:PRODUCTS,
-            
+            schools: SCHOOLS,
+            school_id: '',
             sp:[{}],
             rowData:[
             {
@@ -179,10 +187,24 @@
                     console.log(error);
                   });
                 },
+                school(){
+                    let that = this;
+                    axios.post('/fetch_school_dproducts', {
+                        school_id: that.school_id,
+                    })
+                        .then(function (response) {
+                            console.log(response);
+                            that.products = response.data;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                },
                 submitData(){
                     let that = this;
                     axios.post('/damages', {
                     stock: that.rowData,
+                        school_id: that.school_id,
                   })
                   .then(function (response) {
                     console.log(response);

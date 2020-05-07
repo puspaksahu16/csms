@@ -27,6 +27,11 @@ class Stock extends Model
     	return $this->belongsTo('App\ProductSize', 'size_id');
     }
 
+    public function schools()
+    {
+        return $this->belongsTo(School::class, 'school_id');
+    }
+
     public function getdamageAttribute(){
     	return Damage::where('product_id', $this->product_id)
             ->where('color_id', $this->color_id)

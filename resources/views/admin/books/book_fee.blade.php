@@ -42,6 +42,9 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <th scope="col">School</th>
+                                            @endif
                                             <th scope="col">class</th>
                                             <th scope="col">Subject</th>
                                             <th scope="col">Book Name</th>
@@ -53,6 +56,9 @@
                                         @foreach($books as $key => $book)
                                             <tr>
                                                 <td>{{$key+1}}</td>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                    <td>{{!empty($book->schools->full_name) ? $book->schools->full_name : "--"}}</td>
+                                                @endif
                                                 <td>{{ $book->classes->create_class }}</td>
                                                 <td>{{ $book->subject->name }}</td>
                                                 <td>{{ $book->name }}</td>

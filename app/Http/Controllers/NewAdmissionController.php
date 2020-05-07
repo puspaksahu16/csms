@@ -91,6 +91,13 @@ class NewAdmissionController extends Controller
         $students->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id:auth()->user()->school->id;
         $students->save();
 
+        $user = new User();
+        $user->name = $request->mother_first_name." ".$request->mother_last_name;
+        $user->email = $request->mother_email;
+        $user->role_id = 4;
+        $user->password = Hash::make($parent_id);
+        $user->save();
+
         $parents = new StudentParent();
         $parents->student_id = $students->id;
         $parents->mother_first_name = $request->mother_first_name;
@@ -104,6 +111,7 @@ class NewAdmissionController extends Controller
         $parents->mother_id_no = $request->mother_id_no;
 
         $parents->parent_id = $parent_id;
+        $parents->user_id = $user->id;
 
         $parents->father_first_name = $request->father_first_name;
         $parents->father_last_name = $request->father_last_name;
@@ -115,13 +123,6 @@ class NewAdmissionController extends Controller
         $parents->father_id_type = $request->father_id_type;
         $parents->father_id_no = $request->father_id_no;
         $parents->parent_type = 'new';
-        $parents->save();
-
-        $user = new User();
-        $user->name = $request->mother_first_name." ".$request->mother_last_name;
-        $user->email = $request->mother_email;
-        $user->role_id = 4;
-        $user->password = Hash::make($parent_id);
         $parents->save();
 
         foreach ($request->addresses as $key => $add)

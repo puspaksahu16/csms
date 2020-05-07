@@ -65,12 +65,14 @@
                                             <th scope="row">{{$key+1}}</th>
                                             <td>{{$sf->students->first_name." ".$sf->students->last_name}}</td>
                                             <td>{{$sf->students->student_unique_id}}</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>{{ $fee }}</td>
+                                            <td>{{ $sf->fee - $sf->paid }}</td>
+                                            <td>{{ $sf->paid }}</td>
+                                            <td>{{ $sf->fee }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-primary">Pay</a>
-                                                <a href="#" class="btn btn-sm btn-success">Payment History</a>
+                                                @if(($sf->fee - $sf->paid) > 0)
+                                                    <a href="{{url('/pay/'.$sf->student_id)}}" class="btn btn-sm btn-primary">Pay</a>
+                                                @endif
+                                                <a href="{{url('/payment_history/'.$sf->student_id)}}" class="btn btn-sm btn-success">Payment History</a>
                                             </td>
                                         </tr>
                                             @endforeach
