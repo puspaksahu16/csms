@@ -4,7 +4,6 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-
             @if (session()->has('success'))
                 <div class="alert alert-success">
                     @if(is_array(session()->get('success')))
@@ -18,13 +17,6 @@
                     @endif
                 </div>
             @endif
-
-            @if (session()->has('error'))
-                <div class="alert alert-danger">
-                    {{ session()->get('error') }}
-                </div>
-            @endif
-
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
@@ -34,14 +26,13 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">New Admission</a>
+                                    <li class="breadcrumb-item"><a href="#">Parents</a>
                                     </li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
 
@@ -49,49 +40,35 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">New Admission</h4>
-                                <a class="btn btn-primary" href="{{url('/new_admission/create')}}">Add</a>
+                                <h4 class="card-title">Parents List</h4>
                             </div>
                             <div class="card-content">
-
                                 <div class="table-responsive">
-                                    <table class="table zero-configuration table-striped" id="">
+                                    <table class="table zero-configuration" id="">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Student ID</th>
-                                            <th scope="col">Class</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">Mothers Name</th>
+                                            <th scope="col">Student Name</th>
+                                            <th scope="col">Parents Id</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($students as $key => $student)
+                                        @foreach($parents as $key => $parent)
                                             <tr>
-                                                <th scope="row">{{$key+1}}</th>
-                                                <td>{{$student->first_name." ".$student->last_name}}</td>
-                                                <td>{{$student->student_unique_id}}</td>
-                                                <td>{{$student->classes->create_class}}</td>
-                                                <td>
-                                                    <a href="{{route('new_admission.view', $student->id)}}" class="btn btn-sm btn-primary">View</a>
-                                                    <a href="{{route('new_admission.edit', $student->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                                    @if(empty($student->fee))
-                                                        <a href="{{url('/admission_fee_create/'. $student->id)}}" class="btn btn-sm btn-success">Fee</a>
-                                                    @else
-                                                        <a href="{{url('/admission_fee_edit/'. $student->fee->id)}}" class="btn btn-sm btn-warning">Edit Fee</a>
-                                                    @endif
-                                                </td>
+                                            <th scope="row">{{$key+1}}</th>
+                                            <td>{{$parent->mother_first_name." ".$parent->mother_last_name}}</td>
+                                            <td>{{$parent->students->first_name." ".$parent->students->last_name}}</td>
+                                            <td></td>
                                             </tr>
                                         @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

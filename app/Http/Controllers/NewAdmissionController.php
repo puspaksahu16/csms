@@ -32,11 +32,17 @@ class NewAdmissionController extends Controller
     {
         if (auth()->user()->role->name == "super_admin")
         {
-        $students = Student::with('fee')->get();
+         $students = Student::with('fee')->get();
         }else{
             $students = Student::where('school_id', auth()->user()->school->id)->get();
         }
        return view('admin.new_admission.index', compact('students'));
+    }
+
+    public function parentsindex()
+    {
+        $parents = StudentParent::all();
+        return view('admin.parents.index', compact(['parents']));
     }
 
     public function laraNewAdmission()
@@ -169,7 +175,21 @@ class NewAdmissionController extends Controller
      */
     public function show($id)
     {
-        //
+        $id_proof = idproof::all();
+        $classes = Createclass::all();
+        $students = Student::find($id);
+        $qualifications = Qualification::all();
+        $studentparents = StudentParent::where('student_id', $id)->first();
+        $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
+        if ($r_address->is_same == 1)
+        {
+            $p_address = [];
+        }
+        else
+        {
+            $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
+        }
+        return view('admin.new_admission.view', compact(['id_proof','classes','students','studentparents','r_address', 'p_address','qualifications']));
     }
 
     /**

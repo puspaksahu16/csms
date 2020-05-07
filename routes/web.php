@@ -96,15 +96,22 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('new_admission','NewAdmissionController');
     Route::get('lara_new_admission','NewAdmissionController@laraNewAdmission')->name('lara_new_admission');
+    Route::get('new_admission/{id}/view','NewAdmissionController@show')->name('new_admission.view');
+    Route::get('parents','NewAdmissionController@parentsindex')->name('parents.index');
 
 
     Route::resource('admission_fee','AdmissionFeeController');
     Route::get('/admission_fee_create/{id}','AdmissionFeeController@AdmissionFee');
     Route::post('/admission_fee_store/{id}','AdmissionFeeController@AdmissionFeeStore');
+
     Route::get('/pay/{id}','AdmissionFeeController@pay');
     Route::post('/payment/{id}','AdmissionFeeController@payment');
 
     Route::get('/payment_history/{id}','PaymentController@index');
+
+    Route::get('/admission_fee_edit/{id}','AdmissionFeeController@edit');
+    Route::post('/admission_fee','AdmissionFeeController@update');
+
 
     Route::resource('result','ResultController');
     Route::post('/get_roll','ResultController@getRoll');
