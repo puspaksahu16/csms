@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Payment;
+use App\StudentParent;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -18,6 +19,13 @@ class PaymentController extends Controller
         return view('admin.payments.index', compact('payment'));
     }
 
+    public function receive($id)
+    {
+
+         $payment = Payment::where('student_id', $id)->first();
+
+        return view('admin.payments.receive', compact(['payment']));
+    }
     /**
      * Show the form for creating a new resource.
      *
