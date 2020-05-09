@@ -59,7 +59,7 @@
                                             <th scope="row">{{$key+1}}</th>
                                             <td>{{$parent->mother_first_name." ".$parent->mother_last_name}}</td>
                                             <td>{{$parent->students->first_name." ".$parent->students->last_name}}</td>
-                                            <td></td>
+                                            <td>{{$parent->parent_id}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -39,7 +39,7 @@ class NewAdmissionController extends Controller
        return view('admin.new_admission.index', compact('students'));
     }
 
-    public function parentsindex()
+    public function parentsIndex()
     {
         $parents = StudentParent::all();
         return view('admin.parents.index', compact(['parents']));

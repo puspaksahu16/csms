@@ -97,7 +97,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('new_admission','NewAdmissionController');
     Route::get('lara_new_admission','NewAdmissionController@laraNewAdmission')->name('lara_new_admission');
     Route::get('new_admission/{id}/view','NewAdmissionController@show')->name('new_admission.view');
-    Route::get('parents','NewAdmissionController@parentsindex')->name('parents.index');
+    Route::get('parents','NewAdmissionController@parentsIndex')->name('parents.index');
 
 
     Route::resource('admission_fee','AdmissionFeeController');
