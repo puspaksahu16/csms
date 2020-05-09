@@ -99,40 +99,40 @@
                                 <div class="card-body">
                                     <table>
                                         <tr>
-                                            <td class="font-weight-bold">Mother's Name </td>
+                                            <td class="font-weight-bold">Name </td>
                                             <td>{{$studentparents->mother_first_name}} {{$studentparents->mother_last_name}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Mother's mobile no</td>
+                                            <td class="font-weight-bold">Mobile no</td>
                                             <td>{{$studentparents->mother_mobile}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Mother's Email</td>
+                                            <td class="font-weight-bold">Email</td>
                                             <td>{{$studentparents->mother_email}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Mother's Occupation</td>
+                                            <td class="font-weight-bold">Occupation</td>
                                             <td>{{$studentparents->mother_occupation}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Mother's Salary</td>
+                                            <td class="font-weight-bold">Salary</td>
                                             <td>{{$studentparents->mother_salary}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Mother's Qualification</td>
+                                            <td class="font-weight-bold">Qualification</td>
                                             <td>{{$studentparents->mqualification->qualification}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Mother's Adhar</td>
+                                            <td class="font-weight-bold">Adhar</td>
                                             <td>{{$studentparents->midproof->id_proof}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Mother's Id card no</td>
+                                            <td class="font-weight-bold">Id card no</td>
                                             <td>{{$studentparents->mother_id_no}}
                                             </td>
                                         </tr>
@@ -150,40 +150,40 @@
                                 <div class="card-body">
                                     <table>
                                         <tr>
-                                            <td class="font-weight-bold">Father's Name </td>
+                                            <td class="font-weight-bold">Name </td>
                                             <td>{{$studentparents->father_first_name}} {{$studentparents->father_last_name}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Father's mobile no</td>
+                                            <td class="font-weight-bold">Mobile no</td>
                                             <td>{{$studentparents->father_mobile}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Father's Email</td>
+                                            <td class="font-weight-bold">Email</td>
                                             <td>{{$studentparents->father_email}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Father's Occupation</td>
+                                            <td class="font-weight-bold">Occupation</td>
                                             <td>{{$studentparents->father_occupation}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Father's Salary</td>
+                                            <td class="font-weight-bold">Salary</td>
                                             <td>{{$studentparents->father_salary}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Father's Qualification</td>
+                                            <td class="font-weight-bold">Qualification</td>
                                             <td>{{$studentparents->fqualification->qualification}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Father's Adhar</td>
+                                            <td class="font-weight-bold">Adhar</td>
                                             <td>{{$studentparents->fidproof->id_proof}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold">Father's Id card no</td>
+                                            <td class="font-weight-bold">Id card no</td>
                                             <td>{{$studentparents->father_id_no}}
                                             </td>
                                         </tr>

@@ -66,7 +66,7 @@
                                                     <td>{{$school->email}}</td>
                                                     <td>{{$school->mobile}}</td>
                                                     <td>{{$school->is_active == 1 ? 'Active' : "Inactive"}}</td>
-                                                    <td><a href="{{route('schools.edit', $school->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                    <td><a href="{{route('schools.edit', $school->user_id)}}" class="btn btn-sm btn-primary">Edit</a></td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
