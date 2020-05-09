@@ -17,6 +17,17 @@ class CreateSchoolsTable extends Migration
             $table->bigIncrements('id');
             $table->string('registration_no');
             $table->string('full_name');
+            $table->string('address');
+            $table->string('affliation_no');
+            $table->string('owner_name');
+            $table->integer('owner_contact_no');
+            $table->string('owner_photo');
+            $table->string('contact_person');
+            $table->string('photo');
+            $table->string('standard');
+            $table->string('classes');
+            $table->string('starting_year');
+            $table->string('facility');
             $table->string('email')->unique();
             $table->integer('mobile');
             $table->integer('is_active')->default(1);

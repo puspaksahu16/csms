@@ -82,7 +82,8 @@ class SchoolController extends Controller
      */
     public function edit($id)
     {
-        $school = School::find($id);
+
+         $school = School::where('user_id', $id)->first();
         return view('admin.schools.edit', compact('school'));
     }
 
@@ -95,7 +96,26 @@ class SchoolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $school = School::find($id)->update($request->all());
+        $school = School::where('user_id', $id)->first();
+        $school->full_name =$request->full_name;
+        $school->address =$request->address;
+        $school->affliation_no =$request->affliation_no;
+        $school->owner_name =$request->owner_name;
+        $school->owner_contact_no =$request->owner_contact_no;
+        $school->owner_photo =$request->owner_photo;
+        $school->contact_person =$request->contact_person;
+        $school->photo =$request->photo;
+        $school->standard =$request->standard;
+        $school->classes =$request->classes;
+        $school->starting_year =$request->starting_year;
+        $school->facility =$request->facility;
+        $school->email =$request->email;
+        $school->mobile =$request->mobile;
+        $school->update();
+         $user =  User::where('id', $id)->first();
+        $user->name = $request->full_name;
+        $user->email = $request->email;
+        $user->update();
         return redirect()->route('schools.index')->with('success', 'School created successfully');
     }
 
