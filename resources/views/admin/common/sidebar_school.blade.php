@@ -52,7 +52,7 @@
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="GeneralSetting">Fee Structure</span></a>
                 <ul class="menu-content">
                     <li><a href="{{url('/general')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">General Fee</span></a></li>
-                    <li><a href="{{url('/extraclasses')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Extra Classes</span></a></li>
+                    <li><a href="{{url('/extraclasses')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Co-Curricular Activities</span></a></li>
                     <li><a href="{{url('/book_price')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Books</span></a></li>
                     <li><a href="{{ url('/product_price') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Products</span></a></li>
                 </ul>

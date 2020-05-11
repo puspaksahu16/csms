@@ -109,7 +109,9 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-
+                                            @if(auth()->user()->role->name == "super_admin")
+                                            <th>School</th>
+                                            @endif
                                             <th scope="col">Class</th>
                                             <th scope="col">Section</th>
                                             <th scope="col">Action</th>
@@ -119,6 +121,9 @@
                                         @foreach($section as $key => $section)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                <th>{{$section->school->full_name}}</th>
+                                                @endif
                                                 <th>{{$section->class->create_class}}</th>
                                                 <th>{{$section->section}}</th>
                                                 <td><a href="{{route('section.edit', $section->id)}}" class="btn btn-primary">Edit</a></td>

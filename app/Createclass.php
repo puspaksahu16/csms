@@ -12,4 +12,8 @@ class Createclass extends Model
     {
         return $this->belongsTo(Standard::class,'standard_id');
     }
+    public function school()
+    {
+        return $this->belongsTo(School::class,'school_id');
+    }
 }

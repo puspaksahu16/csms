@@ -96,7 +96,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Id Proof</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
@@ -104,8 +104,8 @@
                                         @foreach($idproof as $key => $idproof)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
-                                                <th>{{$idproof->id_proof}}</th>
-                                                <th>{{$idproof->created_at}}</th>
+                                                <th style="text-transform: uppercase">{{$idproof->id_proof}}</th>
+                                                <th>{{$idproof->created_at->format('d F Y')}}</th>
                                                 <td><a href="{{route('idproof.edit', $idproof->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach

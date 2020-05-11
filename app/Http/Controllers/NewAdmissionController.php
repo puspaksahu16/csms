@@ -218,6 +218,47 @@ class NewAdmissionController extends Controller
        return view('admin.new_admission.edit', compact(['id_proof','classes','students','studentparents','r_address', 'p_address','qualifications']));
     }
 
+    public function edit_profile($id)
+    {
+        $id_proof = idproof::all();
+        $classes = Createclass::all();
+        $qualifications = Qualification::all();
+        $parents = StudentParent::where('user_id', $id)->first();
+        return view('admin.new_admission.edit_parents',compact(['id_proof','classes','qualifications','parents']));
+    }
+
+    public function parentUpdate(Request $request, $id)
+    {
+        $parents =  StudentParent::where('user_id', $id)->first();
+        $parents->mother_first_name = $request->mother_first_name;
+        $parents->mother_last_name = $request->mother_last_name;
+        $parents->mother_mobile = $request->mother_mobile;
+        $parents->mother_email = $request->mother_email;
+        $parents->mother_occupation = $request->mother_occupation;
+        $parents->mother_salary = $request->mother_salary;
+        $parents->mother_qualification = $request->mother_qualification;
+        $parents->mother_id_type = $request->mother_id_type;
+        $parents->mother_id_no = $request->mother_id_no;
+
+        $parents->father_first_name = $request->father_first_name;
+        $parents->father_last_name = $request->father_last_name;
+        $parents->father_mobile = $request->father_mobile;
+        $parents->father_email = $request->father_email;
+        $parents->father_occupation = $request->father_occupation;
+        $parents->father_salary = $request->father_salary;
+        $parents->father_qualification = $request->father_qualification;
+        $parents->father_id_type = $request->father_id_type;
+        $parents->father_id_no = $request->father_id_no;
+        $parents->parent_type = 'new';
+        $parents->update();
+
+        $user =  User::find($id);
+
+        $user->name = $request->mother_first_name." ".$request->mother_last_name;
+        $user->email = $request->mother_email;
+        $user->update();
+        return redirect()->back()->with('success', 'Parent Updated Successfully');
+    }
     /**
      * Update the specified resource in storage.
      *

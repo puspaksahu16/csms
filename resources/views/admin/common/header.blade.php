@@ -103,8 +103,10 @@
                             <a class="dropdown-item" href="
                             @if(auth()->user()->role->name == "super_admin")
                             {{url('#')}}
-                            @else
+                            @elseif(auth()->user()->role->name == "admin")
                                 {{url('/schools/'.Auth::user()->id .'/edit')}}
+                            @elseif(auth()->user()->role->name == "parent")
+                            {{url('/edit_profile/'.Auth::user()->id .'')}}
                                 @endif
 "><i class="feather icon-user"></i> Edit Profile</a>
                             <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault();

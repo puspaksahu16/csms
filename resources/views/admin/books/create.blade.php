@@ -47,12 +47,6 @@
                                                 <div class="row" v-for="(item, index) in rowData">
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Book Name" v-model="item.name">
-                                                            <label for="book">Book Name</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2 col-12">
-                                                        <div class="form-label-group">
                                                             <select @change="fetchClass(index)" class="form-control" v-model="item.standard_id">
                                                                 <option disabled value="">Select standard</option>
                                                                 <option v-for=" standard in standards" :value="standard.id">@{{standard.name}}</option>
@@ -71,15 +65,6 @@
                                                     </div>
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <select class="form-control" v-model="item.publisher_id">
-                                                                <option disabled value=""> publisher</option>
-                                                                <option v-for=" publisher in publishers" :value="publisher.id">@{{publisher.name}}</option>
-                                                            </select>
-                                                            <label for="gender">Publisher</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1 col-12">
-                                                        <div class="form-label-group">
                                                             <select class="form-control" v-model="item.subject_id">
                                                                 <option disabled value="">Subject</option>
                                                                 <option v-for=" subject in subjects" :value="subject.id">@{{subject.name}}</option>
@@ -87,6 +72,24 @@
                                                             <label for="size">Subject</label>
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-2 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="text" class="form-control" placeholder="Book Name" v-model="item.name">
+                                                            <label for="book">Book Name</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-2 col-12">
+                                                        <div class="form-label-group">
+                                                            <select class="form-control" v-model="item.publisher_id">
+                                                                <option disabled value=""> publisher</option>
+                                                                <option v-for=" publisher in publishers" :value="publisher.id">@{{publisher.name}}</option>
+                                                            </select>
+                                                            <label for="gender">Publisher</label>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-1 col-12">
                                                         <span class="btn btn-text btn-danger" @click="removeItem(index)">X</span>
                                                     </div>

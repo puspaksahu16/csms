@@ -96,6 +96,7 @@ class SchoolController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $school = School::where('user_id', $id)->first();
         $school->full_name =$request->full_name;
         $school->address =$request->address;
@@ -112,7 +113,8 @@ class SchoolController extends Controller
         $school->email =$request->email;
         $school->mobile =$request->mobile;
         $school->update();
-         $user =  User::where('id', $id)->first();
+         $user =  User::find($id);
+
         $user->name = $request->full_name;
         $user->email = $request->email;
         $user->update();

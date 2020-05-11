@@ -78,9 +78,9 @@
                                                 @endif
 
                                                 @if($generals->is_active == '1')
-                                                    <td style="color:green;">Active</td>
+                                                    <td><button class="btn-info">Active</button></td>
                                                 @else
-                                                    <td>Inactive</td>
+                                                    <td><button class="btn-danger">Inactive</button></td>
                                                 @endif
                                                 <td><a href="{{route('general.edit', $generals->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>

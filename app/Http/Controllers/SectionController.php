@@ -72,9 +72,17 @@ class SectionController extends Controller
      */
     public function edit($id)
     {
-        $classes = CreateClass::all();
-        $section = Section::find($id);
-        return view('admin.section.edit',compact('section','classes'));
+        if (auth()->user()->role->name == "super_admin") {
+            $schools = School::all();
+            $classes = CreateClass::all();
+            $section = Section::find($id);
+            return view('admin.section.edit',compact(['section','classes','schools']));
+        }else{
+            $classes = CreateClass::all();
+            $section = Section::find($id);
+            return view('admin.section.edit',compact(['section','classes']));
+        }
+
     }
 
     /**

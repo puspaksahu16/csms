@@ -29,7 +29,7 @@
                                     <li class="breadcrumb-item"><a href="#">Fees Structure</a>
                                     </li>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Extra Classes</a>
+                                    <li class="breadcrumb-item"><a href="#">Co-Curricular Activities</a>
                                     </li>
                                 </ol>
                             </div>
@@ -44,9 +44,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Extra Classes</h4>
+                                <h4 class="card-title">Co-Curricular Activities</h4>
 
-                                <a class="btn btn-primary" href="{{url('/extraclasses/create')}}">Add Extra Classes</a>
+                                <a class="btn btn-primary" href="{{url('/extraclasses/create')}}">Add Co-Curricular Activity</a>
                             </div>
                             <div class="card-content">
 

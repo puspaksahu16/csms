@@ -105,7 +105,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/admission_fee_store/{id}','AdmissionFeeController@AdmissionFeeStore');
 
 
-
+    Route::get('/edit_profile/{id}','NewAdmissionController@edit_profile');
+    Route::patch('/parents_update/{id}','NewAdmissionController@parentUpdate');
 
     Route::get('/pay/{id}','AdmissionFeeController@pay');
     Route::post('/payment/{id}','AdmissionFeeController@payment');

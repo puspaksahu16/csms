@@ -20,7 +20,7 @@ class CreateSchoolsTable extends Migration
             $table->string('address');
             $table->string('affliation_no');
             $table->string('owner_name');
-            $table->integer('owner_contact_no');
+            $table->bigInteger('owner_contact_no');
             $table->string('owner_photo');
             $table->string('contact_person');
             $table->string('photo');

@@ -70,24 +70,26 @@
                                                         </div>
                                                     </div>
                                                     @endif
-                                                    <div class="col-md-4 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="text" id="create_class" class="form-control" placeholder="Create New Class" name="create_class">
-                                                            <label for="first-name-column">Create Class</label>
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
+                                                                <select type="text" id="standard_id" class="form-control"  name="standard_id">
+                                                                    <option value="">-Select Standard-</option>
+                                                                    @foreach($standards as $standard)
+                                                                        <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="standard">Standard</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
-                                                            <select type="text" id="standard_id" class="form-control"  name="standard_id">
-                                                                <option value="">-Select Standard-</option>
-                                                                @foreach($standards as $standard)
-                                                                    <option value="{{ $standard->id }}">{{ $standard->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <label for="standard">Standard</label>
+                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class">
+                                                            <label for="first-name-column">Class Name</label>
                                                         </div>
                                                     </div>
+
+
 
                                                     <div class="col-4">
                                                         <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
@@ -133,12 +135,15 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table zero-configuration" id="">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <th scope="col">School Name</th>
+                                            @endif
                                             <th scope="col">Standard</th>
+                                            <th scope="col">Class Name</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
@@ -146,8 +151,11 @@
                                         @foreach($classes as $key => $classes)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
-                                                <th>{{$classes->create_class}}</th>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                <th>{{$classes->school->full_name}}</th>
+                                                @endif
                                                 <th>{{$classes->standard->name}}</th>
+                                                <th>{{$classes->create_class}}</th>
                                                 <td><a href="{{route('classes.edit', $classes->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach

@@ -96,7 +96,7 @@
                                                                 </div>
                                                                     <div class="row">
                                                                         @if(auth()->user()->role->name == "super_admin")
-                                                                            <div class="col-md-6 col-12">
+                                                                            <div class="col-md-12 col-12">
                                                                                 <select name="school_id" class="form-control">
                                                                                     <option>-SELECT School-</option>
 
@@ -105,8 +105,10 @@
                                                                                     @endforeach
 
                                                                                 </select>
+                                                                                <label for="first-name-column"></label>
                                                                             </div>
                                                                         @endif
+
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <input type="text" class="form-control" placeholder="First Name" name="first_name">
@@ -203,22 +205,22 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Mother's First Name" name="mother_first_name">
-                                                                                    <label for="first-name-column">Mother's First Name</label>
+                                                                                    <input type="text"  class="form-control" placeholder="First Name" name="mother_first_name">
+                                                                                    <label for="first-name-column"> First Name</label>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name">
-                                                                                    <label for="last-name-column">Mother's Last Name</label>
+                                                                                    <input type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="mother_last_name">
+                                                                                    <label for="last-name-column"> Last Name</label>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="mother_mobile">
-                                                                                    <label for="Mother's Mobile">Mother's Mobile Number</label>
+                                                                                    <input type="text"  class="form-control" placeholder=" Mobile"  name="mother_mobile">
+                                                                                    <label for=" Mobile"> Mobile Number</label>
                                                                                 </div>
                                                                             </div>
 
@@ -232,27 +234,18 @@
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
                                                                                     <input type="text"  class="form-control" placeholder="Mother Occupation"  name="mother_occupation">
-                                                                                    <label for="Occupation">Mother's Occupation</label>
+                                                                                    <label for="Occupation"> Occupation</label>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
                                                                                     <input type="text"  class="form-control" placeholder="Mother Salary"  name="mother_salary">
-                                                                                    <label for="Income">Mother's Salary</label>
+                                                                                    <label for="Income"> Salary</label>
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <select name="mother_qualification" class="form-control">
-                                                                                        <option value="">-choose Mother's Qualification-</option>
-                                                                                        @foreach($qualifications as $qualification)
-                                                                                            <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
-                                                                                        @endforeach
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
+
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
@@ -271,7 +264,16 @@
                                                                                     <label for="last-name-column">Id Proof Number</label>
                                                                                 </div>
                                                                             </div>
-
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <select name="mother_qualification" class="form-control">
+                                                                                        <option value="">-choose  Qualification-</option>
+                                                                                        @foreach($qualifications as $qualification)
+                                                                                            <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -286,52 +288,43 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name">
-                                                                                    <label for="first-name-column">Father's First Name</label>
+                                                                                    <input type="text" id="first-name-column" class="form-control" placeholder=" First Name" name="father_first_name">
+                                                                                    <label for="first-name-column"> First Name</label>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name">
-                                                                                    <label for="last-name-column">Father's Last Name</label>
+                                                                                    <input type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="father_last_name">
+                                                                                    <label for="last-name-column"> Last Name</label>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile">
-                                                                                    <label for="Mother's Mobile">Father's Mobile Number</label>
+                                                                                    <input type="text"  class="form-control" placeholder=" Mobile"  name="father_mobile">
+                                                                                    <label for=" Mobile"> Mobile Number</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Father Email Id"  name="father_email">
-                                                                                    <label for="Email Id">Father Email Id</label>
+                                                                                    <input type="text"  class="form-control" placeholder=" Email Id"  name="father_email">
+                                                                                    <label for="Email Id"> Email Id</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Father Occupation"  name="father_occupation">
-                                                                                    <label for="Occupation">Father's Occupation</label>
+                                                                                    <input type="text"  class="form-control" placeholder=" Occupation"  name="father_occupation">
+                                                                                    <label for="Occupation"> Occupation</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder="Father Salary"  name="father_salary">
-                                                                                    <label for="Income">Father's Salary</label>
+                                                                                    <input type="text"  class="form-control" placeholder=" Salary"  name="father_salary">
+                                                                                    <label for="Income"> Salary</label>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <select name="father_qualification" class="form-control">
-                                                                                        <option value="">-choose Father's Qualification-</option>
-                                                                                        @foreach($qualifications as $qualification)
-                                                                                            <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
-                                                                                        @endforeach
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
+
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
@@ -348,6 +341,16 @@
                                                                                 <div class="form-label-group">
                                                                                     <input type="text" class="form-control" placeholder="Id Proof Number" name="father_id_no">
                                                                                     <label for="last-name-column">Id Proof Number</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <select name="father_qualification" class="form-control">
+                                                                                        <option value="">-choose  Qualification-</option>
+                                                                                        @foreach($qualifications as $qualification)
+                                                                                            <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

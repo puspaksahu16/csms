@@ -45,16 +45,10 @@
                                                 <div class="row">
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="create_class" class="form-control" placeholder="Create New Class" name="create_class">
-                                                            <label for="first-name-column">Create Class</label>
+                                                            <input type="text" id="create_class" class="form-control" placeholder="New Class" name="create_class">
+                                                            <label for="first-name-column">New Class</label>
                                                         </div>
                                                     </div>
-
-
-
-
-
-
 
                                                     <div class="col-6">
                                                         <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">

@@ -12,4 +12,8 @@ class Section extends Model
     {
         return $this->belongsTo(Createclass::class,'class_id');
     }
+    public function school()
+    {
+        return $this->belongsTo(School::class,'school_id');
+    }
 }

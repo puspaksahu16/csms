@@ -13,7 +13,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Create Class</a>
+                                    <li class="breadcrumb-item"><a href="#">Class</a>
                                     </li>
 
                                 </ol>
@@ -40,22 +40,35 @@
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
-                                                    <div class="col-md-4 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="text" id="create_class" class="form-control" placeholder="Create New Class" name="create_class"  value="{{$classes->create_class}}">
-                                                            <label for="first-name-column">Create Class</label>
-                                                        </div>
-                                                    </div>
+                                                    @if(auth()->user()->role->name == "super_admin")
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
+                                                                <select name="school_id" class="form-control">
+                                                                    <option>-SELECT School-</option>
 
+                                                                    @foreach($schools as $school)
+                                                                        <option {{ $classes->school->id == $classes->school_id ? "selected" : " " }} value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
+                                                                <select type="text" id="standard_id" class="form-control"  name="standard_id">
+                                                                    <option value="">-Select Standard-</option>
+                                                                    @foreach($standards as $standard)
+                                                                        <option  {{ $standard->id == $classes->standard_id ? "selected" : " " }} value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="standard">Standard</label>
+                                                            </div>
+                                                        </div>
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
-                                                            <select type="text" id="standard_id" class="form-control"  name="standard_id">
-                                                                <option value="">-Select Standard-</option>
-                                                                @foreach($standards as $standard)
-                                                                    <option  {{ $standard->id == $classes->standard_id ? "selected" : " " }} value="{{ $standard->id }}">{{ $standard->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <label for="standard">Standard</label>
+                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class"  value="{{$classes->create_class}}">
+                                                            <label for="first-name-column">Class Name</label>
                                                         </div>
                                                     </div>
 
