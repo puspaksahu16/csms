@@ -17,6 +17,8 @@
             </li>
             <li class=" nav-item"><a href="{{url('/parents')}}"><i class="fa fa-user"></i><span class="menu-title" data-i18n="Schools">Parents</span></a>
             </li>
+            <li class=" nav-item"><a href="{{url('/employee')}}"><i class="fa fa-user"></i><span class="menu-title" data-i18n="Schools">Employee</span></a>
+            </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Pre Admission</span></a>
                 <ul class="menu-content">
                     <li><a href="{{url('/pre_exam')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreExam">Pre Exam</span></a></li>

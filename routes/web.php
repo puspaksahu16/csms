@@ -122,6 +122,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/get_roll','ResultController@getRoll');
     Route::get('lara_result','ResultController@laraResult')->name('lara_result');
 
+    Route::resource('employee','EmployeeController');
+
     Route::get('/stateSetting', function () {
         return view('admin.stateSetting');
     });
