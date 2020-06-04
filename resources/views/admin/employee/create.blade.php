@@ -64,7 +64,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <form class="form" method="POST" action="">
+                                                    <form class="form" method="POST" action="{{route('employee.store')}}">
                                                         @csrf
 
                                                         <div class="row setup-content" id="step-1">
@@ -76,7 +76,7 @@
                                                                 <br/><br/>
                                                                 <div class="row">
                                                                     <div class="col-md-4">
-                                                                        <div class="student_photo">
+                                                                        <div class="employee_photo">
                                                                             <img id="p1" height="150px" width="130px"  />
                                                                         </div>
                                                                         <br/>
@@ -180,6 +180,12 @@
                                                                             <div class="form-label-group">
                                                                                 <input type="text"  class="form-control" placeholder="Employee Salary"  name="employee_salary">
                                                                                 <label for="Income"> Salary</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-12">
+                                                                            <div class="form-label-group">
+                                                                                <input type="text"  class="form-control" placeholder="Experience"  name="experience">
+                                                                                <label for="Experience"> Experience</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">

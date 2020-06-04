@@ -66,7 +66,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach($employees as $key => $employee)
+                                            <tr>
+                                                <th scope="row">{{$key+1}}</th>
+                                                <td>{{$employee->first_name." ".$employee->last_name}}</td>
+                                                <td>{{$employee->employee_unique_id}}</td>
+                                                <td>{{$employee->employee_designation}}</td>
+                                                <td>
 
+                                                    <a href="{{route('employee.edit', $employee->id)}}" class="btn btn-sm btn-primary">Edit</a>
+
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
