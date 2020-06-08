@@ -58,7 +58,11 @@ class NewAdmissionController extends Controller
     public function create()
     {
         $id_proof = idproof::all();
-        $classes = Createclass::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $classes = Createclass::all();
+        }else{
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+        }
         $schools = School::all();
         $qualifications = Qualification::all();
         return view('admin.new_admission.create',compact(['id_proof', 'classes','schools','qualifications']));

@@ -38,12 +38,6 @@
                     {{--<li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>--}}
                 </ul>
             </li>
-            <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Employee">Employee</span></a>
-                <ul class="menu-content">
-                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="employee">Employees</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="transfer">Transfer</span></a></li>
-                </ul>
-            </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Store">Store</span></a>
                 <ul class="menu-content">
                     <li><a href="{{ url('/products') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="products">Products</span></a></li>

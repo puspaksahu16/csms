@@ -78,9 +78,21 @@
                                                             <label for="name">Roll Number/label>
                                                         </div>
                                                     </div>
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="number" class="form-control" placeholder="Total Mark" name="total_mark" id="total_mark">
+                                                                <label for="name">Total Mark</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="number" class="form-control" placeholder="Obtain Mark" id="obtained_mark" name="obtained_mark"  onchange="marks();">
+                                                                <label for="name">Obtain Mark</label>
+                                                            </div>
+                                                        </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="number" class="form-control" placeholder="Percentage" name="percentage">
+                                                            <input type="number" class="form-control" placeholder="Percentage" name="percentage" id="percentage" readonly>
                                                             <label for="name">Percentage</label>
                                                         </div>
                                                     </div>
@@ -134,5 +146,18 @@
                    // $("#div1").html(result);
                }});
        }
+    </script>
+    <script type="text/javascript">
+
+
+        function marks(){
+            var Tmark = document.getElementById('total_mark').value;
+            var Omark = document.getElementById('obtained_mark').value;
+
+            var Per = Omark/Tmark*100;
+            $('#percentage').val(Per);
+
+        }
+
     </script>
 @endpush

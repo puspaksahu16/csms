@@ -133,7 +133,13 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
+        $employee = Employee::find($id);
+        $id_proof = idproof::all();
+        $classes = Createclass::all();
+        $schools = School::all();
+        $qualifications = Qualification::all();
+        return view('admin.employee.edit',compact(['id_proof', 'classes','schools','qualifications','employee','r_address']));
     }
 
     /**
@@ -145,7 +151,57 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $employee = Employee::find($id);
+       $employee->school_id = $request->school_id;
+       $employee->first_name = $request->first_name;
+       $employee->last_name = $request->last_name;
+        $employee->dob = $request->dob;
+        $employee->mobile = $request->mobile;
+        $employee->email = $request->email;
+        $employee->gender_id = $request->gender_id;
+        $employee->id_proof = $request->id_proof;
+        $employee->id_proof_no = $request->id_proof_no;
+        $employee->employee_qualification = $request->employee_qualification;
+        $employee->employee_designation = $request->employee_designation;
+        $employee->employee_salary = $request->employee_salary;
+        $employee->experience = $request->experience;
+        $employee->caste = $request->caste;
+        $employee->update();
+
+        foreach ($request->addresses as $key => $add)
+        {
+//            return $request->is_same;
+            if ($request->is_same == 1)
+            {
+                $adress = Address::where('user_id', $id)->first();
+                $adress->district = $add['district'];
+                $adress->address = $add['address'];
+                $adress->city = $add['city'];
+                $adress->state = $add['state'];
+                $adress->country = $add['country'];
+                $adress->zip = $add['zip'];
+                $adress->address_type = $key;
+                $adress->is_same = 1;
+                $adress->register_type = 'new';
+                $adress->update();
+                break;
+            }else{
+                $adress = Address::where('user_id', $id)->where('address_type', $key)->first();
+                $adress->user_id = $employee->id;
+                $adress->district = $add['district'];
+                $adress->address = $add['address'];
+                $adress->city = $add['city'];
+                $adress->state = $add['state'];
+                $adress->country = $add['country'];
+                $adress->zip = $add['zip'];
+                $adress->address_type = $key;
+                $adress->is_same = 0;
+                $adress->register_type = 'new';
+                $adress->update();
+            }
+
+        }
+        return redirect()->route('employee.index')->with('success', 'Employee Updated Successfully');
     }
 
     /**
