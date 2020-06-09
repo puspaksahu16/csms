@@ -67,7 +67,16 @@ class NewAdmissionController extends Controller
         $qualifications = Qualification::all();
         return view('admin.new_admission.create',compact(['id_proof', 'classes','schools','qualifications']));
     }
-
+    public function getSchools()
+    {
+        $school = School::pluck("full_name","id");
+        return view('get_school',compact('school'));
+    }
+    public function getClasses($id)
+    {
+        $classes = Createclass::where("school_id",$id)->pluck("create_class","id");
+        return json_encode($classes);
+    }
 
     /**
      * Store a newly created resource in storage.

@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::resource('pre_admissions', 'PreAdmissionController');
+    Route::get('get_school','PreAdmissionController@getSchools');
+    Route::get('pre_admissions/getclass/{id}','PreAdmissionController@getClasses');
     Route::get('lara_pre_admission','PreAdmissionController@laraPreAdmission')->name('lara_pre_admission');
 
 
@@ -98,6 +100,8 @@ Route::middleware('auth')->group(function () {
     Route::get('lara_new_admission','NewAdmissionController@laraNewAdmission')->name('lara_new_admission');
     Route::get('new_admission/{id}/view','NewAdmissionController@show')->name('new_admission.view');
     Route::get('parents','NewAdmissionController@parentsIndex')->name('parents.index');
+    Route::get('get_school','NewAdmissionController@getSchools');
+    Route::get('new_admission/getclass/{id}','NewAdmissionController@getClasses');
 
 
     Route::resource('admission_fee','AdmissionFeeController');

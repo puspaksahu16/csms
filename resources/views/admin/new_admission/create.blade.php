@@ -2,6 +2,7 @@
 @push('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('admin_assets/css/plugins/forms/wizard.min.css') }}">
     <script src="{{ asset('admin_assets/js/scripts/forms/wizard-steps.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <style>
         .btn{
             color: #fffdfd;
@@ -172,9 +173,6 @@
                                                                             <div class="form-label-group">
                                                                                 <select class="form-control" name="class_id">
                                                                                     <option value="">-Select class-</option>
-                                                                                    @foreach($classes as $class)
-                                                                                        <option value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                                    @endforeach
                                                                                 </select>
                                                                                 <label for="last-name-column">Class</label>
                                                                             </div>
@@ -523,4 +521,33 @@
     </script>
     <script src="{{ asset('admin_assets/vendors/js/extensions/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('admin_assets/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ()
+        {
+            jQuery('select[name="school_id"]').on('change',function(){
+                var schoolID = jQuery(this).val();
+                if(schoolID)
+                {
+
+                    jQuery.ajax({
+                        url : 'getclass/' +schoolID,
+                        type : "GET",
+                        dataType : "json",
+                        success:function(data)
+                        {
+                            console.log(data);
+                            jQuery('select[name="class_id"]').empty();
+                            jQuery.each(data, function(key,value){
+                                $('select[name="class_id"]').append('<option value="'+ key +'">'+ value +'</option>');
+                            });
+                        }
+                    });
+                }
+                else
+                {
+                    $('select[name="class_id"]').empty();
+                }
+            });
+        });
+    </script>
 @endpush
