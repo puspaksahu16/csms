@@ -39,6 +39,17 @@ class PreExamController extends Controller
         return  view('admin.pre_exam.create', compact(['classes', 'schools']));
     }
 
+    public function getSchools()
+    {
+        $school = School::pluck("full_name","id");
+        return view('get_school',compact('school'));
+    }
+    public function getClasses($id)
+    {
+        $classes = Createclass::where("school_id",$id)->pluck("create_class","id");
+        return json_encode($classes);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -74,7 +85,8 @@ class PreExamController extends Controller
     {
         $pre_exam = PreExam::find($id);
         $classes = Createclass::all();
-        return view('admin.pre_exam.edit', compact(['pre_exam','classes']));
+        $schools = School::all();
+        return view('admin.pre_exam.edit', compact(['pre_exam','classes','schools']));
 
     }
 

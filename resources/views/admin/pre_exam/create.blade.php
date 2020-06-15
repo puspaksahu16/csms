@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -65,11 +66,6 @@
                                                         <div class="form-label-group">
                                                             <select name="class_id" class="form-control">
                                                                 <option>-SELECT CLASS-</option>
-
-                                                                @foreach($classes as $class)
-                                                                    <option value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                @endforeach
-
                                                             </select>
                                                         </div>
                                                     </div>
@@ -125,5 +121,35 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+    </script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ()
+        {
+            jQuery('select[name="school_id"]').on('change',function(){
+                var schoolID = jQuery(this).val();
+                if(schoolID)
+                {
+
+                    jQuery.ajax({
+                        url : 'getclass/' +schoolID,
+                        type : "GET",
+                        dataType : "json",
+                        success:function(data)
+                        {
+                            console.log(data);
+                            jQuery('select[name="class_id"]').empty();
+                            jQuery.each(data, function(key,value){
+                                $('select[name="class_id"]').append('<option value="'+ key +'">'+ value +'</option>');
+                            });
+                        }
+                    });
+                }
+                else
+                {
+                    $('select[name="class_id"]').empty();
+                }
+            });
+        });
     </script>
 @endsection

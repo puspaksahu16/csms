@@ -94,6 +94,8 @@ Route::middleware('auth')->group(function () {
     Route::get('lara_damages','DamageController@laraDamages')->name('lara_damages');
 
     Route::resource('pre_exam','PreExamController');
+    Route::get('get_school','PreExamController@getSchools');
+    Route::get('pre_exam/getclass/{id}','PreExamController@getClasses');
     Route::get('lara_pre_exam','PreExamController@laraPreExam')->name('lara_pre_exam');
 
     Route::resource('new_admission','NewAdmissionController');

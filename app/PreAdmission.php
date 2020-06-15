@@ -18,7 +18,7 @@ class PreAdmission extends Model
     }
     public function parents()
     {
-        return $this->belongsTo(PreExam::class,'pre_exam_id');
+        return $this->belongsTo(StudentParent::class,'student_id');
     }
     public static function laratablesCustomAction($pre_admission)
     {

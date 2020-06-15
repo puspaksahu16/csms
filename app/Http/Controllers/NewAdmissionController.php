@@ -216,6 +216,7 @@ class NewAdmissionController extends Controller
         $id_proof = idproof::all();
         $classes = Createclass::all();
         $students = Student::find($id);
+        $schools = School::all();
         $qualifications = Qualification::all();
         $studentparents = StudentParent::where('student_id', $id)->first();
         $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
@@ -228,7 +229,7 @@ class NewAdmissionController extends Controller
             $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
         }
 
-       return view('admin.new_admission.edit', compact(['id_proof','classes','students','studentparents','r_address', 'p_address','qualifications']));
+       return view('admin.new_admission.edit', compact(['id_proof','schools','classes','students','studentparents','r_address', 'p_address','qualifications']));
     }
 
     public function edit_profile($id)
@@ -291,6 +292,7 @@ class NewAdmissionController extends Controller
         $students->tc_no = $request->tc_no;
         $students->class_id = $request->class_id;
         $students->caste = $request->caste;
+        $students->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id'):auth()->user()->school->id;
         $students->update();
 
         $parents =  StudentParent::where('student_id', $id)->first();

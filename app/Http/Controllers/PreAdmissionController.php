@@ -140,9 +140,10 @@ class PreAdmissionController extends Controller
         $pre_admission = PreAdmission::find($id);
         $classes = Createclass::all();
         $pre_exams = PreExam::all();
-        $parents = StudentParent::where('student_id', $id)->first();
+        $schools = School::all();
+        $parents = StudentParent::where('student_id',$id)->first();
         $address = Address::where('user_id',$id)->first();
-        return view('admin.pre_admissions.edit', compact(['pre_admission','classes','pre_exams','parents','address','qualifications']));
+        return view('admin.pre_admissions.edit', compact(['pre_admission','schools','classes','pre_exams','parents','address','qualifications']));
     }
 
     /**
@@ -154,6 +155,7 @@ class PreAdmissionController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $pre_admission = PreAdmission::find($id);
         $pre_admission = PreAdmission::where('id', $id)->first();
         $pre_admission->first_name = $request->input('first_name');
@@ -163,6 +165,7 @@ class PreAdmissionController extends Controller
         $pre_admission->class_id = $request->input('class_id');
         $pre_admission->pre_exam_id = $request->input('pre_exam_id');
         $pre_admission->caste = $request->input('caste');
+        $pre_admission->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id'):auth()->user()->school->id;
         $pre_admission->save();
 
         $parents = StudentParent::find($id);

@@ -94,6 +94,21 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
+
+                                                                    @if(auth()->user()->role->name == "super_admin")
+                                                                        <div class="col-md-12 col-12">
+                                                                            <select name="school_id" class="form-control">
+                                                                                <option>-SELECT School-</option>
+
+                                                                                @foreach($schools as $school)
+                                                                                    <option  {{ $students->school_id == $school->id ? "selected" : " " }} value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                                @endforeach
+
+                                                                            </select>
+                                                                            <label for="first-name-column"></label>
+                                                                        </div>
+                                                                    @endif
+
                                                                     <div class="col-md-6 col-12">
                                                                         <div class="form-label-group">
                                                                             <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{$students->first_name}}">
