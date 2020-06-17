@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.0",
         "freshbitsweb/laratables": "^2.3",
         "laravel/framework": "^6.0",
+        "laravel/socialite": "^4.4",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {

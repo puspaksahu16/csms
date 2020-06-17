@@ -139,5 +139,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/citySetting', function () {
         return view('admin.citySetting');
     });
+
+    Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+    Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+    Route::get('login/google', 'Auth\LoginController@redirectToProviderGoogle');
+    Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallbackGoogle');
 });
 
