@@ -72,9 +72,17 @@
                                                         </div>
                                                     @endif
                                                     <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <select name="class_id" class="form-control">
+                                                                    <option>-SELECT CLASS-</option>
+                                                                </select>
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
+                                                            <label>First Name</label>
                                                             <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="first_name">
-                                                            <label for="first-name-column">First Name</label>
+
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-12">
@@ -101,14 +109,7 @@
                                                             <label for="country-floating">Gender</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <select name="class_id" class="form-control">
-                                                                <option>-SELECT CLASS-</option>
-                                                            </select>
 
-                                                        </div>
-                                                    </div>
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <select name="pre_exam_id" class="form-control">
@@ -119,7 +120,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                    <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <tr>
                                                                 <br/>
@@ -167,22 +168,8 @@
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name">
-                                                                <label for="first-name-column">Father's First Name</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
                                                                 <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name">
                                                                 <label for="last-name-column">Mother's Last Name</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name">
-                                                                <label for="last-name-column">Father's Last Name</label>
                                                             </div>
                                                         </div>
 
@@ -195,17 +182,33 @@
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile">
-                                                                <label for="Mother's Mobile">Father's Mobile Number</label>
+                                                                <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email">
+                                                                <label for="Email Id">Mother Email Id</label>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email">
-                                                                <label for="Email Id">Mother Email Id</label>
+                                                                <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name">
+                                                                <label for="first-name-column">Father's First Name</label>
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name">
+                                                                <label for="last-name-column">Father's Last Name</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile">
+                                                                <label for="Mother's Mobile">Father's Mobile Number</label>
+                                                            </div>
+                                                        </div>
+
+
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
@@ -278,6 +281,7 @@
                                                     </div>
 
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
