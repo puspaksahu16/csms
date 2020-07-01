@@ -67,6 +67,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                             @foreach($pre_exams as $key => $pre_exam)
                                                 <tr>
                                                     <td>{{$key+1}}</td>

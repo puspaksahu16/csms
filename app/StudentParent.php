@@ -27,4 +27,8 @@ class StudentParent extends Model
     {
         return $this->belongsTo(Student::class, 'student_id');
     }
+    public function classes()
+    {
+        return $this->belongsTo(Createclass::class, 'class_id');
+    }
 }

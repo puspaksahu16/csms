@@ -41,7 +41,7 @@ class NewAdmissionController extends Controller
 
     public function parentsIndex()
     {
-        $parents = StudentParent::all();
+        $parents = StudentParent::all()->where('user_id',!null);
         return view('admin.parents.index', compact(['parents']));
     }
 
