@@ -130,7 +130,7 @@
                                                     </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
-                                                    <textarea name="address" class="form-control"></textarea>
+                                                    <textarea name="address" class="form-control" placeholder="Address"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 pt-2">

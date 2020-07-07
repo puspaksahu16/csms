@@ -43,11 +43,11 @@
                                             @if(auth()->user()->role->name == "super_admin")
                                                 <th scope="col">School</th>
                                             @endif
-                                            <th scope="col">Product</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Gender</th>
                                             <th scope="col">Color</th>
                                             <th scope="col">Type</th>
                                             <th scope="col">Size</th>
-                                            <th scope="col">Gender</th>
                                             <th scope="col">Price</th>
                                         </tr>
                                         </thead>
@@ -59,10 +59,10 @@
                                                     <td>{{!empty($stock->schools->full_name) ? $stock->schools->full_name : "--"}}</td>
                                                 @endif
                                                 <td>{{!empty($stock->products->name) ? $stock->products->name : "--"}}</td>
+                                                <td>{{!empty($stock->gender_id) ? $stock->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
                                                 <td>{{!empty($stock->colors->name) ? $stock->colors->name : "--"}}</td>
                                                 <td>{{!empty($stock->types->name) ? $stock->types->name : "--"}}</td>
                                                 <td>{{!empty($stock->sizes->name) ? $stock->sizes->name : "--"}}</td>
-                                                <td>{{!empty($stock->gender_id) ? $stock->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
                                                 <td>{{!empty($stock->price) ? $stock->price : "--"}}</td>
                                         @endforeach
                                         </tbody>

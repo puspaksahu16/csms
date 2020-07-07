@@ -29,6 +29,7 @@ class CreateEmployeesTable extends Migration
             $table->string('experience');
             $table->string('caste');
             $table->string('employee_qualification')->nullable();
+            $table->string('employee_department')->nullable();
             $table->string('employee_designation')->nullable();
             $table->string('employee_salary')->nullable();
             $table->timestamps();

@@ -51,8 +51,8 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
                                             <th scope="col">Student ID</th>
+                                            <th scope="col">Student Name</th>
                                             <th scope="col">Due</th>
                                             <th scope="col">Paid</th>
                                             <th scope="col">Total Fee</th>
@@ -63,8 +63,8 @@
                                         @foreach($student_fees as $key => $sf)
                                         <tr>
                                             <th scope="row">{{$key+1}}</th>
-                                            <td>{{$sf->students->first_name." ".$sf->students->last_name}}</td>
                                             <td>{{$sf->students->student_unique_id}}</td>
+                                            <td>{{$sf->students->first_name." ".$sf->students->last_name}}</td>
                                             <td>{{ $sf->fee - $sf->paid }}</td>
                                             <td>{{ $sf->paid }}</td>
                                             <td>{{ $sf->fee }}</td>

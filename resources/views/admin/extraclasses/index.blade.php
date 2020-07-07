@@ -51,11 +51,11 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table zero-configuration">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
+                                            <th scope="col">Fee Name</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Type</th>
@@ -77,9 +77,9 @@
                                                     @endif
 
                                                     @if($extraclasses->is_active == '1')
-                                                        <td style="color:green;">Active</td>
+                                                        <td><button class="btn-info">Active</button></td>
                                                     @else
-                                                        <td>Inactive</td>
+                                                        <td><button class="btn-danger">Inactive</button></td>
                                                     @endif
                                                     <td><a href="{{route('extraclasses.edit', $extraclasses->id)}}" class="btn btn-primary">Edit</a></td>
                                                 </tr>

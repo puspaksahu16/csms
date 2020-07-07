@@ -58,11 +58,12 @@
                                                 <th scope="col">School</th>
                                             @endif
                                             <th scope="col">Product</th>
+                                            <th scope="col">Gender</th>
                                             <!-- <th scope="col">Unit</th> -->
                                             <th scope="col">Color</th>
                                             <th scope="col">Type</th>
                                             <th scope="col">Size</th>
-                                            <th scope="col">Gender</th>
+
                                             <th scope="col">Damage</th>
                                             <!-- <th scope="col">Stock out</th> -->
                                             <!-- <th scope="col">Available</th> -->
@@ -76,10 +77,10 @@
                                                     <td>{{!empty($damage->schools->full_name) ? $damage->schools->full_name : "--"}}</td>
                                                 @endif
                                                 <td>{{empty($damage->products->name) ? "--" : $damage->products->name}}</td>
+                                                <td>{{!empty($damage->gender_id) ? $damage->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
                                                 <td>{{!empty($damage->colors->name) ? $damage->colors->name : "--"}}</td>
                                                 <td>{{!empty($damage->types->name) ? $damage->types->name : "--"}}</td>
                                                 <td>{{!empty($damage->sizes->name) ? $damage->sizes->name : "--"}}</td>
-                                                <td>{{!empty($damage->gender_id) ? $damage->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
                                                 <td>{{!empty($damage->damage) ? $damage->damage : "--"}}</td>
 
                                                 <!-- <td>{{$damage->available_stocks}}</td> -->

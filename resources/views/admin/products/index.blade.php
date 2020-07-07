@@ -55,7 +55,7 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
+                                            <th scope="col">Product Name</th>
                                             <th scope="col">Unit</th>
                                             <th scope="col">Action</th>
                                         </tr>

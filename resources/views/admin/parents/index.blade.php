@@ -48,12 +48,12 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Mothers Name</th>
-                                            <th scope="col">Mothers Email</th>
-                                            <th scope="col">Mothers Contact</th>
+                                            <th scope="col">Mother Name</th>
+                                            <th scope="col">Mother Email</th>
+                                            <th scope="col">Mother Contact</th>
                                             <th scope="col">Student Class</th>
                                             <th scope="col">Student Name</th>
-                                            <th scope="col">Parents Id</th>
+                                            <th scope="col">Parent Id</th>
                                         </tr>
                                         </thead>
                                         <tbody>

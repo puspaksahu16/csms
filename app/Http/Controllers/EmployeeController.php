@@ -72,6 +72,7 @@ class EmployeeController extends Controller
         $employees->caste = $request->caste;
         $employees->employee_unique_id = $employee_id;
         $employees->employee_qualification = $request->employee_qualification;
+        $employees->employee_department = $request->employee_department;
         $employees->employee_designation = $request->employee_designation;
         $employees->employee_salary = $request->employee_salary;
         $employees->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id:auth()->user()->school->id;
@@ -162,6 +163,7 @@ class EmployeeController extends Controller
         $employee->id_proof = $request->id_proof;
         $employee->id_proof_no = $request->id_proof_no;
         $employee->employee_qualification = $request->employee_qualification;
+        $employee->employee_department = $request->employee_department;
         $employee->employee_designation = $request->employee_designation;
         $employee->employee_salary = $request->employee_salary;
         $employee->experience = $request->experience;

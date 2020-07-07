@@ -60,6 +60,7 @@ class PreAdmissionController extends Controller
         $classes = Createclass::where("school_id",$id)->pluck("create_class","id");
         return json_encode($classes);
     }
+
     /**
      * Store a newly created resource in storage.
      *

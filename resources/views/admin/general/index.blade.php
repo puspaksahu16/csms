@@ -52,11 +52,11 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table zero-configuration">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
+                                            <th scope="col">Fee Name</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Type</th>

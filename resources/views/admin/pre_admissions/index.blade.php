@@ -52,9 +52,10 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Roll No</th>
+                                            <th scope="col">Student Name</th>
                                             <th scope="col">Class</th>
+                                            <th scope="col">Temp Roll No</th>
+                                            <th scope="col">Year</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
@@ -63,8 +64,9 @@
                                         <tr>
                                             <th scope="row">{{$key+1}}</th>
                                             <td>{{$pre_admission->first_name." ".$pre_admission->last_name}}</td>
-                                            <td>{{$pre_admission->roll_no}}</td>
                                             <td>{{$pre_admission->classes->create_class}}</td>
+                                            <td>{{$pre_admission->roll_no}}</td>
+                                            <td>{{$pre_admission->year->current_year}}</td>
                                             <td><a href="{{route('pre_admissions.edit', $pre_admission->id)}}" class="btn btn-primary">Edit</a></td>
                                         </tr>
                                             @endforeach

@@ -172,6 +172,12 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                <input type="text" class="form-control" placeholder="Department" name="employee_department">
+                                                                                <label for="last-name-column">Department</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-12">
+                                                                            <div class="form-label-group">
                                                                                 <input type="text" class="form-control" placeholder="Designation" name="employee_designation">
                                                                                 <label for="last-name-column">Designation</label>
                                                                             </div>

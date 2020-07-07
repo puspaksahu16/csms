@@ -26,23 +26,23 @@
                                             <table>
                                                 <tr>
                                                     <td class="font-weight-bold">Student ID</td>
-                                                    <td>{{$students->student_unique_id}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$students->student_unique_id}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Student Name</td>
-                                                    <td>{{$students->first_name}} {{$students->last_name}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$students->first_name}} {{$students->last_name}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Class</td>
-                                                    <td>{{ $students->classes->create_class }}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $students->classes->create_class }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">DOB</td>
-                                                    <td>{{ $students->dob }}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $students->dob }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Gender</td>
-                                                    <td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
                                                         @if($students->gender_id == 1)
                                                             Male
                                                             @else
@@ -57,19 +57,19 @@
                                             <table class="ml-0 ml-sm-0 ml-lg-0">
                                                 <tr>
                                                     <td class="font-weight-bold">Id proof</td>
-                                                    <td>{{ $students->idproof->id_proof }}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $students->idproof->id_proof }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Id Proof No</td>
-                                                    <td>{{$students->id_proof_no}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$students->id_proof_no}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">TC No</td>
-                                                    <td>{{$students->tc_no}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$students->tc_no}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Caste</td>
-                                                    <td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
                                                         @if($students->caste  == 1)
                                                             GEN
                                                             @elseif($students->caste  == 2)
@@ -100,40 +100,40 @@
                                     <table>
                                         <tr>
                                             <td class="font-weight-bold">Name </td>
-                                            <td>{{$studentparents->mother_first_name}} {{$studentparents->mother_last_name}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->mother_first_name}} {{$studentparents->mother_last_name}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Mobile no</td>
-                                            <td>{{$studentparents->mother_mobile}}</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->mother_mobile}}</td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Email</td>
-                                            <td>{{$studentparents->mother_email}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->mother_email}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Occupation</td>
-                                            <td>{{$studentparents->mother_occupation}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->mother_occupation}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Salary</td>
-                                            <td>{{$studentparents->mother_salary}}</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->mother_salary}}</td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Qualification</td>
-                                            <td>{{$studentparents->mqualification->qualification}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->mqualification->qualification}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Adhar</td>
-                                            <td>{{$studentparents->midproof->id_proof}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->midproof->id_proof}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Id card no</td>
-                                            <td>{{$studentparents->mother_id_no}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->mother_id_no}}
                                             </td>
                                         </tr>
                                     </table>
@@ -151,40 +151,40 @@
                                     <table>
                                         <tr>
                                             <td class="font-weight-bold">Name </td>
-                                            <td>{{$studentparents->father_first_name}} {{$studentparents->father_last_name}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->father_first_name}} {{$studentparents->father_last_name}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Mobile no</td>
-                                            <td>{{$studentparents->father_mobile}}</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->father_mobile}}</td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Email</td>
-                                            <td>{{$studentparents->father_email}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->father_email}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Occupation</td>
-                                            <td>{{$studentparents->father_occupation}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->father_occupation}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Salary</td>
-                                            <td>{{$studentparents->father_salary}}</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->father_salary}}</td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Qualification</td>
-                                            <td>{{$studentparents->fqualification->qualification}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->fqualification->qualification}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Adhar</td>
-                                            <td>{{$studentparents->fidproof->id_proof}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->fidproof->id_proof}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="font-weight-bold">Id card no</td>
-                                            <td>{{$studentparents->father_id_no}}
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->father_id_no}}
                                             </td>
                                         </tr>
                                     </table>
@@ -205,30 +205,30 @@
                                             <table>
                                                 <tr>
                                                     <td class="font-weight-bold">Resident</td>
-                                                    <td>{{$r_address->address}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->address}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">City</td>
-                                                    <td>{{$r_address->city}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->city}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">District</td>
-                                                    <td>{{$r_address->district}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->district}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Zip Code</td>
-                                                    <td>{{$r_address->zip}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->zip}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">State</td>
-                                                    <td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
                                                         {{$r_address->state}}
                                                     </td>
 
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Country</td>
-                                                    <td>{{$r_address->country}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->country}}</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -240,30 +240,30 @@
                                                 <table class="ml-0 ml-sm-0 ml-lg-0">
                                                     <tr>
                                                         <td class="font-weight-bold">Premanent</td>
-                                                        <td>{{$p_address->address}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->address}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">City</td>
-                                                        <td>{{$p_address->city}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->city}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">District</td>
-                                                        <td>{{$p_address->district}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->district}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">Zip Code</td>
-                                                        <td>{{$p_address->zip}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->zip}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">State</td>
-                                                        <td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;
                                                             {{$p_address->state}}
                                                         </td>
 
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">Country</td>
-                                                        <td>{{$p_address->country}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->country}}</td>
                                                     </tr>
                                             </table>
                                                     @endif
