@@ -44,7 +44,7 @@
                                                     @if(auth()->user()->role->name == "super_admin")
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
-                                                                <select name="school_id" class="form-control">
+                                                                <select name="school_id" onclick="getClass()" id="school_id" class="form-control">
                                                                     <option>-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
@@ -57,12 +57,13 @@
                                                     @endif
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <select onchange="getRoll(this.value)" name="class_id" class="form-control">
+                                                            <select onchange="getRoll(this.value)" name="class_id" id="class" class="form-control">
                                                                 <option>-SELECT CLASS-</option>
-
-                                                                @foreach($classes as $class)
-                                                                    <option value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                @endforeach
+                                                                @if(auth()->user()->role->name == "admin")
+                                                                    @foreach($classes as $class)
+                                                                        <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    @endforeach
+                                                                @endif
 
                                                             </select>
                                                         </div>
@@ -71,9 +72,9 @@
                                                         <div class="form-label-group">
                                                             <select id="roll_id" name="roll_no" class="form-control">
                                                                 <option>-Roll Number-</option>
-                                                                @foreach($rolls as $roll)
-                                                                    <option value="{{ $roll->id }}">{{ $roll->roll_no }}</option>
-                                                                @endforeach
+                                                                {{--@foreach($rolls as $roll)--}}
+                                                                    {{--<option value="{{ $roll->id }}">{{ $roll->roll_no }}</option>--}}
+                                                                {{--@endforeach--}}
                                                             </select>
                                                             <label for="name">Roll Number/label>
                                                         </div>
@@ -136,6 +137,7 @@
                    // $("#roll_id").append('<option>--Select Nation--</option>');
                    if(result)
                    {
+                       $('#roll_id').append('<option value="">-Select-</option>');
                        $.each(result,function(key,value){
                            $('#roll_id').append($("<option/>", {
                                value: key,
@@ -146,8 +148,25 @@
                    // $("#div1").html(result);
                }});
        }
-    </script>
-    <script type="text/javascript">
+
+       function getClass() {
+           var school_id = $('#school_id').val();
+           // alert(csrf);
+           $.ajax({
+               url : "/get_class/"+school_id,
+               type:'get',
+               success: function(response) {
+                   console.log(response);
+                   $("#class").attr('disabled', false);
+                   $("#class").empty();
+                   $("#class").append('<option value="">-Select Class-</option>');
+                   $.each(response,function(key, value)
+                   {
+                       $("#class").append('<option value=' + key + '>' + value + '</option>');
+                   });
+               }
+           });
+       }
 
 
         function marks(){

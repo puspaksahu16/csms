@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('schools.update', $school->user_id)}}" method="POST">
+                                        <form class="form" action="{{route('schools.update', $school->id)}}" method="POST">
                                             @csrf
                                             @method('put')
                                             <div class="form-body">

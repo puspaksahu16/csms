@@ -10,5 +10,4 @@ class AdmissionFee extends Model
     {
         return $this->belongsTo(Student::class, 'student_id');
     }
-
 }

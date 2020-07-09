@@ -195,6 +195,17 @@
                 },
                 school(){
                     let that = this;
+                    this.sp = [{product_id: ''}];
+                    this.rowData = [{
+                            product_id: '',
+                            color_id: '',
+                            type_id: '',
+                            size_id: '',
+                            gender_id: '',
+                            unit:'',
+                            price: '',
+                            quantity: '',
+                        }];
                     axios.post('/fetch_school_products', {
                         school_id: that.school_id,
                     })

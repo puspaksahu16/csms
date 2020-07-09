@@ -170,15 +170,15 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                        <div class="col-md-6 col-12">
+                                                                    <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input type="text" class="form-control" placeholder="Designation"  value="{{$employee->employee_designation}}" name="employee_designation">
+                                                                                <input type="text" class="form-control" placeholder="Designation"  value="{{$employee->employee_department}}" name="employee_department">
                                                                                 <label for="last-name-column">Department</label>
                                                                             </div>
                                                                         </div>
                                                                     <div class="col-md-6 col-12">
                                                                         <div class="form-label-group">
-                                                                            <input type="text" class="form-control" placeholder="Department"  value="{{$employee->employee_department}}" name="employee_department">
+                                                                            <input type="text" class="form-control" placeholder="Designation"  value="{{$employee->employee_designation}}" name="employee_designation">
                                                                             <label for="last-name-column">Designation</label>
                                                                         </div>
                                                                     </div>

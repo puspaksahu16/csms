@@ -51,8 +51,8 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Roll No</th>
                                             <th scope="col">Class Name</th>
+                                            <th scope="col">Roll No</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Result</th>
                                             <th scope="col">Action</th>

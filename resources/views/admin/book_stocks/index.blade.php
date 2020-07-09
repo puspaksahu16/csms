@@ -60,7 +60,7 @@
                                                 <th scope="col">School</th>
                                             @endif
                                             <th scope="col">Book Name</th>
-                                            <th scope="col">Class</th>
+                                            <th scope="col">class</th>
                                             <th scope="col">Subject</th>
                                             <th scope="col">Publisher</th>
                                             <th scope="col">Stock in</th>

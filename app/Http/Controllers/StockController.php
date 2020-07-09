@@ -165,29 +165,33 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        foreach ($request->stock as $stock) {
-            $stock['stock_in'] = $stock['quantity'];
-            $stock['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id ;
+        if (!empty($request->stock)){
+            foreach ($request->stock as $stock) {
+                $stock['stock_in'] = $stock['quantity'];
+                $stock['last_in'] = $stock['quantity'];
+                $stock['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id ;
 
-            $availables = Stock::where('product_id', $stock['product_id'])
-            ->where('color_id', $stock['color_id'])
-            ->where('type_id', $stock['type_id'])
-            ->where('gender_id', $stock['gender_id'])
-            ->where('size_id', $stock['size_id'])
-            ->where('school_id', $stock['school_id'])
-            ->get();
+                $availables = Stock::where('product_id', $stock['product_id'])
+                    ->where('color_id', $stock['color_id'])
+                    ->where('type_id', $stock['type_id'])
+                    ->where('gender_id', $stock['gender_id'])
+                    ->where('size_id', $stock['size_id'])
+                    ->where('school_id', $stock['school_id'])
+                    ->get();
 
 
-            if (count($availables) <= 0) {
-                $createstock = new Stock();
-                $createstock->create($stock);
-            }else{
-                $update = Stock::find($availables[0]['id']);
-                $update->stock_in = $availables[0]['stock_in'] + $stock['quantity'];
-                $update->update();
+                if (count($availables) <= 0) {
+                    $createstock = new Stock();
+                    $createstock->create($stock);
+                }else{
+                    $update = Stock::find($availables[0]['id']);
+                    $update->stock_in = $availables[0]['stock_in'] + $stock['quantity'];
+                    $update->last_in = $stock['quantity'];
+                    $update->update();
+                }
             }
+            return response(["success"]);
         }
-        return response(["success"]);
     }
 
     /**
@@ -209,7 +213,8 @@ class StockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stocks = Stock::find($id);
+        return view('admin.stocks.edit', compact('stocks'));
     }
 
     /**
@@ -221,7 +226,12 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = Stock::find($id);
+        $update->description = $request->description;
+        $update->stock_in = $update->stock_in - $update->last_in;
+        $update->last_in = 0;
+        $update->update();
+        return redirect()->route('stocks.index')->with('success', 'last stock removed Successfully');
     }
 
     /**

@@ -17,9 +17,8 @@ class CreateAdmissionFeesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('student_id');
             $table->json('general');
-            $table->json('product');
             $table->json('ecc');
-            $table->json('book');
+            $table->integer('fee');
             $table->timestamps();
         });
     }

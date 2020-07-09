@@ -56,7 +56,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Publisher Name" name="name">
+                                                            <input autocomplete="off" type="text" class="form-control" placeholder="Publisher Name" name="name">
                                                             <label for="name">Publisher Name</label>
                                                         </div>
                                                     </div>

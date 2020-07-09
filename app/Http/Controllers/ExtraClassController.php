@@ -32,7 +32,10 @@ class ExtraClassController extends Controller
      */
     public function create()
     {
-        $classes = Createclass::all();
+        if (auth()->user()->role->name == 'admin')
+        {
+            $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
+        }
         $schools = School::all();
         return view('admin.extraclasses.create',compact(['classes','schools']));
     }

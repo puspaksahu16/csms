@@ -63,6 +63,7 @@
                                             <th scope="col">Class</th>
                                             <th scope="col">Subject</th>
                                             <th scope="col">Publisher</th>
+                                            
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
@@ -78,6 +79,7 @@
                                                 <td>{{!empty($book->classes->create_class) ? $book->classes->create_class : "--"}}</td>
                                                 <td>{{!empty($book->subject->name) ? $book->subject->name : "--"}}</td>
                                                 <td>{{!empty($book->publisher->name) ? $book->publisher->name : "--"}}</td>
+                                                
                                                 <td><a href="{{route('books.edit', $book->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
                                         @endforeach

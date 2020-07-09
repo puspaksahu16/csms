@@ -38,9 +38,6 @@
             </div>
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
 
-
-
-
                 <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">
                     <div class="row match-height">
@@ -57,39 +54,50 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     @if(auth()->user()->role->name == "super_admin")
-                                                    <div class="col-md-4 col-12">
-                                                        <div class="form-label-group">
-                                                            <select name="school_id" class="form-control">
-                                                                <option>-SELECT School-</option>
-
-                                                                @foreach($schools as $school)
-                                                                    <option value="{{ $school->id }}">{{ $school->full_name }}</option>
-                                                                @endforeach
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    @endif
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
-                                                                <select type="text" id="standard_id" class="form-control"  name="standard_id">
-                                                                    <option value="">-Select Standard-</option>
-                                                                    @foreach($standards as $standard)
-                                                                        <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                                                <select id="school_id" onchange="getStandard()" name="school_id" class="form-control">
+                                                                    <option>-SELECT School-</option>
+
+                                                                    @foreach($schools as $school)
+                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
+                                                                <select disabled="true" type="text" id="standard_id" class="form-control"  name="standard_id">
+                                                                    <option value="">-Select Standard-</option>
+                                                                    {{--@foreach($standards as $standard)--}}
+                                                                    {{--<option value="{{ $standard->id }}">{{ $standard->name }}</option>--}}
+                                                                    {{--@endforeach--}}
                                                                 </select>
                                                                 <label for="standard">Standard</label>
                                                             </div>
                                                         </div>
-
+                                                    @endif
+                                                        @if(auth()->user()->role->name == "admin")
+                                                            <div class="col-md-4 col-12">
+                                                                <div class="form-label-group">
+                                                                    <select type="text" class="form-control"  name="standard_id">
+                                                                        <option value="">-Select Standard-</option>
+                                                                        @foreach($standards as $standard)
+                                                                        <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <label for="standard">Standard</label>
+                                                                </div>
+                                                            </div>
+                                                        @endif
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class">
                                                             <label for="first-name-column">Class Name</label>
                                                         </div>
                                                     </div>
-
-
 
                                                     <div class="col-4">
                                                         <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
@@ -98,25 +106,12 @@
                                                     </div>
 
                                                 </div>
-
-
-
-
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
+                        </div>
                         </div>
                 </section>
                 <!-- // Basic Floating Label Form section end -->
@@ -171,3 +166,26 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function getStandard() {
+            var school_id = $('#school_id').val();
+            // alert(csrf);
+            $.ajax({
+                url : "/get_standard/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#standard_id").attr('disabled', false);
+                    $("#standard_id").empty();
+                    $("#standard_id").append('<option value="">-Select Standard-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#standard_id").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
+        }
+    </script>
+    @endpush

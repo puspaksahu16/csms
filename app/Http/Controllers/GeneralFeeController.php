@@ -32,7 +32,11 @@ class GeneralFeeController extends Controller
      */
     public function create()
     {
-        $classes = CreateClass::all();
+//        return auth()->user()->school->id;
+        if (auth()->user()->role->name == 'admin')
+        {
+            $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
+        }
         $schools = School::all();
         return view('admin.general.create' , compact(['classes','schools']));
     }

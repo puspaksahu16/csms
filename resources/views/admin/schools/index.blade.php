@@ -40,7 +40,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Result</h4>
+                                <h4 class="card-title">School</h4>
                                 <a class="btn btn-primary" href="{{url('/schools/create')}}">Add</a>
                             </div>
                             <div class="card-content">
@@ -66,7 +66,7 @@
                                                     <td>{{$school->email}}</td>
                                                     <td>{{$school->mobile}}</td>
                                                     <td>{{$school->is_active == 1 ? 'Active' : "Inactive"}}</td>
-                                                    <td><a href="{{route('schools.edit', $school->user_id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                    <td><a href="{{route('schools.edit', $school->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

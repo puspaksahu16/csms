@@ -59,15 +59,7 @@
                                                                 </div>
                                                                 <div class="stepwizard-step">
                                                                     <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                                                                    <p>Product Fee</p>
-                                                                </div>
-                                                                <div class="stepwizard-step">
-                                                                    <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
                                                                     <p>Extra Co-Activity</p>
-                                                                </div>
-                                                                <div class="stepwizard-step">
-                                                                    <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
-                                                                    <p>Book</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -119,53 +111,6 @@
 
                                                             <div class="row setup-content" id="step-2">
                                                                 <div class="card-header">
-                                                                    <h4 class="card-title">Product Fee</h4>
-                                                                </div>
-                                                                <div class="container">
-                                                                    <br/><br/>
-                                                                    <div class="row">
-                                                                        <div class="table-responsive">
-                                                                            <table class="table table-striped mb-0">
-                                                                                <thead>
-                                                                                <tr>
-                                                                                    <th scope="col">#</th>
-                                                                                    <th scope="col">Product Name</th>
-                                                                                    <th scope="col">Color</th>
-                                                                                    <th scope="col">Type</th>
-                                                                                    <th scope="col">Size</th>
-                                                                                    <th scope="col">Gender</th>
-                                                                                    <th scope="col">Price</th>
-                                                                                    <th scope="col">Available</th>
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                @foreach($products as $key => $p)
-                                                                                    <tr>
-                                                                                        <td>
-                                                                                            <div class="custom-control custom-checkbox">
-                                                                                                <input type="checkbox" class="custom-control-input" checked="" name="product[]" value="{{ $p->id }}" id="{{$key}}">
-                                                                                                <label class="custom-control-label" for="{{$key}}"></label>
-                                                                                            </div>
-                                                                                        </td>
-                                                                                        <td>{{!empty($p->products->name) ? $p->products->name : "--"}}</td>
-                                                                                        <td>{{!empty($p->colors->name) ? $p->colors->name : "--"}}</td>
-                                                                                        <td>{{!empty($p->types->name) ? $p->types->name : "--"}}</td>
-                                                                                        <td>{{!empty($p->sizes->name) ? $p->sizes->name : "--"}}</td>
-                                                                                        <td>{{!empty($p->gender_id) ? $p->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
-                                                                                        <td>{{!empty($p->price) ? $p->price.'/-' : "--/-"}}</td>
-                                                                                        <td>{{!empty($p->available_stocks) ? $p->available_stocks : "not available"}}</td>
-                                                                                    </tr>
-                                                                                @endforeach
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                    </div>
-                                                                    <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row setup-content" id="step-3">
-                                                                <div class="card-header">
                                                                     <h4 class="card-title">Extra Co-Activity</h4>
                                                                 </div>
                                                                 <div class="container">
@@ -199,51 +144,6 @@
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
-                                                                    <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row setup-content" id="step-4">
-                                                                <div class="card-header">
-                                                                    <h4 class="card-title">Book</h4>
-                                                                </div>
-                                                                <div class="container">
-                                                                    <br/><br/>
-                                                                    <div class="row">
-                                                                        <table class="table table-striped mb-0" id="">
-                                                                            <thead>
-                                                                            <tr>
-
-                                                                                <th scope="col">#</th>
-                                                                                <th scope="col">Book Name</th>
-                                                                                <th scope="col">class</th>
-                                                                                <th scope="col">Subject</th>
-                                                                                <th scope="col">Publisher</th>
-                                                                                <th scope="col">Available</th>
-
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            @foreach($book as $key => $b)
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <div class="custom-control custom-checkbox">
-                                                                                            <input type="checkbox" class="custom-control-input" checked="" name="book[]" value="{{ $b->id }}" id="{{$b->name.$key}}">
-                                                                                            <label class="custom-control-label" for="{{$b->name.$key}}"></label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>{{!empty($b->name) ? $b->name : "--"}}</td>
-                                                                                    <td>{{!empty($b->classes->create_class) ? $b->classes->create_class : "--"}}</td>
-                                                                                    <td>{{!empty($b->subject->name) ? $b->subject->name : "--"}}</td>
-                                                                                    <td>{{!empty($b->publisher->name) ? $b->publisher->name : "--"}}</td>
-                                                                                    <td>{{!empty($b->price) ? $b->price : "--"}}</td>
-                                                                                    <td>{{$b->available_stocks}}</td>
-
-                                                                                </tr>
-                                                                            @endforeach
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
                                                                     <button class="btn btn-success pull-right waves-effect waves-light" type="Submit" >Finish</button>
                                                                 </div>
                                                             </div>
@@ -268,6 +168,28 @@
 @endsection
 @push('scripts')
     <script>
+        function negative(id) {
+            var key = id.split("-");
+            var quantity = $('#quantity-'+key[1]).val();
+            if(quantity == 1)
+            {
+                alert('Minimum Quantity is 1');
+            }else{
+                $('#quantity-'+key[1]).val(quantity - 1);
+            }
+        }
+        function positive(id) {
+            var key = id.split("-");
+            var quantity = $('#quantity-'+key[1]).val();
+
+            $('#quantity-'+key[1]).val(parseInt(quantity) + 1);
+            // if(quantity == 1)
+            // {
+            //     alert('Minimum Quantity is 1');
+            // }else{
+            //     $('#quantity-'+key[1]).val(quantity - 1);
+            // }
+        }
         function permanent() {
             var a = $('#is_same').is(':checked') ? 1 : 0;
             if (a == 0)

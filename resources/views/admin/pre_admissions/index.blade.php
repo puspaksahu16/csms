@@ -61,7 +61,7 @@
                                         </thead>
                                         <tbody>
                                         @foreach($pre_admissions as $key => $pre_admission)
-                                        <tr>
+                                         <tr>
                                             <th scope="row">{{$key+1}}</th>
                                             <td>{{$pre_admission->first_name." ".$pre_admission->last_name}}</td>
                                             <td>{{$pre_admission->classes->create_class}}</td>

@@ -20,7 +20,6 @@ class PreAdmission extends Model
     {
         return $this->belongsTo(StudentParent::class,'student_id');
     }
-
     public function year()
     {
         return $this->belongsTo(PreExam::class,'pre_exam_id');

@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('classes', 'CreateClassController');
+    Route::get('/get_standard/{id}', 'CreateClassController@getStandard');
 
     Route::resource('section','SectionController');
 
@@ -63,6 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('lara_books','BookController@laraBooks')->name('lara_books');
 
     Route::post('/fetch_class', 'BookController@fetchClass');
+    Route::get('/get_class/{id}', 'CreateClassController@getClass');
 
     Route::resource('publisher', 'PublisherController');
 
@@ -107,7 +109,22 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('admission_fee','AdmissionFeeController');
     Route::get('/admission_fee_create/{id}','AdmissionFeeController@AdmissionFee');
+
+    //product fee create
+    Route::get('/store_fee_create/{id}','AdmissionFeeController@StoreFee');
+
+    // insert to database
     Route::post('/admission_fee_store/{id}','AdmissionFeeController@AdmissionFeeStore');
+    Route::get('/admission_fee_edit/{id}','AdmissionFeeController@edit');
+    Route::post('/admission_fee','AdmissionFeeController@update');
+
+
+    Route::resource('/store_fees','StoreFeeController');
+    Route::get('/store_fee/{id}','StoreFeeController@StoreFee');
+    Route::post('/store_fee_store/{id}','StoreFeeController@StoreFeeStore');
+    Route::get('/store_payment_history/{id}','StoreFeeController@paymentHistory');
+    Route::post('/payment_store/{id}','StoreFeeController@payment');
+    Route::get('/store_fees_pay/{id}','StoreFeeController@pay');
 
 
     Route::get('/edit_profile/{id}','NewAdmissionController@edit_profile');
@@ -118,10 +135,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/payment_history/{id}','PaymentController@index');
     Route::get('/receive/{id}','PaymentController@receive');
-
-    Route::get('/admission_fee_edit/{id}','AdmissionFeeController@edit');
-    Route::post('/admission_fee','AdmissionFeeController@update');
-
 
     Route::resource('result','ResultController');
     Route::post('/get_roll','ResultController@getRoll');

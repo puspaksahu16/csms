@@ -36,43 +36,22 @@
                                                 <div class="row">
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="first-name-column" class="form-control" placeholder="Create New Id Proof" name="id_proof">
+                                                            <input autocomplete="off" type="text" id="first-name-column" class="form-control" placeholder="Create New Id Proof" name="id_proof">
                                                             <label for="first-name-column">Create Id Proof</label>
                                                         </div>
                                                     </div>
-
-
-
-
-
-
-
                                                     <div class="col-6">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Submit</button>
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                                     </div>
-
                                                 </div>
-
-
-
-
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
                         </div>
+                    </div>
                 </section>
                 <!-- // Basic Floating Label Form section end -->
 
@@ -85,8 +64,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Id Proof List</h4>
-
+                                <h4 class="card-title pb-2">Id Proof List</h4>
                             </div>
                             <div class="card-content">
 

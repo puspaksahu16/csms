@@ -48,24 +48,24 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            <th scope="col">Parent Id</th>
                                             <th scope="col">Mother Name</th>
                                             <th scope="col">Mother Email</th>
                                             <th scope="col">Mother Contact</th>
-                                            <th scope="col">Student Class</th>
+                                             <th scope="col">Student Class</th>
                                             <th scope="col">Student Name</th>
-                                            <th scope="col">Parent Id</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($parents as $key => $parent)
                                             <tr>
                                             <th scope="row">{{$key+1}}</th>
+                                            <td>{{$parent->parent_id}}</td>
                                             <td>{{$parent->mother_first_name." ".$parent->mother_last_name}}</td>
                                             <td>{{$parent->mother_email}}</td>
                                             <td>{{$parent->mother_mobile}}</td>
                                             <td>{{$parent->students->classes->create_class}}</td>
                                             <td>{{$parent->students->first_name." ".$parent->students->last_name}}</td>
-                                            <td>{{$parent->parent_id}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -28,6 +28,20 @@ class CreateClassController extends Controller
         return view('admin.classes.index', compact(['classes','standards','schools']));
     }
 
+    public function getStandard($id)
+    {
+//        return $id;
+        $standard = Standard::where('school_id', $id)->pluck("name", 'id');
+        return response($standard);
+    }
+
+    public function getClass($id)
+    {
+//        return $id;
+        $classes = Createclass::where('school_id', $id)->pluck("create_class", 'id');
+        return response($classes);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

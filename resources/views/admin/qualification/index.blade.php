@@ -40,7 +40,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="qualification-column" class="form-control" placeholder="Create Qualification" name="qualification">
+                                                            <input autocomplete="off" type="text" id="qualification-column" class="form-control" placeholder="Create Qualification" name="qualification">
                                                             <label for="qualification-column">Create Qualification</label>
                                                         </div>
                                                     </div>

@@ -86,13 +86,23 @@ class AdmissionFeeController extends Controller
     {
         $student = Student::find($id);
         $std_id = $student->class_id;
-        $general_fees = GeneralFee::where('class_id', $std_id)->get();
-        $products = Stock::all();
-        $extra_classes = ExtraClass::where('class_id', $std_id)->get();
-        $book = Book::with('stock')->where('class_id', $std_id)->get();
+        $general_fees = GeneralFee::where('class_id', $std_id)->where('school_id', $student->school_id)->get();
+//        $products = Stock::all();
+        $extra_classes = ExtraClass::where('class_id', $std_id)->where('school_id', $student->school_id)->get();
+//        $book = Book::with('stock')->where('class_id', $std_id)->get();
 
-        return view('admin.new_admission.fee',compact(['id', 'general_fees', 'products', 'extra_classes', 'book']));
+        return view('admin.new_admission.fee',compact(['id', 'general_fees', 'extra_classes']));
     }
+
+//    public function StoreFee($id)
+//    {
+//        $student = Student::find($id);
+//        $std_id = $student->class_id;
+//        $products = Stock::where('school_id', $student->school_id)->get();
+//        $book = Book::with('stock')->where('class_id', $std_id)->where('school_id', $student->school_id)->get();
+//
+//        return view('admin.new_admission.store_fee',compact(['id', 'products', 'book']));
+//    }
 
     /**
      * Show the form for creating a new resource.
@@ -111,67 +121,142 @@ class AdmissionFeeController extends Controller
      */
     public function AdmissionFeeStore($id, Request $request)
     {
+//        return$id;
         $af = AdmissionFee::where('student_id', $id)->first();
-        $student_fees = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->get();
+
         if (empty($af))
         {
+            $fee = 0;
+
             $admission_fee = new AdmissionFee();
             $admission_fee->student_id = $id;
             $admission_fee->general = json_encode($request->general);
-            $admission_fee->product = json_encode($request->product);
+//            $products = [];
+//            foreach ($request->product as $p)
+//            {
+//                if (!empty($p['id']))
+//                {
+//                    array_push($products, $p);
+//                }
+//            }
+//            $admission_fee->product = json_encode($products);
             $admission_fee->ecc = json_encode($request->ecc);
-            $admission_fee->book = json_encode($request->book);
-
-            $fee = 0;
-            foreach ($student_fees as $sf)
-            {
-                $all_general_fee = json_decode($sf->general);
-                foreach ($all_general_fee as $agf)
-                {
-                    $general_fee = GeneralFee::find($agf);
-                    if ($general_fee->type == 1)
-                    {
-                        $fee += $general_fee->price;
-                    }
-                    elseif ($general_fee->type == 2)
-                    {
-                        $fee += ($general_fee->price * 12);
-                    }
-                }
-                $all_product_fee = json_decode($sf->product);
-                foreach ($all_product_fee as $apf)
-                {
-                    $product_fee = Stock::find($apf);
-                    $fee += $product_fee->price;
-                }
-                $all_ecc_fee = json_decode($sf->ecc);
-                foreach ($all_ecc_fee as $aef)
-                {
-                    $ecc_fee = ExtraClass::find($aef);
-                    if ($ecc_fee->type == 1)
-                    {
-                        $fee += $ecc_fee->price;
-                    }
-                    elseif ($ecc_fee->type == 2)
-                    {
-                        $fee += ($ecc_fee->price * 12);
-                    }
-                }
-                $all_book_fee = json_decode($sf->book);
-                foreach ($all_book_fee as $abf)
-                {
-                    $book_fee = Book::find($abf);
-                    $fee += $book_fee->price;
-                }
-            }
-
+//            $admission_fee->book = json_encode($request->book);
             $admission_fee->fee = $fee;
             $admission_fee->save();
+            $sf = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->where('student_id', $id)->first();
+//            foreach ($student_fees as $sf)
+//            {
+                $all_general_fee = json_decode($sf->general);
+                if (!empty($all_general_fee)){
+                    foreach ($all_general_fee as $agf)
+                    {
+                        $general_fee = GeneralFee::find($agf);
+                        if ($general_fee->type == 1)
+                        {
+                            $fee += $general_fee->price;
+                        }
+                        elseif ($general_fee->type == 2)
+                        {
+                            $fee += ($general_fee->price * 12);
+                        }
+                    }
+                }
+//                $all_product_fee = json_decode($sf->product);
+//                if (!empty($all_product_fee)){
+//                    foreach ($all_product_fee as $apf)
+//                    {
+//                        $product_fee = Stock::find($apf->id);
+//                        $pp = $apf->quantity * $product_fee->price;
+//                        $fee += $pp;
+//                    }
+//                }
+                $all_ecc_fee = json_decode($sf->ecc);
+                if (!empty($all_ecc_fee)){
+                    foreach ($all_ecc_fee as $aef)
+                    {
+                        $ecc_fee = ExtraClass::find($aef);
+                        if ($ecc_fee->type == 1)
+                        {
+                            $fee += $ecc_fee->price;
+                        }
+                        elseif ($ecc_fee->type == 2)
+                        {
+                            $fee += ($ecc_fee->price * 12);
+                        }
+                    }
+                }
+//                $all_book_fee = json_decode($sf->book);
+//                if (!empty($all_book_fee)){
+//                    foreach ($all_book_fee as $abf)
+//                    {
+//                        $book_fee = Book::find($abf);
+//                        $fee += $book_fee->price;
+//                    }
+//                }
+//            }
+
+            $sf->fee = $fee;
+            $sf->update();
             return redirect()->route('new_admission.index')->with('success', 'Admission Fee Created Successfully');
         }else{
             return redirect()->route('new_admission.index')->with('error', 'Student have Registered Already');
         }
     }
+
+//    public function StoreFeeStore($id, Request $request)
+//    {
+////        return$id;
+//        $af = AdmissionFee::where('student_id', $id)->get('store_fee')->first();
+//
+//        if (empty($af))
+//        {
+//            $store_fee = 0;
+//
+//            $admission_fee = new AdmissionFee();
+//            $admission_fee->student_id = $id;
+//            $products = [];
+//            foreach ($request->product as $p)
+//            {
+//                if (!empty($p['id']))
+//                {
+//                    array_push($products, $p);
+//                }
+//            }
+//            $admission_fee->product = json_encode($products);
+//            $admission_fee->book = json_encode($request->book);
+//            $admission_fee->store_fee = $store_fee;
+//            $admission_fee->save();
+//            $sf = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->where('student_id', $id)->first();
+////            foreach ($student_fees as $sf)
+////            {
+//            $all_product_fee = json_decode($sf->product);
+//            if (!empty($all_product_fee)){
+//                foreach ($all_product_fee as $apf)
+//                {
+//                    $product_fee = Stock::find($apf->id);
+//                    $pp = $apf->quantity * $product_fee->price;
+//                    $store_fee += $pp;
+//                }
+//            }
+//
+//            $all_book_fee = json_decode($sf->book);
+//            if (!empty($all_book_fee)){
+//                foreach ($all_book_fee as $abf)
+//                {
+//                    $book_fee = Book::find($abf);
+//                    $store_fee += $book_fee->price;
+//                }
+//            }
+////            }
+//
+//            $sf->store_fee = $store_fee;
+//            $sf->update();
+//            return redirect()->route('new_admission.index')->with('success', 'Store Fee Created Successfully');
+//        }else{
+//            return redirect()->route('new_admission.index')->with('error', 'Student have Registered Already');
+//        }
+//    }
 
     public function pay($id)
     {
@@ -230,17 +315,28 @@ class AdmissionFeeController extends Controller
     {
          $addmision_fee = AdmissionFee::find($id);
          $selected_product = json_decode($addmision_fee->product);
+//        $products = Stock::all();
+//        foreach ($products as $p) {
+//            foreach ($selected_product as $sp) {
+//                if ($p->id == $sp->id)
+//                {
+//                    $p->selected = true;
+//                    $p->quantity = $sp->quantity;
+//                }
+//            }
+//        }
+//        return $products;
          $selected_general = json_decode($addmision_fee->general);
          $selected_classes = json_decode($addmision_fee->ecc);
-         $selected_books = json_decode($addmision_fee->book);
+//         $selected_books = json_decode($addmision_fee->book);
           $student = Student::find($addmision_fee->student_id);
          $std_id = $student->class_id;
-        $general_fees = GeneralFee::where('class_id', $std_id)->get();
-        $products = Stock::all();
-        $extra_classes = ExtraClass::where('class_id', $std_id)->get();
+        $general_fees = GeneralFee::where('class_id', $std_id)->where('school_id', $student->school_id)->get();
+
+        $extra_classes = ExtraClass::where('class_id', $std_id)->where('school_id', $student->school_id)->get();
         $book = Book::with('stock')->where('class_id', $std_id)->get();
 
-        return view('admin.new_admission.edit_fee',compact(['id', 'general_fees', 'products', 'extra_classes', 'book','selected_product','addmision_fee','selected_general','selected_classes','selected_books']));
+        return view('admin.new_admission.edit_fee',compact(['id', 'general_fees', 'extra_classes','addmision_fee','selected_general','selected_classes']));
 
 
     }
@@ -254,12 +350,76 @@ class AdmissionFeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $fee = 0;
         $af = AdmissionFee::where('id', $id)->first();
         $af->general = json_encode($request->general);
-        $af->product = json_encode($request->product);
+//        $products = [];
+//        foreach ($request->product as $p)
+//        {
+//            if (!empty($p['id']))
+//            {
+//                array_push($products, $p);
+//            }
+//        }
+//        $af->product = $products;
         $af->ecc = json_encode($request->ecc);
-        $af->book = json_encode($request->book);
+//        $af->book = json_encode($request->book);
         $af->update();
+        $sf = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->where('id', $id)->first();
+//            foreach ($student_fees as $sf)
+//            {
+        $all_general_fee = json_decode($sf->general);
+        if (!empty($all_general_fee)){
+            foreach ($all_general_fee as $agf)
+            {
+                $general_fee = GeneralFee::find($agf);
+                if ($general_fee->type == 1)
+                {
+                    $fee += $general_fee->price;
+                }
+                elseif ($general_fee->type == 2)
+                {
+                    $fee += ($general_fee->price * 12);
+                }
+            }
+        }
+//        $all_product_fee = json_decode($sf->product);
+//        if (!empty($all_product_fee)){
+//
+//            foreach ($all_product_fee as $apf)
+//            {
+//                $product_fee = Stock::find($apf->id);
+//                $pp = $apf->quantity * $product_fee->price;
+//                $fee += $pp;
+//            }
+//        }
+        $all_ecc_fee = json_decode($sf->ecc);
+        if (!empty($all_ecc_fee)){
+            foreach ($all_ecc_fee as $aef)
+            {
+                $ecc_fee = ExtraClass::find($aef);
+                if ($ecc_fee->type == 1)
+                {
+                    $fee += $ecc_fee->price;
+                }
+                elseif ($ecc_fee->type == 2)
+                {
+                    $fee += ($ecc_fee->price * 12);
+                }
+            }
+        }
+//        $all_book_fee = json_decode($sf->book);
+//        if (!empty($all_book_fee)){
+//            foreach ($all_book_fee as $abf)
+//            {
+//                $book_fee = Book::find($abf);
+//                $fee += $book_fee->price;
+//            }
+//        }
+//            }
+
+        $sf->fee = $fee;
+        $sf->update();
             return redirect()->route('new_admission.index')->with('success', 'Admission Fee updated Successfully');
 
     }

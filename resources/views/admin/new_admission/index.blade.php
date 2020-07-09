@@ -60,6 +60,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Student ID</th>
+                                            <th scope="col">School</th>
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Action</th>
@@ -70,17 +71,24 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 <td>{{$student->student_unique_id}}</td>
+                                                <td>{{$student->school['full_name']}}</td>
                                                 <td>{{$student->first_name." ".$student->last_name}}</td>
-
                                                 <td>{{$student->classes->create_class}}</td>
                                                 <td>
                                                     <a href="{{route('new_admission.view', $student->id)}}" class="btn btn-sm btn-primary">View</a>
                                                     <a href="{{route('new_admission.edit', $student->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                                    @if(empty($student->fee))
-                                                        <a href="{{url('/admission_fee_create/'. $student->id)}}" class="btn btn-sm btn-success">Fee</a>
+
+                                                    @if(empty($student->fee->fee))
+                                                        <a href="{{url('/admission_fee_create/'. $student->id)}}" class="btn btn-sm btn-success">Admission Fee</a>
                                                     @else
-                                                        <a href="{{url('/admission_fee_edit/'. $student->fee->id)}}" class="btn btn-sm btn-warning">Edit Fee</a>
+                                                        <a href="{{url('/admission_fee_edit/'. $student->fee->id)}}" class="btn btn-sm btn-warning">Edit Admission Fee</a>
                                                     @endif
+
+                                                    {{--@if(empty($student->fee->store_fee))--}}
+                                                        {{--<a href="{{url('/store_fee_create/'. $student->id)}}" class="btn btn-sm btn-success">Store Fee</a>--}}
+                                                    {{--@else--}}
+                                                        {{--<a href="{{url('/admission_fee_edit/'. $student->fee->id)}}" class="btn btn-sm btn-warning">Edit Store Fee</a>--}}
+                                                    {{--@endif--}}
                                                 </td>
                                             </tr>
                                         @endforeach

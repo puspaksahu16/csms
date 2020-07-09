@@ -32,7 +32,8 @@ class NewAdmissionController extends Controller
     {
         if (auth()->user()->role->name == "super_admin")
         {
-         $students = Student::with('fee')->get();
+         $students = Student::with('fee','school')->get();
+//         return $students;
         }else{
             $students = Student::where('school_id', auth()->user()->school->id)->get();
         }
@@ -96,87 +97,111 @@ class NewAdmissionController extends Controller
         $student_id = date('Y').'CSMS'.$s_id;
         $parent_id = date('Y').$s_id;
 
-        $students = new Student();
-        $students->first_name = $request->first_name;
-        $students->last_name = $request->last_name;
-        $students->dob = $request->dob;
-        $students->gender_id = $request->gender_id;
-        $students->id_proof = $request->id_proof;
-        $students->id_proof_no = $request->id_proof_no;
-        $students->tc_no = $request->tc_no;
-        $students->class_id = $request->class_id;
-        $students->caste = $request->caste;
-        $students->student_unique_id = $student_id;
-        $students->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id:auth()->user()->school->id;
-        $students->save();
-
-        $user = new User();
-        $user->name = $request->mother_first_name." ".$request->mother_last_name;
-        $user->email = $request->mother_email;
-        $user->role_id = 4;
-        $user->password = Hash::make($parent_id);
-        $user->save();
-
-        $parents = new StudentParent();
-        $parents->student_id = $students->id;
-        $parents->mother_first_name = $request->mother_first_name;
-        $parents->mother_last_name = $request->mother_last_name;
-        $parents->mother_mobile = $request->mother_mobile;
-        $parents->mother_email = $request->mother_email;
-        $parents->mother_occupation = $request->mother_occupation;
-        $parents->mother_salary = $request->mother_salary;
-        $parents->mother_qualification = $request->mother_qualification;
-        $parents->mother_id_type = $request->mother_id_type;
-        $parents->mother_id_no = $request->mother_id_no;
-
-        $parents->parent_id = $parent_id;
-        $parents->user_id = $user->id;
-
-        $parents->father_first_name = $request->father_first_name;
-        $parents->father_last_name = $request->father_last_name;
-        $parents->father_mobile = $request->father_mobile;
-        $parents->father_email = $request->father_email;
-        $parents->father_occupation = $request->father_occupation;
-        $parents->father_salary = $request->father_salary;
-        $parents->father_qualification = $request->father_qualification;
-        $parents->father_id_type = $request->father_id_type;
-        $parents->father_id_no = $request->father_id_no;
-        $parents->parent_type = 'new';
-        $parents->save();
-
-        foreach ($request->addresses as $key => $add)
+        $email = User::where('email', $request->mother_email)->first();
+//return $request;
+        if (empty($email))
         {
-            if ($request->is_same == 1)
-            {
-                $adress = new Address();
-                $adress->user_id = $students->id;
-                $adress->district = $add['district'];
-                $adress->address = $add['address'];
-                $adress->city = $add['city'];
-                $adress->state = $add['state'];
-                $adress->country = $add['country'];
-                $adress->zip = $add['zip'];
-                $adress->address_type = $key;
-                $adress->is_same = 1;
-                $adress->register_type = 'new';
-                $adress->save();
-                break;
-            }else{
-                $adress = new Address();
-                $adress->user_id = $students->id;
-                $adress->district = $add['district'];
-                $adress->address = $add['address'];
-                $adress->city = $add['city'];
-                $adress->state = $add['state'];
-                $adress->country = $add['country'];
-                $adress->zip = $add['zip'];
-                $adress->address_type = $key;
-                $adress->is_same = 0;
-                $adress->register_type = 'new';
-                $adress->save();
-            }
+            $user = new User();
+            $user->name = $request->mother_first_name." ".$request->mother_last_name;
+            $user->email = $request->mother_email;
+            $user->role_id = 4;
+            $user->password = Hash::make($parent_id);
+            $user->save();
 
+            if (!empty($user->id))
+            {
+                $students = new Student();
+                $students->first_name = $request->first_name;
+                $students->last_name = $request->last_name;
+                $students->dob = $request->dob;
+                $students->gender_id = $request->gender_id;
+                $students->id_proof = $request->id_proof;
+                $students->id_proof_no = $request->id_proof_no;
+                $students->tc_no = $request->tc_no;
+                $students->class_id = $request->class_id;
+                $students->caste = $request->caste;
+                $students->student_unique_id = $student_id;
+                $students->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id:auth()->user()->school->id;
+                $students->save();
+
+                if (!empty($students->id))
+                {
+                    $parents = new StudentParent();
+                    $parents->student_id = $students->id;
+                    $parents->mother_first_name = $request->mother_first_name;
+                    $parents->mother_last_name = $request->mother_last_name;
+                    $parents->mother_mobile = $request->mother_mobile;
+                    $parents->mother_email = $request->mother_email;
+                    $parents->mother_occupation = $request->mother_occupation;
+                    $parents->mother_salary = $request->mother_salary;
+                    $parents->mother_qualification = $request->mother_qualification;
+                    $parents->mother_id_type = $request->mother_id_type;
+                    $parents->mother_id_no = $request->mother_id_no;
+
+                    $parents->parent_id = $parent_id;
+                    $parents->user_id = $user->id;
+
+                    $parents->father_first_name = $request->father_first_name;
+                    $parents->father_last_name = $request->father_last_name;
+                    $parents->father_mobile = $request->father_mobile;
+                    $parents->father_email = $request->father_email;
+                    $parents->father_occupation = $request->father_occupation;
+                    $parents->father_salary = $request->father_salary;
+                    $parents->father_qualification = $request->father_qualification;
+                    $parents->father_id_type = $request->father_id_type;
+                    $parents->father_id_no = $request->father_id_no;
+                    $parents->parent_type = 'new';
+                    $parents->save();
+
+                    foreach ($request->addresses as $key => $add)
+                    {
+                        if ($request->is_same == 1)
+                        {
+                            $adress = new Address();
+                            $adress->user_id = $students->id;
+                            $adress->district = $add['district'];
+                            $adress->address = $add['address'];
+                            $adress->city = $add['city'];
+                            $adress->state = $add['state'];
+                            $adress->country = $add['country'];
+                            $adress->zip = $add['zip'];
+                            $adress->address_type = $key;
+                            $adress->is_same = 1;
+                            $adress->register_type = 'new';
+                            $adress->save();
+                            break;
+                        }else{
+                            $adress = new Address();
+                            $adress->user_id = $students->id;
+                            $adress->district = $add['district'];
+                            $adress->address = $add['address'];
+                            $adress->city = $add['city'];
+                            $adress->state = $add['state'];
+                            $adress->country = $add['country'];
+                            $adress->zip = $add['zip'];
+                            $adress->address_type = $key;
+                            $adress->is_same = 0;
+                            $adress->register_type = 'new';
+                            $adress->save();
+                        }
+
+                    }
+                    if (empty($parents->id))
+                    {
+                        $user = User::find($user->id);
+                        $user->delete();
+                        $student = Student::find($students->id);
+                        $student->delete();
+                        $student = Student::find($parents->id);
+                        $student->delete();
+                        return redirect()->back()->with('error', 'Student created Successfully');
+                    }
+                }
+            }
+        }else{
+            return redirect()->back()->with('error', 'Mother Email already exist');
         }
+
         return redirect()->route('new_admission.index')->with('success', 'Student created Successfully');
     }
 

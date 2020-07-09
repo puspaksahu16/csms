@@ -8,4 +8,9 @@ class Standard extends Model
 {
     protected $guarded = [];
 
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 }
+

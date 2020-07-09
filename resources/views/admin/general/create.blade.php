@@ -44,7 +44,7 @@
                                                     @if(auth()->user()->role->name == "super_admin")
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
-                                                                <select name="school_id" class="form-control">
+                                                                <select name="school_id" onchange="getClass()" id="school_id" class="form-control">
                                                                     <option>-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
@@ -61,18 +61,20 @@
                                                             <label for="name">General Name</label>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <select name="class_id" class="form-control">
+                                                            <select name="class_id" id="class" class="form-control">
                                                                 <option>-SELECT CLASS-</option>
-
+                                                                @if(auth()->user()->role->name == "admin")
                                                                 @foreach($classes as $class)
                                                                     <option value="{{ $class->id }}">{{ $class->create_class }}</option>
                                                                 @endforeach
-
+                                                                @endif
                                                             </select>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder="Price" name="price">
@@ -110,20 +112,26 @@
             </div>
         </div>
     </div>
+@endsection
+@push('scripts')
     <script>
-        function readURL1(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#blahid')
-                        .attr('src', e.target.result)
-                        .width(130)
-                        .height(150);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
+        function getClass() {
+            var school_id = $('#school_id').val();
+            // alert(csrf);
+            $.ajax({
+                url : "/get_class/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#class").attr('disabled', false);
+                    $("#class").empty();
+                    $("#class").append('<option value="">-Select Class-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#class").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
         }
     </script>
-@endsection
+@endpush

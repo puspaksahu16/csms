@@ -38,7 +38,7 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        $data =$request->all();
+        $data = $request->all();
         $s = School::orderBy('id', 'DESC')->get('registration_no');
         if (count($s) <= 0 )
         {
@@ -82,8 +82,7 @@ class SchoolController extends Controller
      */
     public function edit($id)
     {
-
-         $school = School::where('user_id', $id)->first();
+        $school = School::find($id);
         return view('admin.schools.edit', compact('school'));
     }
 
@@ -97,7 +96,7 @@ class SchoolController extends Controller
     public function update(Request $request, $id)
     {
 
-        $school = School::where('user_id', $id)->first();
+        $school = School::find($id);
         $school->full_name =$request->full_name;
         $school->address =$request->address;
         $school->affliation_no =$request->affliation_no;
@@ -113,7 +112,7 @@ class SchoolController extends Controller
         $school->email =$request->email;
         $school->mobile =$request->mobile;
         $school->update();
-         $user =  User::find($id);
+         $user =  User::find($school->user_id);
 
         $user->name = $request->full_name;
         $user->email = $request->email;

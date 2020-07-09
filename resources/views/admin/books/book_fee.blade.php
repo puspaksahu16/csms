@@ -38,14 +38,14 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped zero-configuration mb-0">
+                                    <table class="table zero-configuration mb-0">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
                                             @if(auth()->user()->role->name == "super_admin")
                                                 <th scope="col">School</th>
                                             @endif
-                                            <th scope="col">class</th>
+                                            <th scope="col">Class</th>
                                             <th scope="col">Subject</th>
                                             <th scope="col">Book Name</th>
                                             <th scope="col">Publisher</th>

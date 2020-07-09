@@ -11,9 +11,6 @@
 
 namespace Symfony\Component\HttpFoundation;
 
-// Help opcache.preload discover always-needed symbols
-class_exists(ResponseHeaderBag::class);
-
 /**
  * Response represents an HTTP response.
  *
@@ -275,7 +272,7 @@ class Response
         } else {
             // Content-type based on the Request
             if (!$headers->has('Content-Type')) {
-                $format = $request->getRequestFormat(null);
+                $format = $request->getPreferredFormat(null);
                 if (null !== $format && $mimeType = $request->getMimeType($format)) {
                     $headers->set('Content-Type', $mimeType);
                 }

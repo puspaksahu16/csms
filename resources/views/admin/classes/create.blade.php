@@ -57,26 +57,13 @@
                                                     </div>
 
                                                 </div>
-
-
-
-
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
                         </div>
+                    </div>
                 </section>
                 <!-- // Basic Floating Label Form section end -->
 

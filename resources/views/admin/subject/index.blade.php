@@ -54,7 +54,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Subject Name" name="name">
+                                                            <input autocomplete="off" type="text" class="form-control" placeholder="Subject Name" name="name">
                                                             <label for="name">Subject Name</label>
                                                         </div>
                                                     </div>

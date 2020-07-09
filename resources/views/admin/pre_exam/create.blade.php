@@ -56,20 +56,20 @@
                                                             </div>
                                                         </div>
                                                     @endif
-                                                        <div class="col-md-12 col-12">
-                                                            <div class="form-label-group">
-                                                                <select name="class_id" class="form-control">
-                                                                    <option>-SELECT CLASS-</option>
-                                                                </select>
-                                                            </div>
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <select name="class_id" class="form-control">
+                                                                <option>-SELECT CLASS-</option>
+                                                            </select>
                                                         </div>
+                                                    </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder="Exam Name" name="exam_name">
                                                             <label for="name">Exam Name</label>
                                                         </div>
                                                     </div>
-
+                                                
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="number" class="form-control" placeholder="Full Mark" name="full_mark">

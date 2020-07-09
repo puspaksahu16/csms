@@ -24,6 +24,8 @@ class CreateStocksTable extends Migration
             $table->string('price');
             $table->integer('stock_in');
             $table->integer('stock_out');
+            $table->string('description')->nullable();
+            $table->string('last_in')->nullable();
             $table->timestamps();
         });
     }
