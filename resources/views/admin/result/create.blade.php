@@ -57,7 +57,7 @@
                                                     @endif
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <select onchange="getRoll(this.value)" name="class_id" id="class" class="form-control">
+                                                            <select onchange="getRoll(this.value),getExam(this.value)" name="class_id" id="class" class="form-control">
                                                                 <option>-SELECT CLASS-</option>
                                                                 @if(auth()->user()->role->name == "admin")
                                                                     @foreach($classes as $class)
@@ -76,9 +76,20 @@
                                                                     {{--<option value="{{ $roll->id }}">{{ $roll->roll_no }}</option>--}}
                                                                 {{--@endforeach--}}
                                                             </select>
-                                                            <label for="name">Roll Number/label>
+                                                            <label for="name">Roll Number</label>
                                                         </div>
                                                     </div>
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <select onchange="getMarks(this.value)" id="exam_id" name="exam_id" class="form-control">
+                                                                    <option>-Select Exam-</option>
+                                                                    @foreach($exams as $exam)
+                                                                    <option value="{{ $exam->id }}">{{ $exam->exam_name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="name">Exam</label>
+                                                            </div>
+                                                        </div>
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
                                                                 <input type="number" class="form-control" placeholder="Total Mark" name="total_mark" id="total_mark">
@@ -146,6 +157,46 @@
                        });
                    }
                    // $("#div1").html(result);
+               }});
+       }
+
+       function getExam(id) {
+           // alert(id);
+           $.ajax({
+               url: "/get_exam",
+               type: "post",
+               data:{
+                   "_token": "{{ csrf_token() }}",
+                   class_id: id
+               },
+               success: function(result){
+                   console.log(result);
+                   $('#exam_id').empty();
+                   if(result)
+                   {
+                       $('#exam_id').append('<option value="">-Select-</option>');
+                       $.each(result,function(key,value){
+                           $('#exam_id').append($("<option/>", {
+                               value: key,
+                               text: value
+                           }));
+                       });
+                   }
+                   // $("#div1").html(result);
+               }});
+       }
+
+       function getMarks(id) {
+            // alert(id);
+           $.ajax({
+               url: "/get_mark",
+               type: "post",
+               data:{
+                   "_token": "{{ csrf_token() }}",
+                   exam_id: id
+               },
+               success: function(result){
+                   $("#total_mark").val(result);
                }});
        }
 

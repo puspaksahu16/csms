@@ -18,12 +18,12 @@ class StandardController extends Controller
     public function index()
     {
         if (auth()->user()->role->name == "super_admin") {
-            $standard = Standard::all();
+            $standards = Standard::all();
             $schools = School::all();
         }else{
-            $standard = Standard::where('school_id', auth()->user()->school->id)->get();
+            $standards = Standard::where('school_id', auth()->user()->school->id)->get();
         }
-        return view('admin.standard.index', compact(['standard','schools']));
+        return view('admin.standard.index', compact(['standards','schools']));
     }
 
     /**

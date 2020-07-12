@@ -25,6 +25,7 @@ class CreateSchoolsTable extends Migration
             $table->string('contact_person');
             $table->string('photo');
             $table->string('standard');
+            $table->string('standard_upto');
             $table->string('classes');
             $table->string('starting_year');
             $table->string('facility');

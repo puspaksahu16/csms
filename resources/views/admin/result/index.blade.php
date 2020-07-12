@@ -63,7 +63,7 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 <td>{{$results->classes->create_class}}</td>
-                                                <td>{{$results->roll_no}}</td>
+                                                <td>{{$results->students->roll_no}}</td>
                                                 <td>{{$results->students->first_name." ".$results->students->last_name}}</td>
                                                 <td>{{$results->percentage}}%</td>
                                                 <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-primary">Edit</a></td>
