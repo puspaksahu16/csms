@@ -69,9 +69,46 @@
                                             <td>{{ $sf->paid }}</td>
                                             <td>{{ $sf->fee }}</td>
                                             <td>
-                                                @if(($sf->fee - $sf->paid) > 0)
-                                                    <a href="{{url('/pay/'.$sf->student_id)}}" class="btn btn-sm btn-primary">Pay</a>
+                                                @if($sf->installment > 0)
+                                                    <a href="{{url('/installment/'.$sf->student_id)}}" class="btn btn-sm btn-primary">Pay Installment</a>
+                                                    {{--<a href="{{url('/pay/'.$sf->student_id)}}" class="btn btn-sm btn-primary">Pay</a>--}}
+                                                @else
+                                                    {{--Trigger the modal with a button--}}
+                                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal{{ $sf->id }}">Installment</button>
+                                                    {{--Modal--}}
+                                                    <div class="modal fade" id="myModal{{ $sf->id }}" role="dialog">
+                                                        <div class="modal-dialog">
+
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">Add Installment Term</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="{{ url('/update_installment/'.$sf->id) }}" method="POST">
+                                                                        @csrf
+                                                                        <select class="form-control" name="installment">
+                                                                            <option value="">-Select Installment Term-</option>
+                                                                            <option value="1">1 Time</option>
+                                                                            <option value="2">2 Times</option>
+                                                                            <option value="4">4 Times</option>
+                                                                            <option value="10">10 Times</option>
+                                                                            <option value="12">12 Times</option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
                                                 @endif
+
+
+
+
                                                 <a href="{{url('/payment_history/'.$sf->student_id)}}" class="btn btn-sm btn-success">Payment History</a>
                                             </td>
                                         </tr>
