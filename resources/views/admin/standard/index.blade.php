@@ -67,8 +67,15 @@
                                                     @endif
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="standard" class="form-control" placeholder="Create New Standard" name="name">
-                                                            <label for="first-name-column">Create Name</label>
+                                                            <select name="name" class="form-control">
+                                                                <option>-SELECT Standard-</option>
+                                                                <option value="Pre-primary">Pre-primary</option>
+                                                                <option value="Primary">Primary</option>
+                                                                <option value="UKG">UKG</option>
+                                                                <option value="LKG">LKG</option>
+
+                                                            </select>
+                                                            <label for="first-name-column">Create Standard Name</label>
                                                         </div>
                                                     </div>
 
