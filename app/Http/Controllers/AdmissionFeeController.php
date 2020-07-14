@@ -7,6 +7,7 @@ use App\Book;
 use App\BookStock;
 use App\ExtraClass;
 use App\GeneralFee;
+use App\Installment;
 use App\Payment;
 use App\Stock;
 use App\Student;
@@ -76,6 +77,24 @@ class AdmissionFeeController extends Controller
 //        }
 //        return$student_fees;
         return view('admin.admission_fee.index', compact(['student_fees']));
+    }
+
+    public function updateInstallment(Request $request, $id)
+    {
+        $af = AdmissionFee::find($id);
+        $af->installment = $request->installment;
+        $af->update();
+
+        $if = $af->fee / $af->installment;
+        for ($i=1; $i <= $af->installment; $i++)
+        {
+            $installment = new Installment();
+            $installment->student_id = $af->student_id;
+            $installment->installment_fee = round($if);
+            $installment->save();
+        }
+
+        return redirect()->to('admission_fee')->with('success', 'Installment Updated Successfully');
     }
 
     /**

@@ -109,6 +109,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('admission_fee','AdmissionFeeController');
     Route::get('/admission_fee_create/{id}','AdmissionFeeController@AdmissionFee');
+    Route::post('/update_installment/{id}','AdmissionFeeController@updateInstallment');
 
     //product fee create
     Route::get('/store_fee_create/{id}','AdmissionFeeController@StoreFee');
@@ -117,6 +118,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/admission_fee_store/{id}','AdmissionFeeController@AdmissionFeeStore');
     Route::get('/admission_fee_edit/{id}','AdmissionFeeController@edit');
     Route::post('/admission_fee','AdmissionFeeController@update');
+
+
+    Route::get('/installment','AdmissionFeeController@update');
 
 
     Route::resource('/store_fees','StoreFeeController');

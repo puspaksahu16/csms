@@ -92,6 +92,12 @@
     #pre_exam_length{
         margin-bottom: 20px !important;
     }
+    .modal .modal-header .close {
+        left: 0px;
+    }
+    .modal-content {
+        top: 185px;
+    }
 </style>
 
 
