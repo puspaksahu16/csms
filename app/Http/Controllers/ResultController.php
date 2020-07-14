@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Createclass;
 use App\PreAdmission;
+use App\PreExam;
 use App\Result;
 use App\School;
 use Freshbitsweb\Laratables\Laratables;
@@ -35,6 +36,14 @@ class ResultController extends Controller
     {
         return $rolls = PreAdmission::where('class_id', $request->class_id)->pluck('roll_no', 'id');
     }
+    public function getMarks(Request $request)
+    {
+        return $marks = PreExam::where('id', $request->exam_id)->pluck('full_mark');
+    }
+    public function getExam(Request $request)
+    {
+        return $rolls = PreExam::where('class_id', $request->class_id)->pluck('exam_name', 'id');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -46,7 +55,8 @@ class ResultController extends Controller
         $rolls = PreAdmission::all();
         $classes = Createclass::all();
         $schools = School::all();
-        return view('admin.result.create',compact(['classes', 'rolls','schools']));
+        $exams = PreExam::all();
+        return view('admin.result.create',compact(['classes', 'rolls','schools','exams']));
     }
 
     /**

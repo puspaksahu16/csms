@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('pre_admissions', 'PreAdmissionController');
     Route::get('get_school','PreAdmissionController@getSchools');
+    Route::post('/get_exam','PreAdmissionController@getExam');
     Route::get('pre_admissions/getclass/{id}','PreAdmissionController@getClasses');
     Route::get('lara_pre_admission','PreAdmissionController@laraPreAdmission')->name('lara_pre_admission');
 
@@ -142,6 +143,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('result','ResultController');
     Route::post('/get_roll','ResultController@getRoll');
+    Route::post('/get_exam','ResultController@getExam');
+    Route::post('/get_mark','ResultController@getMarks');
     Route::get('lara_result','ResultController@laraResult')->name('lara_result');
 
     Route::resource('employee','EmployeeController');

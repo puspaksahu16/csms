@@ -104,6 +104,12 @@
                                                     </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
+                                                            <input type="text" class="form-control" placeholder="Standard Upto" name="standard_upto">
+                                                            <label for="name">Standard Upto</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder="Classes" name="classes">
                                                             <label for="name">Classes</label>
                                                         </div>
@@ -128,7 +134,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-6">
+                                                    <div class="col-md-12 col-6">
                                                         <div class="form-label-group">
                                                     <textarea name="address" class="form-control" placeholder="Address"></textarea>
                                                         </div>

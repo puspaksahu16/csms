@@ -73,8 +73,7 @@
                                                     @endif
                                                     <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <select name="class_id" class="form-control">
-                                                                    <option>-SELECT CLASS-</option>
+                                                                <select onchange="getExam(this.value)" name="class_id" id="class_id" class="form-control">
                                                                 </select>
                                                             </div>
                                                     </div>
@@ -112,11 +111,8 @@
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <select name="pre_exam_id" class="form-control">
+                                                            <select name="pre_exam_id" id="pre_exam_id" class="form-control">
                                                                 <option>-SELECT EXAM-</option>
-                                                                @foreach($pre_exams as $pre_exam)
-                                                                    <option value="{{ $pre_exam->id }}">{{ $pre_exam->exam_name }}</option>
-                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -340,9 +336,17 @@
                         {
                             console.log(data);
                             jQuery('select[name="class_id"]').empty();
-                            jQuery.each(data, function(key,value){
-                                $('select[name="class_id"]').append('<option value="'+ key +'">'+ value +'</option>');
-                            });
+                            if(data)
+                            {
+                                $('select[name="class_id"]').append('<option value="">-Select-</option>');
+                                $.each(data,function(key,value){
+                                    $('select[name="class_id"]').append($("<option/>", {
+                                        value: key,
+                                        text: value
+                                    }));
+                                });
+                            }
+
                         }
                     });
                 }
@@ -352,5 +356,31 @@
                 }
             });
         });
+
+        function getExam(id) {
+            // alert(id);
+            $.ajax({
+                url: "/get_exam",
+                type: "post",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    class_id: id
+                },
+                success: function(result){
+                    console.log(result);
+                    $('#pre_exam_id').empty();
+                    if(result)
+                    {
+                        $('#pre_exam_id').append('<option value="">-Select-</option>');
+                        $.each(result,function(key,value){
+                            $('#pre_exam_id').append($("<option/>", {
+                                value: key,
+                                text: value
+                            }));
+                        });
+                    }
+                    // $("#div1").html(result);
+                }});
+        }
     </script>
 @endsection
