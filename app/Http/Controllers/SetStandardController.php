@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Installment;
+use App\SetStandard;
 use Illuminate\Http\Request;
 
-class InstallmentController extends Controller
+class SetStandardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,8 @@ class InstallmentController extends Controller
      */
     public function index()
     {
-
+        $standards = SetStandard::all();
+        return view("admin.set_standard.index", compact('standards'));
     }
 
     /**
@@ -36,7 +36,8 @@ class InstallmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $standard = SetStandard::create($request->all());
+        return redirect('/set_standard')->with("success", "Standard Created successfully!");
     }
 
     /**
@@ -58,7 +59,8 @@ class InstallmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $standard = SetStandard::find($id);
+        return view('admin.set_standard.edit', compact('standard'));
     }
 
     /**
@@ -70,7 +72,8 @@ class InstallmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $standard = SetStandard::find($id)->update($request->all());
+        return redirect('/set_standard')->with("success", "Standard updated successfully!");
     }
 
     /**

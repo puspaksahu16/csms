@@ -67,7 +67,14 @@
                                                         </div>
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class"  value="{{$classes->create_class}}">
+{{--                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class"  value="{{$classes->create_class}}">--}}
+                                                            <select name="create_class" class="form-control">
+                                                                <option>-SELECT Class-</option>
+                                                                @foreach($set_classes as $set_class )
+                                                                    <option {{ $set_class->name == $classes->create_class ? "selected" : " " }}  value="{{ $set_class->name }}">{{ $set_class->name }}</option>
+                                                                @endforeach
+
+                                                            </select>
                                                             <label for="first-name-column">Class Name</label>
                                                         </div>
                                                     </div>

@@ -9,6 +9,7 @@ use App\Result;
 use App\School;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class ResultController extends Controller
 {
@@ -67,10 +68,16 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
-        Result::create($data);
-        return redirect()->route('result.index')->with('success', 'Result created Successfully');
+        $roll = Result::where('roll_no',$request->roll_no)->first();
+        if ($roll === null){
+            $data = $request->all();
+            $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+            Result::create($data);
+            return redirect()->route('result.index')->with('success', 'Result created Successfully');
+        }else{
+            return redirect()->route('result.index')->with('success', 'Duplicate Roll No');
+        }
+
     }
 
     /**

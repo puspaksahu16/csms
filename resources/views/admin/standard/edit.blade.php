@@ -44,7 +44,14 @@
                                                 <div class="row">
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Standard Name" name="name" value="{{$standard->name}}">
+{{--                                                            <input type="text" class="form-control" placeholder="Standard Name" name="name" value="{{$standard->name}}">--}}
+                                                            <select name="name" class="form-control">
+                                                                <option>-SELECT Standard-</option>
+                                                                @foreach($set_standards as $set_standard )
+                                                                    <option {{ $set_standard->name == $standard->name ? "selected" : " " }} value="{{ $set_standard->name }}">{{ $set_standard->name }}</option>
+                                                                @endforeach
+
+                                                            </select>
                                                             <label for="name">Standard Name</label>
                                                         </div>
                                                     </div>

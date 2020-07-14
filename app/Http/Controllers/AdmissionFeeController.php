@@ -97,6 +97,12 @@ class AdmissionFeeController extends Controller
         return redirect()->to('admission_fee')->with('success', 'Installment Updated Successfully');
     }
 
+    public function InstallmentFee($id)
+    {
+        return $installments = Installment::where('student_id', $id)->first();
+        return view('admin.admission_fee.installment', compact(['installments', 'id']));
+    }
+
     /**
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

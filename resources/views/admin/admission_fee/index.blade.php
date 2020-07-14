@@ -109,7 +109,7 @@
 
 
 
-                                                <a href="{{url('/payment_history/'.$sf->student_id)}}" class="btn btn-sm btn-success">Payment History</a>
+{{--                                                <a href="{{url('/payment_history/'.$sf->student_id)}}" class="btn btn-sm btn-success">Payment History</a>--}}
                                             </td>
                                         </tr>
                                             @endforeach

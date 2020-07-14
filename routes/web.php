@@ -48,6 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('idproof', 'IdproofControler');
 
     Route::resource('qualification', 'QualificationController');
+    Route::resource('set_standard', 'SetStandardController');
+    Route::resource('set_class', 'SetClassController');
+    Route::resource('set_section', 'SetSectionController');
 
     Route::resource('products', 'ProductController');
     Route::get('/product_price', 'StockController@productPriceIndex');
@@ -122,6 +125,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/installment','AdmissionFeeController@update');
+    Route::get('/installment/{id}','AdmissionFeeController@InstallmentFee');
+
 
 
     Route::resource('/store_fees','StoreFeeController');

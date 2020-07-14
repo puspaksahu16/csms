@@ -69,10 +69,9 @@
                                                         <div class="form-label-group">
                                                             <select name="name" class="form-control">
                                                                 <option>-SELECT Standard-</option>
-                                                                <option value="Pre-primary">Pre-primary</option>
-                                                                <option value="Primary">Primary</option>
-                                                                <option value="UKG">UKG</option>
-                                                                <option value="LKG">LKG</option>
+                                                                @foreach($set_standards as $set_standard )
+                                                                    <option value="{{ $set_standard->name }}">{{ $set_standard->name }}</option>
+                                                                @endforeach
 
                                                             </select>
                                                             <label for="first-name-column">Create Standard Name</label>

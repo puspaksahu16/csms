@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Installment;
+use App\SetClass;
 use Illuminate\Http\Request;
 
-class InstallmentController extends Controller
+class SetClassController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,8 @@ class InstallmentController extends Controller
      */
     public function index()
     {
-
+        $classes = SetClass::all();
+        return view("admin.set_class.index", compact('classes'));
     }
 
     /**
@@ -36,7 +36,8 @@ class InstallmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $class = SetClass::create($request->all());
+        return redirect('/set_class')->with("success", "Class Created successfully!");
     }
 
     /**
@@ -58,7 +59,8 @@ class InstallmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $class = SetClass::find($id);
+        return view('admin.set_class.edit', compact('class'));
     }
 
     /**
@@ -70,7 +72,8 @@ class InstallmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $class = SetClass::find($id)->update($request->all());
+        return redirect('/set_class')->with("success", "Class updated successfully!");
     }
 
     /**

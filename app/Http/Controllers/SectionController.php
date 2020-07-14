@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Createclass;
 use App\School;
 use App\Section;
+use App\SetSection;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -20,11 +21,13 @@ class SectionController extends Controller
             $section = Section::all();
             $classes = CreateClass::all();
             $schools = School::all();
+            $set_sections = SetSection::all();
         }else{
             $section = Section::where('school_id', auth()->user()->school->id)->get();
             $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
+            $set_sections = SetSection::all();
         }
-        return view("admin.section.index" , compact(['section','classes','schools']));
+        return view("admin.section.index" , compact(['section','classes','schools','set_sections']));
     }
 
     /**
@@ -75,12 +78,14 @@ class SectionController extends Controller
         if (auth()->user()->role->name == "super_admin") {
             $schools = School::all();
             $classes = CreateClass::all();
+            $set_sections = SetSection::all();
             $section = Section::find($id);
-            return view('admin.section.edit',compact(['section','classes','schools']));
+            return view('admin.section.edit',compact(['section','classes','schools','set_sections']));
         }else{
             $classes = CreateClass::all();
+            $set_sections = SetSection::all();
             $section = Section::find($id);
-            return view('admin.section.edit',compact(['section','classes']));
+            return view('admin.section.edit',compact(['section','classes','set_sections']));
         }
 
     }

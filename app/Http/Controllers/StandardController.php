@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\School;
+use App\SetStandard;
 use App\Standard;
 use Illuminate\Http\Request;
 
@@ -19,11 +20,13 @@ class StandardController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $standards = Standard::all();
+            $set_standards = SetStandard::all();
             $schools = School::all();
         }else{
             $standards = Standard::where('school_id', auth()->user()->school->id)->get();
+            $set_standards = SetStandard::all();
         }
-        return view('admin.standard.index', compact(['standards','schools']));
+        return view('admin.standard.index', compact(['standards','schools','set_standards']));
     }
 
     /**
@@ -34,7 +37,8 @@ class StandardController extends Controller
     public function create()
     {
         $schools = School::all();
-        return view('admin.standard.index',compact('schools'));
+        $set_standards = SetStandard::all();
+        return view('admin.standard.index',compact(['schools','set_standards']));
     }
 
     /**
@@ -71,7 +75,8 @@ class StandardController extends Controller
     public function edit($id)
     {
         $standard = Standard::find($id);
-        return view('admin.standard.edit', compact('standard'));
+        $set_standards = SetStandard::all();
+        return view('admin.standard.edit', compact(['standard','set_standards']));
     }
 
     /**

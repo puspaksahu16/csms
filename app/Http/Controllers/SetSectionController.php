@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Installment;
+use App\SetSection;
 use Illuminate\Http\Request;
 
-class InstallmentController extends Controller
+class SetSectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,8 @@ class InstallmentController extends Controller
      */
     public function index()
     {
-
+        $sections = SetSection::all();
+        return view("admin.set_section.index", compact('sections'));
     }
 
     /**
@@ -36,7 +36,8 @@ class InstallmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SetSection::create($request->all());
+        return redirect('/set_section')->with("success", "Section Created successfully!");
     }
 
     /**
@@ -58,7 +59,8 @@ class InstallmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $section = SetSection::find($id);
+        return view('admin.set_section.edit', compact('section'));
     }
 
     /**
@@ -70,7 +72,8 @@ class InstallmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $section = SetSection::find($id)->update($request->all());
+        return redirect('/set_section')->with("success", "Section updated successfully!");
     }
 
     /**

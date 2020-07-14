@@ -94,7 +94,13 @@
                                                         @endif
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class">
+                                                            <select name="create_class" class="form-control">
+                                                                <option>-SELECT Class-</option>
+                                                                @foreach($set_classes as $set_classe )
+                                                                    <option value="{{ $set_classe->name }}">{{ $set_classe->name }}</option>
+                                                                @endforeach
+
+                                                            </select>
                                                             <label for="first-name-column">Class Name</label>
                                                         </div>
                                                     </div>

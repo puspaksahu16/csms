@@ -77,7 +77,12 @@
                                                     </div>
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="section" class="form-control" placeholder="Create New Section" name="section">
+                                                            <select name="section" class="form-control">
+                                                                <option>-SELECT Section-</option>
+                                                                @foreach($set_sections as $set_section)
+                                                                    <option value="{{ $set_section->name }}">{{ $set_section->name }}</option>
+                                                                @endforeach
+                                                            </select>
                                                             <label for="first-name-column">Create Section</label>
                                                         </div>
                                                     </div>
