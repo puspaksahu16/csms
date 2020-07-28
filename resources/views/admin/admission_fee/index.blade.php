@@ -71,7 +71,6 @@
                                             <td>
                                                 @if($sf->installment > 0)
                                                     <a href="{{url('/installment/'.$sf->student_id)}}" class="btn btn-sm btn-primary">Pay Installment</a>
-                                                    {{--<a href="{{url('/pay/'.$sf->student_id)}}" class="btn btn-sm btn-primary">Pay</a>--}}
                                                 @else
                                                     {{--Trigger the modal with a button--}}
                                                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal{{ $sf->id }}">Installment</button>

@@ -142,6 +142,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/pay/{id}','AdmissionFeeController@pay');
     Route::post('/payment/{id}','AdmissionFeeController@payment');
+    Route::post('/admission_fee_fine/{id}','AdmissionFeeController@admissionFeeFine');
 
     Route::get('/payment_history/{id}','PaymentController@index');
     Route::get('/receive/{id}','PaymentController@receive');

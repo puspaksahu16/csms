@@ -65,7 +65,39 @@
                                                 <td>{{$i->installment_fee}}</td>
                                                 <td>{{$i->fine}}</td>
                                                 <td>{{$i->status}}</td>
-                                              <a href="{{url('/pay/'.$i->student_id)}}" class="btn btn-sm btn-primary">Pay</a>
+                                                <td>
+                                                    @if($i->status == "Pending")
+                                                        <a href="{{url('/pay/'.$i->id)}}" class="btn btn-sm btn-primary">Pay</a>
+
+                                                        {{--Trigger the modal with a button--}}
+                                                        <button type="button" {{ $i->status == "Paid" ? 'disable':'' }} class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Fine</button>
+                                                    @endif
+
+                                                        {{--Modal--}}
+                                                        <div class="modal fade" id="myModal{{ $i->id }}" role="dialog">
+                                                            <div class="modal-dialog">
+
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Add Fine</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="{{ url('/admission_fee_fine/'.$i->id) }}" method="POST">
+                                                                            @csrf
+                                                                            <input class="form-control" name="fine" placeholder="Fine">
+                                                                            <br>
+                                                                            <button type="submit" class="btn btn-success">Submit</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    {{--<a href="{{url('/admission_fee_fine/'.$i->id)}}" class="btn btn-sm btn-warning">Fine</a>--}}
+                                                </td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>
