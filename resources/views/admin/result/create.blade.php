@@ -92,7 +92,7 @@
                                                         </div>
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="number" class="form-control" placeholder="Total Mark" name="total_mark" id="total_mark">
+                                                                <input type="number" readonly class="form-control" placeholder="Total Mark" name="total_mark" id="total_mark">
                                                                 <label for="name">Total Mark</label>
                                                             </div>
                                                         </div>

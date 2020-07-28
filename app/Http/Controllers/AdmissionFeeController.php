@@ -99,7 +99,7 @@ class AdmissionFeeController extends Controller
 
     public function InstallmentFee($id)
     {
-        return $installments = Installment::where('student_id', $id)->first();
+        $installments = Installment::where('student_id', $id)->get();
         return view('admin.admission_fee.installment', compact(['installments', 'id']));
     }
 
@@ -285,27 +285,44 @@ class AdmissionFeeController extends Controller
 
     public function pay($id)
     {
-        return view('admin.admission_fee.pay', compact('id'));
+        $installment =Installment::find($id);
+        return view('admin.admission_fee.pay', compact(['installment', 'id']));
     }
 
 
     public function payment(Request $request, $id)
     {
-        $af = AdmissionFee::where('student_id', $id)->first();
-        $pa = Payment::where('student_id', $id)->sum('amount');
+        $installment = Installment::find($id);
+        $student_id = $installment->student_id;
+        $af = AdmissionFee::where('student_id', $student_id)->first();
+        $pa = Payment::where('student_id', $student_id)->sum('amount');
         $data = $request->all();
         $data['reason'] = 'Admission Fee';
-        $data['student_id'] = $id;
+        $data['student_id'] = $student_id;
+
+
 
         $a = $pa + $request->amount;
         if ($a <= $af->fee)
         {
             $payment = Payment::create($data);
-            return redirect()->route('admission_fee.index')->with('success', 'Payment Successfully Done');
+            $installment->status = "Paid";
+            $installment->update();
+
+            return redirect()->to('installment/'.$student_id)->with('success', 'Payment Successfully Done');
         }else{
             return redirect()->back()->with('error', 'Payment Amount is Grater than Total Amount');
         }
 
+    }
+
+    public function admissionFeeFine(Request $request, $id)
+    {
+        $installment = Installment::find($id);
+        $installment->fine += $request->fine;
+        $installment->installment_fee += $request->fine;
+        $installment->update();
+        return redirect()->to('installment/'.$installment->student_id)->with('success', 'Payment Successfully Done');
     }
 
     /**
