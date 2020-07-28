@@ -111,6 +111,7 @@ class SectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Section::where('id',$id)->delete();
+        return redirect('/section')->with("success", "Section deleted successfully!");
     }
 }

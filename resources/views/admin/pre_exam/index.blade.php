@@ -59,6 +59,9 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <th scope="col">School Name</th>
+                                            @endif
                                             <th scope="col">Exam Name</th>
                                             <th scope="col">Year</th>
                                             <th scope="col">Class</th>
@@ -71,6 +74,9 @@
                                             @foreach($pre_exams as $key => $pre_exam)
                                                 <tr>
                                                     <td>{{$key+1}}</td>
+                                                    @if(auth()->user()->role->name == "super_admin")
+                                                        <th>{{$pre_exam->schools->full_name}}</th>
+                                                    @endif
                                                     <td>{{ $pre_exam->exam_name }}</td>
                                                     <td>{{ $pre_exam->current_year }}</td>
                                                     <td>{{ $pre_exam->classes->create_class }}</td>

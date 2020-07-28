@@ -14,13 +14,13 @@ class StudentParent extends Model
     {
         return $this->belongsTo(Qualification::class, 'father_qualification');
     }
-    public function midproof()
+    public function mIdproof()
     {
-        return $this->belongsTo(idproof::class, 'mother_id_type');
+        return $this->belongsTo(Idproof::class, 'mother_id_type');
     }
-    public function fidproof()
+    public function fIdproof()
     {
-        return $this->belongsTo(idproof::class, 'father_id_type');
+        return $this->belongsTo(Idproof::class, 'father_id_type');
     }
 
     public function students()

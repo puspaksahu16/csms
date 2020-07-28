@@ -59,6 +59,9 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <th>School</th>
+                                            @endif
                                             <th scope="col">EMP ID</th>
                                             <th scope="col">EMP Name</th>
                                             <th scope="col">Department</th>
@@ -66,23 +69,24 @@
                                             <th scope="col">Contact No</th>
                                             <th scope="col">Email ID</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($employees as $key => $employee)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                    <th>{{$employee->school->full_name}}</th>
+                                                @endif
                                                 <td>{{$employee->employee_unique_id}}</td>
                                                 <td>{{$employee->first_name." ".$employee->last_name}}</td>
                                                 <td>{{$employee->employee_department}}</td>
                                                 <td>{{$employee->employee_designation}}</td>
                                                 <td>{{$employee->mobile}}</td>
                                                 <td>{{$employee->email}}</td>
-                                                <td>
-
-                                                    <a href="{{route('employee.edit', $employee->id)}}" class="btn btn-sm btn-primary">Edit</a>
-
-                                                </td>
+                                                <td><a href="{{route('employee.edit', $employee->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                <td><a href="employees_delete/{{$employee->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

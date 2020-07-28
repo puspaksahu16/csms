@@ -84,6 +84,7 @@ class SetStandardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SetStandard::where('id',$id)->delete();
+        return redirect('/set_standard')->with("success", "Standard deleted successfully!");
     }
 }

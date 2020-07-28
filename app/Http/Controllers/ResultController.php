@@ -53,10 +53,16 @@ class ResultController extends Controller
      */
     public function create()
     {
-        $rolls = PreAdmission::all();
-        $classes = Createclass::all();
-        $schools = School::all();
-        $exams = PreExam::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $rolls = PreAdmission::all();
+            $classes = Createclass::all();
+            $schools = School::all();
+            $exams = PreExam::all();
+        }else{
+            $rolls = PreAdmission::all();
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+            $exams = PreExam::all();
+        }
         return view('admin.result.create',compact(['classes', 'rolls','schools','exams']));
     }
 
@@ -68,6 +74,9 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'roll_no' => 'unique:results'
+        ]);
         $roll = Result::where('roll_no',$request->roll_no)->first();
         if ($roll === null){
             $data = $request->all();
@@ -126,6 +135,7 @@ class ResultController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Result::where('id',$id)->delete();
+        return redirect()->route('result.index')->with('success', 'Result deleted successfully');
     }
 }

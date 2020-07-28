@@ -101,24 +101,50 @@ class BookStockController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+//    public function store(Request $request)
+//    {
+//        foreach($request->books as $book)
+//        {
+//
+//            $stock = BookStock::find($book['book_id']);
+//            if (!empty($stock))
+//            {
+//
+//                $stock_in = $stock->stock_in + $book['quantity'];
+//                $stock->update(['stock_in' => $stock_in]);
+//            }else{
+//
+//                $book_stock = new BookStock();
+//                $book_stock->create(['book_id' => $book['book_id'], 'stock_in' => $book['quantity'],'school_id' => $book['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id]);
+//            }
+//        }
+//        return response(['success']);
+//    }
     public function store(Request $request)
     {
-        foreach($request->books as $book)
-        {
+        if (!empty($request->books)) {
+            foreach ($request->books as $book) {
+                $book['stock_in'] = $book['quantity'];
+                $book['last_in'] = $book['quantity'];
+                $book['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id ;
+                $availables = BookStock::where('school_id', $book['school_id'])
+                    ->where('book_id', $book['book_id'])
+                    ->get();
 
-            $stock = BookStock::find($book['book_id']);
-            if (!empty($stock))
-            {
 
-                $stock_in = $stock->stock_in + $book['quantity'];
-                $stock->update(['stock_in' => $stock_in]);
-            }else{
-
-                $book_stock = new BookStock();
-                $book_stock->create(['book_id' => $book['book_id'], 'stock_in' => $book['quantity'],'school_id' => $book['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id]);
+                if (count($availables) <= 0) {
+                    $createstock = new BookStock();
+                    $createstock->create($book);
+                }
+                else{
+                    $update = BookStock::find($availables[0]['id']);
+                    $update->stock_in = $availables[0]['stock_in'] + $book['quantity'];
+                    $update->last_in = $book['quantity'];
+                    $update->update();
+                }
             }
+            return response(['success']);
         }
-        return response(['success']);
     }
 
     /**
@@ -140,7 +166,8 @@ class BookStockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book_stocks = BookStock::find($id);
+        return view('admin.book_stocks.edit', compact('book_stocks'));
     }
 
     /**
@@ -152,7 +179,12 @@ class BookStockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = BookStock::find($id);
+        $update->description = $request->description;
+        $update->stock_in = $update->stock_in - $update->last_in;
+        $update->last_in = 0;
+        $update->update();
+        return redirect()->route('book_stocks.index')->with('success', 'last stock removed Successfully');
     }
 
     /**

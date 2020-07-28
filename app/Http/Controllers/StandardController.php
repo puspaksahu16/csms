@@ -100,6 +100,7 @@ class StandardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Standard::where('id',$id)->delete();
+        return redirect('/standard')->with("success", "Standard deleted successfully!");
     }
 }

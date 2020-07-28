@@ -10,9 +10,9 @@ class Student extends Model
     {
         return $this->belongsTo(Createclass::class, 'class_id');
     }
-    public function idproof()
+    public function Idproof()
     {
-        return $this->belongsTo(idproof::class, 'id_proof');
+        return $this->belongsTo(Idproof::class, 'id_proof');
     }
     public function fee()
     {

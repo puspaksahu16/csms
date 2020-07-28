@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class idproof extends Model
+class Idproof extends Model
 {
     protected $guarded = [];
 }

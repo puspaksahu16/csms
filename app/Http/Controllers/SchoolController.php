@@ -16,7 +16,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = School::all();
+        $schools = School::all()->where('is_active',1);
         return view('admin.schools.index', compact('schools'));
     }
 
@@ -56,6 +56,20 @@ class SchoolController extends Controller
         if ($user->save())
         {
             $data['user_id'] = $user->id;
+            if($file = $request->hasFile('owner_photo')) {
+                $file = $request->file('owner_photo');
+                $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+                $destinationPath = public_path('/images/owner_photo');
+                $file->move($destinationPath, $fileName);
+                $data['owner_photo'] = $fileName;
+            }
+            if($file = $request->hasFile('photo')) {
+                $file = $request->file('photo');
+                $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+                $destinationPath = public_path('/images/school_photo');
+                $file->move($destinationPath, $fileName);
+                $data['photo'] = $fileName;
+            }
             $school = School::create($data);
             return redirect()->route('schools.index')->with('success', 'School created successfully');
         }else{
@@ -71,7 +85,8 @@ class SchoolController extends Controller
      */
     public function show($id)
     {
-        //
+        $school = School::find($id);
+        return view('admin.schools.show', compact('school'));
     }
 
     /**
@@ -102,8 +117,21 @@ class SchoolController extends Controller
         $school->affliation_no =$request->affliation_no;
         $school->owner_name =$request->owner_name;
         $school->owner_contact_no =$request->owner_contact_no;
-        $school->owner_photo =$request->owner_photo;
+        if($file = $request->hasFile('owner_photo')) {
+            $file = $request->file('owner_photo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/owner_photo');
+            $file->move($destinationPath, $fileName);
+            $school->owner_photo = $fileName;
+        }
         $school->contact_person =$request->contact_person;
+        if($file = $request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/school_photo');
+            $file->move($destinationPath, $fileName);
+            $school->photo = $fileName;
+        }
         $school->photo =$request->photo;
         $school->standard =$request->standard;
         $school->classes =$request->classes;
@@ -117,9 +145,17 @@ class SchoolController extends Controller
         $user->name = $request->full_name;
         $user->email = $request->email;
         $user->update();
-        return redirect()->route('schools.index')->with('success', 'School created successfully');
+        return redirect()->route('schools.index')->with('success', 'School updated successfully');
     }
+    public function Update_status(Request $request, $id)
+    {
 
+        $school = School::find($id);
+        $school->is_active = '0';
+        $school->update();
+        return redirect()->route('schools.index')->with('success', 'School deleted successfully');
+
+    }
     /**
      * Remove the specified resource from storage.
      *

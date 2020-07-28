@@ -76,15 +76,17 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($idproof as $key => $idproof)
+                                        @foreach($Idproofs as $key => $Idproof)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
-                                                <th style="text-transform: uppercase">{{$idproof->id_proof}}</th>
-                                                <th>{{$idproof->created_at->format('d F Y')}}</th>
-                                                <td><a href="{{route('idproof.edit', $idproof->id)}}" class="btn btn-primary">Edit</a></td>
+                                                <th style="text-transform: uppercase">{{$Idproof->id_proof}}</th>
+                                                <th>{{$Idproof->created_at->format('d F Y')}}</th>
+                                                <td><a href="{{route('idproof.edit', $Idproof->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                <td><a href="idproof_delete/{{$Idproof->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

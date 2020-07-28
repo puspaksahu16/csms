@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::resource('schools', 'SchoolController');
     });
+    Route::get('schools_delete/{id}','SchoolController@Update_status');
+
 
 
     Route::get('/dashboard', function () {
@@ -38,19 +40,34 @@ Route::middleware('auth')->group(function () {
     Route::post('/get_exam','PreAdmissionController@getExam');
     Route::get('pre_admissions/getclass/{id}','PreAdmissionController@getClasses');
     Route::get('lara_pre_admission','PreAdmissionController@laraPreAdmission')->name('lara_pre_admission');
+    Route::get('pre_admissions_delete/{id}','PreAdmissionController@Update_status');
 
 
     Route::resource('classes', 'CreateClassController');
     Route::get('/get_standard/{id}', 'CreateClassController@getStandard');
+    Route::get('classes_delete/{id}', 'CreateClassController@destroy');
+
 
     Route::resource('section','SectionController');
+    Route::get('section_delete/{id}', 'SectionController@destroy');
 
     Route::resource('idproof', 'IdproofControler');
+    Route::get('idproof_delete/{id}', 'IdproofControler@destroy');
+
 
     Route::resource('qualification', 'QualificationController');
+    Route::get('qualification_delete/{id}', 'QualificationController@destroy');
+
+
     Route::resource('set_standard', 'SetStandardController');
+    Route::get('Setstandard_delete/{id}', 'SetStandardController@destroy');
+
     Route::resource('set_class', 'SetClassController');
+    Route::get('set_class_delete/{id}', 'SetClassController@destroy');
+
+
     Route::resource('set_section', 'SetSectionController');
+    Route::get('set_section_delete/{id}', 'SetSectionController@destroy');
 
     Route::resource('products', 'ProductController');
     Route::get('/product_price', 'StockController@productPriceIndex');
@@ -71,10 +88,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/get_class/{id}', 'CreateClassController@getClass');
 
     Route::resource('publisher', 'PublisherController');
+    Route::get('publisher_delete/{id}', 'PublisherController@destroy');
 
     Route::resource('standard', 'StandardController');
+    Route::get('standard_delete/{id}', 'StandardController@destroy');
+
 
     Route::resource('subject', 'SubjectController');
+    Route::get('subject_delete/{id}', 'SubjectController@destroy');
 
     Route::resource('general','GeneralFeeController');
 
@@ -151,8 +172,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/get_exam','ResultController@getExam');
     Route::post('/get_mark','ResultController@getMarks');
     Route::get('lara_result','ResultController@laraResult')->name('lara_result');
+    Route::get('result_delete/{id}','ResultController@destroy');
 
     Route::resource('employee','EmployeeController');
+    Route::get('employees_delete/{id}','EmployeeController@destroy');
 
     Route::get('/stateSetting', function () {
         return view('admin.stateSetting');
@@ -163,6 +186,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/citySetting', function () {
         return view('admin.citySetting');
     });
+
+    Route::resource('period','PeriodController');
+
+    Route::resource('timetable','TimetableController');
+    Route::get('/get_standard/{id}', 'TimetableController@getStandard');
+    Route::get('/get_subject/{id}', 'TimetableController@getSubject');
+    Route::get('/get_employee/{id}', 'TimetableController@getEmployee');
+    Route::post('/get_period','TimetableController@getPeriod');
+    Route::post('/get_classes','TimetableController@getClass');
+    Route::post('/get_section','TimetableController@getSection');
 
     Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
     Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');

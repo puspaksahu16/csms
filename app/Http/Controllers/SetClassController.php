@@ -36,6 +36,10 @@ class SetClassController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:set_classes'
+        ]);
+
         $class = SetClass::create($request->all());
         return redirect('/set_class')->with("success", "Class Created successfully!");
     }
@@ -84,6 +88,7 @@ class SetClassController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SetClass::where('id',$id)->delete();
+        return redirect('/set_class')->with("success", "Class deleted successfully!");
     }
 }

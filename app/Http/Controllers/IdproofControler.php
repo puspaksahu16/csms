@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\idproof;
+use App\Idproof;
 use Illuminate\Http\Request;
 
 class IdproofControler extends Controller
@@ -14,8 +14,8 @@ class IdproofControler extends Controller
      */
     public function index()
     {
-        $idproof = Idproof::all();
-        return view('admin.idproof.index', compact('idproof'));
+        $Idproofs = Idproof::all();
+        return view('admin.idproof.index', compact('Idproofs'));
     }
 
     /**
@@ -36,7 +36,7 @@ class IdproofControler extends Controller
      */
     public function store(Request $request)
     {
-        $idproof = Idproof::create($request->all());
+        $Idproof = Idproof::create($request->all());
         return redirect('/idproof')->with("success", "Id Proof Created successfully!");
     }
 
@@ -59,8 +59,8 @@ class IdproofControler extends Controller
      */
     public function edit($id)
     {
-        $idproof = Idproof::find($id);
-        return view('admin.idproof.edit', compact('idproof'));
+        $Idproofs = Idproof::find($id);
+        return view('admin.idproof.edit', compact('Idproofs'));
     }
 
     /**
@@ -72,7 +72,7 @@ class IdproofControler extends Controller
      */
     public function update(Request $request, $id)
     {
-        $idproof = Idproof::find($id)->update($request->all());
+        $Idproof = Idproof::find($id)->update($request->all());
         return redirect('/idproof')->with("success", "id proof updated successfully!");
     }
 
@@ -84,6 +84,7 @@ class IdproofControler extends Controller
      */
     public function destroy($id)
     {
-        //
+        Idproof::where('id',$id)->delete();
+        return redirect()->route('idproof.index')->with('success', 'Id proof deleted successfully');
     }
 }

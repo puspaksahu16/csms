@@ -68,7 +68,7 @@ class CreateClassController extends Controller
         $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
         CreateClass::create($data);
 
-        return redirect('/classes')->with("success", "Pre admission Created successfully!");
+        return redirect('/classes')->with("success", "Class Created successfully!");
     }
 
     /**
@@ -119,6 +119,7 @@ class CreateClassController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Createclass::where('id',$id)->delete();
+        return redirect('/classes')->with("success", "class deleted successfully!");
     }
 }

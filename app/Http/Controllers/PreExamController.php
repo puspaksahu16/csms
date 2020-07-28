@@ -34,8 +34,14 @@ class PreExamController extends Controller
      */
     public function create()
     {
-        $classes = Createclass::all();
-        $schools = School::all();
+        if (auth()->user()->role->name == "super_admin")
+        {
+            $classes = Createclass::all();
+            $schools = School::all();
+        }else{
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+        }
+
         return  view('admin.pre_exam.create', compact(['classes', 'schools']));
     }
 
@@ -83,9 +89,14 @@ class PreExamController extends Controller
      */
     public function edit($id)
     {
-        $pre_exam = PreExam::find($id);
-        $classes = Createclass::all();
-        $schools = School::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $pre_exam = PreExam::find($id);
+            $classes = Createclass::all();
+            $schools = School::all();
+        }else{
+            $pre_exam = PreExam::find($id);
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+        }
         return view('admin.pre_exam.edit', compact(['pre_exam','classes','schools']));
 
     }

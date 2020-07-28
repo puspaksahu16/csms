@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -35,7 +36,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('schools.update', $school->id)}}" method="POST">
+                                        <form class="form" action="{{route('schools.update', $school->id)}}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @method('put')
                                             <div class="form-body">
@@ -46,7 +47,7 @@
                                                             <img id="p1" height="150px" width="130px"  />
                                                         </div>
                                                         <br/>
-                                                        Owner photo :<input type="file" name='owner_photo'  id="owner_photo" onchange="pic(this);"/><p><br/></p>
+                                                        Owner photo :<input type="file" name='owner_photo' value="{{$school->owner_photo}}"  id="owner_photo" onchange="pic(this);"/><p><br/></p>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="photo">
@@ -105,6 +106,15 @@
                                                     </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
+                                                            <select class="form-control" name="standard">
+                                                                <option {{ $school->board == 'ICSE' ? "selected" : " " }} value="ICSE">ICSE</option>
+                                                                <option  {{ $school->board == 'CBSE' ? "selected" : " " }} value="CBSE">CBSE</option>
+                                                                <option  {{ $school->board == 'HSE' ? "selected" : " " }} value="HSE">HSE</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder="Classes" value="{{$school->classes}}" name="classes">
                                                             <label for="name">Classes</label>
                                                         </div>
@@ -126,6 +136,7 @@
                                                             <select class="form-control" name="facility">
                                                                 <option {{ $school->facility == 'Boarding' ? "selected" : " " }} value="Boarding">Boarding</option>
                                                                 <option {{ $school->facility == 'Day-Cum-Boarding' ? "selected" : " " }} value="Day-Cum-Boarding">Day-Cum-Boarding</option>
+                                                                <option {{ $school->facility == 'No-Boarding' ? "selected" : " " }} value="No-Boarding">No-Boarding</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -154,3 +165,32 @@
     </div>
 
 @endsection
+<script>
+    function pic(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#p1')
+                    .attr('src', e.target.result)
+                    .width(130)
+                    .height(150);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function pic2(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#p2')
+                    .attr('src', e.target.result)
+                    .width(130)
+                    .height(150);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

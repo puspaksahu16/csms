@@ -135,6 +135,8 @@
     @include('admin.common.sidebar_school')
 @elseif(auth()->user()->role->name == 'parent')
     @include('admin.common.sidebar_parent')
+@elseif(auth()->user()->role->name == 'employee')
+    @include('admin.common.sidebar_employee')
 @endif
 <!-- END: Main Menu-->
 

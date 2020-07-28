@@ -25,9 +25,9 @@ class PreAdmissionController extends Controller
     {
         if (auth()->user()->role->name == "super_admin")
         {
-            $pre_admissions = PreAdmission::all();
+            $pre_admissions = PreAdmission::all()->where('is_active',1);
         }else{
-            $pre_admissions = PreAdmission::where('school_id', auth()->user()->school->id)->get();
+            $pre_admissions = PreAdmission::where('school_id', auth()->user()->school->id && 'is_active',1)->get();
         }
 
         return view('admin.pre_admissions.index', compact(['pre_admissions']));
@@ -49,9 +49,14 @@ class PreAdmissionController extends Controller
      */
     public function create()
     {
-        $classes = CreateClass::all();
-        $pre_exams = PreExam::all();
-        $schools = School::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $classes = CreateClass::all();
+            $pre_exams = PreExam::all();
+            $schools = School::all();
+        }else{
+            $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
+            $pre_exams = PreExam::where('school_id', auth()->user()->school->id)->get();
+        }
         return view ('admin.pre_admissions.create', compact(['classes', 'pre_exams','schools']));
 
     }
@@ -199,6 +204,16 @@ class PreAdmissionController extends Controller
 
 
         return redirect('/pre_admissions')->with("success", "Pre admission Created successfully!");
+    }
+
+    public function Update_status(Request $request, $id)
+    {
+
+        $pre_admission = PreAdmission::find($id);
+        $pre_admission->is_active = '0';
+        $pre_admission->update();
+        return redirect('/pre_admissions')->with('success', 'School deleted successfully');
+
     }
 
     /**

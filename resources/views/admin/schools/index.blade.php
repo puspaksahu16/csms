@@ -55,18 +55,20 @@
                                             <th scope="col">Mobile</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                             <tbody>
                                             @foreach($schools as $key => $school)
                                                 <tr>
                                                     <th scope="row">{{$key+1}}</th>
-                                                    <td>{{$school->registration_no}}</td>
+                                                    <td><a href="{{route('schools.show', $school->id)}}">{{$school->registration_no}}</a></td>
                                                     <td>{{$school->full_name}}</td>
                                                     <td>{{$school->email}}</td>
                                                     <td>{{$school->mobile}}</td>
                                                     <td>{{$school->is_active == 1 ? 'Active' : "Inactive"}}</td>
                                                     <td><a href="{{route('schools.edit', $school->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                    <td><a href="schools_delete/{{$school->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

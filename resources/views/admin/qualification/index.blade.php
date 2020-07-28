@@ -89,6 +89,7 @@
 
                                             <th scope="col">Qualification</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -97,7 +98,8 @@
                                                 <th scope="row">{{$key+1}}</th>
                                                 <th>{{$qualification->qualification}}</th>
 
-                                                <td><a href="{{route('qualification.edit', $qualification->id)}}" class="btn btn-primary">Edit</a></td>
+                                                <td><a href="{{route('qualification.edit', $qualification->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                <td><a href="qualification_delete/{{$qualification->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

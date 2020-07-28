@@ -66,7 +66,7 @@
                                             <th scope="col">Stock in</th>
                                             <th scope="col">Stock out</th>
                                             <th scope="col">Available</th>
-
+                                            <th scope="col">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -83,6 +83,7 @@
                                                 <td>{{!empty($stock->stock_in) ? $stock->stock_in : "--"}}</td>
                                                 <td>{{empty($stock->stock_out) ? 0 : $stock->stock_out}}</td>
                                                 <td>{{$stock->available_stocks}}</td>
+                                                <td><a class="btn btn-warning btn-sm" href="{{ route('book_stocks.edit', $stock->id) }}">Remove last In</a></td>
 
                                             </tr>
                                         @endforeach

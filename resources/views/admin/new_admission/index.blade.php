@@ -59,8 +59,10 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <th scope="col">School Name</th>
+                                            @endif
                                             <th scope="col">Student ID</th>
-                                            <th scope="col">School</th>
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Action</th>
@@ -70,8 +72,10 @@
                                         @foreach($students as $key => $student)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
-                                                <td>{{$student->student_unique_id}}</td>
+                                                @if(auth()->user()->role->name == "super_admin")
                                                 <td>{{$student->school['full_name']}}</td>
+                                                @endif
+                                                <td>{{$student->student_unique_id}}</td>
                                                 <td>{{$student->first_name." ".$student->last_name}}</td>
                                                 <td>{{$student->classes->create_class}}</td>
                                                 <td>

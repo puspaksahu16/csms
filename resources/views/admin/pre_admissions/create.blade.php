@@ -71,12 +71,24 @@
                                                             </select>
                                                         </div>
                                                     @endif
+                                                        @if(auth()->user()->role->name == "super_admin")
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <select onchange="getExam(this.value)" name="class_id" id="class_id" class="form-control"></select>
+                                                                </div>
+                                                            </div>
+                                                        @else
                                                     <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
                                                                 <select onchange="getExam(this.value)" name="class_id" id="class_id" class="form-control">
+                                                                    <option>-Select Class-</option>
+                                                                    @foreach($classes as $class)
+                                                                        <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                     </div>
+                                                        @endif
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <label>First Name</label>

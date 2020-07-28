@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('schools.store')}}" method="POST">
+                                        <form class="form" action="{{route('schools.store')}}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
@@ -104,8 +104,11 @@
                                                     </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Standard Upto" name="standard_upto">
-                                                            <label for="name">Standard Upto</label>
+                                                            <select class="form-control" name="board">
+                                                                <option value="Pre-ICSE">ICSE</option>
+                                                                <option value="CBSE">CBSE</option>
+                                                                <option value="HSE">HSE</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-6">
@@ -131,6 +134,7 @@
                                                             <select class="form-control" name="facility">
                                                                 <option value="Boarding">Boarding</option>
                                                                 <option value="Day-Cum-Boarding">Day-Cum-Boarding</option>
+                                                                <option value="No-Boarding">No-Boarding</option>
                                                             </select>
                                                         </div>
                                                     </div>

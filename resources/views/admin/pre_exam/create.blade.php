@@ -56,14 +56,28 @@
                                                             </div>
                                                         </div>
                                                     @endif
+                                                        @if(auth()->user()->role->name == "super_admin")
+                                                            <div class="col-md-12 col-12">
+                                                                <div class="form-label-group">
+                                                                    <select name="class_id" class="form-control">
+                                                                        <option>-SELECT CLASS-</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                        @else
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <select name="class_id" class="form-control">
                                                                 <option>-SELECT CLASS-</option>
+                                                                @foreach($classes as $class)
+                                                                    <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
+                                                        @endif
+                                                        <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder="Exam Name" name="exam_name">
                                                             <label for="name">Exam Name</label>

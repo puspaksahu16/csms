@@ -107,6 +107,8 @@
                                 {{url('/schools/'.Auth::user()->id .'/edit')}}
                             @elseif(auth()->user()->role->name == "parent")
                             {{url('/edit_profile/'.Auth::user()->id .'')}}
+                            @elseif(auth()->user()->role->name == "employee")
+                            {{url('/edit_profile/'.Auth::user()->id .'/edit')}}
                                 @endif
 "><i class="feather icon-user"></i> Edit Profile</a>
                             <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault();

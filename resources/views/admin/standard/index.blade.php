@@ -112,6 +112,7 @@
                                             <th scope="col">Standard</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -127,7 +128,8 @@
                                                 @else
                                                     <td><button class="btn-danger">Inactive</button></td>
                                                 @endif
-                                                <td><a href="{{route('standard.edit', $standard->id)}}" class="btn btn-primary">Edit</a></td>
+                                                <td><a href="{{route('standard.edit', $standard->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                <td><a href="standard_delete/{{$standard->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -36,6 +36,10 @@ class SetSectionController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:set_sections'
+        ]);
+
         SetSection::create($request->all());
         return redirect('/set_section')->with("success", "Section Created successfully!");
     }
@@ -84,6 +88,7 @@ class SetSectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SetSection::where('id',$id)->delete();
+        return redirect('/set_section')->with("success", "Section deleted successfully!");
     }
 }

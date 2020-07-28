@@ -76,6 +76,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -84,7 +85,8 @@
                                                 <th scope="row">{{$key+1}}</th>
                                                 <th style="text-transform: uppercase">{{$standard->name}}</th>
                                                 <th>{{$standard->created_at->format('d F Y')}}</th>
-                                                <td><a href="{{route('set_standard.edit', $standard->id)}}" class="btn btn-primary">Edit</a></td>
+                                                <td><a href="{{route('set_standard.edit', $standard->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                <td><a href="Setstandard_delete/{{$standard->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -52,6 +52,20 @@
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
+                                                    @if(auth()->user()->role->name == "super_admin")
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
+                                                                <select id="school_id" onchange="getStandard()" name="school_id" class="form-control">
+                                                                    <option>-SELECT School-</option>
+
+                                                                    @foreach($schools as $school)
+                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <input autocomplete="off" type="text" class="form-control" placeholder="Subject Name" name="name">
@@ -88,22 +102,30 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                            <th scope="col">School Name</th>
+                                            @endif
                                             <th scope="col">Subject Name</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($subject as $key => $subjects)
                                             <tr>
                                                 <td>{{$key+1}}</td>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                    <th>{{$subjects->school->full_name}}</th>
+                                                @endif
                                                 <td>{{$subjects->name}}</td>
                                                 @if($subjects->is_active)
                                                     <td style="color:green;">Active</td>
                                                 @else
                                                     <td>Inactive</td>
                                                 @endif
-                                                <td><a href="{{route('subject.edit', $subjects->id)}}" class="btn btn-primary">Edit</a></td>
+                                                <td><a href="{{route('subject.edit', $subjects->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                <td><a href="subject_delete/{{$subjects->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

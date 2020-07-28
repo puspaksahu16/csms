@@ -56,6 +56,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Result</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -66,7 +67,8 @@
                                                 <td>{{$results->students->roll_no}}</td>
                                                 <td>{{$results->students->first_name." ".$results->students->last_name}}</td>
                                                 <td>{{$results->percentage}}%</td>
-                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-primary">Edit</a></td>
+                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                <td><a href="result_delete/{{$results->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

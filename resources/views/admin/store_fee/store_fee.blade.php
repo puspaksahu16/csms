@@ -109,10 +109,10 @@
                                                                                         <td>{{!empty($p->sizes->name) ? $p->sizes->name : "--"}}</td>
                                                                                         <td>{{!empty($p->gender_id) ? $p->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
                                                                                         <td>{{!empty($p->price) ? $p->price.'/-' : "--/-"}}</td>
-                                                                                        <td>
-                                                                                            <a id="negative-{{$key}}" onclick="negative(this.id)" class="btn btn-sm btn-danger">-</a>
+                                                                                        <td class="btn btn-group">
+                                                                                            <a id="negative-{{$key}}" onclick="negative(this.id)" class="btn btn-sm btn-dark">-</a>
                                                                                             <input readonly value="{{ !empty($p->quantity) ? $p->quantity : "1" }}" style="width:23% !important;" class="form-control" id="quantity-{{$key}}" name="product[{{$key}}][quantity]" >
-                                                                                            <a id="positive-{{$key}}" onclick="positive(this.id)" class="btn btn-sm btn-success">+</a>
+                                                                                            <a id="positive-{{$key}}" onclick="positive(this.id)" class="btn btn-sm btn-dark">+</a>
                                                                                         </td>
                                                                                         <td>{{!empty($p->available_stocks) ? $p->available_stocks : "not available"}}</td>
                                                                                     </tr>

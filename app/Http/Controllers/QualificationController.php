@@ -84,6 +84,7 @@ class QualificationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Qualification::where('id',$id)->delete();
+        return redirect('/qualification')->with("success", "Qualification deleted successfully!");
     }
 }

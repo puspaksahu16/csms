@@ -146,6 +146,7 @@
                                             <th scope="col">Standard</th>
                                             <th scope="col">Class Name</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -157,7 +158,8 @@
                                                 @endif
                                                 <th>{{$classes->standard->name}}</th>
                                                 <th>{{$classes->create_class}}</th>
-                                                <td><a href="{{route('classes.edit', $classes->id)}}" class="btn btn-primary">Edit</a></td>
+                                                <td><a href="{{route('classes.edit', $classes->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                                <td><a href="classes_delete/{{$classes->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

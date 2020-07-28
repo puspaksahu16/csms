@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\School;
 use App\Subject;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,15 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subject = Subject::all();
-        return view('admin.subject.index', compact('subject'));
+
+        if (auth()->user()->role->name == "super_admin") {
+            $schools = School::all();
+            $subject = Subject::all();
+        }else{
+            $subject = Subject::where('school_id', auth()->user()->school->id)->get();
+        }
+
+        return view('admin.subject.index', compact(['subject','schools']));
     }
 
     /**
@@ -37,6 +45,7 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
+
         Subject::create($request->all());
         return redirect()->route('subject.index')->with('success', 'subject created Successfully');
     }
@@ -60,8 +69,9 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
+        $schools = School::all();
         $subject = Subject::find($id);
-        return view('admin.subject.edit', compact('subject'));
+        return view('admin.subject.edit', compact(['subject','schools']));
     }
 
     /**
@@ -85,6 +95,7 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Subject::where('id',$id)->delete();
+        return redirect('/subject')->with("success", "Subject deleted successfully!");
     }
 }

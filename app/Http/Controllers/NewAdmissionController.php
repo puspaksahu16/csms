@@ -9,7 +9,7 @@ use App\BookStock;
 use App\Createclass;
 use App\ExtraClass;
 use App\GeneralFee;
-use App\idproof;
+use App\Idproof;
 use App\Qualification;
 use App\School;
 use App\Stock;
@@ -58,7 +58,7 @@ class NewAdmissionController extends Controller
      */
     public function create()
     {
-        $id_proof = idproof::all();
+        $id_proof = Idproof::all();
         if (auth()->user()->role->name == "super_admin") {
             $classes = Createclass::all();
         }else{
@@ -213,7 +213,7 @@ class NewAdmissionController extends Controller
      */
     public function show($id)
     {
-        $id_proof = idproof::all();
+        $id_proof = Idproof::all();
         $classes = Createclass::all();
         $students = Student::find($id);
         $qualifications = Qualification::all();
@@ -238,28 +238,37 @@ class NewAdmissionController extends Controller
      */
     public function edit($id)
     {
-        $id_proof = idproof::all();
-        $classes = Createclass::all();
-        $students = Student::find($id);
-        $schools = School::all();
-        $qualifications = Qualification::all();
-        $studentparents = StudentParent::where('student_id', $id)->first();
-        $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
-        if ($r_address->is_same == 1)
-        {
-            $p_address = [];
+        $id_proof = Idproof::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $classes = Createclass::all();
+            $students = Student::find($id);
+            $schools = School::all();
+            $qualifications = Qualification::all();
+            $studentparents = StudentParent::where('student_id', $id)->first();
+            $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
+            if ($r_address->is_same == 1) {
+                $p_address = [];
+            } else {
+                $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
+            }
+        }else{
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+            $students = Student::find($id);
+            $qualifications = Qualification::all();
+            $studentparents = StudentParent::where('student_id', $id)->first();
+            $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
+            if ($r_address->is_same == 1) {
+                $p_address = [];
+            } else {
+                $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
+            }
         }
-        else
-        {
-            $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
-        }
-
        return view('admin.new_admission.edit', compact(['id_proof','schools','classes','students','studentparents','r_address', 'p_address','qualifications']));
     }
 
     public function edit_profile($id)
     {
-        $id_proof = idproof::all();
+        $id_proof = Idproof::all();
         $classes = Createclass::all();
         $qualifications = Qualification::all();
         $parents = StudentParent::where('user_id', $id)->first();

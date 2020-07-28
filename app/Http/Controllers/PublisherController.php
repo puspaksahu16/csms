@@ -86,6 +86,7 @@ class PublisherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Publisher::where('id',$id)->delete();
+        return redirect('/publisher')->with("success", "Publisher deleted successfully!");
     }
 }

@@ -18,6 +18,8 @@ class CreateBookStocksTable extends Migration
             $table->bigInteger('book_id');
             $table->integer('stock_in');
             $table->integer('stock_out')->default(0);
+            $table->string('description');
+            $table->integer('last_in');
             $table->timestamps();
         });
     }

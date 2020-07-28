@@ -119,6 +119,7 @@ class DamageController extends Controller
      */
     public function store(Request $request)
     {
+//        return $request->stock;
         foreach ($request->stock as $stock) {
             $stock['damage'] = $stock['quantity'];
             $stock['school_id'] = auth()->user()->role->name == "admin" ? auth()->user()->school->id : $request->school_id;
@@ -145,9 +146,9 @@ class DamageController extends Controller
                     $update->damage = $availables[0]['damage'] + $stock['quantity'];
                     $update->update();
                 }
-                return response(["success"]);
             }
         }
+        return response(["success"]);
     }
 
     /**

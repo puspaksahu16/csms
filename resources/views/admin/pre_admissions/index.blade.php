@@ -52,22 +52,30 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                            <th scope="col">School Name</th>
+                                            @endif
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Temp Roll No</th>
                                             <th scope="col">Year</th>
                                             <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($pre_admissions as $key => $pre_admission)
                                          <tr>
                                             <th scope="row">{{$key+1}}</th>
+                                             @if(auth()->user()->role->name == "super_admin")
+                                             <th>{{$pre_admission->schools->full_name}}</th>
+                                             @endif
                                             <td>{{$pre_admission->first_name." ".$pre_admission->last_name}}</td>
                                             <td>{{$pre_admission->classes->create_class}}</td>
                                             <td>{{$pre_admission->roll_no}}</td>
                                             <td>{{$pre_admission->year->current_year}}</td>
-                                            <td><a href="{{route('pre_admissions.edit', $pre_admission->id)}}" class="btn btn-primary">Edit</a></td>
+                                            <td><a href="{{route('pre_admissions.edit', $pre_admission->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
+                                             <td><a href="pre_admissions_delete/{{$pre_admission->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                         </tr>
                                             @endforeach
                                         </tbody>

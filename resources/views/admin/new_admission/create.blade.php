@@ -177,14 +177,28 @@
                                                                                 <label for="last-name-column">Tc Number</label>
                                                                             </div>
                                                                         </div>
+                                                                            @if(auth()->user()->role->name == "super_admin")
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <select value="{{old('class_id')}}" class="form-control" id="class" name="class_id">
-                                                                                    <option value="">-Select class-</option>
                                                                                 </select>
                                                                                 <label for="last-name-column">Class</label>
                                                                             </div>
                                                                         </div>
+                                                                            @else
+                                                                                <div class="col-md-6 col-12">
+                                                                                    <div class="form-label-group">
+                                                                                        <select value="{{old('class_id')}}" class="form-control" id="class" name="class_id">
+                                                                                            <option value="">-Select class-</option>
+                                                                                            @foreach($classes as $class)
+                                                                                                <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                        <label for="last-name-column">Class</label>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                @endif
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <tr>
