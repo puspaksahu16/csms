@@ -80,6 +80,14 @@ class EmployeeController extends Controller
                 $employees->gender_id = $request->gender_id;
                 $employees->id_proof = $request->id_proof;
                 $employees->id_proof_no = $request->id_proof_no;
+
+                if($file = $request->hasFile('photo')) {
+                    $file = $request->file('photo');
+                    $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+                    $destinationPath = public_path('/images/employees');
+                    $file->move($destinationPath, $fileName);
+                     $employees->photo = $fileName;
+                }
                 $employees->experience = $request->experience;
                 $employees->caste = $request->caste;
                 $employees->employee_unique_id = $employee_id;
@@ -176,6 +184,15 @@ class EmployeeController extends Controller
         $employee->email = $request->email;
         $employee->gender_id = $request->gender_id;
         $employee->id_proof = $request->id_proof;
+
+        if($file = $request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/employees');
+            $file->move($destinationPath, $fileName);
+            $employee->photo = $fileName;
+        }
+
         $employee->id_proof_no = $request->id_proof_no;
         $employee->employee_qualification = $request->employee_qualification;
         $employee->employee_department = $request->employee_department;

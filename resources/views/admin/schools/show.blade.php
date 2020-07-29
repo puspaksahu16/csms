@@ -41,17 +41,19 @@
 
                                                     <div class="col-md-4">
                                                         <div class="owner_photo">
-                                                            <img id="p1" height="150px" width="130px"  />
+                                                            <a href="{{asset('images/owner_photo/'.$school->owner_photo)}}" target="_blank">
+                                                            <img id="p1" height="150px" src="{{asset('images/owner_photo/'.$school->owner_photo)}}" width="130px"  />
+                                                            </a>
                                                         </div>
                                                         <br/>
-                                                        Owner photo :<input type="file" name='owner_photo' value="{{$school->owner_photo}}"  id="owner_photo" onchange="pic(this);"/><p><br/></p>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="photo">
-                                                            <img id="p2" height="150px" width="130px"  />
+                                                            <a href="{{asset('images/school_photo/'.$school->photo)}}" target="_blank">
+                                                            <img id="p2" height="150px" src="{{asset('images/school_photo/'.$school->photo)}}" width="130px"  />
+                                                            </a>
                                                         </div>
                                                         <br/>
-                                                        School photo :<input type="file" name='photo'  id="photo" onchange="pic2(this);"/><p><br/></p>
                                                     </div>
 
                                                     <div class="col-md-6 col-6">

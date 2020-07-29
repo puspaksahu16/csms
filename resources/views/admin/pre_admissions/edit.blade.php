@@ -28,7 +28,7 @@
                 <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">
                     <div class="row match-height">
-                        <form class="form" method="POST" action="{{route('pre_admissions.update',$pre_admission->id)}}">
+                        <form class="form" method="POST" action="{{route('pre_admissions.update',$pre_admission->id)}}" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="col-12">
@@ -42,18 +42,18 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <div class="student_photo">
-                                                            <img id="p1" height="150px" width="130px"  />
+                                                        <div class="photo">
+                                                            <img id="p1" height="150px"  src="{{asset('images/student_photo/'.$pre_admission->photo)}}" width="130px"  />
                                                         </div>
                                                         <br/>
-                                                        Student photo :<input type="file" name='photo' value="{{$pre_admission->photo}}" id="student_photo" onchange="pic(this);"/><p><br/></p>
+                                                        Student photo :<input type="file" name='photo' id="photo" onchange="pic(this);"/><p><br/></p>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="family_photo">
-                                                            <img id="p2" height="150px" width="130px"  />
+                                                            <img id="p2" height="150px" src="{{asset('images/family_photo/'.$pre_admission->family_photo)}}" width="130px"  />
                                                         </div>
                                                         <br/>
-                                                        Family photo :<input type="file" name='family_photo' value="{{$pre_admission->family_photo}}"  id="family_photo" onchange="pic2(this);"/><p><br/></p>
+                                                        Family photo :<input type="file" name='family_photo' id="family_photo" onchange="pic2(this);"/><p><br/></p>
                                                     </div>
                                                 </div>
 

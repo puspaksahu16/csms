@@ -90,6 +90,7 @@ class AdmissionFeeController extends Controller
         {
             $installment = new Installment();
             $installment->student_id = $af->student_id;
+            $installment->installment_no = $i;
             $installment->installment_fee = round($if);
             $installment->save();
         }
@@ -323,6 +324,19 @@ class AdmissionFeeController extends Controller
         $installment->installment_fee += $request->fine;
         $installment->update();
         return redirect()->to('installment/'.$installment->student_id)->with('success', 'Payment Successfully Done');
+    }
+    public function admissionDueDate(Request $request, $id)
+    {
+        $due_date = Installment::find($id);
+
+            $a = $id+1;
+            $due = Installment::find($a);
+            $due->due_date = $request->due_date;
+            $due->update();
+
+
+
+        return redirect()->to('installment/'.$due_date->student_id)->with('success', 'Due Date Successfully Added');
     }
 
     /**

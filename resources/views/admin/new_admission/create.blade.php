@@ -77,7 +77,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <form class="form" method="POST" action="{{route('new_admission.store')}}">
+                                                        <form class="form" method="POST" action="{{route('new_admission.store')}}" enctype="multipart/form-data">
                                                             @csrf
 
                                                             <div class="row setup-content" id="step-1">
@@ -93,7 +93,7 @@
                                                                                 <img id="p1" height="150px" width="130px"  />
                                                                             </div>
                                                                             <br/>
-                                                                            Student photo :<input type="file" name='student_photo'  id="student_photo" onchange="pic(this);"/><p><br/></p>
+                                                                            Student photo :<input type="file" name='photo'  id="photo" onchange="pic(this);"/><p><br/></p>
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="family_photo">

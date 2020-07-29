@@ -64,7 +64,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <form class="form" method="POST" action="{{route('employee.store')}}">
+                                                    <form class="form" method="POST" action="{{route('employee.store')}}" enctype="multipart/form-data">
                                                         @csrf
 
                                                         <div class="row setup-content" id="step-1">
@@ -76,11 +76,11 @@
                                                                 <br/><br/>
                                                                 <div class="row">
                                                                     <div class="col-md-4">
-                                                                        <div class="employee_photo">
+                                                                        <div class="photo">
                                                                             <img id="p1" height="150px" width="130px"  />
                                                                         </div>
                                                                         <br/>
-                                                                        Employee photo :<input type="file" name='employee_photo'  id="employee_photo" onchange="pic(this);"/><p><br/></p>
+                                                                        Employee photo :<input type="file" name='photo'  id="photo" onchange="pic(this);"/><p><br/></p>
                                                                     </div>
                                                                     <div class="col-md-4">
 
@@ -351,18 +351,7 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        function pic2(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#p2')
-                        .attr('src', e.target.result)
-                        .width(130)
-                        .height(150);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+
     </script>
     <script>
         function yesnoCheck(that) {

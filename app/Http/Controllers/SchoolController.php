@@ -117,14 +117,16 @@ class SchoolController extends Controller
         $school->affliation_no =$request->affliation_no;
         $school->owner_name =$request->owner_name;
         $school->owner_contact_no =$request->owner_contact_no;
+
         if($file = $request->hasFile('owner_photo')) {
             $file = $request->file('owner_photo');
             $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
             $destinationPath = public_path('/images/owner_photo');
             $file->move($destinationPath, $fileName);
-            $school->owner_photo = $fileName;
+             $school->owner_photo = $fileName;
         }
         $school->contact_person =$request->contact_person;
+
         if($file = $request->hasFile('photo')) {
             $file = $request->file('photo');
             $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
@@ -132,7 +134,6 @@ class SchoolController extends Controller
             $file->move($destinationPath, $fileName);
             $school->photo = $fileName;
         }
-        $school->photo =$request->photo;
         $school->standard =$request->standard;
         $school->classes =$request->classes;
         $school->starting_year =$request->starting_year;

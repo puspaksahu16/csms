@@ -95,8 +95,26 @@ class PreAdmissionController extends Controller
         $pre_admission->class_id = $request->class_id;
         $pre_admission->pre_exam_id = $request->pre_exam_id;
         $pre_admission->caste = $request->caste;
+
         $pre_admission->photo = $request->photo;
         $pre_admission->family_photo = $request->family_photo;
+
+        if($file = $request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/student_photo');
+            $file->move($destinationPath, $fileName);
+            $pre_admission->photo = $fileName;
+        }
+
+        if($file = $request->hasFile('family_photo')) {
+            $file = $request->file('family_photo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/family_photo');
+            $file->move($destinationPath, $fileName);
+            $pre_admission->family_photo = $fileName;
+        }
+
         $pre_admission->roll_no = $roll_no;
         $pre_admission->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id:auth()->user()->school->id;
         $pre_admission->save();
@@ -175,6 +193,21 @@ class PreAdmissionController extends Controller
         $pre_admission->class_id = $request->input('class_id');
         $pre_admission->pre_exam_id = $request->input('pre_exam_id');
         $pre_admission->caste = $request->input('caste');
+        if($file = $request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/student_photo');
+            $file->move($destinationPath, $fileName);
+            $pre_admission->photo = $fileName;
+        }
+
+        if($file = $request->hasFile('family_photo')) {
+            $file = $request->file('family_photo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/family_photo');
+            $file->move($destinationPath, $fileName);
+            $pre_admission->family_photo = $fileName;
+        }
         $pre_admission->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id'):auth()->user()->school->id;
         $pre_admission->save();
 

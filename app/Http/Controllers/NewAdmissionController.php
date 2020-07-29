@@ -116,6 +116,23 @@ class NewAdmissionController extends Controller
                 $students->dob = $request->dob;
                 $students->gender_id = $request->gender_id;
                 $students->id_proof = $request->id_proof;
+
+                if($file = $request->hasFile('photo')) {
+                    $file = $request->file('photo');
+                    $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+                    $destinationPath = public_path('/images/student_photo');
+                    $file->move($destinationPath, $fileName);
+                    $students->photo = $fileName;
+                }
+
+                if($file = $request->hasFile('family_photo')) {
+                    $file = $request->file('family_photo');
+                    $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+                    $destinationPath = public_path('/images/family_photo');
+                    $file->move($destinationPath, $fileName);
+                    $students->family_photo = $fileName;
+                }
+
                 $students->id_proof_no = $request->id_proof_no;
                 $students->tc_no = $request->tc_no;
                 $students->class_id = $request->class_id;
@@ -322,6 +339,23 @@ class NewAdmissionController extends Controller
         $students->dob = $request->dob;
         $students->gender_id = $request->gender_id;
         $students->id_proof = $request->id_proof;
+
+        if($file = $request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/student_photo');
+            $file->move($destinationPath, $fileName);
+            $students->photo = $fileName;
+        }
+
+        if($file = $request->hasFile('family_photo')) {
+            $file = $request->file('family_photo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/family_photo');
+            $file->move($destinationPath, $fileName);
+            $students->family_photo = $fileName;
+        }
+
         $students->id_proof_no = $request->id_proof_no;
         $students->tc_no = $request->tc_no;
         $students->class_id = $request->class_id;

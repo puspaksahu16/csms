@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -40,20 +41,20 @@
                                             <div class="form-body">
                                                 <div class="row">
 
-                                                        <div class="col-md-4">
-                                                            <div class="owner_photo">
-                                                                <img id="p1" height="150px" width="130px"  />
-                                                            </div>
-                                                            <br/>
-                                                            Owner photo :<input type="file" name='owner_photo'  id="owner_photo" onchange="pic(this);"/><p><br/></p>
+                                                    <div class="col-md-4">
+                                                        <div class="owner_photo">
+                                                            <img id="p1" height="150px"  width="130px"  />
                                                         </div>
-                                                        <div class="col-md-4">
-                                                            <div class="photo">
-                                                                <img id="p2" height="150px" width="130px"  />
-                                                            </div>
-                                                            <br/>
-                                                            School photo :<input type="file" name='photo'  id="photo" onchange="pic2(this);"/><p><br/></p>
+                                                        <br/>
+                                                        Owner photo :<input type="file" name='owner_photo' id="owner_photo" onchange="pic(this);"/><p><br/></p>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="photo">
+                                                            <img id="p2" height="150px" width="130px" />
                                                         </div>
+                                                        <br/>
+                                                        School photo :<input type="file" name='photo'  id="photo" onchange="pic2(this);"/><p><br/></p>
+                                                    </div>
 
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
@@ -163,7 +164,6 @@
     </div>
 
 @endsection
-@push('script')
     <script>
         function pic(input) {
             if (input.files && input.files[0]) {
@@ -179,6 +179,7 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
         function pic2(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -192,4 +193,4 @@
             }
         }
     </script>
-@endpush
+

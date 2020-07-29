@@ -64,7 +64,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <form class="form" method="POST" action="{{route('employee.update', $employee->id)}}">
+                                                    <form class="form" method="POST" action="{{route('employee.update', $employee->id)}}" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('put')
                                                         <div class="row setup-content" id="step-1">
@@ -76,11 +76,11 @@
                                                                 <br/><br/>
                                                                 <div class="row">
                                                                     <div class="col-md-4">
-                                                                        <div class="employee_photo">
-                                                                            <img id="p1" height="150px" width="130px"  />
+                                                                        <div class="photo">
+                                                                            <img id="p1" height="150px"  src="{{asset('images/employees/'.$employee->photo)}}" width="130px"  />
                                                                         </div>
                                                                         <br/>
-                                                                        Employee photo :<input type="file" name='employee_photo'  id="employee_photo" onchange="pic(this);"/><p><br/></p>
+                                                                        Employee photo :<input type="file" name='photo'  id="photo" onchange="pic(this);"/><p><br/></p>
                                                                     </div>
                                                                     <div class="col-md-4">
 

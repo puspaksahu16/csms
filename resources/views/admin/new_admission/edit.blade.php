@@ -67,7 +67,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <form class="form" method="POST" action="{{route('new_admission.update', $students->id)}}">
+                                                    <form class="form" method="POST" action="{{route('new_admission.update', $students->id)}}" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('put')
                                                         <div class="row setup-content" id="step-1">
@@ -80,14 +80,14 @@
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <div class="student_photo">
-                                                                            <img id="p1" height="150px" width="130px"  />
+                                                                            <img id="p1" height="150px"  src="{{asset('images/student_photo/'.$students->photo)}}" width="130px"  />
                                                                         </div>
                                                                         <br/>
-                                                                        Student photo :<input type="file" name='student_photo'  id="student_photo" onchange="pic(this);"/><p><br/></p>
+                                                                        Student photo :<input type="file" name='photo'  id="student_photo" onchange="pic(this);"/><p><br/></p>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="family_photo">
-                                                                            <img id="p2" height="150px" width="130px"  />
+                                                                            <img id="p2" height="150px" src="{{asset('images/family_photo/'.$students->family_photo)}}" width="130px"  />
                                                                         </div>
                                                                         <br/>
                                                                         Family photo :<input type="file" name='family_photo'  id="family_photo" onchange="pic2(this);"/><p><br/></p>

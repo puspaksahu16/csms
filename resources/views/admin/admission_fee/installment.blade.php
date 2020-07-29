@@ -53,6 +53,7 @@
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Installment Fee</th>
                                             <th scope="col">Fine</th>
+                                            <th scope="col">Due Date</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -64,6 +65,14 @@
                                                 <td>{{$i->students->first_name." ".$i->students->last_name}}</td>
                                                 <td>{{$i->installment_fee}}</td>
                                                 <td>{{$i->fine}}</td>
+                                                <td>
+                                                    @if($i->due_date == null)
+                                                        --
+                                                    @else
+                                                        {{date('j F, Y' , strtotime($i->due_date))}}
+                                                    @endif
+
+                                                </td>
                                                 <td>{{$i->status}}</td>
                                                 <td>
                                                     @if($i->status == "Pending")
@@ -71,7 +80,6 @@
 
                                                         {{--Trigger the modal with a button--}}
                                                         <button type="button" {{ $i->status == "Paid" ? 'disable':'' }} class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Fine</button>
-                                                    @endif
 
                                                         {{--Modal--}}
                                                         <div class="modal fade" id="myModal{{ $i->id }}" role="dialog">
@@ -95,6 +103,40 @@
 
                                                             </div>
                                                         </div>
+
+                                                        @elseif($i->status == "Paid")
+
+                                                        {{--Trigger the modal with a button--}}
+                                                        <button type="button" {{ $i->status == "Paid" ? 'disable':'' }} class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Next Due date</button>
+
+                                                        {{--Modal--}}
+                                                        <div class="modal fade" id="myModal{{ $i->id }}" role="dialog">
+                                                            <div class="modal-dialog">
+
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Next Due Date</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="{{ url('/admission_due_date/'.$i->id) }}" method="POST">
+                                                                            @csrf
+                                                                            <input class="form-control" name="due_date" placeholder="Due Date"type="date" >
+                                                                            <br>
+                                                                            <button type="submit" class="btn btn-success">Submit</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    @endif
+
+
                                                     {{--<a href="{{url('/admission_fee_fine/'.$i->id)}}" class="btn btn-sm btn-warning">Fine</a>--}}
                                                 </td>
 

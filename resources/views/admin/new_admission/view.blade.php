@@ -19,8 +19,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="users-view-image">
-                                            <img src="../../../app-assets/images/portrait/small/avatar-s-12.jpg"
-                                                 class="users-avatar-shadow w-100 rounded mb-2 pr-2 ml-1" alt="avatar">
+                                            <img src="{{asset('images/student_photo/'.$students->photo)}}"
+                                                 class="users-avatar-shadow w-50 rounded mb-2 pr-2 ml-1" alt="Student">
                                         </div>
                                         <div class="col-12 col-sm-9 col-md-6 col-lg-5">
                                             <table>
@@ -97,6 +97,10 @@
                                     <div class="card-title mb-2">Mother's Details</div>
                                 </div>
                                 <div class="card-body">
+                                    <div class="users-view-image">
+                                        <img src="{{asset('images/family_photo/'.$students->family_photo)}}"
+                                             class="users-avatar-shadow w-50 rounded mb-2 pr-2 ml-1" alt="Student">
+                                    </div>
                                     <table>
                                         <tr>
                                             <td class="font-weight-bold">Name </td>
