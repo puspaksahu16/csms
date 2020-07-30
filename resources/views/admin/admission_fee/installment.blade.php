@@ -17,6 +17,11 @@
                     @endif
                 </div>
             @endif
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
@@ -106,8 +111,10 @@
 
                                                         @elseif($i->status == "Paid")
 
-                                                        {{--Trigger the modal with a button--}}
-                                                        <button type="button" {{ $i->status == "Paid" ? 'disable':'' }} class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Next Due date</button>
+                                                            {{--Trigger the modal with a button--}}
+                                                        @if(!$loop->last)
+                                                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Next Due date</button>
+                                                        @endif
 
                                                         {{--Modal--}}
                                                         <div class="modal fade" id="myModal{{ $i->id }}" role="dialog">

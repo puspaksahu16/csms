@@ -295,7 +295,7 @@ class AdmissionFeeController extends Controller
     {
         $installment = Installment::find($id);
         $student_id = $installment->student_id;
-        $af = AdmissionFee::where('student_id', $student_id)->first();
+//        $af = AdmissionFee::where('student_id', $student_id)->first();
         $pa = Payment::where('student_id', $student_id)->sum('amount');
         $data = $request->all();
         $data['reason'] = 'Admission Fee';
@@ -304,16 +304,16 @@ class AdmissionFeeController extends Controller
 
 
         $a = $pa + $request->amount;
-        if ($a <= $af->fee)
-        {
+//        if ($a <= $af->fee)
+//        {
             $payment = Payment::create($data);
             $installment->status = "Paid";
             $installment->update();
 
             return redirect()->to('installment/'.$student_id)->with('success', 'Payment Successfully Done');
-        }else{
-            return redirect()->back()->with('error', 'Payment Amount is Grater than Total Amount');
-        }
+//        }else{
+//            return redirect()->back()->with('error', 'Payment Amount is Grater than Total Amount');
+//        }
 
     }
 
@@ -327,16 +327,25 @@ class AdmissionFeeController extends Controller
     }
     public function admissionDueDate(Request $request, $id)
     {
-        $due_date = Installment::find($id);
+        date_default_timezone_set('Asia/Calcutta');
 
+        $due_date = Installment::find($id);
+        $next = Installment::where('installment_no', ($due_date->installment_no + 1))->where('student_id', $due_date->student_id)->get();
+        if ($next[0]['status'] == 'Pending'){
+            if ($request->due_date > date('Y-m-d H:i:s'))
+            {
             $a = $id+1;
             $due = Installment::find($a);
             $due->due_date = $request->due_date;
             $due->update();
+            return redirect()->to('installment/'.$due_date->student_id)->with('success', 'Due Date Successfully Added');
+        }else{
+                return redirect()->to('installment/'.$due_date->student_id)->with('error', 'Due Date Must be greater then today');
+            }
+        }else{
+            return redirect()->to('installment/'.$due_date->student_id)->with('error', 'Next Payment is already Paid');
+        }
 
-
-
-        return redirect()->to('installment/'.$due_date->student_id)->with('success', 'Due Date Successfully Added');
     }
 
     /**
