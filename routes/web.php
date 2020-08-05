@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('set_class', 'SetClassController');
     Route::get('set_class_delete/{id}', 'SetClassController@destroy');
+    Route::put('set_class_delete/{id}', 'SetClassController@destroy');
 
 
     Route::resource('set_section', 'SetSectionController');

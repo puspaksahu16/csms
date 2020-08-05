@@ -8,8 +8,12 @@ class Period extends Model
 {
     protected $guarded = [];
 
-    public function standards()
+    public function standard()
     {
-        return $this->belongsTo(SetStandard::class , 'standard_id');
+        return $this->belongsTo(Standard::class , 'standard_id');
+    }
+    public function school()
+    {
+        return $this->belongsTo(School::class,'school_id');
     }
 }

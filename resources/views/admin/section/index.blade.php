@@ -21,12 +21,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Create Section</h2>
+                            <h2 class="content-header-title float-left mb-0">Assign Section</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Create Section</a>
+                                    <li class="breadcrumb-item"><a href="#">Assign Section</a>
                                     </li>
                                 </ol>
                             </div>
@@ -43,7 +43,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Section Setting</h4>
+                                    <h4 class="card-title">Section Assign</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -70,7 +70,7 @@
                                                             <select name="class_id" class="form-control">
                                                                 <option>-SELECT CLASS-</option>
                                                                 @foreach($classes as $class)
-                                                                    <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    <option value="{{ $class->id }}" style="text-transform: uppercase">{{ $class->create_class }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -80,7 +80,7 @@
                                                             <select name="section" class="form-control">
                                                                 <option>-SELECT Section-</option>
                                                                 @foreach($set_sections as $set_section)
-                                                                    <option value="{{ $set_section->name }}">{{ $set_section->name }}</option>
+                                                                    <option value="{{ $set_section->name }}" style="text-transform: uppercase">{{ $set_section->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                             <label for="first-name-column">Create Section</label>
@@ -115,7 +115,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             @if(auth()->user()->role->name == "super_admin")
-                                            <th>School</th>
+                                                <th>School</th>
                                             @endif
                                             <th scope="col">Class</th>
                                             <th scope="col">Section</th>
@@ -128,7 +128,7 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 @if(auth()->user()->role->name == "super_admin")
-                                                <th>{{$section->school->full_name}}</th>
+                                                    <th>{{$section->school->full_name}}</th>
                                                 @endif
                                                 <th>{{$section->class->create_class}}</th>
                                                 <th>{{$section->section}}</th>

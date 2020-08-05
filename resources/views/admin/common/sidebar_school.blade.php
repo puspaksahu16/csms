@@ -31,6 +31,7 @@
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Account">Accounts</span></a>
                 <ul class="menu-content">
                     <li><a href="{{url('/admission_fee')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Admissionfee">Admission fee</span></a></li>
+                    <li><a href="{{ url('/store_fees') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="StoreFee">Store Fee</span></a></li>
                     {{--<li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>--}}
                 </ul>
             </li>
@@ -41,7 +42,6 @@
                     <li><a href="{{ url('/stocks') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="stock">Stock</span></a></li>
                     <li><a href="{{ url('/books') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="stock">Book</span></a></li>
                     <li><a href="{{ url('/book_stocks') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="stock">Books Stock</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="assigning">Assigning</span></a></li>
                     <li><a href="{{url('/damages')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="damage">Damage</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="report">Report</span></a></li>
                 </ul>
@@ -71,6 +71,7 @@
                     <li><a href="{{url('/set_standard')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Standard</span></a></li>
                     <li><a href="{{url('/set_class')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Class</span></a></li>
                     <li><a href="{{url('/set_section')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Section</span></a></li>
+                    <li><a href="{{url('/period')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Period</span></a></li>
                     <li><a href="{{url('/idproof')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Id Proof</span></a></li>
                     <li><a href="{{url('/qualification')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Qualification</span></a></li>
                     <li><a href="{{url('/publisher')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Publisher</span></a></li>

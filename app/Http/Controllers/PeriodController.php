@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Period;
-use App\SetStandard;
+use App\School;
+use App\Standard;
 use Illuminate\Http\Request;
 
 class PeriodController extends Controller
@@ -15,9 +16,16 @@ class PeriodController extends Controller
      */
     public function index()
     {
-       $periods =  Period::all();
-       $standards = SetStandard::all();
-        return view('admin.period.index',compact(['periods','standards']));
+        if (auth()->user()->role->name == "super_admin") {
+            $schools = School::all();
+            $periods =  Period::all();
+            $standards = Standard::all();
+        }else{
+            $standards = Standard::where('school_id', auth()->user()->school->id)->get();
+            $periods =  Period::all();
+        }
+
+        return view('admin.period.index',compact(['periods','standards','schools']));
     }
 
     /**
@@ -39,6 +47,7 @@ class PeriodController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
         Period::create($data);
         return redirect('/period')->with("success", "Period Created successfully!");
     }
@@ -62,7 +71,14 @@ class PeriodController extends Controller
      */
     public function edit($id)
     {
-        //
+
+            $period =  Period::find($id);
+            $schools = School::all();
+            $standards = Standard::all();
+
+
+
+        return view('admin.period.edit',compact(['period','standards','schools']));
     }
 
     /**
@@ -74,7 +90,8 @@ class PeriodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Period::find($id)->update($request->all());
+        return redirect('/period')->with("success", "Period updated successfully!");
     }
 
     /**

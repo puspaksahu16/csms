@@ -41,20 +41,20 @@
 
                                             <div class="form-body">
                                                 <div class="row">
-                                                   <div class="col-md-4">
-                                                       <div class="student_photo">
-                                                           <img id="p1" height="150px" width="130px"  />
-                                                       </div>
-                                                       <br/>
-                                                       Student photo :<input type="file" name='photo'  id="photo" onchange="pic(this);"/><p><br/></p>
-                                                   </div>
-                                                   <div class="col-md-4">
-                                                       <div class="family_photo">
-                                                           <img id="p2" height="150px" width="130px"  />
-                                                       </div>
-                                                       <br/>
-                                                       Family photo :<input type="file" name='family_photo'  id="family_photo" onchange="pic2(this);"/><p><br/></p>
-                                                   </div>
+                                                    <div class="col-md-4">
+                                                        <div class="student_photo">
+                                                            <img id="p1" height="150px" width="130px"  />
+                                                        </div>
+                                                        <br/>
+                                                        Student photo :<input type="file" name='photo'  id="photo" onchange="pic(this);"/><p><br/></p>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="family_photo">
+                                                            <img id="p2" height="150px" width="130px"  />
+                                                        </div>
+                                                        <br/>
+                                                        Family photo :<input type="file" name='family_photo'  id="family_photo" onchange="pic2(this);"/><p><br/></p>
+                                                    </div>
                                                 </div>
 
 
@@ -71,24 +71,24 @@
                                                             </select>
                                                         </div>
                                                     @endif
-                                                        @if(auth()->user()->role->name == "super_admin")
-                                                            <div class="col-md-6 col-12">
-                                                                <div class="form-label-group">
-                                                                    <select onchange="getExam(this.value)" name="class_id" id="class_id" class="form-control"></select>
-                                                                </div>
+                                                    @if(auth()->user()->role->name == "super_admin")
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <select onchange="getExam(this.value)" name="class_id" id="class_id" class="form-control"></select>
                                                             </div>
-                                                        @else
-                                                    <div class="col-md-6 col-12">
+                                                        </div>
+                                                    @else
+                                                        <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
                                                                 <select onchange="getExam(this.value)" name="class_id" id="class_id" class="form-control">
                                                                     <option>-Select Class-</option>
                                                                     @foreach($classes as $class)
-                                                                        <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                        <option value="{{ $class->id }}"  style="text-transform: uppercase">{{ $class->create_class }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
-                                                    </div>
-                                                        @endif
+                                                        </div>
+                                                    @endif
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <label>First Name</label>
@@ -124,7 +124,7 @@
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <select name="pre_exam_id" id="pre_exam_id" class="form-control">
-                                                                <option>-SELECT EXAM-</option>
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -350,7 +350,7 @@
                             jQuery('select[name="class_id"]').empty();
                             if(data)
                             {
-                                $('select[name="class_id"]').append('<option value="">-Select-</option>');
+                                $('select[name="class_id"]').append('<option value=""  style="text-transform: uppercase">-Select-</option>');
                                 $.each(data,function(key,value){
                                     $('select[name="class_id"]').append($("<option/>", {
                                         value: key,

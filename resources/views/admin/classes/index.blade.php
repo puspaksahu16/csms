@@ -21,12 +21,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Create Class</h2>
+                            <h2 class="content-header-title float-left mb-0">Assign Class</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Create Class</a>
+                                    <li class="breadcrumb-item"><a href="#">Assign Class</a>
                                     </li>
 
                                 </ol>
@@ -45,7 +45,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Class Setting</h4>
+                                    <h4 class="card-title">Class Assign</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -97,7 +97,7 @@
                                                             <select name="create_class" class="form-control">
                                                                 <option>-SELECT Class-</option>
                                                                 @foreach($set_classes as $set_classe )
-                                                                    <option value="{{ $set_classe->name }}">{{ $set_classe->name }}</option>
+                                                                    <option value="{{ $set_classe->name }}"  style="text-transform: uppercase">{{ $set_classe->name }}</option>
                                                                 @endforeach
 
                                                             </select>

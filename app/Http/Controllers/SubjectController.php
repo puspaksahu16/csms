@@ -45,8 +45,9 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-
-        Subject::create($request->all());
+        $data = $request->all();
+        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        Subject::create($data);
         return redirect()->route('subject.index')->with('success', 'subject created Successfully');
     }
 

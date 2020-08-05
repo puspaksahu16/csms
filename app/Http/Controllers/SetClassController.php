@@ -76,8 +76,14 @@ class SetClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $class = SetClass::find($id)->update($request->all());
-        return redirect('/set_class')->with("success", "Class updated successfully!");
+        $classes = SetClass::where('name',$request->name)->first();
+        if (empty($classes) || $classes->id == $id){
+            SetClass::find($id)->update($request->all());
+            return redirect('/set_class')->with("success", "Class updated successfully!");
+        }else{
+            return redirect()->route('set_class.edit', $id)->with("error", "Duplicate Class Name!");
+        }
+
     }
 
     /**

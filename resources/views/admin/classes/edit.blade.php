@@ -43,11 +43,11 @@
                                                     @if(auth()->user()->role->name == "super_admin")
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
-                                                                <select name="school_id" class="form-control">
+                                                                <select name="school_id"   onchange="getStandard()"  class="form-control">
                                                                     <option>-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
-                                                                        <option {{ $classes->school->id == $classes->school_id ? "selected" : " " }} value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                        <option {{ $school->id == $classes->school_id ? "selected" : " " }} value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
@@ -118,3 +118,25 @@
     </div>
 
 @endsection
+@push('scripts')
+    <script>
+        function getStandard() {
+            var school_id = $('#school_id').val();
+            // alert(csrf);
+            $.ajax({
+                url : "/get_standard/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#standard_id").attr('disabled', false);
+                    $("#standard_id").empty();
+                    $("#standard_id").append('<option value="">-Select Standard-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#standard_id").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
+        }
+    </script>
+@endpush

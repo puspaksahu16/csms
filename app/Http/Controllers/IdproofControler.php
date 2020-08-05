@@ -59,8 +59,8 @@ class IdproofControler extends Controller
      */
     public function edit($id)
     {
-        $Idproofs = Idproof::find($id);
-        return view('admin.idproof.edit', compact('Idproofs'));
+        $idproof = Idproof::find($id);
+        return view('admin.idproof.edit', compact('idproof'));
     }
 
     /**

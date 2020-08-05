@@ -27,7 +27,7 @@ class PreAdmissionController extends Controller
         {
             $pre_admissions = PreAdmission::all()->where('is_active',1);
         }else{
-            $pre_admissions = PreAdmission::where('school_id', auth()->user()->school->id && 'is_active',1)->get();
+            $pre_admissions = PreAdmission::where('school_id', auth()->user()->school->id)->get();
         }
 
         return view('admin.pre_admissions.index', compact(['pre_admissions']));
