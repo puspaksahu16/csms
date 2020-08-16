@@ -76,8 +76,15 @@ class SetSectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $section = SetSection::find($id)->update($request->all());
-        return redirect('/set_section')->with("success", "Section updated successfully!");
+
+        $section = SetSection::where('name',$request->name)->first();
+
+        if (empty($section) || $section->id == $id){
+            SetSection::find($id)->update($request->all());
+            return redirect('/set_class')->with("success", "Section updated successfully!");
+        }else{
+            return redirect()->route('set_section.edit', $id)->with("error", "Duplicate Section Name!");
+        }
     }
 
     /**

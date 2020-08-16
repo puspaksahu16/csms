@@ -8,7 +8,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">General Setting</h2>
+                            <h2 class="content-header-title float-left mb-0">Modify Class</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
@@ -31,7 +31,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Class Setting</h4>
+                                    <h4 class="card-title">Modify Class</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
