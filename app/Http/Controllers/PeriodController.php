@@ -90,8 +90,20 @@ class PeriodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Period::find($id)->update($request->all());
-        return redirect('/period')->with("success", "Period updated successfully!");
+        $periods = Period::where('period_name',$request->period_name)
+            ->where('school_id',$request->school_id)
+            ->where('standard_id',$request->standard_id)
+            ->where('time_from',$request->time_from)
+            ->where('time_to',$request->time_to)
+            ->first();
+        if (empty($periods) || $periods->id == $id){
+            Period::find($id)->update($request->all());
+            return redirect('/period')->with("success", "Period updated successfully!");
+        }else{
+            return redirect()->route('period.edit', $id)->with("error", "Duplicate Period!");
+        }
+//        Period::find($id)->update($request->all());
+//        return redirect('/period')->with("success", "Period updated successfully!");
     }
 
     /**

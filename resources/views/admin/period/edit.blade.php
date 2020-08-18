@@ -23,6 +23,11 @@
                 </div>
 
             </div>
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
                 <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">

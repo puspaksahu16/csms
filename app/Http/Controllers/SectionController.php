@@ -50,10 +50,32 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
-        Section::create($data);
-        return redirect('/section')->with('success', "Section Created successfully!");
+        if (auth()->user()->role->name == "super_admin") {
+            $sections = Section::where('school_id',$request->school_id)
+                ->where('class_id',$request->class_id)
+                ->where('section',$request->section)->first();
+            if (empty($sections)){
+                $data = $request->all();
+                $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+                Section::create($data);
+                return redirect('/section')->with('success', "Section Created successfully!");
+            }else{
+                return redirect()->route('section.index')->with('error', 'Section Duplicate Entry');
+            }
+        }else{
+            $sections = Section::where('class_id',$request->class_id)
+                ->where('section',$request->section)->first();
+            if (empty($sections)){
+                $data = $request->all();
+                $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+                Section::create($data);
+                return redirect('/section')->with('success', "Section Created successfully!");
+            }else{
+                return redirect()->route('section.index')->with('error', 'Section Duplicate Entry');
+            }
+        }
+
+
     }
 
     /**
