@@ -154,7 +154,13 @@ class PreAdmissionController extends Controller
      */
     public function show($id)
     {
-        //
+        $pre_admission = PreAdmission::find($id);
+        $classes = Createclass::all();
+        $pre_exams = PreExam::all();
+        $schools = School::all();
+        $parents = StudentParent::where('student_id',$id)->first();
+        $address = Address::where('user_id',$id)->first();
+        return view('admin.pre_admissions.show', compact(['pre_admission','schools','classes','pre_exams','parents','address','qualifications']));
     }
 
     /**

@@ -61,6 +61,7 @@
                                             <th scope="col">Year</th>
                                             <th scope="col">Action</th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -74,6 +75,7 @@
                                             <td>{{$pre_admission->classes->create_class}}</td>
                                             <td>{{$pre_admission->roll_no}}</td>
                                             <td>{{$pre_admission->year->current_year}}</td>
+                                            <td><a href="{{route('pre_admissions.show', $pre_admission->id)}}" class="btn btn-sm btn-success">view</a></td>
                                             <td><a href="{{route('pre_admissions.edit', $pre_admission->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
                                              <td><a href="pre_admissions_delete/{{$pre_admission->id}}" class="btn btn-sm btn-danger">Delete</a></td>
                                         </tr>

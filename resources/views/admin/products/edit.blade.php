@@ -61,15 +61,15 @@
                                                                 <label class="custom-control-label" for="color">Color</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox col-md-3">
-                                                                <input {{ 1 == $product->type ? "checked" : " " }} type="checkbox" class="custom-control-input" value="0"  name="type" id="type">
+                                                                <input {{ 1 == $product->type ? "checked" : " " }} type="checkbox" class="custom-control-input" value="1"  name="type" id="type">
                                                                 <label class="custom-control-label" for="type">Type</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox col-md-3">
-                                                                <input {{ 1 == $product->size ? "checked" : " " }} type="checkbox" class="custom-control-input" value="0" name="size" id="size">
+                                                                <input {{ 1 == $product->size ? "checked" : " " }} type="checkbox" class="custom-control-input" value="1" name="size" id="size">
                                                                 <label class="custom-control-label" for="size">Size</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox col-md-3">
-                                                                <input {{ 1 == $product->gender ? "checked" : " " }} type="checkbox" class="custom-control-input" value="0" name="gender" id="gender">
+                                                                <input {{ 1 == $product->gender ? "checked" : " " }} type="checkbox" class="custom-control-input" value="1" name="gender" id="gender">
                                                                 <label class="custom-control-label" for="gender">Gender</label>
                                                             </div>
                                                         </div>
