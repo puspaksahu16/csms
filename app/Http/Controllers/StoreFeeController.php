@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\BookStock;
 use App\Payment;
 use App\Stock;
 use App\StoreFee;
@@ -34,6 +35,7 @@ class StoreFeeController extends Controller
             ->where('price', '!=', 0)
             ->where('school_id', $student->school_id)
             ->get();
+
         return view('admin.store_fee.store_fee', compact(['id', 'products', 'book']));
     }
 
@@ -79,8 +81,10 @@ class StoreFeeController extends Controller
                 {
                     $book_fee = Book::find($abf);
                     $fee += $book_fee->price;
-                    $book_fee->stock_out += 1 ;
-                    $book_fee->update();
+                    $bs = BookStock::find($book_fee->id);
+                    $bs->stock_out += 1 ;
+                    $bs->update();
+//                    $book_fee->update();
                 }
             }
 //            }

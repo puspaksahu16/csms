@@ -10,7 +10,7 @@ class Book extends Model
 
     public function stock()
     {
-        return $this->belongsTo(BookStock::class, 'class_id');
+        return $this->hasOne(BookStock::class, 'book_id');
     }
 
     public function classes()

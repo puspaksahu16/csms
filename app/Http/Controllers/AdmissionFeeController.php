@@ -485,6 +485,8 @@ class AdmissionFeeController extends Controller
 
         $sf->fee = $fee;
         $sf->update();
+
+
             return redirect()->route('new_admission.index')->with('success', 'Admission Fee updated Successfully');
 
     }

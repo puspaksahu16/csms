@@ -141,6 +141,7 @@
                                                                                 <th scope="col">class</th>
                                                                                 <th scope="col">Subject</th>
                                                                                 <th scope="col">Publisher</th>
+                                                                                <th scope="col">Price</th>
                                                                                 <th scope="col">Available</th>
 
                                                                             </tr>
@@ -159,7 +160,7 @@
                                                                                     <td>{{!empty($b->subject->name) ? $b->subject->name : "--"}}</td>
                                                                                     <td>{{!empty($b->publisher->name) ? $b->publisher->name : "--"}}</td>
                                                                                     <td>{{!empty($b->price) ? $b->price : "--"}}</td>
-                                                                                    <td>{{$b->available_stocks}}</td>
+                                                                                    <td>{{$b->stock->stock_in - $b->stock->stock_out}}</td>
 
                                                                                 </tr>
                                                                             @endforeach
