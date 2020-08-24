@@ -72,8 +72,7 @@ class StockController extends Controller
     public function productPriceUpdate(Request $request)
     {
         foreach ($request->stock as $stock) {
-            $stockavailables = Stock::where('product_id', $stock['product_id'])
-                ->where('color_id', $stock['color_id'])
+            $stockavailables = Stock::where('color_id', $stock['color_id'])
                 ->where('type_id', $stock['type_id'])
                 ->where('gender_id', $stock['gender_id'])
                 ->where('size_id', $stock['size_id'])

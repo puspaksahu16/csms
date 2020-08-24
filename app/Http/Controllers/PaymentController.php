@@ -22,7 +22,7 @@ class PaymentController extends Controller
     public function receive($id)
     {
 
-         $payment = Payment::where('student_id', $id)->first();
+         $payment = Payment::where('id', $id)->first();
 
         return view('admin.payments.receive', compact(['payment']));
     }

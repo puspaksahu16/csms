@@ -60,7 +60,8 @@
 
                                                 <div class="row">
                                                     @if(auth()->user()->role->name == "super_admin")
-                                                        <div class="col-md-6 col-12">
+
+                                                        <div class="col-md-12 col-12">
                                                             <select name="school_id" class="form-control">
                                                                 <option>-SELECT School-</option>
 
@@ -69,6 +70,7 @@
                                                                 @endforeach
 
                                                             </select>
+                                                            <label for="first-name-column"></label>
                                                         </div>
                                                     @endif
                                                     <div class="col-md-6 col-12">
@@ -160,7 +162,24 @@
                                                                 <label for="first-name-column">Mother's First Name</label>
                                                             </div>
                                                         </div>
-
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name" value="{{$parents->mother_last_name}}">
+                                                                <label for="last-name-column">Mother's Last Name</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="mother_mobile" value="{{$parents->mother_mobile}}">
+                                                                <label for="Mother's Mobile">Mother's Mobile Number</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email" value="{{$parents->mother_email}}">
+                                                                <label for="Email Id">Mother Email Id</label>
+                                                            </div>
+                                                        </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
                                                                 <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name" value="{{$parents->father_first_name}}">
@@ -168,12 +187,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name" value="{{$parents->mother_last_name}}">
-                                                                <label for="last-name-column">Mother's Last Name</label>
-                                                            </div>
-                                                        </div>
+
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
@@ -182,12 +196,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="mother_mobile" value="{{$parents->mother_mobile}}">
-                                                                <label for="Mother's Mobile">Mother's Mobile Number</label>
-                                                            </div>
-                                                        </div>
+
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
@@ -196,12 +205,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email" value="{{$parents->mother_email}}">
-                                                                <label for="Email Id">Mother Email Id</label>
-                                                            </div>
-                                                        </div>
+
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">

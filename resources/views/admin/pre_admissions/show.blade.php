@@ -57,7 +57,7 @@
 
                                                 <div class="row">
                                                     @if(auth()->user()->role->name == "super_admin")
-                                                        <div class="col-md-6 col-12">
+                                                        <div class="col-md-12 col-12">
                                                             <label for="email-id-column">School</label>
                                                             <div class="form-label-group">
                                                             <select name="school_id" class="form-control" disabled>
@@ -73,7 +73,38 @@
                                                         </div>
                                                     @endif
                                                         <div class="col-md-6 col-12">
-                                                            <label for="email-id-column">Class</label>
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="first_name" value="{{$pre_admission->first_name}}" disabled>
+                                                                <label for="first-name-column">First Name</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="last_name" value="{{$pre_admission->last_name}}" disabled>
+                                                                <label for="last-name-column">Last Name</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="date"  class="form-control"  name="dob" value="{{$pre_admission->dob}}" disabled>
+                                                                <label for="DOB">DOB</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <select name="gender" class="form-control" disabled>
+                                                                    <option  value="">-Select Gender-</option>
+                                                                    <option {{1 == $pre_admission->gender ? "selected" : " " }} value="1">MALE</option>
+                                                                    <option {{2 == $pre_admission->gender ? "selected" : " " }} value="2">FEMALE</option>
+                                                                </select>
+
+                                                                <label for="country-floating">Gender</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 col-12">
+
                                                             <div class="form-label-group">
 
                                                                 <select name="class_id" class="form-control" disabled>
@@ -84,38 +115,12 @@
                                                                     @endforeach
 
                                                                 </select>
-
+                                                                <label for="class-column">Class</label>
                                                             </div>
                                                         </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="first_name" value="{{$pre_admission->first_name}}" disabled>
-                                                            <label for="first-name-column">First Name</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="last_name" value="{{$pre_admission->last_name}}" disabled>
-                                                            <label for="last-name-column">Last Name</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <input type="date"  class="form-control"  name="dob" value="{{$pre_admission->dob}}" disabled>
-                                                            <label for="DOB">DOB</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <select name="gender" class="form-control" disabled>
-                                                                <option  value="">-Select Gender-</option>
-                                                                <option {{1 == $pre_admission->gender ? "selected" : " " }} value="1">MALE</option>
-                                                                <option {{2 == $pre_admission->gender ? "selected" : " " }} value="2">FEMALE</option>
-                                                            </select>
 
-                                                            <label for="country-floating">Gender</label>
-                                                        </div>
-                                                    </div>
+
+
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
@@ -166,28 +171,12 @@
                                                                 <label for="first-name-column">Mother's First Name</label>
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name" value="{{$parents->father_first_name}}" disabled>
-                                                                <label for="first-name-column">Father's First Name</label>
-                                                            </div>
-                                                        </div>
-
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
                                                                 <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name" value="{{$parents->mother_last_name}}" disabled>
                                                                 <label for="last-name-column">Mother's Last Name</label>
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name" value="{{$parents->father_last_name}}" disabled>
-                                                                <label for="last-name-column">Father's Last Name</label>
-                                                            </div>
-                                                        </div>
-
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
                                                                 <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="mother_mobile" value="{{$parents->mother_mobile}}" disabled>
@@ -197,17 +186,36 @@
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
+                                                                <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email" value="{{$parents->mother_email}}" disabled>
+                                                                <label for="Email Id">Mother Email Id</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name" value="{{$parents->father_first_name}}" disabled>
+                                                                <label for="first-name-column">Father's First Name</label>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name" value="{{$parents->father_last_name}}" disabled>
+                                                                <label for="last-name-column">Father's Last Name</label>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
                                                                 <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile" value="{{$parents->father_mobile}}" disabled>
                                                                 <label for="Mother's Mobile">Father's Mobile Number</label>
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email" value="{{$parents->mother_email}}" disabled>
-                                                                <label for="Email Id">Mother Email Id</label>
-                                                            </div>
-                                                        </div>
+
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">

@@ -400,7 +400,7 @@
 <body>
 <header>
     <h1>CSMS Pro Invoice</h1>
-    <address contenteditable>
+    <address>
         <p>{{$payment->address->address}}</p>
         <p>{{$payment->address->city}}<br>{{$payment->address->district}}, {{$payment->address->state}}</p>
         <p>{{$payment->address->zip}}</p>
@@ -409,41 +409,41 @@
 </header>
 <article>
     <h1>Recipient</h1>
-    <address contenteditable>
+    <address>
         <p>{{$payment->student->first_name}} {{$payment->student->last_name}}</p>
     </address>
     <table class="meta">
         <tr>
-            <th><span contenteditable>Student UID #</span></th>
-            <td><span contenteditable>{{$payment->student->student_unique_id}}</span></td>
+            <th>Student UID #</th>
+            <td>{{$payment->student->student_unique_id}}</td>
         </tr>
         <tr>
-            <th><span contenteditable>Date</span></th>
-            <td><span contenteditable>{{$payment->created_at}}</span></td>
+            <th>Date</th>
+            <td>{{$payment->created_at}}</td>
         </tr>
         <tr>
-            <th><span contenteditable>Amount </span></th>
-            <td><span id="prefix" contenteditable>Rs</span><span>{{$payment->amount}}</span></td>
+            <th>Amount </th>
+            <td>Rs<span>{{$payment->amount}}</span></td>
         </tr>
     </table>
     <table class="inventory">
         <thead>
         <tr>
-            <th><span contenteditable>Payment Mode</span></th>
-            <th><span contenteditable>Transection ID</span></th>
-            <th><span contenteditable>Payment Details</span></th>
-            <th><span contenteditable>Amount</span></th>
+            <th>Payment Mode</th>
+            <th>Transection ID</th>
+            <th>Payment Details</th>
+            <th>Amount</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><a class="cut">-</a><span contenteditable>@if($payment->type == 1)Cash
+            <td>@if($payment->type == 1)Cash
                     @else
                         Online
-                    @endif</span></td>
-            <td><span contenteditable>{{$payment->transaction_id}}</span></td>
-            <td><span contenteditable>{{$payment->reason}}</span></td>
-            <td><span data-prefix>RS</span><span>{{$payment->amount}}</span></td>
+                    @endif</td>
+            <td>{{$payment->transaction_id}}</td>
+            <td>{{$payment->reason}}</td>
+            <td>RS<span>{{$payment->amount}}</span></td>
         </tr>
         </tbody>
     </table>
