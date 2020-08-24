@@ -45,7 +45,7 @@
                                                     @if(auth()->user()->role->name == "super_admin")
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
-                                                                <select name="school_id" class="form-control">
+                                                                <select onchange="get_class(this.value)" name="school_id" class="form-control">
                                                                     <option>-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
@@ -64,12 +64,14 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <select name="class_id" class="form-control">
+                                                            <select name="class_id" id="class_id" class="form-control">
                                                                 <option>-SELECT CLASS-</option>
 
-                                                                @foreach($classes as $class)
-                                                                    <option {{ $pre_exam->class_id == $class->id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                @endforeach
+                                                                {{--<div id="class_show">--}}
+                                                                    @foreach($classes as $class)
+                                                                        <option {{ $pre_exam->class_id == $class->id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    @endforeach
+                                                                {{--</div>--}}
 
                                                             </select>
                                                         </div>
@@ -129,4 +131,55 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function get_class(value) {
+            // alert(1);
+            $('#class_show').hide();
+            jQuery.ajax({
+                url : '/get_class/' +value,
+                type : "GET",
+                dataType : "json",
+                success:function(data)
+                {
+                    console.log(data);
+                    $('#class_id').empty();
+                    $('#class_id').append('<option value="">Select Class</option>');
+                    jQuery.each(data, function(key,value){
+                        $('#class_id').append('<option value="'+ key +'">'+ value +'</option>');
+                    });
+                }
+            });
+        }
+    </script>
+    {{--<script type="text/javascript">--}}
+
+
+        {{--jQuery(document).ready(function ()--}}
+        {{--{--}}
+            {{--jQuery('select[name="school_id"]').on('change',function(){--}}
+                {{--var schoolID = jQuery(this).val();--}}
+                {{--if(schoolID)--}}
+                {{--{--}}
+
+                    {{--jQuery.ajax({--}}
+                        {{--url : 'getclass/' +schoolID,--}}
+                        {{--type : "GET",--}}
+                        {{--dataType : "json",--}}
+                        {{--success:function(data)--}}
+                        {{--{--}}
+                            {{--console.log(data);--}}
+                            {{--$('#class_id').empty();--}}
+                            {{--jQuery.each(data, function(key,value){--}}
+                                {{--$('#class_id').append('<option value="'+ key +'">'+ value +'</option>');--}}
+                            {{--});--}}
+                        {{--}--}}
+                    {{--});--}}
+                {{--}--}}
+                {{--else--}}
+                {{--{--}}
+                    {{--$('select[name="class_id"]').empty();--}}
+                {{--}--}}
+            {{--});--}}
+        {{--});--}}
+    {{--</script>--}}
 @endsection

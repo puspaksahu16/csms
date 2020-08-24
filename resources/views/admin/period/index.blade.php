@@ -159,6 +159,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Period</th>
+                                            <th scope="col">School</th>
                                             <th scope="col">Standard</th>
                                             <th scope="col">Time From</th>
                                             <th scope="col">Time To</th>
@@ -171,6 +172,7 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 <th>{{$period->period_name}}</th>
+                                                <th>{{$period->school->full_name}}</th>
                                                 <th>{{$period->standard->name}}</th>
                                                 <th>{{$period->time_from}}</th>
                                                 <th>{{$period->time_to}}</th>

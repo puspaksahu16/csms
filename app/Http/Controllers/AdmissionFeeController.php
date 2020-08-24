@@ -24,7 +24,7 @@ class AdmissionFeeController extends Controller
      */
     public function index()
     {
-        $student_fees = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->get();
+        $student_fees = AdmissionFee::with('students')->get();
 
         foreach ($student_fees as $key => $sf)
         {

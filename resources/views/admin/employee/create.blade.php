@@ -256,7 +256,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" checked value="1"><label>Same as Permanent</label>
+                                                                    <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" checked value="1"><label>Same as Resident</label>
                                                                     <div id="permanent" style="display: none">
                                                                         <div class="card-header">
                                                                             <h4 class="card-title">Permanent Address</h4>

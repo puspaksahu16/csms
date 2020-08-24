@@ -154,6 +154,7 @@
                         {
                             console.log(data);
                             jQuery('select[name="class_id"]').empty();
+                            $('select[name="class_id"]').append('<option value="">Select Class</option>');
                             jQuery.each(data, function(key,value){
                                 $('select[name="class_id"]').append('<option value="'+ key +'">'+ value +'</option>');
                             });

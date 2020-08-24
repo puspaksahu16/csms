@@ -18,7 +18,7 @@ class PeriodController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $schools = School::all();
-            $periods =  Period::all();
+            $periods =  Period::get();
             $standards = Standard::all();
         }else{
             $standards = Standard::where('school_id', auth()->user()->school->id)->get();

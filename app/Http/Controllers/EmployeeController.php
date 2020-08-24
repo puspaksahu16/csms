@@ -202,6 +202,8 @@ class EmployeeController extends Controller
         $employee->caste = $request->caste;
         $employee->update();
 
+//        return $request->addresses;
+//$a = [];
         foreach ($request->addresses as $key => $add)
         {
 //            return $request->is_same;
@@ -221,20 +223,38 @@ class EmployeeController extends Controller
                 break;
             }else{
                 $adress = Address::where('user_id', $id)->where('address_type', $key)->first();
-                $adress->user_id = $employee->id;
-                $adress->district = $add['district'];
-                $adress->address = $add['address'];
-                $adress->city = $add['city'];
-                $adress->state = $add['state'];
-                $adress->country = $add['country'];
-                $adress->zip = $add['zip'];
-                $adress->address_type = $key;
-                $adress->is_same = 0;
-                $adress->register_type = 'new';
-                $adress->update();
+//                array_push($a,$adress);
+                if (!empty($adress)){
+                    $adress->user_id = $employee->id;
+                    $adress->district = $add['district'];
+                    $adress->address = $add['address'];
+                    $adress->city = $add['city'];
+                    $adress->state = $add['state'];
+                    $adress->country = $add['country'];
+                    $adress->zip = $add['zip'];
+                    $adress->address_type = $key;
+                    $adress->is_same = 0;
+                    $adress->register_type = 'new';
+                    $adress->update();
+                }else{
+                    $adress = new Address();
+                    $adress->user_id = $employee->id;
+                    $adress->district = $add['district'];
+                    $adress->address = $add['address'];
+                    $adress->city = $add['city'];
+                    $adress->state = $add['state'];
+                    $adress->country = $add['country'];
+                    $adress->zip = $add['zip'];
+                    $adress->address_type = $key;
+                    $adress->is_same = 0;
+                    $adress->register_type = 'new';
+                    $adress->create();
+                }
+
             }
 
         }
+//        return $a;
         return redirect()->route('employee.index')->with('success', 'Employee Updated Successfully');
     }
 

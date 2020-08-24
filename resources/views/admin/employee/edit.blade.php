@@ -256,7 +256,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" {{$r_address->is_same == 1 ? 'checked' : ''}} value="1"><label>Same as Permanent</label>
+                                                                    <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" {{$r_address->is_same == 1 ? 'checked' : ''}} value="1"><label>Same as Resident</label>
                                                                     <div id="permanent" style="display: {{ $r_address->is_same == 1 ? 'none' : '' }}">
                                                                         <div class="card-header">
                                                                             <h4 class="card-title">Permanent Address</h4>
