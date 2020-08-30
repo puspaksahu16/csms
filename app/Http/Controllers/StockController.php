@@ -71,12 +71,24 @@ class StockController extends Controller
 
     public function productPriceUpdate(Request $request)
     {
+//        return $request->all();
         foreach ($request->stock as $stock) {
-            $stockavailables = Stock::where('color_id', $stock['color_id'])
-                ->where('type_id', $stock['type_id'])
-                ->where('gender_id', $stock['gender_id'])
-                ->where('size_id', $stock['size_id'])
-                ->get();
+            if (auth()->user()->role->name == "super_admin") {
+                $stockavailables = Stock::where('school_id', $request->school_id)
+                    ->where('product_id', $stock['product_id'])
+                    ->where('color_id', $stock['color_id'])
+                    ->where('type_id', $stock['type_id'])
+                    ->where('gender_id', $stock['gender_id'])
+                    ->where('size_id', $stock['size_id'])
+                    ->get();
+            }else{
+                $stockavailables = Stock::where('product_id', $stock['product_id'])
+                    ->where('color_id', $stock['color_id'])
+                    ->where('type_id', $stock['type_id'])
+                    ->where('gender_id', $stock['gender_id'])
+                    ->where('size_id', $stock['size_id'])
+                    ->get();
+            }
             if (count($stockavailables) <= 0) {
                 return response(["success", "Stock is not Available"]);
             }else{

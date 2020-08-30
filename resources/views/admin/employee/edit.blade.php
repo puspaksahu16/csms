@@ -198,10 +198,10 @@
                                                                         <div class="form-label-group">
                                                                             <tr>
                                                                                 <br/>
-                                                                                <td><input  {{ 1 == $employee->caste ? "checked" : " " }}  type="radio" name="caste" value="4">ST</td>
-                                                                                <td><input  {{ 2 == $employee->caste ? "checked" : " " }}  type="radio" name="caste" value="3">SC</td>
-                                                                                <td><input  {{ 3 == $employee->caste ? "checked" : " " }}  type="radio" name="caste" value="2">OBC</td>
-                                                                                <td><input  {{ 4 == $employee->caste ? "checked" : " " }}  type="radio" name="caste" value="1">GEN</td>
+                                                                                <td><input  {{ 4 == $employee->caste ? "checked" : " " }}  type="radio" name="caste" value="4">ST</td>
+                                                                                <td><input  {{ 3 == $employee->caste ? "checked" : " " }}  type="radio" name="caste" value="3">SC</td>
+                                                                                <td><input  {{ 2 == $employee->caste ? "checked" : " " }}  type="radio" name="caste" value="2">OBC</td>
+                                                                                <td><input  {{ 1 == $employee->caste ? "checked" : " " }}  type="radio" name="caste" value="1">GEN</td>
                                                                             </tr>
                                                                             <label for="email-id-column">Caste</label>
                                                                         </div>

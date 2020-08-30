@@ -165,6 +165,7 @@ class SchoolController extends Controller
      */
     public function destroy($id)
     {
-        //
+//        School::where('id',$id)->delete();
+//        return redirect('/schools')->with("success", "School data is deleted successfully!");
     }
 }

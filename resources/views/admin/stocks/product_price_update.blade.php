@@ -194,6 +194,17 @@
                     })
                         .then(function (response) {
                             console.log(response);
+                            that.rowData = [
+                                {
+                                    product_id: '',
+                                    color_id: '',
+                                    type_id: '',
+                                    size_id: '',
+                                    gender_id: '',
+                                    unit:'',
+                                    price: '',
+                                }];
+                            that.sp = [{}];
                             that.products = response.data;
                         })
                         .catch(function (error) {

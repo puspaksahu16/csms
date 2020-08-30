@@ -176,7 +176,7 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
        $employee = Employee::find($id);
-       $employee->school_id = $request->school_id;
+       $employee->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id'):auth()->user()->school->id;
        $employee->first_name = $request->first_name;
        $employee->last_name = $request->last_name;
         $employee->dob = $request->dob;
@@ -218,7 +218,7 @@ class EmployeeController extends Controller
                 $adress->zip = $add['zip'];
                 $adress->address_type = $key;
                 $adress->is_same = 1;
-                $adress->register_type = 'new';
+                $adress->register_type = 'emp';
                 $adress->update();
                 break;
             }else{
@@ -234,7 +234,7 @@ class EmployeeController extends Controller
                     $adress->zip = $add['zip'];
                     $adress->address_type = $key;
                     $adress->is_same = 0;
-                    $adress->register_type = 'new';
+                    $adress->register_type = 'emp';
                     $adress->update();
                 }else{
                     $adress = new Address();
@@ -247,7 +247,7 @@ class EmployeeController extends Controller
                     $adress->zip = $add['zip'];
                     $adress->address_type = $key;
                     $adress->is_same = 0;
-                    $adress->register_type = 'new';
+                    $adress->register_type = 'emp';
                     $adress->create();
                 }
 
