@@ -15,8 +15,14 @@
                     @else
                         {{ session()->get('success') }}
                     @endif
+
                 </div>
             @endif
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
@@ -158,11 +164,13 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Period</th>
-                                            <th scope="col">School</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <th scope="col">School</th>
+                                            @endif
                                             <th scope="col">Standard</th>
-                                            <th scope="col">Time From</th>
+                                            <th scope="col">Period</th>
                                             <th scope="col">Time To</th>
+                                            <th scope="col">Time From</th>
                                             <th scope="col">Action</th>
 {{--                                            <th></th>--}}
                                         </tr>
@@ -171,11 +179,13 @@
                                         @foreach($periods as $key => $period)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
-                                                <th>{{$period->period_name}}</th>
-                                                <th>{{$period->school->full_name}}</th>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                    <th>{{$period->school->full_name}}</th>
+                                                @endif
                                                 <th>{{$period->standard->name}}</th>
-                                                <th>{{$period->time_from}}</th>
+                                                <th>{{$period->period_name}}</th>
                                                 <th>{{$period->time_to}}</th>
+                                                <th>{{$period->time_from}}</th>
                                                 <td><a href="{{route('period.edit', $period->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
 {{--                                                <td><a href="period_delete/{{$period->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>

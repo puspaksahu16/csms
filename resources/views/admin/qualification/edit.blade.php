@@ -47,7 +47,7 @@
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="qualification" class="form-control"  value="{{$qualification->qualification}}" name="qualification">
-                                                            <label for="qualification-column">Create Qualification</label>
+                                                            <label for="qualification-column">Edit Qualification</label>
                                                         </div>
                                                     </div>
 

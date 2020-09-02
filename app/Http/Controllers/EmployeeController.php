@@ -200,7 +200,7 @@ class EmployeeController extends Controller
 
         }
        $employee = Employee::find($id);
-       $employee->school_id = $request->school_id;
+       $employee->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id'):auth()->user()->school->id;
        $employee->first_name = $request->first_name;
        $employee->last_name = $request->last_name;
         $employee->dob = $request->dob;

@@ -56,7 +56,7 @@
                                             <th scope="col">Created Date</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
-                                            <th></th>
+{{--                                            <th></th>--}}
                                         </tr>
                                         </thead>
                                             <tbody>
@@ -70,7 +70,7 @@
                                                     <td>{{$school->created_at->format('Y-m-d')}}</td>
                                                     <td>{{$school->is_active == 1 ? 'Active' : "Inactive"}}</td>
                                                     <td><a href="{{route('schools.edit', $school->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-                                                    <td><a href="schools_delete/{{$school->id}}" class="btn btn-sm btn-danger">Delete</a></td>
+{{--                                                    <td><a href="schools_delete/{{$school->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                                 </tr>
                                             @endforeach
                                             </tbody>
