@@ -28,7 +28,6 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Store</a>
                                     </li>
-                                    </li>
                                     <li class="breadcrumb-item"><a href="#">Product</a>
                                     </li>
 
@@ -51,10 +50,11 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0 zero-configuration" id="">
+                                    <table class="table mb-0 zero-configuration" id="">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            <th scope="col">School</th>
                                             <th scope="col">Product Name</th>
                                             <th scope="col">Unit</th>
                                             <th scope="col">Action</th>
@@ -64,6 +64,8 @@
                                         @foreach($products as $key => $product)
                                             <tr>
                                                 <td>{{$key+1}}</td>
+                                                <td>{{$product->school->full_name}}</td>
+                                                <td>{{$product->name}}</td>
                                                 <td>{{$product->name}}</td>
                                                 <td>{{$product->unit}}</td>
                                                 <td><a href="{{route('products.edit', $product->id)}}" class="btn btn-primary">Edit</a></td>

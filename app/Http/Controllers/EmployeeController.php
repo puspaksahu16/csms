@@ -52,6 +52,28 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        $address = [];
+        foreach ($request->addresses as $key => $add)
+        {
+            if ($request->is_same == 1) {
+                $add['is_same'] = 1;
+                $add['address_type'] = $key;
+                if (empty($add['address'])){
+                    $radd = $request->addresses['resident'];
+                    $radd['is_same'] = 1;
+                    $radd['address_type'] = $key;
+                    array_push($address, $radd);
+                }else{
+                    array_push($address, $add);
+                }
+            } else {
+                $add['is_same'] = 0;
+                $add['address_type'] = $key;
+                array_push($address, $add);
+            }
+
+        }
+
         $em = Employee::orderBy('id', 'DESC')->get('employee_unique_id');
         if (count($em) <= 0)
         {
@@ -98,41 +120,22 @@ class EmployeeController extends Controller
                 $employees->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
                 $employees->save();
 
-                foreach ($request->addresses as $key => $add) {
-                    if ($request->is_same == 1) {
-                        $adress = new Address();
-                        $adress->user_id = $employees->id;
-                        $adress->district = $add['district'];
-                        $adress->address = $add['address'];
-                        $adress->city = $add['city'];
-                        $adress->state = $add['state'];
-                        $adress->country = $add['country'];
-                        $adress->zip = $add['zip'];
-                        $adress->address_type = $key;
-                        $adress->is_same = 1;
-                        $adress->register_type = 'Employee';
-                        $adress->save();
-                        break;
-                    } else {
-                        $adress = new Address();
-                        $adress->user_id = $employees->id;
-                        $adress->district = $add['district'];
-                        $adress->address = $add['address'];
-                        $adress->city = $add['city'];
-                        $adress->state = $add['state'];
-                        $adress->country = $add['country'];
-                        $adress->zip = $add['zip'];
-                        $adress->address_type = $key;
-                        $adress->is_same = 0;
-                        $adress->register_type = 'Employee';
-                        $adress->save();
-                    }
-
-
+                foreach ($address as $add) {
+                    $adress = new Address();
+                    $adress->user_id = $employees->id;
+                    $adress->district = $add['district'];
+                    $adress->address = $add['address'];
+                    $adress->city = $add['city'];
+                    $adress->state = $add['state'];
+                    $adress->country = $add['country'];
+                    $adress->zip = $add['zip'];
+                    $adress->address_type = $add['address_type'];
+                    $adress->is_same = $add['is_same'];
+                    $adress->register_type = 'Employee';
+                    $adress->save();
                 }
             }
-        }
-        else{
+        }else{
             return redirect()->back()->with('error', 'Employee Email already exist');
         }
         return redirect()->route('employee.index')->with('success', 'Employee created Successfully');
@@ -175,6 +178,27 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $address = [];
+        foreach ($request->addresses as $key => $add)
+        {
+            if ($request->is_same == 1) {
+                $add['is_same'] = 1;
+                $add['address_type'] = $key;
+                if (empty($add['address'])){
+                    $radd = $request->addresses['resident'];
+                    $radd['is_same'] = 1;
+                    $radd['address_type'] = $key;
+                    array_push($address, $radd);
+                }else{
+                    array_push($address, $add);
+                }
+            } else {
+                $add['is_same'] = 0;
+                $add['address_type'] = $key;
+                array_push($address, $add);
+            }
+
+        }
        $employee = Employee::find($id);
        $employee->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id'):auth()->user()->school->id;
        $employee->first_name = $request->first_name;
@@ -204,55 +228,19 @@ class EmployeeController extends Controller
 
 //        return $request->addresses;
 //$a = [];
-        foreach ($request->addresses as $key => $add)
+        foreach ($address as $add)
         {
-//            return $request->is_same;
-            if ($request->is_same == 1)
-            {
-                $adress = Address::where('user_id', $id)->first();
-                $adress->district = $add['district'];
-                $adress->address = $add['address'];
-                $adress->city = $add['city'];
-                $adress->state = $add['state'];
-                $adress->country = $add['country'];
-                $adress->zip = $add['zip'];
-                $adress->address_type = $key;
-                $adress->is_same = 1;
-                $adress->register_type = 'emp';
-                $adress->update();
-                break;
-            }else{
-                $adress = Address::where('user_id', $id)->where('address_type', $key)->first();
-//                array_push($a,$adress);
-                if (!empty($adress)){
-                    $adress->user_id = $employee->id;
-                    $adress->district = $add['district'];
-                    $adress->address = $add['address'];
-                    $adress->city = $add['city'];
-                    $adress->state = $add['state'];
-                    $adress->country = $add['country'];
-                    $adress->zip = $add['zip'];
-                    $adress->address_type = $key;
-                    $adress->is_same = 0;
-                    $adress->register_type = 'emp';
-                    $adress->update();
-                }else{
-                    $adress = new Address();
-                    $adress->user_id = $employee->id;
-                    $adress->district = $add['district'];
-                    $adress->address = $add['address'];
-                    $adress->city = $add['city'];
-                    $adress->state = $add['state'];
-                    $adress->country = $add['country'];
-                    $adress->zip = $add['zip'];
-                    $adress->address_type = $key;
-                    $adress->is_same = 0;
-                    $adress->register_type = 'emp';
-                    $adress->create();
-                }
-
-            }
-
+            $adress = Address::where('user_id', $id)->where('address_type', $add['address_type'])->first();
+            $adress->district = $add['district'];
+            $adress->address = $add['address'];
+            $adress->city = $add['city'];
+            $adress->state = $add['state'];
+            $adress->country = $add['country'];
+            $adress->zip = $add['zip'];
+            $adress->address_type = $add['address_type'];
+            $adress->is_same = $add['is_same'];
+            $adress->register_type = 'Employee';
+            $adress->update();
         }
 //        return $a;
         return redirect()->route('employee.index')->with('success', 'Employee Updated Successfully');

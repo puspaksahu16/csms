@@ -87,6 +87,27 @@ class NewAdmissionController extends Controller
      */
     public function store(Request $request)
     {
+        $address = [];
+        foreach ($request->addresses as $key => $add)
+        {
+            if ($request->is_same == 1) {
+                $add['is_same'] = 1;
+                $add['address_type'] = $key;
+                if (empty($add['address'])){
+                    $radd = $request->addresses['resident'];
+                    $radd['is_same'] = 1;
+                    $radd['address_type'] = $key;
+                    array_push($address, $radd);
+                }else{
+                    array_push($address, $add);
+                }
+            } else {
+                $add['is_same'] = 0;
+                $add['address_type'] = $key;
+                array_push($address, $add);
+            }
+
+        }
         $s = Student::orderBy('id', 'DESC')->get('student_unique_id');
         if (count($s) <= 0)
         {
@@ -170,39 +191,21 @@ class NewAdmissionController extends Controller
                     $parents->parent_type = 'new';
                     $parents->save();
 
-                    foreach ($request->addresses as $key => $add)
-                    {
-                        if ($request->is_same == 1)
-                        {
-                            $adress = new Address();
-                            $adress->user_id = $students->id;
-                            $adress->district = $add['district'];
-                            $adress->address = $add['address'];
-                            $adress->city = $add['city'];
-                            $adress->state = $add['state'];
-                            $adress->country = $add['country'];
-                            $adress->zip = $add['zip'];
-                            $adress->address_type = $key;
-                            $adress->is_same = 1;
-                            $adress->register_type = 'new';
-                            $adress->save();
-                            break;
-                        }else{
-                            $adress = new Address();
-                            $adress->user_id = $students->id;
-                            $adress->district = $add['district'];
-                            $adress->address = $add['address'];
-                            $adress->city = $add['city'];
-                            $adress->state = $add['state'];
-                            $adress->country = $add['country'];
-                            $adress->zip = $add['zip'];
-                            $adress->address_type = $key;
-                            $adress->is_same = 0;
-                            $adress->register_type = 'new';
-                            $adress->save();
-                        }
-
+                    foreach ($address as $add) {
+                        $adress = new Address();
+                        $adress->user_id = $students->id;
+                        $adress->district = $add['district'];
+                        $adress->address = $add['address'];
+                        $adress->city = $add['city'];
+                        $adress->state = $add['state'];
+                        $adress->country = $add['country'];
+                        $adress->zip = $add['zip'];
+                        $adress->address_type = $add['address_type'];
+                        $adress->is_same = $add['is_same'];
+                        $adress->register_type = 'new';
+                        $adress->save();
                     }
+
                     if (empty($parents->id))
                     {
                         $user = User::find($user->id);
@@ -333,6 +336,27 @@ class NewAdmissionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $address = [];
+        foreach ($request->addresses as $key => $add)
+        {
+            if ($request->is_same == 1) {
+                $add['is_same'] = 1;
+                $add['address_type'] = $key;
+                if (empty($add['address'])){
+                    $radd = $request->addresses['resident'];
+                    $radd['is_same'] = 1;
+                    $radd['address_type'] = $key;
+                    array_push($address, $radd);
+                }else{
+                    array_push($address, $add);
+                }
+            } else {
+                $add['is_same'] = 0;
+                $add['address_type'] = $key;
+                array_push($address, $add);
+            }
+
+        }
         $students = Student::find($id);
         $students->first_name = $request->first_name;
         $students->last_name = $request->last_name;
@@ -386,38 +410,19 @@ class NewAdmissionController extends Controller
         $parents->parent_type = 'new';
         $parents->update();
 
-        foreach ($request->addresses as $key => $add)
+        foreach ($address as $add)
         {
-//            return $request->is_same;
-            if ($request->is_same == 1)
-            {
-                $adress = Address::where('user_id', $id)->first();
-                $adress->district = $add['district'];
-                $adress->address = $add['address'];
-                $adress->city = $add['city'];
-                $adress->state = $add['state'];
-                $adress->country = $add['country'];
-                $adress->zip = $add['zip'];
-                $adress->address_type = $key;
-                $adress->is_same = 1;
-                $adress->register_type = 'new';
-                $adress->update();
-                break;
-            }else{
-                $adress = Address::where('user_id', $id)->where('address_type', $key)->first();
-                $adress->user_id = $students->id;
-                $adress->district = $add['district'];
-                $adress->address = $add['address'];
-                $adress->city = $add['city'];
-                $adress->state = $add['state'];
-                $adress->country = $add['country'];
-                $adress->zip = $add['zip'];
-                $adress->address_type = $key;
-                $adress->is_same = 0;
-                $adress->register_type = 'new';
-                $adress->update();
-            }
-
+            $adress = Address::where('user_id', $id)->where('address_type', $add['address_type'])->first();
+            $adress->district = $add['district'];
+            $adress->address = $add['address'];
+            $adress->city = $add['city'];
+            $adress->state = $add['state'];
+            $adress->country = $add['country'];
+            $adress->zip = $add['zip'];
+            $adress->address_type = $add['address_type'];
+            $adress->is_same = $add['is_same'];
+            $adress->register_type = 'new';
+            $adress->update();
         }
         return redirect()->route('new_admission.index')->with('success', 'Student Updated Successfully');
     }

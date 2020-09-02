@@ -91,6 +91,7 @@
                                                                                     <th scope="col">Gender</th>
                                                                                     <th scope="col">Price</th>
                                                                                     <th scope="col">Quantity</th>
+                                                                                    <th scope="col">Total Price</th>
                                                                                     <th scope="col">Available</th>
                                                                                 </tr>
                                                                                 </thead>
@@ -108,12 +109,20 @@
                                                                                         <td>{{!empty($p->types->name) ? $p->types->name : "--"}}</td>
                                                                                         <td>{{!empty($p->sizes->name) ? $p->sizes->name : "--"}}</td>
                                                                                         <td>{{!empty($p->gender_id) ? $p->gender_id == 1 ? "Boys" : "Girls" : "--"}}</td>
-                                                                                        <td>{{!empty($p->price) ? $p->price.'/-' : "--/-"}}</td>
-                                                                                        <td class="btn btn-group">
-                                                                                            <a id="negative-{{$key}}" onclick="negative(this.id)" class="btn btn-sm btn-dark">-</a>
-                                                                                            <input readonly value="{{ !empty($p->quantity) ? $p->quantity : "1" }}" style="width:23% !important;" class="form-control" id="quantity-{{$key}}" name="product[{{$key}}][quantity]" >
-                                                                                            <a id="positive-{{$key}}" onclick="positive(this.id)" class="btn btn-sm btn-dark">+</a>
+                                                                                        <td><input type="hidden" value="{{!empty($p->price) ? $p->price.'/-' : "--/-"}}" id="price-{{$key}}">{{!empty($p->price) ? $p->price.'/-' : "--/-"}}</td>
+                                                                                        {{--<td class="btn btn-group">--}}
+                                                                                            {{--<a id="negative-{{$key}}" onclick="negative(this.id)" class="btn btn-sm btn-dark">-</a>--}}
+                                                                                            {{--<input readonly value="{{ !empty($p->quantity) ? $p->quantity : "1" }}" style="width:23% !important;" class="form-control" id="quantity-{{$key}}" name="product[{{$key}}][quantity]" >--}}
+                                                                                            {{--<a id="positive-{{$key}}" onclick="positive(this.id)" class="btn btn-sm btn-dark">+</a>--}}
+                                                                                        {{--</td>--}}
+                                                                                        <td>
+                                                                                            <div class="d-inline-block mb-1">
+                                                                                                <div class="input-group bootstrap-touchspin">
+                                                                                                    <span class="input-group-btn input-group-prepend bootstrap-touchspin-injected"><button id="negative-{{$key}}" onclick="negative(this.id)" class="btn btn-primary bootstrap-touchspin-down" type="button">-</button></span><input type="number" id="quantity-{{$key}}" readonly name="product[{{$key}}][quantity]" class="touchspin form-control" value="1"><span class="input-group-btn input-group-append bootstrap-touchspin-injected"><button id="positive-{{$key}}" onclick="positive(this.id)" class="btn btn-primary bootstrap-touchspin-up" type="button">+</button></span>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </td>
+                                                                                        <td><div id="total_price-{{$key}}">{{!empty($p->price) ? $p->price.'/-' : "--/-"}}</div></td>
                                                                                         <td>{{!empty($p->available_stocks) ? $p->available_stocks : "not available"}}</td>
                                                                                     </tr>
                                                                                 @endforeach
@@ -194,18 +203,23 @@
         function negative(id) {
             var key = id.split("-");
             var quantity = $('#quantity-'+key[1]).val();
+            var price = $('#price-'+key[1]).val();
             if(quantity == 1)
             {
                 alert('Minimum Quantity is 1');
             }else{
                 $('#quantity-'+key[1]).val(quantity - 1);
+                $total_price = parseInt(quantity) * parseInt(price) - parseInt(price);
+                $('#total_price-'+key[1]).html($total_price+' /-');
             }
         }
         function positive(id) {
             var key = id.split("-");
             var quantity = $('#quantity-'+key[1]).val();
-
+            var price = $('#price-'+key[1]).val();
             $('#quantity-'+key[1]).val(parseInt(quantity) + 1);
+            $total_price = parseInt(price) + parseInt(quantity) * parseInt(price);
+            $('#total_price-'+key[1]).html($total_price+' /-');
             // if(quantity == 1)
             // {
             //     alert('Minimum Quantity is 1');

@@ -58,6 +58,8 @@
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Installment Fee</th>
                                             <th scope="col">Fine</th>
+                                            <th scope="col">Pre Due</th>
+                                            <th scope="col">Paid</th>
                                             <th scope="col">Due Date</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
@@ -70,6 +72,8 @@
                                                 <td>{{$i->students->first_name." ".$i->students->last_name}}</td>
                                                 <td>{{$i->installment_fee}}</td>
                                                 <td>{{$i->fine}}</td>
+                                                <td>{{$i->due}}</td>
+                                                <td>{{$i->paid}}</td>
                                                 <td>
                                                     @if($i->due_date == null)
                                                         --
