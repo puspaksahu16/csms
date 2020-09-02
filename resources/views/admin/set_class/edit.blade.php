@@ -52,7 +52,6 @@
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="name" class="form-control"  value="{{$class->name}}" name="name">
-                                                            <label for="first-name-column">Create Class</label>
                                                         </div>
                                                     </div>
 

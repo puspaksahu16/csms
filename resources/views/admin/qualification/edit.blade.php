@@ -35,7 +35,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Qualification Setting</h4>
+                                    <h4 class="card-title">Edit Qualification</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -47,7 +47,6 @@
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" id="qualification" class="form-control"  value="{{$qualification->qualification}}" name="qualification">
-                                                            <label for="qualification-column">Edit Qualification</label>
                                                         </div>
                                                     </div>
 

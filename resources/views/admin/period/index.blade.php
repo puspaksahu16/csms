@@ -100,7 +100,19 @@
                                                     @endif
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                           <input type="text" name="period_name" class="form-control">
+                                                            <select type="text" class="form-control"  name="period_name">
+                                                                <option value="">-Select Standard-</option>
+                                                                <option value="1st">1st</option>
+                                                                <option value="2nd">2nd</option>
+                                                                <option value="3rd">3rd</option>
+                                                                <option value="4th">4th</option>
+                                                                <option value="5th">5th</option>
+                                                                <option value="6th">6th</option>
+                                                                <option value="7th">7th</option>
+                                                                <option value="8th">8th</option>
+                                                                <option value="Recess">Recess</option>
+                                                            </select>
+{{--                                                           <input type="text" name="period_name" class="form-control">--}}
                                                             <label for="first-name-column">Period Name</label>
                                                         </div>
                                                     </div>
@@ -169,8 +181,9 @@
                                             @endif
                                             <th scope="col">Standard</th>
                                             <th scope="col">Period</th>
-                                            <th scope="col">Time To</th>
                                             <th scope="col">Time From</th>
+                                            <th scope="col">Time To</th>
+
                                             <th scope="col">Action</th>
 {{--                                            <th></th>--}}
                                         </tr>
@@ -184,8 +197,9 @@
                                                 @endif
                                                 <th>{{$period->standard->name}}</th>
                                                 <th>{{$period->period_name}}</th>
-                                                <th>{{$period->time_to}}</th>
                                                 <th>{{$period->time_from}}</th>
+                                                <th>{{$period->time_to}}</th>
+
                                                 <td><a href="{{route('period.edit', $period->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
 {{--                                                <td><a href="period_delete/{{$period->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
