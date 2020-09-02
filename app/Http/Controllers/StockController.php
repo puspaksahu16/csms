@@ -73,8 +73,8 @@ class StockController extends Controller
     {
 //        return $request->all();
         foreach ($request->stock as $stock) {
-            if (auth()->user()->role->name == "super_admin") {
-                $stockavailables = Stock::where('school_id', $request->school_id)
+            if (auth()->user()->role->name == "admin") {
+                $stockavailables = Stock::where('school_id', auth()->user()->school->id)
                     ->where('product_id', $stock['product_id'])
                     ->where('color_id', $stock['color_id'])
                     ->where('type_id', $stock['type_id'])
@@ -82,7 +82,8 @@ class StockController extends Controller
                     ->where('size_id', $stock['size_id'])
                     ->get();
             }else{
-                $stockavailables = Stock::where('product_id', $stock['product_id'])
+                $stockavailables = Stock::where('school_id', $request->school_id)
+                    ->where('product_id', $stock['product_id'])
                     ->where('color_id', $stock['color_id'])
                     ->where('type_id', $stock['type_id'])
                     ->where('gender_id', $stock['gender_id'])
