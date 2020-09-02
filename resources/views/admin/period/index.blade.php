@@ -181,8 +181,9 @@
                                             @endif
                                             <th scope="col">Standard</th>
                                             <th scope="col">Period</th>
-                                            <th scope="col">Time To</th>
                                             <th scope="col">Time From</th>
+                                            <th scope="col">Time To</th>
+
                                             <th scope="col">Action</th>
 {{--                                            <th></th>--}}
                                         </tr>
@@ -196,8 +197,9 @@
                                                 @endif
                                                 <th>{{$period->standard->name}}</th>
                                                 <th>{{$period->period_name}}</th>
-                                                <th>{{$period->time_to}}</th>
                                                 <th>{{$period->time_from}}</th>
+                                                <th>{{$period->time_to}}</th>
+
                                                 <td><a href="{{route('period.edit', $period->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
 {{--                                                <td><a href="period_delete/{{$period->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
