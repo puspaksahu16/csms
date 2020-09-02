@@ -122,17 +122,17 @@
 
 
 
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <select name="pre_exam_id" class="form-control" disabled>
-                                                                <option>-SELECT EXAM-</option>
-                                                                @foreach($pre_exams as $pre_exam)
-                                                                    <option {{ $pre_exam->id == $pre_admission->pre_exam_id ? "selected" : " "  }} value="{{ $pre_exam->id }}">{{ $pre_exam->exam_name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <label for="email-id-column">Exam</label>
-                                                        </div>
-                                                    </div>
+{{--                                                    <div class="col-md-6 col-12">--}}
+{{--                                                        <div class="form-label-group">--}}
+{{--                                                            <select name="pre_exam_id" class="form-control" disabled>--}}
+{{--                                                                <option>-SELECT EXAM-</option>--}}
+{{--                                                                @foreach($pre_exams as $pre_exam)--}}
+{{--                                                                    <option {{ $pre_exam->id == $pre_admission->pre_exam_id ? "selected" : " "  }} value="{{ $pre_exam->id }}">{{ $pre_exam->exam_name }}</option>--}}
+{{--                                                                @endforeach--}}
+{{--                                                            </select>--}}
+{{--                                                            <label for="email-id-column">Exam</label>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <select class="form-control" disabled>

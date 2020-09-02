@@ -47,14 +47,15 @@ class PeriodController extends Controller
     public function store(Request $request)
     {
         if (auth()->user()->role->name == "super_admin") {
-            $periods = Period::where('period_name', $request->period_name)
+            $periods = Period::where('period_name','==', $request->period_name)
                 ->where('school_id', $request->school_id)
                 ->where('standard_id', $request->standard_id)
                 ->where('time_from', $request->time_from)
                 ->where('time_to', $request->time_to)
                 ->first();
         }else{
-            $periods = Period::where('period_name', $request->period_name)
+            $periods = Period::where('period_name', '==', $request->period_name)
+                ->where('school_id', auth()->user()->school->id)
                 ->where('standard_id', $request->standard_id)
                 ->where('time_from', $request->time_from)
                 ->where('time_to', $request->time_to)

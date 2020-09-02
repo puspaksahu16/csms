@@ -100,7 +100,19 @@
                                                     @endif
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                           <input type="text" name="period_name" class="form-control">
+                                                            <select type="text" class="form-control"  name="period_name">
+                                                                <option value="">-Select Standard-</option>
+                                                                <option value="1st">1st</option>
+                                                                <option value="2nd">2nd</option>
+                                                                <option value="3rd">3rd</option>
+                                                                <option value="4th">4th</option>
+                                                                <option value="5th">5th</option>
+                                                                <option value="6th">6th</option>
+                                                                <option value="7th">7th</option>
+                                                                <option value="8th">8th</option>
+                                                                <option value="Recess">Recess</option>
+                                                            </select>
+{{--                                                           <input type="text" name="period_name" class="form-control">--}}
                                                             <label for="first-name-column">Period Name</label>
                                                         </div>
                                                     </div>
