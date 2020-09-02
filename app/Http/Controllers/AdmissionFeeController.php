@@ -286,7 +286,7 @@ class AdmissionFeeController extends Controller
 
     public function pay($id)
     {
-        $installment =Installment::find($id);
+        $installment = Installment::find($id);
         return view('admin.admission_fee.pay', compact(['installment', 'id']));
     }
 
@@ -302,18 +302,32 @@ class AdmissionFeeController extends Controller
         $data['student_id'] = $student_id;
 
 
-
-        $a = $pa + $request->amount;
-//        if ($a <= $af->fee)
-//        {
+        if ($request->amount <= $installment->installment_fee)
+        {
             $payment = Payment::create($data);
             $installment->status = "Paid";
+            $installment->paid = $request->amount;
             $installment->update();
+            $due = $installment->installment_fee - $request->amount;
+            $installment_due = Installment::where('student_id', $student_id)->where('installment_no', $installment->installment_no + 1)->first();
+            if (!empty($installment_due)){
+                $installment_due->due = $due;
+                $installment_due->installment_fee = $installment_due->installment_fee + $due;
+                $installment_due->update();
+            }else{
+                $new_installment = new Installment();
+                $new_installment->student_id = $student_id;
+                $new_installment->installment_no = $installment->installment_no + 1;
+                $new_installment->installment_fee = $due;
+                $new_installment->due = $due;
+                $new_installment->save();
+            }
+
 
             return redirect()->to('installment/'.$student_id)->with('success', 'Payment Successfully Done');
-//        }else{
-//            return redirect()->back()->with('error', 'Payment Amount is Grater than Total Amount');
-//        }
+        }else{
+            return redirect()->back()->with('error', 'Payment Amount is Grater than Total Amount');
+        }
 
     }
 
@@ -418,21 +432,10 @@ class AdmissionFeeController extends Controller
         $fee = 0;
         $af = AdmissionFee::where('id', $id)->first();
         $af->general = json_encode($request->general);
-//        $products = [];
-//        foreach ($request->product as $p)
-//        {
-//            if (!empty($p['id']))
-//            {
-//                array_push($products, $p);
-//            }
-//        }
-//        $af->product = $products;
         $af->ecc = json_encode($request->ecc);
-//        $af->book = json_encode($request->book);
         $af->update();
         $sf = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->where('id', $id)->first();
-//            foreach ($student_fees as $sf)
-//            {
+
         $all_general_fee = json_decode($sf->general);
         if (!empty($all_general_fee)){
             foreach ($all_general_fee as $agf)
@@ -448,16 +451,6 @@ class AdmissionFeeController extends Controller
                 }
             }
         }
-//        $all_product_fee = json_decode($sf->product);
-//        if (!empty($all_product_fee)){
-//
-//            foreach ($all_product_fee as $apf)
-//            {
-//                $product_fee = Stock::find($apf->id);
-//                $pp = $apf->quantity * $product_fee->price;
-//                $fee += $pp;
-//            }
-//        }
         $all_ecc_fee = json_decode($sf->ecc);
         if (!empty($all_ecc_fee)){
             foreach ($all_ecc_fee as $aef)
@@ -473,15 +466,23 @@ class AdmissionFeeController extends Controller
                 }
             }
         }
-//        $all_book_fee = json_decode($sf->book);
-//        if (!empty($all_book_fee)){
-//            foreach ($all_book_fee as $abf)
-//            {
-//                $book_fee = Book::find($abf);
-//                $fee += $book_fee->price;
-//            }
-//        }
-//            }
+
+        if (!empty($sf->installment))
+        {
+            $paid_price = 0;
+            $installment = Installment::where('student_id', $sf->student_id)->where('status', 'Paid')->get();
+            foreach ($installment as $inst){
+                $paid_price += $inst->installment_fee + $inst->fine + $inst->due;
+            }
+            $pending_installment = Installment::where('student_id', $sf->student_id)->where('status', 'Pending')->get();
+            $pending_price = $fee - $paid_price;
+            $new_pending_installment = $pending_price / count($pending_installment);
+            foreach ($pending_installment as $pi)
+            {
+                $pi->installment_fee = round($new_pending_installment) + $pi->fine + $pi->due;
+                $pi->update();
+            }
+        }
 
         $sf->fee = $fee;
         $sf->update();

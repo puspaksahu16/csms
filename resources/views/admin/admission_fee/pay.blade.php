@@ -65,7 +65,7 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" readonly placeholder="Amount" value="{{ $installment->installment_fee }}" name="amount">
+                                                            <input type="text" class="form-control" placeholder="Amount" value="{{ $installment->installment_fee }}" name="amount">
                                                             <label for="name">Amount</label>
                                                         </div>
                                                     </div>

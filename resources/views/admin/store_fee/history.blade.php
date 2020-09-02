@@ -67,7 +67,7 @@
                                             <td>{{ $p->amount }}</td>
                                             <td>{{ $p->created_at->format('j F Y') }}</td>
                                             <td>
-                                                <a href="{{url('/receive/'.$p->id)}}" class="btn btn-sm btn-success">Receive</a>
+                                                <a href="{{url('/receive/'.$p->id)}}" class="btn btn-sm btn-success">Receipt</a>
                                             </td>
                                         </tr>
                                             @endforeach
