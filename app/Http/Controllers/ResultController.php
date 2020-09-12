@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Createclass;
+use App\Idproof;
 use App\PreAdmission;
 use App\PreExam;
+use App\Qualification;
 use App\Result;
 use App\School;
+use App\StudentParent;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
@@ -44,6 +47,22 @@ class ResultController extends Controller
     public function getExam(Request $request)
     {
         return $rolls = PreExam::where('class_id', $request->class_id)->pluck('exam_name', 'id');
+    }
+
+    public function enroll($id)
+    {
+        $id_proof = Idproof::all();
+
+        $schools = School::all();
+        $qualifications = Qualification::all();
+        $details = PreAdmission::find($id);
+        if (auth()->user()->role->name == "super_admin") {
+            $classes = Createclass::where('school_id', $details->school_id)->get();
+        }else{
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+        }
+        $parent_details = StudentParent::where('student_id', $details->id)->where('parent_type', 'pre')->first();
+        return view('admin.new_admission.create', compact(['id_proof', 'classes','schools','qualifications', 'details', 'parent_details']));
     }
 
     /**

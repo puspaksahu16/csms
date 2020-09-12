@@ -135,6 +135,7 @@ class SchoolController extends Controller
             $school->photo = $fileName;
         }
         $school->standard =$request->standard;
+        $school->board =$request->board;
         $school->classes =$request->classes;
         $school->starting_year =$request->starting_year;
         $school->facility =$request->facility;

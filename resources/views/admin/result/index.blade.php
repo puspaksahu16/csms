@@ -47,7 +47,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0 zero-configuration" id="">
+                                    <table class="table mb-0 zero-configuration" id="">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -69,6 +69,7 @@
                                                 <td>{{$results->percentage}}%</td>
 {{--                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-sm btn-primary">Edit</a></td>--}}
 {{--                                                <td><a href="result_delete/{{$results->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
+                                                <td><a href="enroll/{{$results->id}}" class="btn btn-sm btn-primary">Enroll</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

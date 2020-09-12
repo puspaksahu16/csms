@@ -472,7 +472,8 @@ class AdmissionFeeController extends Controller
             $paid_price = 0;
             $installment = Installment::where('student_id', $sf->student_id)->where('status', 'Paid')->get();
             foreach ($installment as $inst){
-                $paid_price += $inst->installment_fee + $inst->fine + $inst->due;
+                $paid_price += $inst->paid + $inst->fine + $inst->due;
+//                $paid_price += $inst->installment_fee + $inst->fine + $inst->due;
             }
             $pending_installment = Installment::where('student_id', $sf->student_id)->where('status', 'Pending')->get();
             $pending_price = $fee - $paid_price;

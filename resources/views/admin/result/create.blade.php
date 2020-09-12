@@ -225,7 +225,7 @@
             var Omark = document.getElementById('obtained_mark').value;
 
             var Per = Omark/Tmark*100;
-            $('#percentage').val(Per);
+            $('#percentage').val(Math.round(Per));
 
         }
 

@@ -50,23 +50,11 @@
                                                         </div>
                                                     </div>
 
-
-
-
-
-
-
                                                     <div class="col-6">
                                                         <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
                                                         <a href="{{url('/qualification')}}"><input type="button" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light" value="Back"></a>
-
                                                     </div>
-
                                                 </div>
-
-
-
-
                                             </div>
                                         </form>
                                     </div>

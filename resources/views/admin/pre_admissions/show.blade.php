@@ -74,20 +74,20 @@
                                                     @endif
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="first_name" value="{{$pre_admission->first_name}}" disabled>
+                                                                <input type="text" id="first-name-column" class="form-control" placeholder="First Name" name="first_name" value="{{$pre_admission->first_name}}" readonly>
                                                                 <label for="first-name-column">First Name</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="last_name" value="{{$pre_admission->last_name}}" disabled>
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Last Name" name="last_name" value="{{$pre_admission->last_name}}" readonly>
                                                                 <label for="last-name-column">Last Name</label>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="date"  class="form-control"  name="dob" value="{{$pre_admission->dob}}" disabled>
+                                                                <input type="date"  class="form-control"  name="dob" value="{{$pre_admission->dob}}" readonly>
                                                                 <label for="DOB">DOB</label>
                                                             </div>
                                                         </div>
@@ -167,32 +167,32 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Mother's First Name" name="mother_first_name" value="{{$parents->mother_first_name}}" disabled>
+                                                                <input type="text"  class="form-control" placeholder="Mother's First Name" name="mother_first_name" value="{{$parents->mother_first_name}}" readonly>
                                                                 <label for="first-name-column">Mother's First Name</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name" value="{{$parents->mother_last_name}}" disabled>
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Mother's Last Name" name="mother_last_name" value="{{$parents->mother_last_name}}" readonly>
                                                                 <label for="last-name-column">Mother's Last Name</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="mother_mobile" value="{{$parents->mother_mobile}}" disabled>
+                                                                <input type="text"  class="form-control" placeholder="Mother's Mobile"  name="mother_mobile" value="{{$parents->mother_mobile}}" readonly>
                                                                 <label for="Mother's Mobile">Mother's Mobile Number</label>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email" value="{{$parents->mother_email}}" disabled>
+                                                                <input type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email" value="{{$parents->mother_email}}" readonly>
                                                                 <label for="Email Id">Mother Email Id</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name" value="{{$parents->father_first_name}}" disabled>
+                                                                <input type="text" id="first-name-column" class="form-control" placeholder="Father's First Name" name="father_first_name" value="{{$parents->father_first_name}}" readonly>
                                                                 <label for="first-name-column">Father's First Name</label>
                                                             </div>
                                                         </div>
@@ -201,7 +201,7 @@
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name" value="{{$parents->father_last_name}}" disabled>
+                                                                <input type="text" id="last-name-column" class="form-control" placeholder="Father's Last Name" name="father_last_name" value="{{$parents->father_last_name}}" readonly>
                                                                 <label for="last-name-column">Father's Last Name</label>
                                                             </div>
                                                         </div>
@@ -210,7 +210,7 @@
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile" value="{{$parents->father_mobile}}" disabled>
+                                                                <input type="text"  class="form-control" placeholder="Father's Mobile"  name="father_mobile" value="{{$parents->father_mobile}}" readonly>
                                                                 <label for="Mother's Mobile">Father's Mobile Number</label>
                                                             </div>
                                                         </div>
@@ -219,7 +219,7 @@
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="text"  class="form-control" placeholder="Father Email Id"  name="father_email" value="{{$parents->father_email}}" disabled>
+                                                                <input type="text"  class="form-control" placeholder="Father Email Id"  name="father_email" value="{{$parents->father_email}}" readonly>
                                                                 <label for="Email Id">Father Email Id</label>
                                                             </div>
                                                         </div>
@@ -243,37 +243,37 @@
                                                         <div class="row">
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <textarea name="address" class="form-control" disabled>{{$address->address}}</textarea>
+                                                                    <textarea name="address" class="form-control" readonly>{{$address->address}}</textarea>
                                                                     <label for="first-name-column">Residence Address</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="City" name="city" value="{{$address->city}}" disabled>
+                                                                    <input type="text"  class="form-control" placeholder="City" name="city" value="{{$address->city}}" readonly>
                                                                     <label for="Post">City</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="District" name="district" value="{{$address->district}}" disabled>
+                                                                    <input type="text"  class="form-control" placeholder="District" name="district" value="{{$address->district}}" readonly>
                                                                     <label for="Dist">District</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="zip" value="{{$address->zip}}" disabled>
+                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="zip" value="{{$address->zip}}" readonly>
                                                                     <label for="Zip Code">Zip Code</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="State" name="state" value="{{$address->state}}" disabled>
+                                                                    <input type="text"  class="form-control" placeholder="State" name="state" value="{{$address->state}}" readonly>
                                                                     <label for="State">State</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="Country" name="country" value="{{$address->country}}" disabled>
+                                                                    <input type="text"  class="form-control" placeholder="Country" name="country" value="{{$address->country}}" readonly>
                                                                     <label for="State">Country</label>
                                                                 </div>
                                                             </div>

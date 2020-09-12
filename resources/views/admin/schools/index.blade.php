@@ -67,7 +67,7 @@
                                                     <td>{{$school->full_name}}</td>
                                                     <td>{{$school->email}}</td>
                                                     <td>{{$school->mobile}}</td>
-                                                    <td>{{$school->created_at->format('Y-m-d')}}</td>
+                                                    <td>{{$school->created_at->format('d-M-y')}}</td>
                                                     <td>{{$school->is_active == 1 ? 'Active' : "Inactive"}}</td>
                                                     <td><a href="{{route('schools.edit', $school->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
 {{--                                                    <td><a href="schools_delete/{{$school->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}

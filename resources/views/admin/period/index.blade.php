@@ -101,7 +101,7 @@
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
                                                             <select type="text" class="form-control"  name="period_name">
-                                                                <option value="">-Select Standard-</option>
+                                                                <option value="">-Select Period-</option>
                                                                 <option value="1st">1st</option>
                                                                 <option value="2nd">2nd</option>
                                                                 <option value="3rd">3rd</option>

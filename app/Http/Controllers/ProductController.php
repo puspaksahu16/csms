@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\School;
+use App\Stock;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
 
@@ -77,6 +78,56 @@ class ProductController extends Controller
         return view('admin.products.edit',compact('product'));
     }
 
+    public function fetchSizeGender(Request $request)
+    {
+//        return $request->gender_id;
+        $school_id = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        if (!empty($request->color_id)){
+            $products = Stock::with('sizes')
+                ->where('school_id', $school_id)
+                ->where('product_id', $request->product_id)
+                ->where('color_id', $request->color_id)
+                ->where('gender_id', $request->gender_id)
+                ->get();
+        }else{
+            $products = Stock::with('sizes')
+                ->where('school_id', $school_id)
+                ->where('product_id', $request->product_id)
+                ->where('gender_id', $request->gender_id)
+                ->get();
+        }
+
+        $size = [];
+        foreach ($products as $product)
+        {
+            array_push($size, $product->sizes);
+        }
+        return response($size);
+    }
+
+
+    public function fetchGenderColor(Request $request)
+    {
+//        return $request->gender_id;
+        $school_id = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+        $products = Stock::where('school_id', $school_id)->where('product_id', $request->product_id)->where('color_id', $request->color_id)->get(['gender_id']);
+        $g = [];
+        foreach ($products as $product)
+        {
+            array_push($g, $product->gender_id);
+        }
+        $genders = [];
+        foreach (array_unique($g) as $p)
+        {
+            if ($p == 1)
+            {
+                array_push($genders, ["id" => 1, 'name' => "Boys"]);
+            }elseif ($p == 2){
+                array_push($genders, ["id" => 2, 'name' => "Girls"]);
+            }
+        }
+        return response($genders);
+    }
     /**
      * Update the specified resource in storage.
      *

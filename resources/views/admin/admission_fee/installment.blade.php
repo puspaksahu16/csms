@@ -59,6 +59,7 @@
                                             <th scope="col">Installment Fee</th>
                                             <th scope="col">Fine</th>
                                             <th scope="col">Pre Due</th>
+                                            <th scope="col">Payable Amount</th>
                                             <th scope="col">Paid</th>
                                             <th scope="col">Due Date</th>
                                             <th scope="col">Status</th>
@@ -70,9 +71,10 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 <td>{{$i->students->first_name." ".$i->students->last_name}}</td>
-                                                <td>{{$i->installment_fee}}</td>
+                                                <td>{{$i->installment_fee - $i->fine - $i->due}}</td>
                                                 <td>{{$i->fine}}</td>
                                                 <td>{{$i->due}}</td>
+                                                <td>{{$i->installment_fee}}</td>
                                                 <td>{{$i->paid}}</td>
                                                 <td>
                                                     @if($i->due_date == null)

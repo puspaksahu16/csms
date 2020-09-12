@@ -187,7 +187,8 @@
                 })
                     .then(function (response) {
                         console.log(response);
-                        that.standards = response.data;
+                        that.standards = response.data.standards;
+                        that.subjects = response.data.subjects;
                     })
                     .catch(function (error) {
                         console.log(error);

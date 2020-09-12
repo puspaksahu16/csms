@@ -86,21 +86,23 @@
 
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" name="period_name" class="form-control" value="{{$period->period_name}}">
+                                                            <select type="text" class="form-control"  name="period_name">
+                                                                <option value="">-Select Period-</option>
+                                                                <option {{ $period->period_name == '1st' ? "selected" : " " }} value="1st">1st</option>
+                                                                <option {{ $period->period_name == '2nd'  ? "selected" : " " }} value="2nd">2nd</option>
+                                                                <option {{ $period->period_name == '3rd'  ? "selected" : " " }} value="3rd">3rd</option>
+                                                                <option {{ $period->period_name == '4th'  ? "selected" : " " }} value="4th">4th</option>
+                                                                <option {{ $period->period_name == '5th'  ? "selected" : " " }} value="5th">5th</option>
+                                                                <option {{ $period->period_name == '6th'  ? "selected" : " " }} value="6th">6th</option>
+                                                                <option {{ $period->period_name == '7th'  ? "selected" : " " }} value="7th">7th</option>
+                                                                <option {{ $period->period_name == '8th'  ? "selected" : " " }} value="8th">8th</option>
+                                                                <option {{ $period->period_name == 'Recess'  ? "selected" : " " }} value="Recess">Recess</option>
+                                                            </select>
+                                                            {{--<input type="text" name="period_name" class="form-control" value="{{$period->period_name}}">--}}
                                                             <label for="first-name-column">Period Name</label>
                                                         </div>
                                                     </div>
-                                                    {{--                                                    <div class="col-md-2 col-12">--}}
-                                                    {{--                                                        <div class="form-label-group">--}}
-                                                    {{--                                                            <select type="text" class="form-control"  name="standard_id">--}}
-                                                    {{--                                                                <option value="">-Select Standard-</option>--}}
-                                                    {{--                                                                @foreach($standards as $standard)--}}
-                                                    {{--                                                                    <option value="{{ $standard->id }}">{{ $standard->name }}</option>--}}
-                                                    {{--                                                                @endforeach--}}
-                                                    {{--                                                            </select>--}}
-                                                    {{--                                                            <label for="standard">Standard</label>--}}
-                                                    {{--                                                        </div>--}}
-                                                    {{--                                                    </div>--}}
+
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
                                                             <input type="time" name="time_from" class="form-control" value="{{$period->time_from }}">

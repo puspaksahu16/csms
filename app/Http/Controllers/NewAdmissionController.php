@@ -237,7 +237,7 @@ class NewAdmissionController extends Controller
         $classes = Createclass::all();
         $students = Student::find($id);
         $qualifications = Qualification::all();
-        $studentparents = StudentParent::where('student_id', $id)->first();
+        $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
         $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
         if ($r_address->is_same == 1)
         {
@@ -264,7 +264,7 @@ class NewAdmissionController extends Controller
             $students = Student::find($id);
             $schools = School::all();
             $qualifications = Qualification::all();
-            $studentparents = StudentParent::where('student_id', $id)->first();
+            $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
             $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
             if ($r_address->is_same == 1) {
                 $p_address = [];
@@ -275,7 +275,7 @@ class NewAdmissionController extends Controller
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $students = Student::find($id);
             $qualifications = Qualification::all();
-            $studentparents = StudentParent::where('student_id', $id)->first();
+            $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
             $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
             if ($r_address->is_same == 1) {
                 $p_address = [];
@@ -291,13 +291,13 @@ class NewAdmissionController extends Controller
         $id_proof = Idproof::all();
         $classes = Createclass::all();
         $qualifications = Qualification::all();
-        $parents = StudentParent::where('user_id', $id)->first();
+        $parents = StudentParent::where('user_id', $id)->where('parent_type', 'new')->first();
         return view('admin.new_admission.edit_parents',compact(['id_proof','classes','qualifications','parents']));
     }
 
     public function parentUpdate(Request $request, $id)
     {
-        $parents =  StudentParent::where('user_id', $id)->first();
+        $parents =  StudentParent::where('user_id', $id)->where('parent_type', 'new')->first();
         $parents->mother_first_name = $request->mother_first_name;
         $parents->mother_last_name = $request->mother_last_name;
         $parents->mother_mobile = $request->mother_mobile;
@@ -387,7 +387,7 @@ class NewAdmissionController extends Controller
         $students->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id'):auth()->user()->school->id;
         $students->update();
 
-        $parents =  StudentParent::where('student_id', $id)->first();
+        $parents =  StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
         $parents->mother_first_name = $request->mother_first_name;
         $parents->mother_last_name = $request->mother_last_name;
         $parents->mother_mobile = $request->mother_mobile;

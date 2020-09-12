@@ -76,6 +76,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/fetch_school_productprice','StockController@fetchschoolProductPrice');
     Route::get('/product_price_update', 'StockController@productPrice');
     Route::get('lara_product','ProductController@laraProduct')->name('lara_product');
+    Route::post('fetch_size_from_gender','ProductController@fetchSizeGender');
+    Route::post('fetch_gender_from_color','ProductController@fetchGenderColor');
 
     Route::resource('books', 'BookController');
     Route::get('book_price', 'BookController@bookFee');
@@ -176,6 +178,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/get_mark','ResultController@getMarks');
     Route::get('lara_result','ResultController@laraResult')->name('lara_result');
     Route::get('result_delete/{id}','ResultController@destroy');
+    Route::get('enroll/{id}','ResultController@enroll');
 
     Route::resource('employee','EmployeeController');
     Route::get('employees_delete/{id}','EmployeeController@destroy');

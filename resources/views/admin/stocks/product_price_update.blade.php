@@ -56,7 +56,7 @@
                                                 </div>
                                                 <div v-if="sp[index].colors" class="col-md-2 col-12">
                                                     <div class="form-label-group">
-                                                        <select class="form-control" v-model="item.color_id">
+                                                        <select @change="fetchGender(index)" class="form-control" v-model="item.color_id">
                                                             <option disabled value=""> color</option>
                                                             <option v-for=" color in sp[index].colors" :value="color.id">@{{color.name}}</option>
                                                         </select>
@@ -65,9 +65,9 @@
                                                 </div>
                                                 <div v-if="sp[index].genders" class="col-md-2 col-12">
                                                     <div class="form-label-group">
-                                                        <select class="form-control" v-model="item.gender_id">
+                                                        <select @change="fetchSize(index)" class="form-control" v-model="item.gender_id">
                                                             <option disabled value=""> Gender</option>
-                                                            <option v-for=" gender in sp[index].genders" :value="gender.id">@{{gender.name}}</option>
+                                                            <option v-for="gender in sp[index].genders" :value="gender.id">@{{gender.name}}</option>
                                                         </select>
                                                         <label for="gender">Gender</label>
                                                     </div>
@@ -124,6 +124,7 @@
     <script>
         var PRODUCTS = {!! $products !!}
         var SCHOOLS = {!! $schools!!}
+        var SCHOOLS_ID = {!! $schools!!}
 
     </script>
 @endsection
@@ -182,6 +183,45 @@
                             console.log(response);
                             let index = sid;
                             that.$set(that.sp, [index],response.data);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                },
+                fetchSize(id){
+                    let that = this;
+                    axios.post('/fetch_size_from_gender', {
+                        school_id: that.school_id,
+                        color_id: that.rowData[id].color_id,
+                        gender_id: that.rowData[id].gender_id,
+                        product_id: that.rowData[id].product_id,
+                    })
+                        .then(function (response) {
+                            console.log(response);
+                            let index = id;
+                            that.rowData[index].size_id = '';
+                            that.sp[index].sizes = response.data;
+                            // that.$set(that.rowData, [index].size_id,response.data);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                },
+                fetchGender(id){
+                    let that = this;
+                    axios.post('/fetch_gender_from_color', {
+                        school_id: that.school_id,
+                        color_id: that.rowData[id].color_id,
+                        product_id: that.rowData[id].product_id,
+                    })
+                        .then(function (response) {
+                            console.log(response);
+                            let index = id;
+                            that.rowData[index].size_id = '';
+                            that.rowData[index].gender_id = '';
+                            that.sp[index].genders = response.data;
+
+                            // that.$set(that.rowData, [index].size_id,response.data);
                         })
                         .catch(function (error) {
                             console.log(error);

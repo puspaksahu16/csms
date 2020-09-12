@@ -44,18 +44,21 @@ class BookController extends Controller
         if (auth()->user()->role->name == "admin")
         {
             $standards = Standard::where('school_id', auth()->user()->school->id)->get();
+            $subjects = Subject::where('school_id', auth()->user()->school->id)->get();
         }else{
             $standards = Standard::all();
+            $subjects = Subject::all();
         }
         $schools = School::all();
         $publishers = Publisher::all();
-        $subjects = Subject::all();
+
         return view('admin.books.create', compact(['standards', 'publishers', 'subjects', 'schools']));
     }
     public function fetchschoolBook(Request $request)
     {
         $standards = Standard::where('school_id', $request->school_id)->get();
-        return response($standards);
+        $subjects = Subject::where('school_id', $request->school_id)->get();
+        return response(['standards' => $standards, 'subjects' => $subjects]);
     }
 
     /**

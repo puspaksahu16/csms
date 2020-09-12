@@ -158,7 +158,7 @@ class PreAdmissionController extends Controller
         $classes = Createclass::all();
         $pre_exams = PreExam::all();
         $schools = School::all();
-        $parents = StudentParent::where('student_id',$id)->first();
+        $parents = StudentParent::where('student_id',$id)->where('parent_type', 'pre')->first();
         $address = Address::where('user_id',$id)->first();
         return view('admin.pre_admissions.show', compact(['pre_admission','schools','classes','pre_exams','parents','address','qualifications']));
     }
@@ -175,7 +175,7 @@ class PreAdmissionController extends Controller
         $classes = Createclass::all();
         $pre_exams = PreExam::all();
         $schools = School::all();
-        $parents = StudentParent::where('student_id',$id)->first();
+        $parents = StudentParent::where('student_id',$id)->where('parent_type', 'pre')->first();
         $address = Address::where('user_id',$id)->first();
         return view('admin.pre_admissions.edit', compact(['pre_admission','schools','classes','pre_exams','parents','address','qualifications']));
     }
@@ -218,7 +218,7 @@ class PreAdmissionController extends Controller
         $pre_admission->save();
 
         $parents = StudentParent::find($id);
-        $parents = StudentParent::where('student_id', $id)->first();
+        $parents = StudentParent::where('student_id', $id)->where('parent_type', 'pre')->first();
         $parents->mother_first_name = $request->input('mother_first_name');
         $parents->father_first_name = $request->input('father_first_name');
         $parents->mother_last_name = $request->input('mother_last_name');

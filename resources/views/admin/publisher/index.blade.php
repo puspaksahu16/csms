@@ -111,7 +111,7 @@
 
 
                                                 <td><a href="{{route('publisher.edit', $publishers->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-                                                <td><a href="publisher_delete/{{$publishers->id}}" class="btn btn-sm btn-danger">Delete</a></td>
+                                                {{--<td><a href="publisher_delete/{{$publishers->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
 
                                             </tr>
                                         @endforeach

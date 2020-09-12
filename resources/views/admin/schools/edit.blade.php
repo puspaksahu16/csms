@@ -97,19 +97,19 @@
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
                                                             <select class="form-control" name="standard">
-                                                                <option {{ $school->standard == 'Pre-Primary' ? "selected" : " " }} value="Pre-Primary">Pre-Primary</option>
-                                                                <option  {{ $school->standard == 'Primary' ? "selected" : " " }} value="Primary">Primary</option>
-                                                                <option  {{ $school->standard == 'Secondary' ? "selected" : " " }} value="Secondary">Secondary</option>
-                                                                <option {{ $school->standard == 'Higher-Secondary' ? "selected" : " " }} value="Higher-Secondary">Higher-Secondary</option>
+                                                                <option {{ $school->standard == 'Pre-Primary' ? "selected" : "" }} value="Pre-Primary">Pre-Primary</option>
+                                                                <option  {{ $school->standard == 'Primary' ? "selected" : "" }} value="Primary">Primary</option>
+                                                                <option  {{ $school->standard == 'Secondary' ? "selected" : "" }} value="Secondary">Secondary</option>
+                                                                <option {{ $school->standard == 'Higher-Secondary' ? "selected" : "" }} value="Higher-Secondary">Higher-Secondary</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
-                                                            <select class="form-control" name="standard">
-                                                                <option {{ $school->board == 'ICSE' ? "selected" : " " }} value="ICSE">ICSE</option>
-                                                                <option  {{ $school->board == 'CBSE' ? "selected" : " " }} value="CBSE">CBSE</option>
-                                                                <option  {{ $school->board == 'HSE' ? "selected" : " " }} value="HSE">HSE</option>
+                                                            <select class="form-control" name="board">
+                                                                <option {{ $school->board == 'ICSE' ? "selected" : "" }} value="ICSE">ICSE</option>
+                                                                <option  {{ $school->board == 'CBSE' ? "selected" : "" }} value="CBSE">CBSE</option>
+                                                                <option  {{ $school->board == 'HSE' ? "selected" : "" }} value="HSE">HSE</option>
                                                             </select>
                                                         </div>
                                                     </div>
