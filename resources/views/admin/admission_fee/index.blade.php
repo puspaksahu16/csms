@@ -55,6 +55,7 @@
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Due</th>
+                                            <th scope="col">Total Fine</th>
                                             <th scope="col">Paid</th>
                                             <th scope="col">Total Fee</th>
                                             <th scope="col">Action</th>
@@ -67,7 +68,8 @@
                                             <td>{{$sf->students->student_unique_id}}</td>
                                             <td>{{$sf->students->first_name." ".$sf->students->last_name}}</td>
                                             <td>{{$sf->students->classes->create_class}}</td>
-                                            <td>{{ $sf->fee - $sf->paid }}</td>
+                                            <td>{{ $sf->due }}</td>
+                                            <td>{{ $sf->fine }}</td>
                                             <td>{{ $sf->paid }}</td>
                                             <td>{{ $sf->fee }}</td>
                                             <td>

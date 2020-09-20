@@ -100,7 +100,7 @@
                                                                                     <tr>
                                                                                         <td>
                                                                                             <div class="custom-control custom-checkbox">
-                                                                                                <input type="checkbox" class="custom-control-input" checked="" name="product[{{$key}}][id]" value="{{ $p->id }}" id="{{$key}}">
+                                                                                                <input type="checkbox" class="custom-control-input" name="product[{{$key}}][id]" value="{{ $p->id }}" id="{{$key}}">
                                                                                                 <label class="custom-control-label" for="{{$key}}"></label>
                                                                                             </div>
                                                                                         </td>
@@ -160,7 +160,7 @@
                                                                                 <tr>
                                                                                     <td>
                                                                                         <div class="custom-control custom-checkbox">
-                                                                                            <input type="checkbox" class="custom-control-input" checked="" name="book[]" value="{{ $b->id }}" id="{{$b->name.$key}}">
+                                                                                            <input type="checkbox" class="custom-control-input" name="book[]" value="{{ $b->id }}" id="{{$b->name.$key}}">
                                                                                             <label class="custom-control-label" for="{{$b->name.$key}}"></label>
                                                                                         </div>
                                                                                     </td>

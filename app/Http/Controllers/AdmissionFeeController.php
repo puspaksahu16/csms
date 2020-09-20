@@ -28,8 +28,11 @@ class AdmissionFeeController extends Controller
 
         foreach ($student_fees as $key => $sf)
         {
-            $payment = Payment::where('student_id', $sf->student_id)->sum('amount');
+            $payment = Payment::where('student_id', $sf->student_id)->where('reason', "Admission Fee")->sum('amount');
+            $fine = Installment::where('student_id', $sf->student_id)->sum('fine');
             $sf->paid = $payment;
+            $sf->fine = $fine;
+            $sf->due = $sf->fee - ($sf->paid - $fine);
         }
 //        return$student_fees = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->get();
 //
@@ -315,14 +318,17 @@ class AdmissionFeeController extends Controller
                 $installment_due->installment_fee = $installment_due->installment_fee + $due;
                 $installment_due->update();
             }else{
-                $new_installment = new Installment();
-                $new_installment->student_id = $student_id;
-                $new_installment->installment_no = $installment->installment_no + 1;
-                $new_installment->installment_fee = $due;
-                $new_installment->due = $due;
-                $new_installment->save();
+//                return $installment->due;
+                if ($due != 0)
+                {
+                    $new_installment = new Installment();
+                    $new_installment->student_id = $student_id;
+                    $new_installment->installment_no = $installment->installment_no + 1;
+                    $new_installment->installment_fee = $due;
+                    $new_installment->due = $due;
+                    $new_installment->save();
+                }
             }
-
 
             return redirect()->to('installment/'.$student_id)->with('success', 'Payment Successfully Done');
         }else{
@@ -429,6 +435,7 @@ class AdmissionFeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+//        return 1;
         $fee = 0;
         $af = AdmissionFee::where('id', $id)->first();
         $af->general = json_encode($request->general);
@@ -472,9 +479,11 @@ class AdmissionFeeController extends Controller
             $paid_price = 0;
             $installment = Installment::where('student_id', $sf->student_id)->where('status', 'Paid')->get();
             foreach ($installment as $inst){
-                $paid_price += $inst->paid + $inst->fine + $inst->due;
+                $paid_price += $inst->installment_fee - $inst->fine - $inst->due;
+//                $paid_price += $inst->paid + $inst->fine + $inst->due;
 //                $paid_price += $inst->installment_fee + $inst->fine + $inst->due;
             }
+//            return $paid_price;
             $pending_installment = Installment::where('student_id', $sf->student_id)->where('status', 'Pending')->get();
             $pending_price = $fee - $paid_price;
             $new_pending_installment = $pending_price / count($pending_installment);
