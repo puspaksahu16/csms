@@ -61,9 +61,9 @@
                                             <th scope="col">Gender</th>
                                             <!-- <th scope="col">Unit</th> -->
                                             <th scope="col">Color</th>
-                                            <th scope="col">Type</th>
+                                            <th scope="col">Pages</th>
                                             <th scope="col">Size</th>
-                                            
+
                                             <th scope="col">Damage</th>
                                             <!-- <th scope="col">Stock out</th> -->
                                             <!-- <th scope="col">Available</th> -->
@@ -81,7 +81,7 @@
                                                 <td>{{!empty($damage->colors->name) ? $damage->colors->name : "--"}}</td>
                                                 <td>{{!empty($damage->types->name) ? $damage->types->name : "--"}}</td>
                                                 <td>{{!empty($damage->sizes->name) ? $damage->sizes->name : "--"}}</td>
-                                                
+
                                                 <td>{{!empty($damage->damage) ? $damage->damage : "--"}}</td>
 
                                                 <!-- <td>{{$damage->available_stocks}}</td> -->

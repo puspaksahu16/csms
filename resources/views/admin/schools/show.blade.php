@@ -56,6 +56,15 @@
                                                         <br/>
                                                     </div>
 
+                                                    <div class="col-md-4">
+                                                        <div class="logo">
+                                                            <a href="{{asset('images/school_photo/'.$school->logo)}}" target="_blank">
+                                                                <img id="p2" height="80%" src="{{asset('images/school_photo/'.$school->logo)}}" width="80%"  />
+                                                            </a>
+                                                        </div>
+                                                        <br/>
+                                                    </div>
+
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
                                                             <input type="text" class="form-control" disabled value="{{$school->full_name}}" placeholder="Full Name" name="full_name">

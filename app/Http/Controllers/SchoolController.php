@@ -70,6 +70,13 @@ class SchoolController extends Controller
                 $file->move($destinationPath, $fileName);
                 $data['photo'] = $fileName;
             }
+            if($file = $request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+                $destinationPath = public_path('/images/school_photo');
+                $file->move($destinationPath, $fileName);
+                $data['logo'] = $fileName;
+            }
             $school = School::create($data);
             return redirect()->route('schools.index')->with('success', 'School created successfully');
         }else{
@@ -134,6 +141,14 @@ class SchoolController extends Controller
             $file->move($destinationPath, $fileName);
             $school->photo = $fileName;
         }
+        if($file = $request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/images/school_photo');
+            $file->move($destinationPath, $fileName);
+            $school->logo = $fileName;
+        }
+
         $school->standard =$request->standard;
         $school->board =$request->board;
         $school->classes =$request->classes;

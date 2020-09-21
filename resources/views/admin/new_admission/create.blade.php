@@ -105,7 +105,7 @@
                                                                 </div>
                                                                     <div class="row">
                                                                         @if(auth()->user()->role->name == "super_admin")
-                                                                            <div class="col-md-12 col-12">
+                                                                            <div class="col-md-6 col-12">
                                                                                 <select onchange="getClass()" id="school_id" name="school_id" class="form-control">
                                                                                     <option>-SELECT School-</option>
 
@@ -115,35 +115,59 @@
 
                                                                                 </select>
                                                                                 <label for="first-name-column"></label>
+                                                                                {{ $errors->first('school_id') }}
+                                                                            </div>
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <input value="{{ !empty($details->ref_no) ? $details->ref_no : ''}}" type="text" class="form-control" placeholder="Reference No" name="ref_no">
+                                                                                    <label for="ref-no-column">Reference No</label>
+                                                                                    {{ $errors->first('ref_no') }}
+                                                                                </div>
+                                                                            </div>
+                                                                            @else
+                                                                            <div class="col-md-12 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    <input value="{{ !empty($details->ref_no) ? $details->ref_no : ''}}" type="text" class="form-control" placeholder="Reference No" name="ref_no">
+                                                                                    <label for="ref-no-column">Reference No</label>
+                                                                                    {{ $errors->first('ref_no') }}
+                                                                                </div>
                                                                             </div>
                                                                         @endif
+
+
 
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <input value="{{ !empty($details->first_name) ? $details->first_name : ''}}" type="text" class="form-control" placeholder="First Name" name="first_name">
                                                                                 <label for="first-name-column">First Name</label>
+
+                                                                                {{ $errors->first('first_name') }}
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <input value="{{ !empty($details->last_name) ? $details->last_name : ''}}" type="text" class="form-control" placeholder="Last Name" name="last_name">
                                                                                 <label for="last-name-column">Last Name</label>
+                                                                                {{ $errors->first('last_name') }}
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <input value="{{ !empty($details->dob) ? $details->dob : ''}}" type="date"  class="form-control" name="dob">
                                                                                 <label for="DOB">DOB</label>
+                                                                                {{ $errors->first('dob') }}
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <select name="gender_id" class="form-control">
-                                                                                    <option disabled value="">-Select Gender-</option>
+                                                                                    <option  value="">-Select Gender-</option>
                                                                                     <option {{ !empty($details->gender_id) ? ($details->gender_id == 1 ? "checked" : '') : ''}} value="1">MALE</option>
                                                                                     <option {{ !empty($details->gender_id) ? ($details->gender_id == 2 ? "checked" : '') : ''}} value="2">FEMALE</option>
                                                                                 </select>
                                                                                 <label for="country-floating">Gender</label>
+                                                                                {{ $errors->first('gender_id') }}
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
@@ -154,12 +178,14 @@
                                                                                         <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                     @endforeach
                                                                                 </select>
+                                                                                {{ $errors->first('id_proof') }}
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <input value="" type="text" class="form-control" placeholder="Id Proof Number" name="id_proof_no">
                                                                                 <label for="last-name-column">Id Proof Number</label>
+                                                                                {{ $errors->first('id_proof_no') }}
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
@@ -188,6 +214,7 @@
                                                                                     @endif
                                                                                 </select>
                                                                                 <label for="last-name-column">Class</label>
+
                                                                             </div>
                                                                         </div>
                                                                             @else
@@ -214,6 +241,7 @@
                                                                                     <td><input {{ !empty($details->class_id) ? ($details->caste == 1 ? "checked" : '') : ''}} type="radio" name="caste" value="1">GEN</td>
                                                                                 </tr>
                                                                                 <label for="email-id-column">Caste</label>
+                                                                                {{ $errors->first('caste') }}
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -232,6 +260,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input type="text" value="{{ !empty($parent_details->mother_first_name) ? $parent_details->mother_first_name : '' }}"  class="form-control" placeholder="First Name" name="mother_first_name">
                                                                                     <label for="first-name-column"> First Name</label>
+                                                                                    {{ $errors->first('mother_first_name') }}
                                                                                 </div>
                                                                             </div>
 
@@ -239,6 +268,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input value="{{ !empty($parent_details->mother_last_name) ? $parent_details->mother_last_name : '' }}" type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="mother_last_name">
                                                                                     <label for="last-name-column"> Last Name</label>
+                                                                                    {{ $errors->first('mother_last_name') }}
                                                                                 </div>
                                                                             </div>
 
@@ -246,6 +276,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input value="{{ !empty($parent_details->mother_mobile) ? $parent_details->mother_mobile : '' }}" type="text"  class="form-control" placeholder=" Mobile"  name="mother_mobile">
                                                                                     <label for=" Mobile"> Mobile Number</label>
+                                                                                    {{ $errors->first('mother_mobile') }}
                                                                                 </div>
                                                                             </div>
 
@@ -253,6 +284,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input value="{{ !empty($parent_details->mother_email) ? $parent_details->mother_email : '' }}" type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email">
                                                                                     <label for="Email Id">Mother Email Id</label>
+                                                                                    {{ $errors->first('mother_email') }}
                                                                                 </div>
                                                                             </div>
 
@@ -260,6 +292,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input value="" type="text"  class="form-control" placeholder="Mother Occupation"  name="mother_occupation">
                                                                                     <label for="Occupation"> Occupation</label>
+                                                                                    {{ $errors->first('mother_occupation') }}
                                                                                 </div>
                                                                             </div>
 
@@ -267,6 +300,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input value="" type="text"  class="form-control" placeholder="Mother Salary"  name="mother_salary">
                                                                                     <label for="Income"> Salary</label>
+                                                                                    {{ $errors->first('mother_salary') }}
                                                                                 </div>
                                                                             </div>
 
@@ -280,6 +314,7 @@
                                                                                             <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                         @endforeach
                                                                                     </select>
+                                                                                    {{ $errors->first('id_proof') }}
                                                                                 </div>
                                                                             </div>
 
@@ -287,6 +322,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input type="text" class="form-control" placeholder="Id Proof Number" name="mother_id_no">
                                                                                     <label for="last-name-column">Id Proof Number</label>
+                                                                                    {{ $errors->first('mother_id_no') }}
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
@@ -297,6 +333,7 @@
                                                                                             <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
                                                                                         @endforeach
                                                                                     </select>
+                                                                                    {{ $errors->first('qualification') }}
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -315,6 +352,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input value="{{ !empty($parent_details->father_first_name) ? $parent_details->father_first_name : '' }}" type="text" id="first-name-column" class="form-control" placeholder=" First Name" name="father_first_name">
                                                                                     <label for="first-name-column"> First Name</label>
+                                                                                    {{ $errors->first('father_first_name') }}
                                                                                 </div>
                                                                             </div>
 
@@ -322,6 +360,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input value="{{ !empty($parent_details->father_last_name) ? $parent_details->father_last_name : '' }}" type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="father_last_name">
                                                                                     <label for="last-name-column"> Last Name</label>
+                                                                                    {{ $errors->first('father_last_name') }}
                                                                                 </div>
                                                                             </div>
 
@@ -329,24 +368,28 @@
                                                                                 <div class="form-label-group">
                                                                                     <input value="{{ !empty($parent_details->father_mobile) ? $parent_details->father_mobile : '' }}" type="text"  class="form-control" placeholder=" Mobile"  name="father_mobile">
                                                                                     <label for=" Mobile"> Mobile Number</label>
+                                                                                    {{ $errors->first('father_mobile') }}
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
                                                                                     <input value="{{ !empty($parent_details->father_email) ? $parent_details->father_email : '' }}" type="text"  class="form-control" placeholder=" Email Id"  name="father_email">
                                                                                     <label for="Email Id"> Email Id</label>
+                                                                                    {{ $errors->first('father_email') }}
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
                                                                                     <input  type="text"  class="form-control" placeholder=" Occupation"  name="father_occupation">
                                                                                     <label for="Occupation"> Occupation</label>
+                                                                                    {{ $errors->first('father_occupation') }}
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
                                                                                     <input type="text"  class="form-control" placeholder=" Salary"  name="father_salary">
                                                                                     <label for="Income"> Salary</label>
+                                                                                    {{ $errors->first('father_salary') }}
                                                                                 </div>
                                                                             </div>
 
@@ -359,6 +402,7 @@
                                                                                             <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                         @endforeach
                                                                                     </select>
+                                                                                    {{ $errors->first('id_proof') }}
                                                                                 </div>
                                                                             </div>
 
@@ -366,6 +410,7 @@
                                                                                 <div class="form-label-group">
                                                                                     <input type="text" class="form-control" placeholder="Id Proof Number" name="father_id_no">
                                                                                     <label for="last-name-column">Id Proof Number</label>
+                                                                                    {{ $errors->first('father_id_no') }}
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
@@ -376,6 +421,7 @@
                                                                                             <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
                                                                                         @endforeach
                                                                                     </select>
+                                                                                    {{ $errors->first('qualification') }}
                                                                                 </div>
                                                                             </div>
                                                                         </div>

@@ -56,6 +56,13 @@
                                                         <br/>
                                                         School photo :<input type="file" name='photo'  id="photo" onchange="pic2(this);"/><p><br/></p>
                                                     </div>
+                                                    <div class="col-md-4">
+                                                        <div class="logo">
+                                                            <img id="p3" height="150px" src="{{asset('images/school_photo/'.$school->logo)}}" width="130px" />
+                                                        </div>
+                                                        <br/>
+                                                        School logo :<input type="file" name='logo'  id="logo" onchange="pic3(this);"/><p><br/></p>
+                                                    </div>
 
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
@@ -147,7 +154,7 @@
                                                     </div>
                                                     <div class="col-12 pt-2">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
-                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Back</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,6 +193,18 @@
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#p2')
+                    .attr('src', e.target.result)
+                    .width(130)
+                    .height(150);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function pic3(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#p3')
                     .attr('src', e.target.result)
                     .width(130)
                     .height(150);

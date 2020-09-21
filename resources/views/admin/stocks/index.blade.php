@@ -59,9 +59,9 @@
                                             <th scope="col">Product Name</th>
                                             <th scope="col">Gender</th>
                                             <th scope="col">Color</th>
-                                            <th scope="col">Type</th>
+                                            <th scope="col">Pages</th>
                                             <th scope="col">Size</th>
-                                            
+
                                             <th scope="col">Stock in</th>
                                             <th scope="col">Stock out</th>
                                             <th scope="col">Available</th>
@@ -80,7 +80,7 @@
                                                 <td>{{!empty($stock->colors->name) ? $stock->colors->name : "--"}}</td>
                                                 <td>{{!empty($stock->types->name) ? $stock->types->name : "--"}}</td>
                                                 <td>{{!empty($stock->sizes->name) ? $stock->sizes->name : "--"}}</td>
-                                                
+
                                                 <td>{{!empty($stock->stock_in) ? $stock->stock_in : "--"}}</td>
                                                 <td>{{empty($stock->stock_out) ? 0 : $stock->stock_out}}</td>
                                                 <td>{{$stock->available_stocks}}</td>

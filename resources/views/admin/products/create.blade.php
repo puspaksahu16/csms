@@ -75,7 +75,7 @@
                                                             </div>
                                                             <div class="custom-control custom-checkbox col-md-3">
                                                                 <input type="checkbox" class="custom-control-input" value="1"  name="type" id="type">
-                                                                <label class="custom-control-label" for="type">Type</label>
+                                                                <label class="custom-control-label" for="type">Pages</label>
                                                             </div>
                                                             <div class="custom-control custom-checkbox col-md-3">
                                                                 <input type="checkbox" class="custom-control-input" value="1" name="size" id="size">

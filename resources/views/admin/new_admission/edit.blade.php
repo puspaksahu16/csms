@@ -96,7 +96,7 @@
                                                                 <div class="row">
 
                                                                     @if(auth()->user()->role->name == "super_admin")
-                                                                        <div class="col-md-12 col-12">
+                                                                        <div class="col-md-6 col-12">
                                                                             <select name="school_id" class="form-control">
                                                                                 <option>-SELECT School-</option>
 
@@ -107,7 +107,22 @@
                                                                             </select>
                                                                             <label for="first-name-column"></label>
                                                                         </div>
+                                                                        <div class="col-md-6 col-12">
+                                                                            <div class="form-label-group">
+                                                                                <input type="text" class="form-control" placeholder="Reference No" name="ref_no" value="{{$students->ref_no}}">
+                                                                                <label for="ref-no-column">Reference No</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        @else
+                                                                        <div class="col-md-12 col-12">
+                                                                            <div class="form-label-group">
+                                                                                <input type="text" class="form-control" placeholder="Reference No" name="ref_no" value="{{$students->ref_no}}">
+                                                                                <label for="ref-no-column">Reference No</label>
+                                                                            </div>
+                                                                        </div>
                                                                     @endif
+
+
 
                                                                     <div class="col-md-6 col-12">
                                                                         <div class="form-label-group">

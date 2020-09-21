@@ -46,7 +46,7 @@
                                             <th scope="col">Product Name</th>
                                             <th scope="col">Gender</th>
                                             <th scope="col">Color</th>
-                                            <th scope="col">Type</th>
+                                            <th scope="col">Pages</th>
                                             <th scope="col">Size</th>
                                             <th scope="col">Price</th>
                                         </tr>

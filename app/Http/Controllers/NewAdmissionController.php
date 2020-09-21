@@ -79,6 +79,9 @@ class NewAdmissionController extends Controller
         return json_encode($classes);
     }
 
+
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -87,6 +90,39 @@ class NewAdmissionController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'school_id' => 'required',
+            'ref_no' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'dob' => 'required',
+            'gender_id' => 'required',
+            'id_proof' => 'required',
+            'id_proof_no' => 'required',
+            'caste' => 'required',
+
+            'mother_first_name' => 'required',
+            'mother_last_name' => 'required',
+            'mother_mobile' => 'required',
+            'mother_email' => 'required',
+            'mother_occupation' => 'required',
+            'mother_salary' => 'required',
+            'id_proof' => 'required',
+            'mother_id_no' => 'required',
+            'qualification' => 'required',
+            'father_first_name' => 'required',
+            'father_last_name' => 'required',
+            'father_mobile' => 'required',
+            'father_email' => 'required',
+            'father_occupation' => 'required',
+            'father_salary' => 'required',
+            'id_proof' => 'required',
+            'father_id_no' => 'required',
+            'qualification' => 'required',
+
+
+        ]);
+
         $address = [];
         foreach ($request->addresses as $key => $add)
         {
@@ -154,6 +190,7 @@ class NewAdmissionController extends Controller
                     $students->family_photo = $fileName;
                 }
 
+                $students->ref_no = $request->ref_no;
                 $students->id_proof_no = $request->id_proof_no;
                 $students->tc_no = $request->tc_no;
                 $students->class_id = $request->class_id;
@@ -161,6 +198,8 @@ class NewAdmissionController extends Controller
                 $students->student_unique_id = $student_id;
                 $students->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id:auth()->user()->school->id;
                 $students->save();
+
+
 
                 if (!empty($students->id))
                 {
@@ -190,6 +229,7 @@ class NewAdmissionController extends Controller
                     $parents->father_id_no = $request->father_id_no;
                     $parents->parent_type = 'new';
                     $parents->save();
+
 
                     foreach ($address as $add) {
                         $adress = new Address();
@@ -360,6 +400,7 @@ class NewAdmissionController extends Controller
         $students = Student::find($id);
         $students->first_name = $request->first_name;
         $students->last_name = $request->last_name;
+        $students->ref_no = $request->ref_no;
         $students->dob = $request->dob;
         $students->gender_id = $request->gender_id;
         $students->id_proof = $request->id_proof;

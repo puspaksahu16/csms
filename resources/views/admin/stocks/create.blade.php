@@ -84,10 +84,10 @@
                                                     <div v-if="sp[index].types" class="col-md-1 col-12">
                                                         <div class="form-label-group">
                                                             <select class="form-control" v-model="item.type_id">
-                                                                <option disabled value=""> type</option>
+                                                                <option disabled value=""> Pages</option>
                                                                 <option v-for=" type in sp[index].types" :value="type.id">@{{type.name}}</option>
                                                             </select>
-                                                            <label for="type">Type</label>
+                                                            <label for="type">Pages</label>
                                                         </div>
                                                     </div>
 

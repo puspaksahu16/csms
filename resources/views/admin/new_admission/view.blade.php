@@ -29,6 +29,10 @@
                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$students->student_unique_id}}</td>
                                                 </tr>
                                                 <tr>
+                                                    <td class="font-weight-bold">Reference No</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$students->ref_no}}</td>
+                                                </tr>
+                                                <tr>
                                                     <td class="font-weight-bold">Student Name</td>
                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$students->first_name}} {{$students->last_name}}</td>
                                                 </tr>
@@ -93,13 +97,10 @@
                         <!-- information start -->
                         <div class="col-md-6 col-12 ">
                             <div class="card">
-                                <div class="card-header">
-                                    <div class="card-title mb-2">Mother's Details</div>
-                                </div>
+
                                 <div class="card-body">
-                                    <div class="users-view-image">
-                                        <img src="{{asset('images/family_photo/'.$students->family_photo)}}"
-                                             class="users-avatar-shadow w-50 rounded mb-2 pr-2 ml-1" alt="Student">
+                                    <div class="card-header">
+                                        <div class="card-title mb-2">Mother's Details</div>
                                     </div>
                                     <table>
                                         <tr>
@@ -140,18 +141,12 @@
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$studentparents->mother_id_no}}
                                             </td>
                                         </tr>
+
+
                                     </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- information start -->
-                        <!-- social links end -->
-                        <div class="col-md-6 col-12 ">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="card-title mb-2">Father's Details</div>
-                                </div>
-                                <div class="card-body">
+                                    <div class="card-header">
+                                        <div class="card-title mb-2">Father's Details</div>
+                                    </div>
                                     <table>
                                         <tr>
                                             <td class="font-weight-bold">Name </td>
@@ -192,6 +187,21 @@
                                             </td>
                                         </tr>
                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- information start -->
+                        <!-- social links end -->
+                        <div class="col-md-6 col-12 ">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title mb-2">Family Photo</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="users-view-image">
+                                        <img src="{{asset('images/family_photo/'.$students->family_photo)}}"
+                                             class="users-avatar-shadow w-50 rounded mb-2 pr-2 ml-1" alt="Student">
+                                    </div>
                                 </div>
                             </div>
                         </div>
