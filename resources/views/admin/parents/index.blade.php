@@ -60,7 +60,7 @@
                                         @foreach($parents as $key => $parent)
                                             <tr>
                                             <th scope="row">{{$key+1}}</th>
-                                            <td>{{$parent->parent_id}}</td>
+                                                <td><a href="{{route('new_admission.view', $parent->student_id)}}">{{$parent->parent_id}}</a></td>
                                             <td>{{$parent->mother_first_name." ".$parent->mother_last_name}}</td>
                                             <td>{{$parent->mother_email}}</td>
                                             <td>{{$parent->mother_mobile}}</td>

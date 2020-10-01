@@ -110,26 +110,26 @@
                                                                                     <option>-SELECT School-</option>
 
                                                                                     @foreach($schools as $school)
-                                                                                        <option {{ !empty($details->school_id) ? ($details->school_id == $school->id ? "selected" : '') : ''}} value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                                        <option {{ ( old('school_id') == $school->id ? "selected" : '') }} {{ !empty($details->school_id) ? ($details->school_id == $school->id ? "selected" : '') : ''}} value="{{ $school->id }}{{ old('school_id') }}">{{ $school->full_name }}</option>
                                                                                     @endforeach
 
                                                                                 </select>
                                                                                 <label for="first-name-column"></label>
-                                                                                {{ $errors->first('school_id') }}
+                                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{ !empty($details->ref_no) ? $details->ref_no : ''}}" type="text" class="form-control" placeholder="Reference No" name="ref_no">
+                                                                                    <input value="{{ !empty($details->ref_no) ? $details->ref_no : ''}}{{ old('ref_no') }}"  type="text" class="form-control" placeholder="Reference No" name="ref_no">
                                                                                     <label for="ref-no-column">Reference No</label>
-                                                                                    {{ $errors->first('ref_no') }}
+                                                                                    <span style="color: red">{{ $errors->first('ref_no') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             @else
                                                                             <div class="col-md-12 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{ !empty($details->ref_no) ? $details->ref_no : ''}}" type="text" class="form-control" placeholder="Reference No" name="ref_no">
+                                                                                    <input value="{{ !empty($details->ref_no) ? $details->ref_no : ''}}{{ old('ref_no') }}" type="text" class="form-control" placeholder="Reference No" name="ref_no">
                                                                                     <label for="ref-no-column">Reference No</label>
-                                                                                    {{ $errors->first('ref_no') }}
+                                                                                    <span style="color: red">{{ $errors->first('ref_no') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                         @endif
@@ -138,36 +138,36 @@
 
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input value="{{ !empty($details->first_name) ? $details->first_name : ''}}" type="text" class="form-control" placeholder="First Name" name="first_name">
+                                                                                <input value="{{ !empty($details->first_name) ? $details->first_name : ''}}{{ old('first_name') }}" type="text" class="form-control" placeholder="First Name" name="first_name">
                                                                                 <label for="first-name-column">First Name</label>
 
-                                                                                {{ $errors->first('first_name') }}
+                                                                                <span style="color: red">{{ $errors->first('first_name') }}</span>
 
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input value="{{ !empty($details->last_name) ? $details->last_name : ''}}" type="text" class="form-control" placeholder="Last Name" name="last_name">
+                                                                                <input value="{{ !empty($details->last_name) ? $details->last_name : ''}}{{ old('last_name') }}" type="text" class="form-control" placeholder="Last Name" name="last_name">
                                                                                 <label for="last-name-column">Last Name</label>
-                                                                                {{ $errors->first('last_name') }}
+                                                                                <span style="color: red">{{ $errors->first('last_name') }}</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input value="{{ !empty($details->dob) ? $details->dob : ''}}" type="date"  class="form-control" name="dob">
+                                                                                <input value="{{ !empty($details->dob) ? $details->dob : ''}}{{ old('dob') }}" type="date"  class="form-control" name="dob">
                                                                                 <label for="DOB">DOB</label>
-                                                                                {{ $errors->first('dob') }}
+                                                                                <span style="color: red">{{ $errors->first('dob') }}</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 <select name="gender_id" class="form-control">
                                                                                     <option  value="">-Select Gender-</option>
-                                                                                    <option {{ !empty($details->gender_id) ? ($details->gender_id == 1 ? "checked" : '') : ''}} value="1">MALE</option>
-                                                                                    <option {{ !empty($details->gender_id) ? ($details->gender_id == 2 ? "checked" : '') : ''}} value="2">FEMALE</option>
+                                                                                    <option {{ (old('gender_id') == 1 ? "selected" : '') }} {{ !empty($details->gender_id) ? ($details->gender_id == 1 ? "checked" : '') : ''}} value="1">MALE</option>
+                                                                                    <option {{ (old('gender_id') == 2 ? "selected" : '') }} {{ !empty($details->gender_id) ? ($details->gender_id == 2 ? "checked" : '') : ''}} value="2">FEMALE</option>
                                                                                 </select>
                                                                                 <label for="country-floating">Gender</label>
-                                                                                {{ $errors->first('gender_id') }}
+                                                                                <span style="color: red">{{ $errors->first('gender_id') }}</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
@@ -175,17 +175,17 @@
                                                                                 <select name="id_proof" class="form-control">
                                                                                     <option value="">-choose id proof-</option>
                                                                                     @foreach($id_proof as $id_proofs)
-                                                                                        <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
+                                                                                        <option {{ (old('id_proof') == $id_proofs->id ? "selected" : '') }} {{ !empty($details->id_proof) ? ($details->id_proof == $id_proofs->id ? "selected" : '') : ''}} value="{{ $id_proofs->id }} {{ old('id_proof') }}">{{ $id_proofs->id_proof }}</option>
                                                                                     @endforeach
                                                                                 </select>
-                                                                                {{ $errors->first('id_proof') }}
+                                                                                <span style="color: red">{{ $errors->first('id_proof') }}</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <input value="" type="text" class="form-control" placeholder="Id Proof Number" name="id_proof_no">
+                                                                                <input value="{{ old('id_proof_no') }}" type="text" class="form-control" placeholder="Id Proof Number" name="id_proof_no">
                                                                                 <label for="last-name-column">Id Proof Number</label>
-                                                                                {{ $errors->first('id_proof_no') }}
+                                                                                <span style="color: red">{{ $errors->first('id_proof_no') }}</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
@@ -199,7 +199,7 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-12" id="ifYes"  style="display: none;">
                                                                             <div class="form-label-group">
-                                                                                <input  type="text" id="id-number-column" class="form-control" placeholder="Tc Number" name="tc_no">
+                                                                                <input  type="text" id="id-number-column" value="{{ old('tc_no') }}" class="form-control" placeholder="Tc Number" name="tc_no">
                                                                                 <label for="last-name-column">Tc Number</label>
                                                                             </div>
                                                                         </div>
@@ -209,7 +209,7 @@
                                                                                 <select class="form-control" id="class" name="class_id">
                                                                                     @if(!empty($details->class_id))
                                                                                         @foreach($classes as $class)
-                                                                                            <option {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                                            <option  {{ (old('class_id') == $class->id  ? "checked" : '') }}  {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}  {{ old('class_id') }}">{{ $class->create_class }}</option>
                                                                                         @endforeach
                                                                                     @endif
                                                                                 </select>
@@ -223,7 +223,7 @@
                                                                                         <select  class="form-control" id="class" name="class_id">
                                                                                             <option value="">-Select class-</option>
                                                                                             @foreach($classes as $class)
-                                                                                                <option {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                                                <option {{ (old('class_id') == $class->id  ? "selected" : '') }} {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}  {{ old('class_id') }}">{{ $class->create_class }}</option>
                                                                                             @endforeach
                                                                                         </select>
                                                                                         <label for="last-name-column">Class</label>
@@ -235,13 +235,13 @@
                                                                             <div class="form-label-group">
                                                                                 <tr>
                                                                                     <br/>
-                                                                                    <td><input {{ !empty($details->class_id) ? ($details->caste == 4 ? "checked" : '') : '' }} type="radio" name="caste" value="4">ST</td>
-                                                                                    <td><input {{ !empty($details->class_id) ? ($details->caste == 3 ? "checked" : '') : ''}} type="radio" name="caste" value="3">SC</td>
-                                                                                    <td><input {{ !empty($details->class_id) ? ($details->caste == 2 ? "checked" : '') : ''}} type="radio" name="caste" value="2">OBC</td>
-                                                                                    <td><input {{ !empty($details->class_id) ? ($details->caste == 1 ? "checked" : '') : ''}} type="radio" name="caste" value="1">GEN</td>
+                                                                                    <td><input {{ (old('caste') == 4  ? "checked" : '') }} {{ !empty($details->class_id) ? ($details->caste == 4 ? "checked" : '') : '' }} type="radio" name="caste" value="4">ST</td>
+                                                                                    <td><input {{ (old('caste') == 3  ? "checked" : '') }} {{ !empty($details->class_id) ? ($details->caste == 3 ? "checked" : '') : ''}} type="radio" name="caste" value="3">SC</td>
+                                                                                    <td><input {{ (old('caste') == 2  ? "checked" : '') }} {{ !empty($details->class_id) ? ($details->caste == 2 ? "checked" : '') : ''}} type="radio" name="caste" value="2">OBC</td>
+                                                                                    <td><input {{ (old('caste') == 1  ? "checked" : '') }} {{ !empty($details->class_id) ? ($details->caste == 1 ? "checked" : '') : ''}} type="radio" name="caste" value="1">GEN</td>
                                                                                 </tr>
                                                                                 <label for="email-id-column">Caste</label>
-                                                                                {{ $errors->first('caste') }}
+                                                                                <span style="color: red">{{ $errors->first('caste') }}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -258,49 +258,49 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text" value="{{ !empty($parent_details->mother_first_name) ? $parent_details->mother_first_name : '' }}"  class="form-control" placeholder="First Name" name="mother_first_name">
+                                                                                    <input type="text" value="{{ !empty($parent_details->mother_first_name) ? $parent_details->mother_first_name : '' }}{{ old('mother_first_name') }}"  class="form-control" placeholder="First Name" name="mother_first_name">
                                                                                     <label for="first-name-column"> First Name</label>
-                                                                                    {{ $errors->first('mother_first_name') }}
+                                                                                    <span style="color: red">{{ $errors->first('mother_first_name') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{ !empty($parent_details->mother_last_name) ? $parent_details->mother_last_name : '' }}" type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="mother_last_name">
+                                                                                    <input value="{{ !empty($parent_details->mother_last_name) ? $parent_details->mother_last_name : '' }}{{ old('mother_last_name') }}" type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="mother_last_name">
                                                                                     <label for="last-name-column"> Last Name</label>
-                                                                                    {{ $errors->first('mother_last_name') }}
+                                                                                    <span style="color: red">{{ $errors->first('mother_last_name') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{ !empty($parent_details->mother_mobile) ? $parent_details->mother_mobile : '' }}" type="text"  class="form-control" placeholder=" Mobile"  name="mother_mobile">
+                                                                                    <input value="{{ !empty($parent_details->mother_mobile) ? $parent_details->mother_mobile : '' }}{{ old('mother_mobile') }}" type="text"  class="form-control" placeholder=" Mobile"  name="mother_mobile">
                                                                                     <label for=" Mobile"> Mobile Number</label>
-                                                                                    {{ $errors->first('mother_mobile') }}
+                                                                                    <span style="color: red">{{ $errors->first('mother_mobile') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{ !empty($parent_details->mother_email) ? $parent_details->mother_email : '' }}" type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email">
+                                                                                    <input value="{{ !empty($parent_details->mother_email) ? $parent_details->mother_email : '' }}{{ old('mother_email') }}" type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email">
                                                                                     <label for="Email Id">Mother Email Id</label>
-                                                                                    {{ $errors->first('mother_email') }}
+                                                                                    <span style="color: red">{{ $errors->first('mother_email') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="" type="text"  class="form-control" placeholder="Mother Occupation"  name="mother_occupation">
+                                                                                    <input value="{{ old('mother_occupation') }}" type="text"  class="form-control" placeholder="Mother Occupation"  name="mother_occupation">
                                                                                     <label for="Occupation"> Occupation</label>
-                                                                                    {{ $errors->first('mother_occupation') }}
+                                                                                    <span style="color: red">{{ $errors->first('mother_occupation') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="" type="text"  class="form-control" placeholder="Mother Salary"  name="mother_salary">
+                                                                                    <input value="{{ old('mother_salary') }}" type="text"  class="form-control" placeholder="Mother Salary"  name="mother_salary">
                                                                                     <label for="Income"> Salary</label>
-                                                                                    {{ $errors->first('mother_salary') }}
+                                                                                    <span style="color: red">{{ $errors->first('mother_salary') }}</span>
                                                                                 </div>
                                                                             </div>
 
@@ -311,18 +311,18 @@
                                                                                     <select name="mother_id_type" class="form-control">
                                                                                         <option value="">-choose id proof-</option>
                                                                                         @foreach($id_proof as $id_proofs)
-                                                                                            <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
+                                                                                            <option {{ (old('id_proof') == $id_proofs->id ? "selected" : '') }} {{ !empty($details->id_proof) ? ($details->id_proof == $id_proofs->id ? "selected" : '') : ''}} value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                         @endforeach
                                                                                     </select>
-                                                                                    {{ $errors->first('id_proof') }}
+                                                                                    <span style="color: red">{{ $errors->first('id_proof') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text" class="form-control" placeholder="Id Proof Number" name="mother_id_no">
+                                                                                    <input type="text" value="{{ old('mother_id_no') }}" class="form-control" placeholder="Id Proof Number" name="mother_id_no">
                                                                                     <label for="last-name-column">Id Proof Number</label>
-                                                                                    {{ $errors->first('mother_id_no') }}
+                                                                                    <span style="color: red">{{ $errors->first('mother_id_no') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
@@ -333,7 +333,7 @@
                                                                                             <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
                                                                                         @endforeach
                                                                                     </select>
-                                                                                    {{ $errors->first('qualification') }}
+                                                                                    <span style="color: red">{{ $errors->first('qualification') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -350,46 +350,46 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{ !empty($parent_details->father_first_name) ? $parent_details->father_first_name : '' }}" type="text" id="first-name-column" class="form-control" placeholder=" First Name" name="father_first_name">
+                                                                                    <input value="{{ !empty($parent_details->father_first_name) ? $parent_details->father_first_name : '' }}{{ old('father_first_name') }}" type="text" id="first-name-column" class="form-control" placeholder=" First Name" name="father_first_name">
                                                                                     <label for="first-name-column"> First Name</label>
-                                                                                    {{ $errors->first('father_first_name') }}
+                                                                                    <span style="color: red"> {{ $errors->first('father_first_name') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{ !empty($parent_details->father_last_name) ? $parent_details->father_last_name : '' }}" type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="father_last_name">
+                                                                                    <input value="{{ !empty($parent_details->father_last_name) ? $parent_details->father_last_name : '' }}{{ old('father_last_name') }}" type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="father_last_name">
                                                                                     <label for="last-name-column"> Last Name</label>
-                                                                                    {{ $errors->first('father_last_name') }}
+                                                                                    <span style="color: red">{{ $errors->first('father_last_name') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{ !empty($parent_details->father_mobile) ? $parent_details->father_mobile : '' }}" type="text"  class="form-control" placeholder=" Mobile"  name="father_mobile">
+                                                                                    <input value="{{ !empty($parent_details->father_mobile) ? $parent_details->father_mobile : '' }}{{ old('father_mobile') }}" type="text"  class="form-control" placeholder=" Mobile"  name="father_mobile">
                                                                                     <label for=" Mobile"> Mobile Number</label>
-                                                                                    {{ $errors->first('father_mobile') }}
+                                                                                    <span style="color: red">{{ $errors->first('father_mobile') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{ !empty($parent_details->father_email) ? $parent_details->father_email : '' }}" type="text"  class="form-control" placeholder=" Email Id"  name="father_email">
+                                                                                    <input value="{{ !empty($parent_details->father_email) ? $parent_details->father_email : '' }}{{ old('father_email') }}" type="text"  class="form-control" placeholder=" Email Id"  name="father_email">
                                                                                     <label for="Email Id"> Email Id</label>
-                                                                                    {{ $errors->first('father_email') }}
+                                                                                    <span style="color: red">{{ $errors->first('father_email') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input  type="text"  class="form-control" placeholder=" Occupation"  name="father_occupation">
+                                                                                    <input  type="text" value="{{ old('father_occupation') }}"  class="form-control" placeholder=" Occupation"  name="father_occupation">
                                                                                     <label for="Occupation"> Occupation</label>
-                                                                                    {{ $errors->first('father_occupation') }}
+                                                                                    <span style="color: red">{{ $errors->first('father_occupation') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text"  class="form-control" placeholder=" Salary"  name="father_salary">
+                                                                                    <input type="text" value="{{ old('father_salary') }}"  class="form-control" placeholder=" Salary"  name="father_salary">
                                                                                     <label for="Income"> Salary</label>
-                                                                                    {{ $errors->first('father_salary') }}
+                                                                                    <span style="color: red">{{ $errors->first('father_salary') }}</span>
                                                                                 </div>
                                                                             </div>
 
@@ -402,15 +402,15 @@
                                                                                             <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                         @endforeach
                                                                                     </select>
-                                                                                    {{ $errors->first('id_proof') }}
+                                                                                    <span style="color: red">{{ $errors->first('id_proof') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input type="text" class="form-control" placeholder="Id Proof Number" name="father_id_no">
+                                                                                    <input type="text" value="{{ old('father_id_no') }}" class="form-control" placeholder="Id Proof Number" name="father_id_no">
                                                                                     <label for="last-name-column">Id Proof Number</label>
-                                                                                    {{ $errors->first('father_id_no') }}
+                                                                                    <span style="color: red"> {{ $errors->first('father_id_no') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
@@ -421,7 +421,7 @@
                                                                                             <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
                                                                                         @endforeach
                                                                                     </select>
-                                                                                    {{ $errors->first('qualification') }}
+                                                                                    <span style="color: red">{{ $errors->first('qualification') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

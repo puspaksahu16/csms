@@ -85,7 +85,42 @@
                                                 <td>
                                                     <a href="{{route('new_admission.view', $student->id)}}" class="btn btn-sm btn-primary">View</a>
                                                     <a href="{{route('new_admission.edit', $student->id)}}" class="btn btn-sm btn-primary">Edit</a>
+                                                    <a href="#" data-toggle="modal" data-target="#myModal{{$student->id}}" class="btn btn-sm btn-primary">Assign Section</a>
+                                                    <div class="modal" id="myModal{{$student->id}}">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
 
+                                                                <!-- Modal Header -->
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">Assign Section</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+
+                                                                <!-- Modal body -->
+                                                                <div class="modal-body">
+                                                                    <form class="form" method="POST" action="{{ url('/assign_section/'.$student->id) }}">
+                                                                        @csrf
+                                                                        <div class="form-label-group">
+                                                                            <select name="section" class="form-control">
+                                                                                <option>-SELECT Section-</option>
+                                                                                @foreach($sections as $section)
+                                                                                    <option value="{{ $section->name }}">{{ $section->name }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            <label for="first-name-column">Create Section</label>
+                                                                        </div>
+                                                                        <button class="btn btn-success btn-sm pull-right" type="submit">Submit</button>
+                                                                    </form>
+                                                                </div>
+
+                                                                <!-- Modal footer -->
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     @if(empty($student->fee->fee))
                                                         <a href="{{url('/admission_fee_create/'. $student->id)}}" class="btn btn-sm btn-success">Admission Fee</a>
                                                     @else
@@ -101,6 +136,8 @@
                                             </tr>
                                         @endforeach
                                         </tbody>
+                                        <!-- The Modal -->
+
                                     </table>
                                 </div>
                             </div>

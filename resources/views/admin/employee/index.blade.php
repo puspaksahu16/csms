@@ -69,7 +69,6 @@
                                             <th scope="col">Contact No</th>
                                             <th scope="col">Email ID</th>
                                             <th scope="col">Action</th>
-                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -86,7 +85,7 @@
                                                 <td>{{$employee->mobile}}</td>
                                                 <td>{{$employee->email}}</td>
                                                 <td><a href="{{route('employee.edit', $employee->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-                                                <td><a href="employees_delete/{{$employee->id}}" class="btn btn-sm btn-danger">Delete</a></td>
+{{--                                                <td><a href="employees_delete/{{$employee->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>

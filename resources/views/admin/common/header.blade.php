@@ -95,7 +95,20 @@
                                 <span  class="user-name text-bold-600">{{ Auth::user()->name }}</span>
                                 <span class="user-status">{{ Auth::user()->role->name == "super_admin" ? 'Super Admin' :  Auth::user()->role->name }}</span>
                             </div>
-                            <span><img class="round" src="{{asset('admin_assets/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40"></span>
+                            <span>
+
+
+                                 @if(auth()->user()->role->name == "super_admin")
+                                    <img class="round" src="{{asset('admin_assets/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40">
+                                 @elseif(auth()->user()->role->name == "admin")
+                                    <img class="round" src="{{asset('images/school_photo/'.Auth::user()->profile->logo)}}" alt="avatar" height="40" width="40">
+                                 @elseif(auth()->user()->role->name == "parent")
+                                    <img class="round" src="{{asset('admin_assets/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40">
+                                 @elseif(auth()->user()->role->name == "employee")
+                                    <img class="round" src="{{asset('admin_assets/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40">
+                                 @endif
+
+                            </span>
                         </a>
                             {{--<div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600"></span><span class="user-status">Available</span></div><span><img class="round" src="{{asset('admin_assets/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40"></span></a>--}}
                         <div class="dropdown-menu dropdown-menu-right">
