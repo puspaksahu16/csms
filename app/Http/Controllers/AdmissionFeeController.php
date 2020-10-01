@@ -24,7 +24,13 @@ class AdmissionFeeController extends Controller
      */
     public function index()
     {
-        $student_fees = AdmissionFee::with('students')->get();
+        if (auth()->user()->role->name == "parent")
+        {
+//            return auth()->user()->parent->student_id;
+             $student_fees = AdmissionFee::with('students')->where('student_id', auth()->user()->parent->student_id)->get();
+        }else{
+            $student_fees = AdmissionFee::with('students')->get();
+        }
 
         foreach ($student_fees as $key => $sf)
         {

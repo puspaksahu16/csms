@@ -316,9 +316,20 @@ class NewAdmissionController extends Controller
             } else {
                 $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
             }
-        }else{
+        }elseif(auth()->user()->role->name == "admin"){
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $students = Student::find($id);
+            $qualifications = Qualification::all();
+            $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
+            $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
+            if ($r_address->is_same == 1) {
+                $p_address = [];
+            } else {
+                $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
+            }
+        }elseif(auth()->user()->role->name == "parent"){
+            $students = Student::find($id);
+            $classes = Createclass::where('school_id', $students->school_id)->get();
             $qualifications = Qualification::all();
             $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
             $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();

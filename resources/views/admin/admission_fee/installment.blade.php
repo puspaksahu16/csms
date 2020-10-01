@@ -63,7 +63,9 @@
                                             <th scope="col">Paid</th>
                                             <th scope="col">Due Date</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
+                                            @if(auth()->user()->role->name !== "parent")
+                                                <th scope="col">Action</th>
+                                            @endif
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -85,74 +87,76 @@
 
                                                 </td>
                                                 <td>{{$i->status}}</td>
-                                                <td>
-                                                    @if($i->status == "Pending")
-                                                        <a href="{{url('/pay/'.$i->id)}}" class="btn btn-sm btn-primary">Pay</a>
+                                                @if(auth()->user()->role->name !== "parent")
+                                                    <td>
+                                                        @if($i->status == "Pending")
+                                                            <a href="{{url('/pay/'.$i->id)}}" class="btn btn-sm btn-primary">Pay</a>
 
-                                                        {{--Trigger the modal with a button--}}
-                                                        <button type="button" {{ $i->status == "Paid" ? 'disable':'' }} class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Fine</button>
+                                                            {{--Trigger the modal with a button--}}
+                                                            <button type="button" {{ $i->status == "Paid" ? 'disable':'' }} class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Fine</button>
 
-                                                        {{--Modal--}}
-                                                        <div class="modal fade" id="myModal{{ $i->id }}" role="dialog">
-                                                            <div class="modal-dialog">
+                                                            {{--Modal--}}
+                                                            <div class="modal fade" id="myModal{{ $i->id }}" role="dialog">
+                                                                <div class="modal-dialog">
 
-                                                                <!-- Modal content-->
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title">Add Fine</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    <!-- Modal content-->
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title">Add Fine</h4>
+                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form action="{{ url('/admission_fee_fine/'.$i->id) }}" method="POST">
+                                                                                @csrf
+                                                                                <input class="form-control" name="fine" placeholder="Fine">
+                                                                                <br>
+                                                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                                            </form>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="modal-body">
-                                                                        <form action="{{ url('/admission_fee_fine/'.$i->id) }}" method="POST">
-                                                                            @csrf
-                                                                            <input class="form-control" name="fine" placeholder="Fine">
-                                                                            <br>
-                                                                            <button type="submit" class="btn btn-success">Submit</button>
-                                                                        </form>
-                                                                    </div>
+
                                                                 </div>
-
                                                             </div>
-                                                        </div>
 
                                                         @elseif($i->status == "Paid")
 
                                                             {{--Trigger the modal with a button--}}
-                                                        @if(!$loop->last)
-                                                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Next Due date</button>
+                                                            @if(!$loop->last)
+                                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Next Due date</button>
+                                                            @endif
+
+                                                            {{--Modal--}}
+                                                            <div class="modal fade" id="myModal{{ $i->id }}" role="dialog">
+                                                                <div class="modal-dialog">
+
+                                                                    <!-- Modal content-->
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title">Next Due Date</h4>
+                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form action="{{ url('/admission_due_date/'.$i->id) }}" method="POST">
+                                                                                @csrf
+                                                                                <input class="form-control" name="due_date" placeholder="Due Date"type="date" >
+                                                                                <br>
+                                                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+
+
                                                         @endif
 
-                                                        {{--Modal--}}
-                                                        <div class="modal fade" id="myModal{{ $i->id }}" role="dialog">
-                                                            <div class="modal-dialog">
 
-                                                                <!-- Modal content-->
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title">Next Due Date</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form action="{{ url('/admission_due_date/'.$i->id) }}" method="POST">
-                                                                            @csrf
-                                                                            <input class="form-control" name="due_date" placeholder="Due Date"type="date" >
-                                                                            <br>
-                                                                            <button type="submit" class="btn btn-success">Submit</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-
-
-
-                                                    @endif
-
-
-                                                    {{--<a href="{{url('/admission_fee_fine/'.$i->id)}}" class="btn btn-sm btn-warning">Fine</a>--}}
-                                                </td>
-
+                                                        {{--<a href="{{url('/admission_fee_fine/'.$i->id)}}" class="btn btn-sm btn-warning">Fine</a>--}}
+                                                    </td>
+                                                @endif
+                                                
                                             </tr>
                                         @endforeach
                                         </tbody>

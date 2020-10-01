@@ -119,7 +119,7 @@
                             @elseif(auth()->user()->role->name == "admin")
                                 {{url('/schools/'.Auth::user()->id .'/edit')}}
                             @elseif(auth()->user()->role->name == "parent")
-                            {{url('/edit_profile/'.Auth::user()->id .'')}}
+                            {{url('/edit_profile/'.Auth::user()->id )}}
                             @elseif(auth()->user()->role->name == "employee")
                             {{url('/edit_profile/'.Auth::user()->id .'/edit')}}
                                 @endif
