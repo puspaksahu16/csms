@@ -161,6 +161,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/payment_store/{id}','StoreFeeController@payment');
     Route::get('/store_fees_pay/{id}','StoreFeeController@pay');
 
+    //for parent panel
+    Route::get('/my-profile/{id}/edit','NewAdmissionController@edit');
+    Route::get('/my-payments','AdmissionFeeController@index');
+
+
+
+
+
+
+    ///////
+
 
     Route::get('/edit_profile/{id}','NewAdmissionController@edit_profile');
     Route::patch('/parents_update/{id}','NewAdmissionController@parentUpdate');

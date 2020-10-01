@@ -13,6 +13,10 @@
             </li>
             <li class=" nav-item"><a href="{{url('/dashboard')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
             </li>
+            <li class=" nav-item"><a href="{{url('/my-profile/'.auth()->user()->parent->student_id.'/edit')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Edit Profile</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{url('/my-payments/')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">My Payments</span></a>
+            </li>
             {{--<li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Pre Admission</span></a>--}}
                 {{--<ul class="menu-content">--}}
                     {{--<li><a href="{{url('/pre_exam')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreExam">Pre Exam</span></a></li>--}}
