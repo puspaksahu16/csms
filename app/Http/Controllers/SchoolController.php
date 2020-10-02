@@ -53,6 +53,7 @@ class SchoolController extends Controller
         $user->email = $request->email;
         $user->role_id = 2;
         $user->password = Hash::make($s_id);
+
         if ($user->save())
         {
             $data['user_id'] = $user->id;
@@ -157,10 +158,11 @@ class SchoolController extends Controller
         $school->email =$request->email;
         $school->mobile =$request->mobile;
         $school->update();
-         $user =  User::find($school->user_id);
 
+         $user =  User::find($school->user_id);
         $user->name = $request->full_name;
         $user->email = $request->email;
+
         $user->update();
         return redirect()->route('schools.index')->with('success', 'School updated successfully');
     }

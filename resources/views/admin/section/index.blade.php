@@ -125,7 +125,7 @@
                                             <th scope="col">Class</th>
                                             <th scope="col">Section</th>
                                             <th scope="col">Action</th>
-                                            <th></th>
+{{--                                            <th></th>--}}
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -138,7 +138,7 @@
                                                 <th>{{$section->class->create_class}}</th>
                                                 <th>{{$section->section}}</th>
                                                 <td><a href="{{route('section.edit', $section->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-                                                <td><a href="section_delete/{{$section->id}}" class="btn btn-sm btn-danger">Delete</a></td>
+{{--                                                <td><a href="section_delete/{{$section->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>

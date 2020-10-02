@@ -12,6 +12,8 @@ use App\GeneralFee;
 use App\Idproof;
 use App\Qualification;
 use App\School;
+use App\Section;
+use App\SetSection;
 use App\Stock;
 use App\Student;
 use App\StudentParent;
@@ -33,11 +35,22 @@ class NewAdmissionController extends Controller
         if (auth()->user()->role->name == "super_admin")
         {
          $students = Student::with('fee','school')->get();
+          $sections = SetSection::all();
 //         return $students;
         }else{
             $students = Student::where('school_id', auth()->user()->school->id)->get();
+            $sections = SetSection::all();
         }
-       return view('admin.new_admission.index', compact('students'));
+       return view('admin.new_admission.index', compact(['students','sections']));
+    }
+
+    public function section_assign(Request $request, $id)
+    {
+
+        $student = Student::find($id);
+        $student->section = $request->section;
+        $student->update();
+        return redirect()->route('new_admission.index')->with('success', 'Section Assign Successfully');
     }
 
     public function parentsIndex()
@@ -90,7 +103,7 @@ class NewAdmissionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $request->validate([
             'school_id' => 'required',
             'ref_no' => 'required',
             'first_name' => 'required',
@@ -103,24 +116,16 @@ class NewAdmissionController extends Controller
 
             'mother_first_name' => 'required',
             'mother_last_name' => 'required',
-            'mother_mobile' => 'required',
-            'mother_email' => 'required',
+            'mother_mobile' => 'required|digits:10',
+            'mother_email' => 'required|email',
             'mother_occupation' => 'required',
             'mother_salary' => 'required',
-            'id_proof' => 'required',
-            'mother_id_no' => 'required',
-            'qualification' => 'required',
             'father_first_name' => 'required',
             'father_last_name' => 'required',
-            'father_mobile' => 'required',
-            'father_email' => 'required',
+            'father_mobile' => 'required|digits:10',
+            'father_email' => 'required|email',
             'father_occupation' => 'required',
             'father_salary' => 'required',
-            'id_proof' => 'required',
-            'father_id_no' => 'required',
-            'qualification' => 'required',
-
-
         ]);
 
         $address = [];

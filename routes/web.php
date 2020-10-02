@@ -36,12 +36,14 @@ Route::middleware('auth')->group(function () {
         return view('admin.dashboard');
     });
 
+
     Route::resource('pre_admissions', 'PreAdmissionController');
     Route::get('get_school','PreAdmissionController@getSchools');
     Route::post('/get_exam','PreAdmissionController@getExam');
     Route::get('pre_admissions/getclass/{id}','PreAdmissionController@getClasses');
     Route::get('lara_pre_admission','PreAdmissionController@laraPreAdmission')->name('lara_pre_admission');
     Route::get('pre_admissions_delete/{id}','PreAdmissionController@Update_status');
+
 
 
     Route::resource('classes', 'CreateClassController');
@@ -134,7 +136,7 @@ Route::middleware('auth')->group(function () {
     Route::get('parents','NewAdmissionController@parentsIndex')->name('parents.index');
     Route::get('get_school','NewAdmissionController@getSchools');
     Route::get('new_admission/getclass/{id}','NewAdmissionController@getClasses');
-
+    Route::post('/assign_section/{id}','NewAdmissionController@section_assign');
 
     Route::resource('admission_fee','AdmissionFeeController');
     Route::get('/admission_fee_create/{id}','AdmissionFeeController@AdmissionFee');
