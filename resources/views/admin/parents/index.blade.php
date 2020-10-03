@@ -52,8 +52,9 @@
                                             <th scope="col">Mother Name</th>
                                             <th scope="col">Mother Email</th>
                                             <th scope="col">Mother Contact</th>
-                                             <th scope="col">Student Class</th>
                                             <th scope="col">Student Name</th>
+                                             <th scope="col">Student Class</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -64,8 +65,8 @@
                                             <td>{{$parent->mother_first_name." ".$parent->mother_last_name}}</td>
                                             <td>{{$parent->mother_email}}</td>
                                             <td>{{$parent->mother_mobile}}</td>
-                                            <td>{{$parent->students->classes->create_class}}</td>
                                             <td>{{$parent->students->first_name." ".$parent->students->last_name}}</td>
+                                            <td>{{$parent->students->classes->create_class}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

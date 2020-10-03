@@ -34,6 +34,12 @@ class NewAdmissionController extends Controller
     {
         if (auth()->user()->role->name == "super_admin")
         {
+//           return $students = Student::with('fee',['school' => function($query){
+//              return $query->with('section')->get();
+//          }])->get();
+//         return $students->school_id;
+//          $sections = Section::where('school_id', $students->school_id)->get();
+//         return $students;
          $students = Student::with('fee','school')->get();
           $sections = SetSection::all();
 //         return $students;
@@ -104,6 +110,8 @@ class NewAdmissionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'photo' => 'required',
+            'family_photo' => 'required',
             'school_id' => 'required',
             'ref_no' => 'required',
             'first_name' => 'required',
@@ -113,18 +121,26 @@ class NewAdmissionController extends Controller
             'id_proof' => 'required',
             'id_proof_no' => 'required',
             'caste' => 'required',
+            'class_id' => 'required',
 
             'mother_first_name' => 'required',
             'mother_last_name' => 'required',
             'mother_mobile' => 'required|digits:10',
             'mother_email' => 'required|email',
             'mother_occupation' => 'required',
+            'mother_id_no' => 'required',
+            'mother_id_type' => 'required',
+            'mother_qualification' => 'required',
             'mother_salary' => 'required',
+
             'father_first_name' => 'required',
             'father_last_name' => 'required',
             'father_mobile' => 'required|digits:10',
             'father_email' => 'required|email',
+            'father_id_type' => 'required',
+            'father_id_no' => 'required',
             'father_occupation' => 'required',
+            'father_qualification' => 'required',
             'father_salary' => 'required',
         ]);
 

@@ -10,6 +10,7 @@ class Student extends Model
     {
         return $this->belongsTo(Createclass::class, 'class_id');
     }
+
     public function Idproof()
     {
         return $this->belongsTo(Idproof::class, 'id_proof');

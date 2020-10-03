@@ -53,4 +53,9 @@ class User extends Authenticatable
         return $this->hasOne(StudentParent::class, 'user_id');
 
     }
+    public function profile()
+    {
+        return $this->hasOne(School::class, 'user_id');
+
+    }
 }

@@ -78,7 +78,7 @@
                                                 @if(auth()->user()->role->name == "super_admin")
                                                     <th>{{$employee->school->full_name}}</th>
                                                 @endif
-                                                <td>{{$employee->employee_unique_id}}</td>
+                                                <td><a href="{{route('employee.show', $employee->id)}}">{{$employee->employee_unique_id}}</a></td>
                                                 <td>{{$employee->first_name." ".$employee->last_name}}</td>
                                                 <td>{{$employee->employee_department}}</td>
                                                 <td>{{$employee->employee_designation}}</td>

@@ -13,4 +13,8 @@ class School extends Model
     {
     	return $this->belongsTo(User::class);
     }
+    public function section()
+    {
+        return $this->belongsTo(Section::class, 'section_id');
+    }
 }
