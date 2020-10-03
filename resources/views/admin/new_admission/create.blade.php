@@ -93,14 +93,18 @@
                                                                                 <img id="p1" height="150px" width="130px"  />
                                                                             </div>
                                                                             <br/>
-                                                                            Student photo :<input type="file" name='photo' id="photo" onchange="pic(this);"/><p><br/></p>
+                                                                            Student photo :<input type="file" name='photo' id="photo" onchange="pic(this);"/>
+                                                                            <p><br/><span style="color: red">{{ $errors->first('photo') }}</span></p>
+
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="family_photo">
                                                                                 <img id="p2" height="150px" width="130px"  />
                                                                             </div>
                                                                             <br/>
-                                                                            Family photo :<input type="file" name='family_photo'  id="family_photo" onchange="pic2(this);"/><p><br/></p>
+                                                                            Family photo :<input type="file" name='family_photo'  id="family_photo" onchange="pic2(this);"/>
+                                                                            <p><br/> <span style="color: red">{{ $errors->first('family_photo') }}</span></p>
+
                                                                         </div>
                                                                 </div>
                                                                     <div class="row">
@@ -214,7 +218,7 @@
                                                                                     @endif
                                                                                 </select>
                                                                                 <label for="last-name-column">Class</label>
-
+                                                                                <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                                             </div>
                                                                         </div>
                                                                             @else
@@ -227,6 +231,7 @@
                                                                                             @endforeach
                                                                                         </select>
                                                                                         <label for="last-name-column">Class</label>
+                                                                                        <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                                                     </div>
                                                                                 </div>
 
@@ -314,7 +319,7 @@
                                                                                             <option {{ (old('id_proof') == $id_proofs->id ? "selected" : '') }} {{ !empty($details->id_proof) ? ($details->id_proof == $id_proofs->id ? "selected" : '') : ''}} value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                         @endforeach
                                                                                     </select>
-                                                                                    <span style="color: red">{{ $errors->first('id_proof') }}</span>
+                                                                                    <span style="color: red">{{ $errors->first('mother_id_type') }}</span>
                                                                                 </div>
                                                                             </div>
 
@@ -330,10 +335,10 @@
                                                                                     <select name="mother_qualification" class="form-control">
                                                                                         <option value="">-choose  Qualification-</option>
                                                                                         @foreach($qualifications as $qualification)
-                                                                                            <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
+                                                                                            <option {{ (old('mother_qualification') == $qualification->id ? "selected" : '') }} value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
                                                                                         @endforeach
                                                                                     </select>
-                                                                                    <span style="color: red">{{ $errors->first('qualification') }}</span>
+                                                                                    <span style="color: red">{{ $errors->first('mother_qualification') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -399,10 +404,10 @@
                                                                                     <select name="father_id_type" class="form-control">
                                                                                         <option value="">-choose id proof-</option>
                                                                                         @foreach($id_proof as $id_proofs)
-                                                                                            <option value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
+                                                                                            <option {{ (old('father_id_type') == $id_proofs->id ? "selected" : '') }} value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                         @endforeach
                                                                                     </select>
-                                                                                    <span style="color: red">{{ $errors->first('id_proof') }}</span>
+                                                                                    <span style="color: red">{{ $errors->first('father_id_type') }}</span>
                                                                                 </div>
                                                                             </div>
 
@@ -418,10 +423,10 @@
                                                                                     <select name="father_qualification" class="form-control">
                                                                                         <option value="">-choose  Qualification-</option>
                                                                                         @foreach($qualifications as $qualification)
-                                                                                            <option value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
+                                                                                            <option {{ (old('father_qualification') == $qualification->id ? "selected" : '') }} value="{{ $qualification->id }}">{{ $qualification->qualification }}</option>
                                                                                         @endforeach
                                                                                     </select>
-                                                                                    <span style="color: red">{{ $errors->first('qualification') }}</span>
+                                                                                    <span style="color: red">{{ $errors->first('father_qualification') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

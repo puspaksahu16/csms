@@ -149,7 +149,13 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
+        $employee = Employee::find($id);
+        $id_proof = Idproof::all();
+        $classes = Createclass::all();
+        $schools = School::all();
+        $qualifications = Qualification::all();
+        return view('admin.employee.show',compact(['id_proof', 'classes','schools','qualifications','employee','r_address']));
     }
 
     /**

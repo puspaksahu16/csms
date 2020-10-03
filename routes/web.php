@@ -196,6 +196,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('employee','EmployeeController');
     Route::get('employees_delete/{id}','EmployeeController@destroy');
+    Route::get('employee/{id}/show','EmployeeController@show')->name('employee.show');
 
     Route::get('/stateSetting', function () {
         return view('admin.stateSetting');
