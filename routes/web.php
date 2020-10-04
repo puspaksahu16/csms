@@ -164,9 +164,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/store_fees_pay/{id}','StoreFeeController@pay');
 
     //for parent panel
-    Route::get('/my-profile/{id}/edit','NewAdmissionController@edit');
-    Route::get('/my-payments','AdmissionFeeController@index');
 
+    Route::get('/my-profile/{id}/edit','NewAdmissionController@edit');
+    Route::get('/my-admission-fee','AdmissionFeeController@index');
+    Route::get('/my-store-fees/{id}','StoreFeeController@paymentHistory');
+    Route::get('/view-timetable', 'TimetableController@viewTimetable');
 
 
 

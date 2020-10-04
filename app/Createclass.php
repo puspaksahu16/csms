@@ -16,4 +16,8 @@ class Createclass extends Model
     {
         return $this->belongsTo(School::class,'school_id');
     }
+    public function section()
+    {
+        return $this->hasMany(Section::class, 'class_id');
+    }
 }

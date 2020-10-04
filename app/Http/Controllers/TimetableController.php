@@ -8,6 +8,7 @@ use App\Period;
 use App\School;
 use App\Section;
 use App\Standard;
+use App\Student;
 use App\Subject;
 use App\TimeTable;
 use Illuminate\Http\Request;
@@ -24,12 +25,23 @@ class TimetableController extends Controller
         if (auth()->user()->role->name == "super_admin") {
             $timetables = TimeTable::all();
         }
-        else{
+        elseif (auth()->user()->role->name == "admin"){
             $timetables = TimeTable::where('school_id', auth()->user()->school->id)->get();
         }
 
         return view('admin.timetable.index',compact(['timetables']));
     }
+
+    public function viewTimetable()
+    {
+        if (auth()->user()->role->name == "parent"){
+            $student = Student::find(auth()->user()->parent->student_id);
+            $timetables = TimeTable::where('school_id', $student->school_id)->where('class_id', $student->class_id)->where('section_id', $student->section)->get();
+        }
+
+        return view('admin.timetable.timetable',compact(['timetables']));
+    }
+
     public function getPeriod(Request $request)
     {
         return $periods = Period::where('standard_id', $request->standard_id)->pluck('period_name', 'id');

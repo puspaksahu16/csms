@@ -167,8 +167,8 @@
                                                                             <div class="form-label-group">
                                                                                 <select name="gender_id" class="form-control">
                                                                                     <option  value="">-Select Gender-</option>
-                                                                                    <option {{ (old('gender_id') == 1 ? "selected" : '') }} {{ !empty($details->gender_id) ? ($details->gender_id == 1 ? "checked" : '') : ''}} value="1">MALE</option>
-                                                                                    <option {{ (old('gender_id') == 2 ? "selected" : '') }} {{ !empty($details->gender_id) ? ($details->gender_id == 2 ? "checked" : '') : ''}} value="2">FEMALE</option>
+                                                                                    <option {{ (old('gender_id') == 1 ? "selected" : '') }} {{ !empty($details->gender_id) ? ($details->gender_id == 1 ? "selected" : '') : ''}} value="1">MALE</option>
+                                                                                    <option {{ (old('gender_id') == 2 ? "selected" : '') }} {{ !empty($details->gender_id) ? ($details->gender_id == 2 ? "selected" : '') : ''}} value="2">FEMALE</option>
                                                                                 </select>
                                                                                 <label for="country-floating">Gender</label>
                                                                                 <span style="color: red">{{ $errors->first('gender_id') }}</span>

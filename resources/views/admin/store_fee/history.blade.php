@@ -42,7 +42,9 @@
                         <div class="card">
                             <div class="card-header table-card-header">
                                 <h4 class="card-title">Payment </h4>
-                                <a class="btn btn-primary" href="{{url('/store_fees/')}}">Back</a>
+                               @if(auth()->user()->role->name !== "parent")
+                                    <a class="btn btn-primary" href="{{url('/store_fees/')}}">Back</a>
+                               @endif
                             </div>
                             <div class="card-content">
 
