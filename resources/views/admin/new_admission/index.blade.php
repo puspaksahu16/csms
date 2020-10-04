@@ -77,14 +77,19 @@
                                                 @if(auth()->user()->role->name == "super_admin")
                                                 <td>{{$student->school['full_name']}}</td>
                                                 @endif
-                                                <td>{{$student->student_unique_id}}</td>
-                                                <td>{{$student->ref_no}}</td>
+                                                <td><a href="{{route('new_admission.view', $student->id)}}">{{$student->student_unique_id}}</a></td>
+                                                @if($student->ref_no == '')
+                                                    <td>N/a</td>
+                                                    @else
+                                                    <td>{{$student->ref_no}}</td>
+                                                    @endif
+
                                                 <td>{{$student->first_name." ".$student->last_name}}</td>
                                                 <td>{{$student->classes->create_class}}</td>
                                                 <td>{{$student->created_at->format('d F Y')}}</td>
                                                 <td>
-                                                    <a href="{{route('new_admission.view', $student->id)}}" class="btn btn-sm btn-primary">View</a>
-                                                    <a href="{{route('new_admission.edit', $student->id)}}" class="btn btn-sm btn-primary">Edit</a>
+{{--                                                    <a href="{{route('new_admission.view', $student->id)}}" class="btn btn-sm btn-primary">View</a>--}}
+
                                                     <a href="#" data-toggle="modal" data-target="#myModal{{$student->id}}" class="btn btn-sm btn-primary">Assign Section</a>
                                                     <div class="modal" id="myModal{{$student->id}}">
                                                         <div class="modal-dialog">

@@ -218,6 +218,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/get_classes','TimetableController@getClass');
     Route::post('/get_section','TimetableController@getSection');
 
+
+
+    Route::resource('holiday','HolidayController');
+    Route::resource('chat','ChatController');
+
+
+
     Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
     Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 

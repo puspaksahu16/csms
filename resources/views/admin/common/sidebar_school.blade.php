@@ -13,6 +13,8 @@
             </li>
             <li class=" nav-item"><a href="{{url('/dashboard')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
             </li>
+            <li class=" nav-item"><a href="{{url('/parents')}}"><i class="fa fa-user"></i><span class="menu-title" data-i18n="Schools">Parents</span></a>
+            </li>
             <li class=" nav-item"><a href="{{url('/employee')}}"><i class="fa fa-user"></i><span class="menu-title" data-i18n="Schools">Employee</span></a>
             </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Pre Admission</span></a>
@@ -77,6 +79,10 @@
                     <li><a href="{{url('/publisher')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Publisher</span></a></li>
                     <li><a href="{{url('/subject')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Subject</span></a></li>
                 </ul>
+            </li>
+            <li class=" nav-item"><a href="{{url('/holiday')}}"><i class="fa fa-calendar"></i><span class="menu-title" data-i18n="Schools">Holiday list</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{url('/chat')}}"><i class="fa fa-mail-forward"></i><span class="menu-title" data-i18n="Schools">Mail Box</span></a>
             </li>
         </ul>
     </div>

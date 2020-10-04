@@ -101,7 +101,11 @@
                                  @if(auth()->user()->role->name == "super_admin")
                                     <img class="round" src="{{asset('admin_assets/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40">
                                  @elseif(auth()->user()->role->name == "admin")
+                                     @if(Auth::user()->profile->logo == '')
+                                        <img class="round" src="{{asset('admin_assets/images/default.png')}}" alt="avatar" height="40" width="40">
+                                         @else
                                     <img class="round" src="{{asset('images/school_photo/'.Auth::user()->profile->logo)}}" alt="avatar" height="40" width="40">
+                                    @endif
                                  @elseif(auth()->user()->role->name == "parent")
                                     <img class="round" src="{{asset('admin_assets/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40">
                                  @elseif(auth()->user()->role->name == "employee")

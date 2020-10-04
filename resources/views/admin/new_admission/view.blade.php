@@ -55,7 +55,10 @@
                                                         </td>
 
                                                 </tr>
+
                                             </table>
+                                            <a href="{{route('new_admission.edit', $students->id)}}" class="btn btn-sm btn-warning">Edit</a></td>
+
                                         </div>
                                         <div class="col-12 col-md-12 col-lg-5">
                                             <table class="ml-0 ml-sm-0 ml-lg-0">

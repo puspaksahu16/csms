@@ -5,6 +5,7 @@
                     {{--<div class="brand-logo"></div>--}}
                     <h2 class="brand-text mb-0">CSMS</h2></a>
             </li>
+        </ul>
     </div>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
@@ -80,6 +81,10 @@
                     <li><a href="{{url('/publisher')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Publisher</span></a></li>
                     <li><a href="{{url('/subject')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Subject</span></a></li>
                 </ul>
+            </li>
+            <li class=" nav-item"><a href="{{url('/holiday')}}"><i class="fa fa-calendar"></i><span class="menu-title" data-i18n="Schools">Holiday list</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{url('/chat')}}"><i class="fa fa-mail-forward"></i><span class="menu-title" data-i18n="Schools">Mail Box</span></a>
             </li>
         </ul>
     </div>
