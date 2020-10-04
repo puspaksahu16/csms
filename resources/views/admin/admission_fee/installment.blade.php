@@ -156,7 +156,7 @@
                                                         {{--<a href="{{url('/admission_fee_fine/'.$i->id)}}" class="btn btn-sm btn-warning">Fine</a>--}}
                                                     </td>
                                                 @endif
-                                                
+
                                             </tr>
                                         @endforeach
                                         </tbody>

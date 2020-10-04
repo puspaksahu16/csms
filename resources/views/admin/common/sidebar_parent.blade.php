@@ -15,7 +15,14 @@
             </li>
             <li class=" nav-item"><a href="{{url('/my-profile/'.auth()->user()->parent->student_id.'/edit')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Edit Profile</span></a>
             </li>
-            <li class=" nav-item"><a href="{{url('/my-payments/')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">My Payments</span></a>
+            <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Account">My Payments</span></a>
+                <ul class="menu-content">
+                    <li><a href="{{url('/my-admission-fee')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Admissionfee">Admission fee</span></a></li>
+                    <li><a href="{{ url('/my-store-fees/'.auth()->user()->parent->student_id) }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="StoreFee">Store Fee</span></a></li>
+                    {{--<li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAddmission">Re Addmission</span></a></li>--}}
+                </ul>
+            </li>
+            <li class=" nav-item"><a href="{{url('/view-timetable/')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Timetable</span></a>
             </li>
             <li class=" nav-item"><a href="{{url('/holiday')}}"><i class="fa fa-calendar"></i><span class="menu-title" data-i18n="Schools">Holiday list</span></a>
             </li>

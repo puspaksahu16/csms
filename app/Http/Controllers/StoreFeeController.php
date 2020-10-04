@@ -129,6 +129,7 @@ class StoreFeeController extends Controller
     public function paymentHistory($id)
     {
         $payment = Payment::where('student_id', $id)->where('reason', 'Store_Fee')->get();
+
         return view('admin.store_fee.history', compact('payment'));
     }
     /**

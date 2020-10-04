@@ -108,8 +108,8 @@
                                                                         <div class="form-label-group">
                                                                             <select name="section" class="form-control">
                                                                                 <option>-SELECT Section-</option>
-                                                                                @foreach($sections as $section)
-                                                                                    <option value="{{ $section->name }}">{{ $section->name }}</option>
+                                                                                @foreach($student->classes->section as $section)
+                                                                                    <option value="{{ $section->id }}">{{ $section->section }}</option>
                                                                                 @endforeach
                                                                             </select>
                                                                             <label for="first-name-column">Create Section</label>

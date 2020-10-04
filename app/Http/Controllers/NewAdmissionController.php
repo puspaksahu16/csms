@@ -34,20 +34,17 @@ class NewAdmissionController extends Controller
     {
         if (auth()->user()->role->name == "super_admin")
         {
-//           return $students = Student::with('fee',['school' => function($query){
-//              return $query->with('section')->get();
-//          }])->get();
-//         return $students->school_id;
-//          $sections = Section::where('school_id', $students->school_id)->get();
-//         return $students;
-         $students = Student::with('fee','school')->get();
-          $sections = SetSection::all();
+         $students = Student::with('fee','school')->with(['classes' => function($query){
+             return $query->with('section')->get();
+         }])->get();
 //         return $students;
         }else{
-            $students = Student::where('school_id', auth()->user()->school->id)->get();
-            $sections = SetSection::all();
+            $students = Student::where('school_id', auth()->user()->school->id)->with(['classes' => function($query){
+                return $query->with('section')->get();
+            }])->get();
+//            $sections = SetSection::all();
         }
-       return view('admin.new_admission.index', compact(['students','sections']));
+       return view('admin.new_admission.index', compact(['students']));
     }
 
     public function section_assign(Request $request, $id)
