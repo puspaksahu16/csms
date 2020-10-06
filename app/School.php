@@ -17,4 +17,5 @@ class School extends Model
     {
         return $this->belongsTo(Section::class, 'section_id');
     }
+
 }

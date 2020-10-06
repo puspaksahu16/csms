@@ -15,8 +15,9 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Employee</a>
                                     </li>
-
+                                    <li  class="breadcrumb-item"><a href="{{route('employee.index')}}" class="btn btn-sm btn-primary">Back</a></li>
                                 </ol>
+
                             </div>
                         </div>
                     </div>
@@ -266,11 +267,19 @@
                                                                 </div>
                                                             </div>
                                                     </div>
+
                                                 </div>
                                             </div>
+                                                <div align="right">
+                                                    <a href="{{route('employee.index')}}" class="btn btn-sm btn-primary">Back</a>
+                                                </div>
+
                                         </div>
+
                                     </div>
+
                                 </div>
+
                                 </div>
 
                             </div>

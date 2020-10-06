@@ -55,7 +55,7 @@
                                             <th scope="col">Roll No</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Result</th>
-{{--                                            <th scope="col">Action</th>--}}
+                                            <th scope="col">Action</th>
 {{--                                            <th></th>--}}
                                         </tr>
                                         </thead>
@@ -69,7 +69,7 @@
                                                 <td>{{$results->percentage}}%</td>
 {{--                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-sm btn-primary">Edit</a></td>--}}
 {{--                                                <td><a href="result_delete/{{$results->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
-                                                <td><a href="enroll/{{$results->id}}" class="btn btn-sm btn-primary">Enroll</a></td>
+                                                <td><a href="enroll/{{$results->id}}" class="btn btn-warning">Enroll</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -223,8 +223,12 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('holiday','HolidayController');
-    Route::resource('chat','ChatController');
 
+
+
+    Route::resource('chat','ChatController');
+    Route::get('/get_parents/{id}', 'ChatController@getParent');
+    Route::post('/send_mail','ChatController@store');
 
 
     Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
