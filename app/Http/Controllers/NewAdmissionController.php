@@ -133,6 +133,7 @@ class NewAdmissionController extends Controller
             'id_proof_no' => 'required',
             'caste' => 'required',
             'class_id' => 'required',
+            'tc' => 'required',
 
             'mother_first_name' => 'required',
             'mother_last_name' => 'required',
@@ -153,6 +154,7 @@ class NewAdmissionController extends Controller
             'father_occupation' => 'required',
             'father_qualification' => 'required',
             'father_salary' => 'required',
+
         ]);
 
         $address = [];
