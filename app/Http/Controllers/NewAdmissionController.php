@@ -155,8 +155,6 @@ class NewAdmissionController extends Controller
             'father_qualification' => 'required',
             'father_salary' => 'required',
 
-            'address' => 'required',
-            'city' => 'required',
         ]);
 
         $address = [];

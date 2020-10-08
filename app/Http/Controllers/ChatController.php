@@ -70,22 +70,28 @@ class ChatController extends Controller
     public function store(Request $request)
     {
         if (auth()->user()->role->name == "super_admin"){
+            $parents = $request->parent_id;
+            foreach ($parents as $parent){
+                $chat = new Chat();
+                $chat->message = $request->message;
+                $chat->school_id = $request->school_id;
+                $chat->parent_id = $parent;
+                $chat->sender_type = 'admin';
+                $chat->save();
+            }
 
-            $chat = new Chat();
-            $chat->message = $request->message;
-            $chat->school_id = $request->school_id;
-            $chat->parent_id = $request->parent_id;
-            $chat->sender_type = 'admin';
-            $chat->save();
         }
 
         if (auth()->user()->role->name == "admin"){
+            $parents = $request->parent_id;
+            foreach ($parents as $parent){
             $chat = new Chat();
             $chat->message = $request->message;
             $chat->school_id = auth()->user()->school->id;
-            $chat->parent_id = $request->parent_id;
+            $chat->parent_id = $parent;
             $chat->sender_type = 'admin';
             $chat->save();
+            }
         }
         if (auth()->user()->role->name == "parent"){
             $parents = StudentParent::with('students')->where('student_id',auth()->user()->parent->id)->get();

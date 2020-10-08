@@ -20,6 +20,9 @@ class LibraryController extends Controller
             $libraries = Library::all();
             $schools = School::all();
         }
+        if (auth()->user()->role->name == "admin") {
+            $libraries = Library::all();
+        }
         return view('admin.library.index', compact(['libraries','schools']));
     }
 

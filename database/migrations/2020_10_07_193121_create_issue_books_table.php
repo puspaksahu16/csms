@@ -20,6 +20,8 @@ class CreateIssueBooksTable extends Migration
             $table->integer('book_id');
             $table->date('issue_date');
             $table->date('return_date');
+            $table->string('fine')->nullable();
+            $table->integer('status')->default('0');
             $table->timestamps();
         });
     }

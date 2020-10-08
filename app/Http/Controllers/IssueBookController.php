@@ -21,12 +21,20 @@ class IssueBookController extends Controller
             $issue_books = IssueBook::where('status',0)->get();
             $schools = School::all();
         }
-        return view('admin.issue_book.index', compact(['issue_books','schools']));
+        if (auth()->user()->role->name == "admin") {
+            $issue_books = IssueBook::where('status',0)->get();
+            $students = Student::where('school_id', auth()->user()->school->id)->get();
+            $books = Library::where('school_id', auth()->user()->school->id)->get();
+        }
+        return view('admin.issue_book.index', compact(['issue_books','schools','students','books']));
     }
 
     public function return()
     {
         if (auth()->user()->role->name == "super_admin") {
+            $issue_books = IssueBook::where('status',1)->get();
+        }
+        if (auth()->user()->role->name == "admin") {
             $issue_books = IssueBook::where('status',1)->get();
         }
         return view('admin.return_book.index', compact(['issue_books']));

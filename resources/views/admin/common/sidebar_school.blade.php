@@ -82,7 +82,14 @@
             </li>
             <li class=" nav-item"><a href="{{url('/holiday')}}"><i class="fa fa-calendar"></i><span class="menu-title" data-i18n="Schools">Holiday list</span></a>
             </li>
-            <li class=" nav-item"><a href="{{url('/chat')}}"><i class="fa fa-mail-forward"></i><span class="menu-title" data-i18n="Schools">Mail Box</span></a>
+            <li class=" nav-item"><a href="{{url('/chat')}}"><i class="fa fa-envelope-open"></i><span class="menu-title" data-i18n="Schools">Mail Box</span></a>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="fa fa-book"></i><span class="menu-title" data-i18n="PreAdmission">Library</span></a>
+                <ul class="menu-content">
+                    <li><a href="{{url('/library')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Libraryphp ">Register</span></a></li>
+                    <li><a href="{{url('/issue_book')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Register">Issue Book</span></a></li>
+                    <li><a href="{{url('/return_book')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Result">Return Book</span></a></li>
+                </ul>
             </li>
         </ul>
     </div>

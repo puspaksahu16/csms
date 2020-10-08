@@ -97,7 +97,7 @@
                                                         <br/>
                                                             @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin")
                                                                 <label>Select Parents</label>
-                                                        <select class="select2-size-sm form-control" id="parent"  multiple="multiple" name="parent_id">
+                                                        <select class="select2-size-sm form-control" id="parent"  multiple="multiple" name="parent_id[]">
                                                             @foreach($parents as $parent)
                                                                 <option value="{{ $parent->id }}">{{ $parent->students->first_name." ".$parent->students->last_name }}  ({{ $parent->mother_email }})</option>
                                                             @endforeach

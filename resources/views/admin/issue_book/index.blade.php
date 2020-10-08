@@ -1,4 +1,7 @@
 @extends('admin.layouts.master')
+@push('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin_assets/vendors/css/forms/select/select2.min.css') }}">
+@endpush
 @section('content')
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -23,7 +26,6 @@
                     <div class="row match-height">
 
                         <div class="col-12">
-                            @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title">Issue Book</h4>
@@ -33,8 +35,6 @@
                                             <form class="form" action="{{route('issue_book.store')}}" method="POST">
                                                 @csrf
                                                 <div class="form-body">
-
-
 
                                                     @if(auth()->user()->role->name == "super_admin")
                                                         <div class="row">
@@ -54,16 +54,17 @@
 
                                                             <div class="col-4">
                                                                 <div class="form-label-group">
-                                                                    <select name="student_id" id="student" class="form-control">
+                                                                    <label for="first-name-column">Student</label>
+                                                                    <select class="select2-size-sm form-control" id="student"  name="student_id">
                                                                         <option>-SELECT Student-</option>
                                                                     </select>
-                                                                    <label for="first-name-column">Student</label>
+
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-4">
                                                                 <div class="form-label-group">
-                                                                    <select name="book_id" id="book" class="form-control">
+                                                                    <select  class="select2-size-sm form-control" name="book_id" id="book" class="form-control">
                                                                         <option>-SELECT Book-</option>
                                                                     </select>
                                                                     <label for="first-name-column">Book</label>
@@ -91,6 +92,53 @@
                                                             </div>
                                                         </div>
 
+                                                        @elseif(auth()->user()->role->name == "admin")
+                                                        <div class="row">
+                                                        <div class="col-4">
+                                                            <div class="form-label-group">
+                                                                <label for="first-name-column">Student</label>
+                                                                <select class="select2-size-sm form-control" id="student"  name="student_id">
+                                                                    <option>-SELECT Student-</option>
+                                                                    @foreach($students as $student)
+                                                                        <option value="{{$student->id}}">{{ $student->first_name." ".$student->last_name." ".$student->student_unique_id }}</option>
+                                                                    @endforeach
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="form-label-group">
+                                                                <select  class="select2-size-sm form-control" name="book_id" id="book" class="form-control">
+                                                                    <option>-SELECT Book-</option>
+                                                                    @foreach($books as $book)
+                                                                        <option value="{{$book->id}}">{{ $book->book_name." ".$book->book_id }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="first-name-column">Book</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="form-label-group">
+                                                                <input type="date" name="issue_date" class="form-control">
+                                                                <label for="first-name-column">Issue Date</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="form-label-group">
+                                                                <input type="date" name="return_date" class="form-control">
+                                                                <label for="first-name-column">Return Date</label>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                <div align="right">
+                                                    <div class="form-label-group">
+                                                        <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
+                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
+                                                    </div>
+                                                </div>
                                                     @endif
 
 
@@ -99,7 +147,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif
                         </div>
 
                     </div>
@@ -191,7 +238,9 @@
     </div>
 @endsection
 @push('scripts')
-
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+    <script src="{{asset('admin_assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{asset('admin_assets/js/scripts/forms/select/form-select2.min.js')}}"></script>
     <script>
         function getStudent() {
             var school_id = $('#school_id').val();
