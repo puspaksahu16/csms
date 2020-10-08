@@ -70,9 +70,14 @@ class IssueBookController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
-        IssueBook::create($data);
+        $books_id = $request->book_id;
+        foreach ($books_id as $book_id){
+            $data = $request->all();
+            $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+            $data['book_id'] = $book_id;
+            IssueBook::create($data);
+        }
+
         return redirect()->route('issue_book.index')->with('success', 'Book issued Successfully');
     }
 

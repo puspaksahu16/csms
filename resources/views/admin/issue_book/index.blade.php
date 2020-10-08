@@ -64,7 +64,7 @@
 
                                                             <div class="col-4">
                                                                 <div class="form-label-group">
-                                                                    <select  class="select2-size-sm form-control" name="book_id" id="book" class="form-control">
+                                                                    <select  class="select2-size-sm form-control"  name="book_id[]" multiple="multiple" id="book" class="form-control">
                                                                         <option>-SELECT Book-</option>
                                                                     </select>
                                                                     <label for="first-name-column">Book</label>
@@ -109,7 +109,7 @@
 
                                                         <div class="col-4">
                                                             <div class="form-label-group">
-                                                                <select  class="select2-size-sm form-control" name="book_id" id="book" class="form-control">
+                                                                <select  class="select2-size-sm form-control" name="book_id[]" multiple="multiple" id="book" class="form-control">
                                                                     <option>-SELECT Book-</option>
                                                                     @foreach($books as $book)
                                                                         <option value="{{$book->id}}">{{ $book->book_name." ".$book->book_id }}</option>
