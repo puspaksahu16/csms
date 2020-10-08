@@ -58,8 +58,23 @@ class NewAdmissionController extends Controller
 
     public function parentsIndex()
     {
-        $parents = StudentParent::all()->where('user_id',!null);
+        if (auth()->user()->role->name == "super_admin")
+        {
+            $parents = StudentParent::all()->where('user_id','!==',null);
+
+        }else{
+             $students = Student::with('parent')->where('school_id',auth()->user()->school->id)->get();
+            $parents = [];
+             foreach ($students as $key => $st){
+                 array_push($parents,$st->parent);
+             }
+
+//            return $parents = StudentParent::with(['students' => function($query){
+//                return $query->with('school')->get();
+//            }])->get();
+        }
         return view('admin.parents.index', compact(['parents']));
+
     }
 
     public function laraNewAdmission()

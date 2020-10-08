@@ -99,7 +99,8 @@
 
                                                     <div class="col-12 pt-2">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
-                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                        <a href="{{route('pre_exam.index')}}" class="btn btn-outline-success mr-1 mb-1">Back</a>
+{{--                                                        <button class="btn btn-outline-success mr-1 mb-1">Back</button>--}}
                                                     </div>
                                                 </div>
                                             </div>

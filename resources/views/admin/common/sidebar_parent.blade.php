@@ -24,6 +24,10 @@
             </li>
             <li class=" nav-item"><a href="{{url('/view-timetable/')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Timetable</span></a>
             </li>
+            <li class=" nav-item"><a href="{{url('/holiday')}}"><i class="fa fa-calendar"></i><span class="menu-title" data-i18n="Schools">Holiday list</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{url('/chat')}}"><i class="fa fa-mail-forward"></i><span class="menu-title" data-i18n="Schools">Mail Box</span></a>
+            </li>
             {{--<li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Pre Admission</span></a>--}}
                 {{--<ul class="menu-content">--}}
                     {{--<li><a href="{{url('/pre_exam')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreExam">Pre Exam</span></a></li>--}}

@@ -272,7 +272,8 @@
 
                                                         <div class="col-12">
                                                             <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
-                                                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
+                                                            <a href="{{route('pre_admission.index')}}" class="btn btn-outline-success mr-1 mb-1">Back</a>
+{{--                                                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>--}}
                                                         </div>
 
                                                     </div>

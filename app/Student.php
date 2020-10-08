@@ -25,6 +25,13 @@ class Student extends Model
         return $this->belongsTo(School::class, 'school_id');
     }
 
+
+    public function parent()
+    {
+        return $this->hasOne(StudentParent::class, 'student_id');
+    }
+
+
     public static function laratablesCustomAction($student)
     {
         return view('admin.new_admission.action', compact('student'))->render();

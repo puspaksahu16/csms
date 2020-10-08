@@ -21,6 +21,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/vendors/css/extensions/tether-theme-arrows.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/vendors/css/extensions/tether.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/vendors/css/extensions/shepherd-theme-default.css')}}">
+
+    {{--<link rel="stylesheet" type="text/css" href="{{asset('admin_assets/vendors/css/forms/select/select2.min.css')}}">--}}
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -39,9 +41,14 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/css/plugins/tour/tour.min.css')}}">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    {{--<script src="{{asset('admin_assets/js/scripts/forms/select/form-select2.min.js')}}"></script>--}}
+    {{--<script src="{{asset('admin_assets/vendors/js/forms/select/select2.full.min.js')}}"></script>--}}
+
+
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     {{--<link rel="stylesheet" href="sweetalert2/dist/sweetalert2.css">--}}
     <script src="{{ asset('js/app.js') }}" defer></script>
+
 <style>
     .stepwizard-step p {
         margin-top: 10px;
@@ -186,6 +193,7 @@
 <script src="{{asset('admin_assets/js/scripts/datatables/datatable.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/extensions/jquery.steps.min.js')}}"></script>
 <script src="{{asset('admin_assets/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
+
 <script>
     $(document).ready(function () {
 

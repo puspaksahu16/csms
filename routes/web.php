@@ -220,6 +220,19 @@ Route::middleware('auth')->group(function () {
     Route::post('/get_classes','TimetableController@getClass');
     Route::post('/get_section','TimetableController@getSection');
 
+
+
+    Route::resource('holiday','HolidayController');
+
+
+
+    Route::resource('chat','ChatController');
+    Route::post('/replay/{parent_id}/{school_id}/','ChatController@replay');
+    Route::get('/get_parents/{id}', 'ChatController@getParent');
+    Route::get('/chat/{parent_id}/{school_id}', 'ChatController@show');
+    Route::post('/send_mail','ChatController@store');
+
+
     Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
     Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 

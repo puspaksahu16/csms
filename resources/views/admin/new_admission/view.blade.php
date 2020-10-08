@@ -55,7 +55,21 @@
                                                         </td>
 
                                                 </tr>
+
                                             </table>
+                                        </div>
+
+                                        <div  class="col-12 col-sm-5 col-md-5 col-lg-3">
+                                            <table>
+                                            <tr>
+                                                <td><a href="{{route('new_admission.edit', $students->id)}}" class="btn btn-sm btn-warning">Edit</a></td>
+                                            </tr>
+
+                                                <tr>
+                                                    <td><a href="{{route('new_admission.index')}}" class="btn btn-sm btn-primary">Back</a></td>
+                                                </tr>
+                                            </table>
+
                                         </div>
                                         <div class="col-12 col-md-12 col-lg-5">
                                             <table class="ml-0 ml-sm-0 ml-lg-0">
