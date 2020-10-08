@@ -1,4 +1,7 @@
 @extends('admin.layouts.master')
+@push('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin_assets/vendors/css/forms/select/select2.min.css') }}">
+@endpush
 @section('content')
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -33,24 +36,17 @@
                                             <form class="form" action="{{route('chat.store')}}" method="POST">
                                                 @csrf
                                                 <div class="form-body">
-
-                                                        <div class="row">
-
-                                                            <div class="col-6">
-                                                                <div class="form-label-group">
-                                                                    <textarea  name="message" class="form-control"></textarea>
-                                                                    <label for="first-name-column">Message</label>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="col-6">
-                                                                <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
-{{--                                                                <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>--}}
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="form-label-group">
+                                                                <textarea  name="message" class="form-control"></textarea>
+                                                                <label for="first-name-column">Message</label>
                                                             </div>
                                                         </div>
-
-
+                                                        <div class="col-6">
+                                                            <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -58,7 +54,6 @@
                                 </div>
                             @endif
                         </div>
-
                     </div>
                 </section>
                 <!-- // Basic Floating Label Form section end -->
@@ -101,27 +96,21 @@
                                                         @endif
                                                         <br/>
                                                             @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin")
-                                                        <select class="form-control" id="parent" name="parent_id">
-                                                            <option value="">-Select Parent-</option>
+                                                                <label>Select Parents</label>
+                                                        <select class="select2-size-sm form-control" id="parent"  multiple="multiple" name="parent_id">
                                                             @foreach($parents as $parent)
-                                                                <option value="{{ $parent->id }}">{{ $parent->mother_email }}</option>
+                                                                <option value="{{ $parent->id }}">{{ $parent->students->first_name." ".$parent->students->last_name }}  ({{ $parent->mother_email }})</option>
                                                             @endforeach
                                                         </select>
                                                             @endif
+
+
                                                         <br/>
                                                             <textarea  name="message" class="form-control" placeholder="Message"></textarea>
-
-
-
                                                     </div>
-                                                    <button class="btn btn-success btn-sm pull-right" type="submit">Submit</button>
+                                                    <button class="btn btn-primary btn-sm pull-right" type="submit">Submit</button>
                                                 </form>
                                             </div>
-
-                                            <!-- Modal footer -->
-                                            {{--                                                                <div class="modal-footer">--}}
-                                            {{--                                                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>--}}
-                                            {{--                                                                </div>--}}
 
                                         </div>
                                     </div>
@@ -131,7 +120,7 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0  zero-configuration">
+                                    <table class="table table-striped ">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -145,30 +134,24 @@
                                             <th scope="col">Message</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Action</th>
-                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($chats as $key => $chat)
 
                                             <tr>
-                                                <th scope="row">{{$key+1}}</th>
+                                                <td scope="row">{{$key+1}}</td>
                                                 @if(auth()->user()->role->name == "super_admin")
-                                                <th>{{$chat->school->full_name}}</th>
+                                                    <td>{{$chat->school->full_name}}</td>
                                                 @endif
                                                 @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin")
-{{--                                                <th></th>--}}
-                                                <th>{{$chat->parent->mother_email}}</th>
-                                                @endif
-                                                <th>{{$chat->message}}</th>
-                                                <th>{{$chat->created_at}}</th>
-                                                @if(auth()->user()->role->name == "parent")
-                                                <td><a href="" class="btn btn-sm btn-primary">Edit</a></td>
-                                                    @elseif(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin")
-                                                    <td><a href="" class="btn btn-sm btn-success">view</a></td>
-                                                    <td><a href="" class="btn btn-sm btn-info">Reply</a></td>
-                                                    @endif
 
+                                                    <td>{{$chat->parent->mother_email}}</td>
+                                                @endif
+                                                <td>{{$chat->message}}</td>
+                                                <td>{{$chat->created_at}}</td>
+
+                                                <td><a href="{{ url('chat/'.$chat->parent_id.'/'.$chat->school_id.'/') }}" class="btn btn-sm btn-success">view</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -184,6 +167,9 @@
     </div>
 @endsection
 @push('scripts')
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+    <script src="{{asset('admin_assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{asset('admin_assets/js/scripts/forms/select/form-select2.min.js')}}"></script>
 
 <script>
     function getParent() {

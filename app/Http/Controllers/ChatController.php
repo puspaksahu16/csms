@@ -47,7 +47,7 @@ class ChatController extends Controller
         foreach ($students as $key => $st){
             array_push($parents,$st->parent);
         }
-        return $parents;
+//        return $parents;
         return response($parents);
     }
 
@@ -75,6 +75,7 @@ class ChatController extends Controller
             $chat->message = $request->message;
             $chat->school_id = $request->school_id;
             $chat->parent_id = $request->parent_id;
+            $chat->sender_type = 'admin';
             $chat->save();
         }
 
@@ -83,6 +84,7 @@ class ChatController extends Controller
             $chat->message = $request->message;
             $chat->school_id = auth()->user()->school->id;
             $chat->parent_id = $request->parent_id;
+            $chat->sender_type = 'admin';
             $chat->save();
         }
         if (auth()->user()->role->name == "parent"){
@@ -95,6 +97,7 @@ class ChatController extends Controller
             $chat = new Chat();
             $chat->message = $request->message;
             $chat->school_id = $school;
+            $chat->sender_type = 'parent';
             $chat->parent_id = auth()->user()->parent->id;
             $chat->save();
         }
@@ -108,9 +111,22 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($parent_id, $school_id)
     {
-        return view('admin.chat.view');
+        $chats = Chat::where('parent_id', $parent_id)->where('school_id', $school_id)->get();
+        return view('admin.chat.view', compact(['chats', 'parent_id', 'school_id']));
+    }
+
+    public function replay(Request $request, $parent_id, $school_id)
+    {
+        $chat = new Chat();
+        $chat->message = $request->message;
+        $chat->school_id = $school_id;
+        $chat->parent_id = $parent_id;
+        $chat->sender_type = auth()->user()->role->name;
+        $chat->save();
+
+        return redirect()->back()->with('success', 'Message Send Successfully');
     }
 
     /**

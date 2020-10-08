@@ -234,7 +234,9 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('chat','ChatController');
+    Route::post('/replay/{parent_id}/{school_id}/','ChatController@replay');
     Route::get('/get_parents/{id}', 'ChatController@getParent');
+    Route::get('/chat/{parent_id}/{school_id}', 'ChatController@show');
     Route::post('/send_mail','ChatController@store');
 
 
