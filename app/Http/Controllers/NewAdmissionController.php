@@ -125,7 +125,6 @@ class NewAdmissionController extends Controller
             'photo' => 'required',
             'family_photo' => 'required',
             'school_id' => 'required',
-            'ref_no' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'dob' => 'required',

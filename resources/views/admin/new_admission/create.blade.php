@@ -114,7 +114,7 @@
                                                                                     <option>-SELECT School-</option>
 
                                                                                     @foreach($schools as $school)
-                                                                                        <option {{ ( old('school_id') == $school->id ? "selected" : '') }} {{ !empty($details->school_id) ? ($details->school_id == $school->id ? "selected" : '') : ''}} value="{{ $school->id }}{{ old('school_id') }}">{{ $school->full_name }}</option>
+                                                                                        <option {{ !empty($details->school_id) ? ($details->school_id == $school->id ? "selected" : '') : ''}} value="{{ $school->id }}{{ old('school_id') }}">{{ $school->full_name }}</option>
                                                                                     @endforeach
 
                                                                                 </select>
