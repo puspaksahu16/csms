@@ -225,6 +225,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('holiday','HolidayController');
 
 
+    Route::resource('library','LibraryController');
+    Route::resource('issue_book','IssueBookController');
+    Route::get('/get_students/{id}', 'IssueBookController@getStudent');
+    Route::get('/get_books/{id}', 'IssueBookController@getBooks');
+    Route::post('/return_book/{id}','IssueBookController@returnBook');
+    Route::get('return_book', 'IssueBookController@return');
+
 
     Route::resource('chat','ChatController');
     Route::get('/get_parents/{id}', 'ChatController@getParent');

@@ -133,7 +133,6 @@
                                                                                 <div class="form-label-group">
                                                                                     <input value="{{ !empty($details->ref_no) ? $details->ref_no : ''}}{{ old('ref_no') }}" type="text" class="form-control" placeholder="Reference No" name="ref_no">
                                                                                     <label for="ref-no-column">Reference No</label>
-                                                                                    <span style="color: red">{{ $errors->first('ref_no') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                         @endif
@@ -194,11 +193,12 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <select class="form-control" onchange="yesnoCheck(this);">
+                                                                                <select class="form-control" name="tc" onchange="yesnoCheck(this);">
                                                                                     <option value="">- select tc-</option>
                                                                                     <option value="yes">Yes</option>
                                                                                     <option value="no">No</option>
                                                                                 </select>
+                                                                                <span style="color: red">{{ $errors->first('tc') }}</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12" id="ifYes"  style="display: none;">
@@ -213,7 +213,7 @@
                                                                                 <select class="form-control" id="class" name="class_id">
                                                                                     @if(!empty($details->class_id))
                                                                                         @foreach($classes as $class)
-                                                                                            <option  {{ (old('class_id') == $class->id  ? "checked" : '') }}  {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}  {{ old('class_id') }}">{{ $class->create_class }}</option>
+                                                                                            <option  {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}  {{ old('class_id') }}">{{ $class->create_class }}</option>
                                                                                         @endforeach
                                                                                     @endif
                                                                                 </select>
@@ -446,12 +446,14 @@
                                                                                 <div class="form-label-group">
                                                                                     <textarea name="addresses[resident][address]" class="form-control">{{old('addresses[resident][address]')}}</textarea>
                                                                                     <label for="first-name-column">Resident Address</label>
+                                                                                    <span style="color: red">{{ $errors->first('address') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
                                                                                     <input value="{{old('addresses[resident][city]')}}" type="text"  class="form-control" placeholder="City" name="addresses[resident][city]">
                                                                                     <label for="Post">City</label>
+                                                                                    <span style="color: red">{{ $errors->first('city') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">

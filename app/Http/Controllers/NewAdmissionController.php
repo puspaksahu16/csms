@@ -125,7 +125,6 @@ class NewAdmissionController extends Controller
             'photo' => 'required',
             'family_photo' => 'required',
             'school_id' => 'required',
-            'ref_no' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'dob' => 'required',
@@ -134,6 +133,7 @@ class NewAdmissionController extends Controller
             'id_proof_no' => 'required',
             'caste' => 'required',
             'class_id' => 'required',
+            'tc' => 'required',
 
             'mother_first_name' => 'required',
             'mother_last_name' => 'required',
@@ -154,6 +154,9 @@ class NewAdmissionController extends Controller
             'father_occupation' => 'required',
             'father_qualification' => 'required',
             'father_salary' => 'required',
+
+            'address' => 'required',
+            'city' => 'required',
         ]);
 
         $address = [];
