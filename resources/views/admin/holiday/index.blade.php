@@ -33,58 +33,48 @@
                                         <form class="form" action="{{route('holiday.store')}}" method="POST">
                                             @csrf
                                             <div class="form-body">
-
-
-
-                                                            @if(auth()->user()->role->name == "super_admin")
+                                                @if(auth()->user()->role->name == "super_admin")
                                                     <div class="row">
-                                                                <div class="col-md-3 col-12">
-                                                                    <div class="form-label-group">
-                                                                        <select  name="school_id" class="form-control">
-                                                                            <option>-SELECT School-</option>
+                                                        <div class="col-md-3 col-12">
+                                                            <div class="form-label-group">
+                                                                <select  name="school_id" class="form-control">
+                                                                    <option>-SELECT School-</option>
 
-                                                                            @foreach($schools as $school)
-                                                                                <option value="{{ $school->id }}">{{ $school->full_name }}</option>
-                                                                            @endforeach
+                                                                    @foreach($schools as $school)
+                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                    @endforeach
 
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
+                                                                </select>
+                                                            </div>
+                                                        </div>
 
+                                                        <div class="col-3">
+                                                            <div class="form-label-group">
+                                                                <input type="text" name="holiday_name" class="form-control">
+                                                                <label for="first-name-column">Name of Holiday</label>
+                                                            </div>
+                                                        </div>
 
-                                                                <div class="col-3">
-                                                                    <div class="form-label-group">
-                                                                        <input type="text" name="holiday_name" class="form-control">
-                                                                        <label for="first-name-column">Name of Holiday</label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-3">
-                                                                     <div class="form-label-group">
-                                                                         <select type="text" class="form-control"  name="holiday_day">
-                                                                             <option value="">-Select Day-</option>
-                                                                             <option value="Monday">Monday</option>
-                                                                             <option value="Tuesday">Tuesday</option>
-                                                                             <option value="Wednesday">Wednesday</option>
-                                                                             <option value="Thursday">Thursday</option>
-                                                                             <option value="Friday">Friday</option>
-                                                                             <option value="Saturday">Saturday</option>
-                                                                         </select>
-                                                                         <label for="first-name-column">Day</label>
-                                                                    </div>
-                                                                </div>
+                                                        <div class="col-3">
+                                                             <div class="form-label-group">
+                                                                <input type="date" name="from_date" class="form-control">
+                                                                <label for="first-name-column">from Date</label>
+                                                            </div>
+                                                        </div>
 
-                                                                 <div class="col-3">
-                                                                     <div class="form-label-group">
-                                                                        <input type="date" name="holiday_date" class="form-control">
-                                                                        <label for="first-name-column">Date</label>
-                                                                    </div>
-                                                                </div>
+                                                        <div class="col-3">
+                                                            <div class="form-label-group">
+                                                                <input type="date" name="to_date" class="form-control">
+                                                                <label for="first-name-column">To Date</label>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                     <div align="right">
                                                         <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                                     </div>
-                                                        @elseif(auth()->user()->role->name == "admin")
+                                                @elseif(auth()->user()->role->name == "admin")
                                                     <div class="row">
                                                             <div class="col-4">
                                                                 <div class="form-label-group">
@@ -92,33 +82,26 @@
                                                                     <label for="first-name-column">Name of Holiday</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-4">
-                                                                <div class="form-label-group">
-                                                                    <select type="text" class="form-control"  name="holiday_day">
-                                                                        <option value="">-Select Day-</option>
-                                                                        <option value="Monday">Monday</option>
-                                                                        <option value="Tuesday">Tuesday</option>
-                                                                        <option value="Wednesday">Wednesday</option>
-                                                                        <option value="Thursday">Thursday</option>
-                                                                        <option value="Friday">Friday</option>
-                                                                        <option value="Saturday">Saturday</option>
-                                                                    </select>
-                                                                    <label for="first-name-column">Day</label>
-                                                                </div>
-                                                            </div>
 
-                                                            <div class="col-4">
-                                                                <div class="form-label-group">
-                                                                    <input type="date" name="holiday_date" class="form-control">
-                                                                    <label for="first-name-column">Date</label>
-                                                                </div>
+                                                        <div class="col-3">
+                                                            <div class="form-label-group">
+                                                                <input type="date" name="from_date" class="form-control">
+                                                                <label for="first-name-column">from Date</label>
                                                             </div>
+                                                        </div>
+
+                                                        <div class="col-3">
+                                                            <div class="form-label-group">
+                                                                <input type="date" name="to_date" class="form-control">
+                                                                <label for="first-name-column">To Date</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div align="right">
                                                         <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                                     </div>
-                                                    @endif
+                                                @endif
 
 
                                             </div>
@@ -155,8 +138,8 @@
                                                 <th scope="col">School</th>
                                             @endif
                                             <th scope="col">Holiday Name</th>
-                                            <th scope="col">Holiday Date</th>
-                                            <th scope="col">Holiday Day</th>
+                                            <th scope="col">From Date</th>
+                                            <th scope="col">To Date</th>
                                             @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin")
                                             <th scope="col">Action</th>
                                             @endif
@@ -170,8 +153,8 @@
                                                     <th>{{$holiday->school->full_name}}</th>
                                                 @endif
                                                 <th>{{$holiday->holiday_name}}</th>
-                                                <th>{{$holiday->holiday_date}}</th>
-                                                <th>{{$holiday->holiday_day}}</th>
+                                                <th>{{\Carbon\Carbon::parse($holiday->from_date)->format('d-M-Y')}}</th>
+                                                <th>{{\Carbon\Carbon::parse($holiday->to_date)->format('d-M-Y')}}</th>
                                                 @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin")
                                                 <td><a href="" class="btn btn-sm btn-primary">Edit</a></td>
                                                 @endif

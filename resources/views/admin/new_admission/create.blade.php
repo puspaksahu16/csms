@@ -77,6 +77,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        @if (session()->has('errors'))
+                                                            {{--{{ session()->get('errors') }}--}}
+                                                            <span style="color: red">Please check! All mandatory fields need to fill up correctly.</span>
+                                                        @endif
                                                         <form class="form" method="POST" action="{{route('new_admission.store')}}" enctype="multipart/form-data">
                                                             @csrf
 
@@ -93,7 +97,7 @@
                                                                                 <img id="p1" height="150px" width="130px"  />
                                                                             </div>
                                                                             <br/>
-                                                                            Student photo :<input type="file" name='photo' id="photo" onchange="pic(this);"/>
+                                                                            Student photo <span style="color: red">*</span>:<input type="file" name='photo' id="photo" onchange="pic(this);"/>
                                                                             <p><br/><span style="color: red">{{ $errors->first('photo') }}</span></p>
 
                                                                         </div>
@@ -102,7 +106,7 @@
                                                                                 <img id="p2" height="150px" width="130px"  />
                                                                             </div>
                                                                             <br/>
-                                                                            Family photo :<input type="file" name='family_photo'  id="family_photo" onchange="pic2(this);"/>
+                                                                            Family photo <span style="color: red">*</span>:<input type="file" name='family_photo'  id="family_photo" onchange="pic2(this);"/>
                                                                             <p><br/> <span style="color: red">{{ $errors->first('family_photo') }}</span></p>
 
                                                                         </div>
@@ -110,29 +114,29 @@
                                                                     <div class="row">
                                                                         @if(auth()->user()->role->name == "super_admin")
                                                                             <div class="col-md-6 col-12">
+                                                                                School<span style="color: red">*</span>:
                                                                                 <select onchange="getClass()" id="school_id" name="school_id" class="form-control">
                                                                                     <option>-SELECT School-</option>
 
                                                                                     @foreach($schools as $school)
-                                                                                        <option {{ !empty($details->school_id) ? ($details->school_id == $school->id ? "selected" : '') : ''}} value="{{ $school->id }}{{ old('school_id') }}">{{ $school->full_name }}</option>
+                                                                                        <option {{ !empty($details->school_id) ? ($details->school_id == $school->id ? "selected" : '') : ''}} value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                                     @endforeach
 
                                                                                 </select>
-                                                                                <label for="first-name-column"></label>
                                                                                 <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Reference No:
                                                                                     <input value="{{ !empty($details->ref_no) ? $details->ref_no : ''}}{{ old('ref_no') }}"  type="text" class="form-control" placeholder="Reference No" name="ref_no">
-                                                                                    <label for="ref-no-column">Reference No</label>
                                                                                     <span style="color: red">{{ $errors->first('ref_no') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             @else
                                                                             <div class="col-md-12 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Reference No:
                                                                                     <input value="{{ !empty($details->ref_no) ? $details->ref_no : ''}}{{ old('ref_no') }}" type="text" class="form-control" placeholder="Reference No" name="ref_no">
-                                                                                    <label for="ref-no-column">Reference No</label>
                                                                                 </div>
                                                                             </div>
                                                                         @endif
@@ -141,8 +145,8 @@
 
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                First Name<span style="color: red">*</span>:
                                                                                 <input value="{{ !empty($details->first_name) ? $details->first_name : ''}}{{ old('first_name') }}" type="text" class="form-control" placeholder="First Name" name="first_name">
-                                                                                <label for="first-name-column">First Name</label>
 
                                                                                 <span style="color: red">{{ $errors->first('first_name') }}</span>
 
@@ -150,94 +154,103 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                Last Name<span style="color: red">*</span>:
                                                                                 <input value="{{ !empty($details->last_name) ? $details->last_name : ''}}{{ old('last_name') }}" type="text" class="form-control" placeholder="Last Name" name="last_name">
-                                                                                <label for="last-name-column">Last Name</label>
                                                                                 <span style="color: red">{{ $errors->first('last_name') }}</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                DOB<span style="color: red">*</span>:
                                                                                 <input value="{{ !empty($details->dob) ? $details->dob : ''}}{{ old('dob') }}" type="date"  class="form-control" name="dob">
-                                                                                <label for="DOB">DOB</label>
+
                                                                                 <span style="color: red">{{ $errors->first('dob') }}</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                Gender<span style="color: red">*</span>:
                                                                                 <select name="gender_id" class="form-control">
                                                                                     <option  value="">-Select Gender-</option>
                                                                                     <option {{ (old('gender_id') == 1 ? "selected" : '') }} {{ !empty($details->gender_id) ? ($details->gender_id == 1 ? "selected" : '') : ''}} value="1">MALE</option>
                                                                                     <option {{ (old('gender_id') == 2 ? "selected" : '') }} {{ !empty($details->gender_id) ? ($details->gender_id == 2 ? "selected" : '') : ''}} value="2">FEMALE</option>
                                                                                 </select>
-                                                                                <label for="country-floating">Gender</label>
                                                                                 <span style="color: red">{{ $errors->first('gender_id') }}</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                Id Proof:
                                                                                 <select name="id_proof" class="form-control">
                                                                                     <option value="">-choose id proof-</option>
                                                                                     @foreach($id_proof as $id_proofs)
                                                                                         <option {{ (old('id_proof') == $id_proofs->id ? "selected" : '') }} {{ !empty($details->id_proof) ? ($details->id_proof == $id_proofs->id ? "selected" : '') : ''}} value="{{ $id_proofs->id }} {{ old('id_proof') }}">{{ $id_proofs->id_proof }}</option>
                                                                                     @endforeach
                                                                                 </select>
-                                                                                <span style="color: red">{{ $errors->first('id_proof') }}</span>
+                                                                                {{--<span style="color: red">{{ $errors->first('id_proof') }}</span>--}}
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                Id Proof Number:
                                                                                 <input value="{{ old('id_proof_no') }}" type="text" class="form-control" placeholder="Id Proof Number" name="id_proof_no">
-                                                                                <label for="last-name-column">Id Proof Number</label>
-                                                                                <span style="color: red">{{ $errors->first('id_proof_no') }}</span>
+
+                                                                                {{--<span style="color: red">{{ $errors->first('id_proof_no') }}</span>--}}
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                TC<span style="color: red">*</span>:
                                                                                 <select class="form-control" name="tc" onchange="yesnoCheck(this);">
                                                                                     <option value="">- select tc-</option>
-                                                                                    <option value="yes">Yes</option>
-                                                                                    <option value="no">No</option>
+                                                                                    <option {{ (old('id_proof') == "yes" ? "selected" : '') }} value="{{ empty(old('id_proof')) ? 'yes' :  old('id_proof')}}">Yes</option>
+                                                                                    <option {{ (old('id_proof') == "no" ? "selected" : '') }} value="{{ empty(old('id_proof')) ? 'no' :  old('id_proof')}}">No</option>
                                                                                 </select>
+
                                                                                 <span style="color: red">{{ $errors->first('tc') }}</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6 col-12" id="ifYes"  style="display: none;">
-                                                                            <div class="form-label-group">
-                                                                                <input  type="text" id="id-number-column" value="{{ old('tc_no') }}" class="form-control" placeholder="Tc Number" name="tc_no">
-                                                                                <label for="last-name-column">Tc Number</label>
                                                                             </div>
                                                                         </div>
                                                                             @if(auth()->user()->role->name == "super_admin")
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                Class <span style="color: red">*</span>
                                                                                 <select class="form-control" id="class" name="class_id">
                                                                                     @if(!empty($details->class_id))
                                                                                         @foreach($classes as $class)
-                                                                                            <option  {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}  {{ old('class_id') }}">{{ $class->create_class }}</option>
+                                                                                            <option  {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}">{{ $class->create_class }}</option>
                                                                                         @endforeach
                                                                                     @endif
                                                                                 </select>
-                                                                                <label for="last-name-column">Class</label>
+
+                                                                                <span style="color: #fff;font-size: 10px">Tips: Please slect school to choose class</span>
                                                                                 <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                                             </div>
                                                                         </div>
                                                                             @else
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
+                                                                                        Class <span style="color: red">*</span>
                                                                                         <select  class="form-control" id="class" name="class_id">
                                                                                             <option value="">-Select class-</option>
                                                                                             @foreach($classes as $class)
                                                                                                 <option {{ (old('class_id') == $class->id  ? "selected" : '') }} {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}  {{ old('class_id') }}">{{ $class->create_class }}</option>
                                                                                             @endforeach
                                                                                         </select>
-                                                                                        <label for="last-name-column">Class</label>
                                                                                         <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 @endif
+                                                                            <div class="col-md-6 col-12" id="ifYes"  style="display: none;">
+                                                                                <div class="form-label-group">
+                                                                                    TC No<span style="color: red">*</span>:
+                                                                                    <input  type="text" id="id-number-column" value="{{ old('tc_no') }}" class="form-control" placeholder="Tc Number" name="tc_no">
+                                                                                    <label for="last-name-column">Tc Number</label>
+                                                                                </div>
+                                                                            </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                Caste<span style="color: red">*</span>:
                                                                                 <tr>
                                                                                     <br/>
                                                                                     <td><input {{ (old('caste') == 4  ? "checked" : '') }} {{ !empty($details->class_id) ? ($details->caste == 4 ? "checked" : '') : '' }} type="radio" name="caste" value="4">ST</td>
@@ -245,7 +258,6 @@
                                                                                     <td><input {{ (old('caste') == 2  ? "checked" : '') }} {{ !empty($details->class_id) ? ($details->caste == 2 ? "checked" : '') : ''}} type="radio" name="caste" value="2">OBC</td>
                                                                                     <td><input {{ (old('caste') == 1  ? "checked" : '') }} {{ !empty($details->class_id) ? ($details->caste == 1 ? "checked" : '') : ''}} type="radio" name="caste" value="1">GEN</td>
                                                                                 </tr>
-                                                                                <label for="email-id-column">Caste</label>
                                                                                 <span style="color: red">{{ $errors->first('caste') }}</span>
                                                                             </div>
                                                                         </div>
@@ -263,48 +275,54 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    First Name<span style="color: red">*</span>:
                                                                                     <input type="text" value="{{ !empty($parent_details->mother_first_name) ? $parent_details->mother_first_name : '' }}{{ old('mother_first_name') }}"  class="form-control" placeholder="First Name" name="mother_first_name">
-                                                                                    <label for="first-name-column"> First Name</label>
+
                                                                                     <span style="color: red">{{ $errors->first('mother_first_name') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Last Name<span style="color: red">*</span>:
                                                                                     <input value="{{ !empty($parent_details->mother_last_name) ? $parent_details->mother_last_name : '' }}{{ old('mother_last_name') }}" type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="mother_last_name">
-                                                                                    <label for="last-name-column"> Last Name</label>
+
                                                                                     <span style="color: red">{{ $errors->first('mother_last_name') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Mobile Number<span style="color: red">*</span>:
                                                                                     <input value="{{ !empty($parent_details->mother_mobile) ? $parent_details->mother_mobile : '' }}{{ old('mother_mobile') }}" type="text"  class="form-control" placeholder=" Mobile"  name="mother_mobile">
-                                                                                    <label for=" Mobile"> Mobile Number</label>
+
                                                                                     <span style="color: red">{{ $errors->first('mother_mobile') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Mother Email Id<span style="color: red">*</span>:
                                                                                     <input value="{{ !empty($parent_details->mother_email) ? $parent_details->mother_email : '' }}{{ old('mother_email') }}" type="text"  class="form-control" placeholder="Mother Email Id"  name="mother_email">
-                                                                                    <label for="Email Id">Mother Email Id</label>
+
                                                                                     <span style="color: red">{{ $errors->first('mother_email') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Occupation<span style="color: red">*</span>:
                                                                                     <input value="{{ old('mother_occupation') }}" type="text"  class="form-control" placeholder="Mother Occupation"  name="mother_occupation">
-                                                                                    <label for="Occupation"> Occupation</label>
+
                                                                                     <span style="color: red">{{ $errors->first('mother_occupation') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Salary<span style="color: red">*</span>:
                                                                                     <input value="{{ old('mother_salary') }}" type="text"  class="form-control" placeholder="Mother Salary"  name="mother_salary">
-                                                                                    <label for="Income"> Salary</label>
+
                                                                                     <span style="color: red">{{ $errors->first('mother_salary') }}</span>
                                                                                 </div>
                                                                             </div>
@@ -313,10 +331,11 @@
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    id proof<span style="color: red">*</span>:
                                                                                     <select name="mother_id_type" class="form-control">
                                                                                         <option value="">-choose id proof-</option>
                                                                                         @foreach($id_proof as $id_proofs)
-                                                                                            <option {{ (old('id_proof') == $id_proofs->id ? "selected" : '') }} {{ !empty($details->id_proof) ? ($details->id_proof == $id_proofs->id ? "selected" : '') : ''}} value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
+                                                                                            <option {{ (old('mother_id_type') == $id_proofs->id ? "selected" : '') }} {{ !empty($details->id_proof) ? ($details->id_proof == $id_proofs->id ? "selected" : '') : ''}} value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                         @endforeach
                                                                                     </select>
                                                                                     <span style="color: red">{{ $errors->first('mother_id_type') }}</span>
@@ -325,13 +344,15 @@
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    id proof number<span style="color: red">*</span>:
                                                                                     <input type="text" value="{{ old('mother_id_no') }}" class="form-control" placeholder="Id Proof Number" name="mother_id_no">
-                                                                                    <label for="last-name-column">Id Proof Number</label>
+
                                                                                     <span style="color: red">{{ $errors->first('mother_id_no') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Qualification<span style="color: red">*</span>:
                                                                                     <select name="mother_qualification" class="form-control">
                                                                                         <option value="">-choose  Qualification-</option>
                                                                                         @foreach($qualifications as $qualification)
@@ -355,45 +376,51 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    First Name<span style="color: red">*</span>:
                                                                                     <input value="{{ !empty($parent_details->father_first_name) ? $parent_details->father_first_name : '' }}{{ old('father_first_name') }}" type="text" id="first-name-column" class="form-control" placeholder=" First Name" name="father_first_name">
-                                                                                    <label for="first-name-column"> First Name</label>
+
                                                                                     <span style="color: red"> {{ $errors->first('father_first_name') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Last Name<span style="color: red">*</span>:
                                                                                     <input value="{{ !empty($parent_details->father_last_name) ? $parent_details->father_last_name : '' }}{{ old('father_last_name') }}" type="text" id="last-name-column" class="form-control" placeholder=" Last Name" name="father_last_name">
-                                                                                    <label for="last-name-column"> Last Name</label>
+
                                                                                     <span style="color: red">{{ $errors->first('father_last_name') }}</span>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Mobile Number<span style="color: red">*</span>:
                                                                                     <input value="{{ !empty($parent_details->father_mobile) ? $parent_details->father_mobile : '' }}{{ old('father_mobile') }}" type="text"  class="form-control" placeholder=" Mobile"  name="father_mobile">
-                                                                                    <label for=" Mobile"> Mobile Number</label>
+
                                                                                     <span style="color: red">{{ $errors->first('father_mobile') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Email Id<span style="color: red">*</span>:
                                                                                     <input value="{{ !empty($parent_details->father_email) ? $parent_details->father_email : '' }}{{ old('father_email') }}" type="text"  class="form-control" placeholder=" Email Id"  name="father_email">
-                                                                                    <label for="Email Id"> Email Id</label>
+
                                                                                     <span style="color: red">{{ $errors->first('father_email') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Occupation<span style="color: red">*</span>:
                                                                                     <input  type="text" value="{{ old('father_occupation') }}"  class="form-control" placeholder=" Occupation"  name="father_occupation">
-                                                                                    <label for="Occupation"> Occupation</label>
+
                                                                                     <span style="color: red">{{ $errors->first('father_occupation') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Salary<span style="color: red">*</span>:
                                                                                     <input type="text" value="{{ old('father_salary') }}"  class="form-control" placeholder=" Salary"  name="father_salary">
-                                                                                    <label for="Income"> Salary</label>
+
                                                                                     <span style="color: red">{{ $errors->first('father_salary') }}</span>
                                                                                 </div>
                                                                             </div>
@@ -401,6 +428,7 @@
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Id Proof<span style="color: red">*</span>:
                                                                                     <select name="father_id_type" class="form-control">
                                                                                         <option value="">-choose id proof-</option>
                                                                                         @foreach($id_proof as $id_proofs)
@@ -413,13 +441,15 @@
 
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Id Proof Number<span style="color: red">*</span>:
                                                                                     <input type="text" value="{{ old('father_id_no') }}" class="form-control" placeholder="Id Proof Number" name="father_id_no">
-                                                                                    <label for="last-name-column">Id Proof Number</label>
+
                                                                                     <span style="color: red"> {{ $errors->first('father_id_no') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
+                                                                                    Qualification<span style="color: red">*</span>:
                                                                                     <select name="father_qualification" class="form-control">
                                                                                         <option value="">-choose  Qualification-</option>
                                                                                         @foreach($qualifications as $qualification)

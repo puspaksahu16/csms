@@ -128,9 +128,7 @@ class TimetableController extends Controller
               ->where('period_id',$request->period_id)
               ->first();
 
-        $emp = TimeTable::
-
-            where('day',$request->day)
+        $emp = TimeTable::where('day',$request->day)
             ->where('period_id',$request->period_id)
             ->where('employee_id',$request->employee_id)
             ->first();

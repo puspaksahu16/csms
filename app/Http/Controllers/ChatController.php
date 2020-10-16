@@ -20,8 +20,18 @@ class ChatController extends Controller
         if (auth()->user()->role->name == "super_admin"){
             $schools = School::all();
             $parents = StudentParent::all();
-            $chats = Chat::all();
+            $gchats = Chat::get()->groupBy('parent_id');
+
+            $chats = [];
+
+            foreach ($gchats as $gcs){
+                foreach ($gcs as $gc){
+                    $gc;
+                }
+                array_push($chats, $gc);
+            }
         }
+
         if (auth()->user()->role->name == "admin"){
             $students = Student::with('parent:student_id,mother_email,id')->where('school_id', auth()->user()->school->id)->get();
             $parents = [];
@@ -29,12 +39,21 @@ class ChatController extends Controller
                 array_push($parents,$st->parent);
             }
 
-            $chats = Chat::where('school_id', auth()->user()->school->id)->get();
+            $gchats = Chat::where('school_id', auth()->user()->school->id)->get()->groupBy('parent_id');
+
+            $chats = [];
+
+            foreach ($gchats as $gcs){
+                foreach ($gcs as $gc){
+                    $gc;
+                }
+                array_push($chats, $gc);
+            }
         }
 
-        if (auth()->user()->role->name == "parent"){
-            $chats = Chat::where('parent_id', auth()->user()->parent->id)->get();
-        }
+//        if (auth()->user()->role->name == "parent"){
+//            $chats = Chat::where('parent_id', auth()->user()->parent->id)->orderBy('created_at','DESC')->get();
+//        }
 
         return view('admin.chat.index', compact(['chats','schools','parents']));
     }

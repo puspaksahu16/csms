@@ -26,7 +26,7 @@
             </li>
             <li class=" nav-item"><a href="{{url('/holiday')}}"><i class="fa fa-calendar"></i><span class="menu-title" data-i18n="Schools">Holiday list</span></a>
             </li>
-            <li class=" nav-item"><a href="{{url('/chat')}}"><i class="fa fa-mail-forward"></i><span class="menu-title" data-i18n="Schools">Mail Box</span></a>
+            <li class=" nav-item"><a href="{{url('/chat/'.auth()->user()->parent->id).'/'.auth()->user()->parent->students->school_id}}"><i class="fa fa-mail-forward"></i><span class="menu-title" data-i18n="Schools">Mail Box</span></a>
             </li>
             {{--<li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Pre Admission</span></a>--}}
                 {{--<ul class="menu-content">--}}

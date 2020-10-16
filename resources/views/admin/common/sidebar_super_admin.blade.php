@@ -30,7 +30,7 @@
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Admission">Admission</span></a>
                 <ul class="menu-content">
                     <li><a href="{{url('/new_admission')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="NewAdmission">New Admission</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAdmission">Re Admission</span></a></li>
+                    {{--<li><a href="#"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="ReAdmission">Re Admission</span></a></li>--}}
                 </ul>
             </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Account">Accounts</span></a>
