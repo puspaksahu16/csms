@@ -99,7 +99,7 @@ class StoreFeeController extends Controller
         }else{
             return back()->with('error', 'Please Select some item');
         }
-        
+
     }
 
     public function pay($id)
@@ -115,6 +115,7 @@ class StoreFeeController extends Controller
         $data = $request->all();
         $data['reason'] = 'Store_Fee';
         $data['student_id'] = $sf->student_id;
+        $data['product_id'] = $sf->id;
 
         if ($request->amount == $sf['store_fee'])
         {

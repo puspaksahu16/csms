@@ -56,7 +56,7 @@ class IssueBookController extends Controller
 
     public function getBooks($id)
     {
-        $books = Library::where('school_id', $id)->where('s', $id)->get();
+        $books = Library::where('school_id', $id)->get();
         return response($books);
     }
 

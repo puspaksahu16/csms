@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Payment;
+use App\Product;
+use App\StoreFee;
 use App\StudentParent;
 use Illuminate\Http\Request;
 
@@ -24,7 +27,32 @@ class PaymentController extends Controller
 
          $payment = Payment::where('id', $id)->first();
 
-        return view('admin.payments.receive', compact(['payment']));
+          $products = StoreFee::where('id',$payment->product_id)->get('product');
+          $books = StoreFee::where('id',$payment->product_id)->get('book');
+
+
+
+          foreach ($products as $pr){
+             $item =  $pr->product;
+          }
+
+        foreach ($books as $book){
+            $book_id =  $book->book;
+        }
+
+         $json_toArray = json_decode($item,true);
+         $array_ids = array_column($json_toArray, 'id');
+
+         $result = Product::whereIn('id', $array_ids)->get('name');
+
+          $result_toArray = json_decode($result,true);
+         $array_name = array_column($result_toArray, 'name');
+
+
+         $items = $array_name;
+
+
+        return view('admin.payments.receive', compact(['payment','items']));
     }
     /**
      * Show the form for creating a new resource.
