@@ -13,7 +13,13 @@
             </li>
             <li class=" nav-item"><a href="{{url('/dashboard')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
             </li>
-            {{--<li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Pre Admission</span></a>--}}
+            <li class=" nav-item"><a href="{{url('/edit-my-profile/'.auth()->user()->employee->id)}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Edit Profile</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{url('/view-timetable')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Timetable</span></a>
+            </li>
+            <li class=" nav-item"><a href="{{url('/attendance')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Attendance</span></a>
+            </li>
+            {{--<li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Edit Profile</span></a>--}}
             {{--<ul class="menu-content">--}}
             {{--<li><a href="{{url('/pre_exam')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreExam">Pre Exam</span></a></li>--}}
             {{--<li><a href="{{url('/pre_admissions')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Register">Register</span></a></li>--}}

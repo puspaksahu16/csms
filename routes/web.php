@@ -176,6 +176,13 @@ Route::middleware('auth')->group(function () {
 
     ///////
 
+    //Teacher ///////////
+    Route::get('/edit-my-profile/{id}','EmployeeController@edit');
+    Route::get('/create-attendance/{id}','AttendanceController@create');
+
+
+
+    ///////////
 
     Route::get('/edit_profile/{id}','NewAdmissionController@edit_profile');
     Route::patch('/parents_update/{id}','NewAdmissionController@parentUpdate');

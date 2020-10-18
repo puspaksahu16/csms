@@ -200,6 +200,16 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
+                                                                                <select name="role_id" class="form-control">
+                                                                                    <option value="">-choose Role-</option>
+                                                                                    @foreach($employee_roles as $employee_role)
+                                                                                        <option value="{{ $employee_role->role_id }}">{{ $employee_role->role_name }}</option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-12">
+                                                                            <div class="form-label-group">
                                                                                 <tr>
                                                                                     <br/>
                                                                                     <td><input type="radio" name="caste" value="4">ST</td>

@@ -37,6 +37,10 @@ class TimetableController extends Controller
         if (auth()->user()->role->name == "parent"){
             $student = Student::find(auth()->user()->parent->student_id);
             $timetables = TimeTable::where('school_id', $student->school_id)->where('class_id', $student->class_id)->where('section_id', $student->section)->get();
+        }elseif (auth()->user()->role->name == "teacher"){
+            $employee = Employee::find(auth()->user()->employee->id);
+            $timetables = TimeTable::where('school_id', $employee->school_id)->get();
+//            return $timetables;
         }
 
         return view('admin.timetable.timetable',compact(['timetables']));
