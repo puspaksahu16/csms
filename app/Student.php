@@ -25,6 +25,10 @@ class Student extends Model
         return $this->belongsTo(School::class, 'school_id');
     }
 
+    public function student_section()
+    {
+        return $this->belongsTo(Section::class, 'section');
+    }
 
     public function parent()
     {

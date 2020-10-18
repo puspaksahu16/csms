@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Createclass;
 use App\Employee;
+use App\EmployeeRole;
 use App\Idproof;
 use App\Qualification;
 use App\School;
@@ -41,7 +42,8 @@ class EmployeeController extends Controller
         $classes = Createclass::all();
         $schools = School::all();
         $qualifications = Qualification::all();
-        return view('admin.employee.create',compact(['id_proof', 'classes','schools','qualifications']));
+        $employee_roles = EmployeeRole::all();
+        return view('admin.employee.create',compact(['id_proof', 'classes','schools','qualifications', 'employee_roles']));
     }
 
     /**
@@ -89,13 +91,14 @@ class EmployeeController extends Controller
             $user = new User();
             $user->name = $request->first_name . " " . $request->last_name;
             $user->email = $request->email;
-            $user->role_id = 5;
-            $user->password = Hash::make($employee);
+            $user->role_id = $request->role_id;
+            $user->password = Hash::make($employee_id);
             $user->save();
             if (!empty($user->id)) {
                 $employees = New Employee();
                 $employees->first_name = $request->first_name;
                 $employees->last_name = $request->last_name;
+                $employees->user_id = $user->id;
                 $employees->dob = $request->dob;
                 $employees->mobile = $request->mobile;
                 $employees->email = $request->email;
