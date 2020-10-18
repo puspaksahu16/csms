@@ -52,12 +52,11 @@ class ResultController extends Controller
     public function enroll($id)
     {
         $id_proof = Idproof::all();
-
         $schools = School::all();
         $qualifications = Qualification::all();
-        $details = PreAdmission::find($id);
+         $details = PreAdmission::find($id);
         if (auth()->user()->role->name == "super_admin") {
-            $classes = Createclass::where('school_id', $details->school_id)->get();
+           $classes = Createclass::where('school_id', $details->school_id)->get();
         }else{
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }

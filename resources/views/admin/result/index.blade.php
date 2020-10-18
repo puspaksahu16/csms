@@ -47,7 +47,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
-                                    <table class="table mb-0 zero-configuration" id="">
+                                    <table class="table zero-configuration table-striped" id="">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>

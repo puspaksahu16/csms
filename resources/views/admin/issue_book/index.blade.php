@@ -20,6 +20,7 @@
                     @endif
                 </div>
             @endif
+                @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
                 <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">
@@ -129,7 +130,7 @@
                                                         <div class="col-4">
                                                             <div class="form-label-group">
                                                                 <input type="date" name="return_date" class="form-control">
-                                                                <label for="first-name-column">Return Date</label>
+                                                                <label for="first-name-column">Returnable  Date</label>
                                                             </div>
                                                         </div>
                                                         </div>
@@ -155,7 +156,7 @@
 
 
             </div>
-
+                @endif
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
 
                 <div class="row" id="table-striped">
@@ -174,11 +175,16 @@
                                             @if(auth()->user()->role->name == "super_admin")
                                                 <th scope="col">School</th>
                                             @endif
+                                            @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                             <th scope="col">Student Name</th>
+                                            @endif
+                                            <th scope="col">Book Name</th>
                                             <th scope="col">Book Id</th>
                                             <th scope="col">Issue Date</th>
-                                            <th scope="col">Return Date</th>
+                                            <th scope="col">Returnable  Date</th>
+                                            @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                             <th scope="col">Action</th>
+                                                @endif
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -188,11 +194,16 @@
                                                 @if(auth()->user()->role->name == "super_admin")
                                                     <th>{{$issue_book->school->full_name}}</th>
                                                 @endif
+                                                @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                                 <th>{{$issue_book->student->first_name ." ".$issue_book->student->last_name}}</th>
+                                                @endif
                                                 <th>{{$issue_book->book->book_name}}</th>
-                                                <th>{{$issue_book->issue_date}}</th>
-                                                <th>{{$issue_book->return_date}}</th>
+                                                <th>{{$issue_book->book->book_id}}</th>
+                                                <th>{{date('d-m-Y',strtotime($issue_book->issue_date))}}</th>
+                                                <th>{{date('d-m-Y',strtotime($issue_book->return_date))}}</th>
+                                                @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                                 <th><a href="#" data-toggle="modal" data-target="#myModal{{$issue_book->id}}" class="btn btn-sm btn-primary">Return</a></th>
+                                                @endif
                                                 <div class="modal" id="myModal{{$issue_book->id}}">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">

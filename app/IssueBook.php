@@ -15,6 +15,10 @@ class IssueBook extends Model
     {
         return $this->belongsTo(Student::class,'student_id');
     }
+    public function parent()
+    {
+        return $this->belongsTo(StudentParent::class);
+    }
     public function book()
     {
         return $this->belongsTo(Library::class,'book_id');

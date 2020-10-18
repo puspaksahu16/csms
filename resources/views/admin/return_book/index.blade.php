@@ -39,7 +39,7 @@
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Book Id</th>
                                             <th scope="col">Issue Date</th>
-                                            <th scope="col">Return Date</th>
+                                            <th scope="col">Returned Date</th>
                                             <th scope="col">Fine</th>
                                         </tr>
                                         </thead>
@@ -52,8 +52,8 @@
                                                 @endif
                                                 <th>{{$issue_book->student->first_name ." ".$issue_book->student->last_name}}</th>
                                                 <th>{{$issue_book->book->book_name}}</th>
-                                                <th>{{$issue_book->issue_date}}</th>
-                                                <th>{{$issue_book->return_date}}</th>
+                                                <th>{{date('d-m-Y',strtotime($issue_book->issue_date))}}</th>
+                                                <th>{{$issue_book->updated_at->format('d-m-Y')}}</th>
                                                 <th>
                                                     @if($issue_book->fine == '')
                                                         {{'Na'}}

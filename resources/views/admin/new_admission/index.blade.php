@@ -66,6 +66,7 @@
                                             <th scope="col">Reference No</th>
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Class</th>
+                                            <th scope="col">Section</th>
                                             <th scope="col">Admission Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -83,9 +84,17 @@
                                                     @else
                                                     <td>{{$student->ref_no}}</td>
                                                     @endif
-
                                                 <td>{{$student->first_name." ".$student->last_name}}</td>
                                                 <td>{{$student->classes->create_class}}</td>
+                                                <td>
+                                                @if ($student->section == "")
+                                                {{'Not Assign'}}
+                                                @else
+
+                                                 {{$student->section}}
+                                                @endif
+
+                                               </td>
                                                 <td>{{$student->created_at->format('d F Y')}}</td>
                                                 <td>
 {{--                                                    <a href="{{route('new_admission.view', $student->id)}}" class="btn btn-sm btn-primary">View</a>--}}

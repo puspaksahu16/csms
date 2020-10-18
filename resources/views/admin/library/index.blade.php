@@ -71,10 +71,27 @@
                                                                     <label for="first-name-column">Publisher</label>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-3">
+                                                                <div class="form-label-group">
+                                                                    <input type="text" name="edition" class="form-control">
+                                                                    <label for="first-name-column">Edition</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <div class="form-label-group">
+                                                                    <input type="text" name="book_price" class="form-control">
+                                                                    <label for="first-name-column">Price</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3"></div>
+                                                            <div class="col-3">
+
+                                                                <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
+                                                                <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
+                                                            </div>
                                                         </div>
                                                         <div align="right">
-                                                            <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
-                                                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
+
                                                         </div>
                                                     @elseif(auth()->user()->role->name == "admin")
                                                         <div class="row">
@@ -97,11 +114,24 @@
                                                                     <label for="first-name-column">Publisher</label>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-4">
+                                                                <div class="form-label-group">
+                                                                    <input type="text" name="edition" class="form-control">
+                                                                    <label for="first-name-column">Edition</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <div class="form-label-group">
+                                                                    <input type="text" name="book_price" class="form-control">
+                                                                    <label for="first-name-column">Price</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
+                                                                <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
+                                                            </div>
                                                         </div>
-                                                        <div align="right">
-                                                            <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
-                                                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
-                                                        </div>
+
                                                     @endif
 
 
@@ -141,6 +171,8 @@
                                             <th scope="col">Book Id</th>
                                             <th scope="col">Book Name</th>
                                             <th scope="col">Publisher</th>
+                                            <th scope="col">Edition</th>
+                                            <th scope="col">Price</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -153,6 +185,9 @@
                                                 <th>{{$library->book_id}}</th>
                                                 <th>{{$library->book_name}}</th>
                                                 <th>{{$library->publisher}}</th>
+                                                <th>{{$library->edition}}</th>
+                                                <th>{{$library->book_price}}</th>
+
                                             </tr>
                                         @endforeach
                                         </tbody>

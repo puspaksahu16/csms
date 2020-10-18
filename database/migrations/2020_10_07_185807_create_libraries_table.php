@@ -19,6 +19,8 @@ class CreateLibrariesTable extends Migration
             $table->string('book_id');
             $table->string('book_name');
             $table->string('publisher');
+            $table->string('edition');
+            $table->decimal('book_price',9,2);
             $table->timestamps();
         });
     }
