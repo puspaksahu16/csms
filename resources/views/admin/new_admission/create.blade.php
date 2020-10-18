@@ -78,7 +78,6 @@
                                                             </div>
                                                         </div>
                                                         @if (session()->has('errors'))
-                                                            {{--{{ session()->get('errors') }}--}}
                                                             <span style="color: red">Please check! All mandatory fields need to fill up correctly.</span>
                                                         @endif
                                                         <form class="form" method="POST" action="{{route('new_admission.store')}}" enctype="multipart/form-data">
@@ -184,7 +183,7 @@
                                                                                 <select name="id_proof" class="form-control">
                                                                                     <option value="">-choose id proof-</option>
                                                                                     @foreach($id_proof as $id_proofs)
-                                                                                        <option {{ (old('id_proof') == $id_proofs->id ? "selected" : '') }} {{ !empty($details->id_proof) ? ($details->id_proof == $id_proofs->id ? "selected" : '') : ''}} value="{{ $id_proofs->id }} {{ old('id_proof') }}">{{ $id_proofs->id_proof }}</option>
+                                                                                        <option @if (old('id_proof') == $id_proofs->id) selected="selected" @endif {{ !empty($details->id_proof) ? ($details->id_proof == $id_proofs->id ? "selected" : '') : ''}} value="{{ $id_proofs->id }}">{{ $id_proofs->id_proof }}</option>
                                                                                     @endforeach
                                                                                 </select>
                                                                                 {{--<span style="color: red">{{ $errors->first('id_proof') }}</span>--}}
@@ -233,7 +232,7 @@
                                                                                         <select  class="form-control" id="class" name="class_id">
                                                                                             <option value="">-Select class-</option>
                                                                                             @foreach($classes as $class)
-                                                                                                <option {{ (old('class_id') == $class->id  ? "selected" : '') }} {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}  {{ old('class_id') }}">{{ $class->create_class }}</option>
+                                                                                                <option {{ (old('class_id') == $class->id  ? "selected" : '') }} {{ !empty($details->class_id) ? ($details->class_id == $class->id ? 'selected' : "") : ''}} value="{{ $class->id }}">{{ $class->create_class }}</option>
                                                                                             @endforeach
                                                                                         </select>
                                                                                         <span style="color: red">{{ $errors->first('class_id') }}</span>

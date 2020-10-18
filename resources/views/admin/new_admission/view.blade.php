@@ -6,7 +6,12 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             <div class="content-header row">
+                <div  class="col-md-11" align="right">
+                    <a href="{{route('new_admission.edit', $students->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{route('new_admission.index')}}" class="btn btn-sm btn-primary">Back</a>
+                </div>
             </div>
+            <br/>
             <div class="content-body"><!-- page users view start -->
                 <section class="page-users-view">
                     <div class="row">
@@ -22,7 +27,7 @@
                                             <img src="{{asset('images/student_photo/'.$students->photo)}}"
                                                  class="users-avatar-shadow w-50 rounded mb-2 pr-2 ml-1" alt="Student">
                                         </div>
-                                        <div class="col-12 col-sm-9 col-md-6 col-lg-5">
+                                        <div class="col-12 col-sm-9 col-md-5 col-lg-4">
                                             <table>
                                                 <tr>
                                                     <td class="font-weight-bold">Student ID</td>
@@ -55,24 +60,6 @@
                                                         </td>
 
                                                 </tr>
-
-                                            </table>
-                                        </div>
-
-                                        <div  class="col-12 col-sm-5 col-md-5 col-lg-3">
-                                            <table>
-                                            <tr>
-                                                <td><a href="{{route('new_admission.edit', $students->id)}}" class="btn btn-sm btn-warning">Edit</a></td>
-                                            </tr>
-
-                                                <tr>
-                                                    <td><a href="{{route('new_admission.index')}}" class="btn btn-sm btn-primary">Back</a></td>
-                                                </tr>
-                                            </table>
-
-                                        </div>
-                                        <div class="col-12 col-md-12 col-lg-5">
-                                            <table class="ml-0 ml-sm-0 ml-lg-0">
                                                 <tr>
                                                     <td class="font-weight-bold">Id proof</td>
                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $students->idproof->id_proof }}</td>
@@ -90,13 +77,13 @@
                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;
                                                         @if($students->caste  == 1)
                                                             GEN
-                                                            @elseif($students->caste  == 2)
-                                                        OBC
+                                                        @elseif($students->caste  == 2)
+                                                            OBC
                                                         @elseif($students->caste  == 3)
                                                             SC
                                                         @else
                                                             ST
-                                                            @endif
+                                                        @endif
                                                     </td>
                                                 </tr>
 

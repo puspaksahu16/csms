@@ -28,6 +28,9 @@
             </li>
             <li class=" nav-item"><a href="{{url('/chat/'.auth()->user()->parent->id).'/'.auth()->user()->parent->students->school_id}}"><i class="fa fa-mail-forward"></i><span class="menu-title" data-i18n="Schools">Mail Box</span></a>
             </li>
+            <li class=" nav-item"><a href="{{url('/issue_book')}}"><i class="fa fa-book"></i><span class="menu-title" data-i18n="Library">Library</span></a>
+            </li>
+
             {{--<li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Pre Admission</span></a>--}}
                 {{--<ul class="menu-content">--}}
                     {{--<li><a href="{{url('/pre_exam')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="PreExam">Pre Exam</span></a></li>--}}

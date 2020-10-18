@@ -146,10 +146,10 @@
                                                 @endif
                                                 @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin")
 
-                                                    <td>{{$chat->parent->mother_email}}</td>
+                                                    <td><a href="{{route('new_admission.view', $chat->parent->student_id)}}">{{$chat->parent->mother_email}}</a></td>
                                                 @endif
                                                 <td>{{$chat->message}}</td>
-                                                <td>{{$chat->created_at}}</td>
+                                                <td>{{$chat->created_at->format('d-m-Y')}}</td>
 
                                                 <td><a href="{{ url('chat/'.$chat->parent_id.'/'.$chat->school_id.'/') }}" class="btn btn-sm btn-success">view</a></td>
                                             </tr>
