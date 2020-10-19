@@ -19,11 +19,11 @@ class IssueBookController extends Controller
     public function index()
     {
         if (auth()->user()->role->name == "super_admin") {
-            $issue_books = IssueBook::where('status',0)->get();
+            $issue_books = IssueBook::all();
             $schools = School::all();
         }
         if (auth()->user()->role->name == "admin") {
-            $issue_books = IssueBook::where('status',0)->get();
+            $issue_books = IssueBook::all();
             $students = Student::where('school_id', auth()->user()->school->id)->get();
             $books = Library::where('school_id', auth()->user()->school->id)->get();
         }
@@ -56,7 +56,7 @@ class IssueBookController extends Controller
 
     public function getBooks($id)
     {
-        $books = Library::where('school_id', $id)->where('s', $id)->get();
+        $books = Library::where('school_id', $id)->where('status', 1)->get();
         return response($books);
     }
 
@@ -80,6 +80,10 @@ class IssueBookController extends Controller
     {
         $books_id = $request->book_id;
         foreach ($books_id as $book_id){
+             $book = Library::find($book_id);
+            $book->status = 0;
+            $book->update();
+
             $data = $request->all();
             $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
             $data['book_id'] = $book_id;
@@ -122,6 +126,10 @@ class IssueBookController extends Controller
     public function returnBook(Request $request, $id)
     {
         $issue = IssueBook::find($id);
+        $book = Library::find($issue->book_id);
+        $book->status = 1;
+        $book->update();
+
         $issue->fine = $request->fine;
         $issue->status = 1;
         $issue->update();

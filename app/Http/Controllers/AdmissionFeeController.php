@@ -110,6 +110,8 @@ class AdmissionFeeController extends Controller
     public function InstallmentFee($id)
     {
         $installments = Installment::where('student_id', $id)->get();
+
+
         return view('admin.admission_fee.installment', compact(['installments', 'id']));
     }
 
@@ -316,6 +318,7 @@ class AdmissionFeeController extends Controller
             $payment = Payment::create($data);
             $installment->status = "Paid";
             $installment->paid = $request->amount;
+            $installment->payment_id = $payment->id;
             $installment->update();
             $due = $installment->installment_fee - $request->amount;
             $installment_due = Installment::where('student_id', $student_id)->where('installment_no', $installment->installment_no + 1)->first();

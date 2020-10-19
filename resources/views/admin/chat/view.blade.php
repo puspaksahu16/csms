@@ -43,8 +43,9 @@
                                                                         {{$chat->message}}
                                                                     </span>
                                                                     <br/>
+                                                                    <br/>
                                                                     <p align="right" style="color: white">
-                                                                        {{$chat->created_at->format('d-m-Y')}}
+                                                                        {{$chat->created_at->format('D-M, h:i')}}
                                                                     </p>
 
                                                                 </div>
@@ -57,8 +58,9 @@
                                                                         {{$chat->message}}
                                                                     </span>
                                                                     <br/>
+                                                                    <br/>
                                                                     <p align="right" style="color: white">
-                                                                        {{$chat->created_at->format('d-m-Y')}}
+                                                                        {{$chat->created_at->format('D-M, h:i')}}
                                                                     </p>
                                                                 </div>
                                                                 <br>
@@ -70,23 +72,24 @@
                                                                         @if($chat->school->logo == '')
                                                                             <img class="round" src="{{asset('admin_assets/images/default.png')}}" alt="avatar" height="40" width="40" title="{{$chat->school->full_name}}">
                                                                             <span  class="" style=" color: #fff ; padding-top: 15px">&nbsp;
-                                                                        {{$chat->created_at->format('d-m-Y')}}
+                                                                        {{$chat->created_at->format('D-M, h:i')}}
                                                                     </span>
                                                                             @else
                                                                         <img class="round" src="{{asset('images/school_photo/'.$chat->school->logo)}}" alt="avatar" height="40" width="40" title="{{$chat->school->full_name}}">
+                                                                            <br>
+                                                                            <br>
                                                                             <span  class="" style=" color: #fff ; padding-top: 15px">&nbsp;
-                                                                        {{$chat->created_at->format('d-m-Y')}}
-                                                                    </span>
+                                                                                {{$chat->created_at->format('D-M, h:i')}}
+                                                                            </span>
 
                                                                             @endif
                                                                     </div>
                                                                 @else
                                                                     <div class="avatar user-profile-toggle m-0 m-0 mr-1">
                                                                         <img class="round" src="{{asset('admin_assets/images/portrait/small/avatar-s-1.jpg')}}" alt="avatar" height="40" width="40" title="{{$chat->parent->mother_email}}">
-
                                                                         <span  class="" style=" color: #fff ; padding-top: 15px">&nbsp;
-                                                                        {{$chat->created_at->format('d-m-Y')}}
-                                                                    </span>
+                                                                            {{$chat->created_at->format('D-M, h:i')}}
+                                                                        </span>
                                                                     </div>
 
                                                                 @endif

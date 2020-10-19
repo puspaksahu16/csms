@@ -24,7 +24,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Employee</a>
+                                    <li class="breadcrumb-item"><a href="#">Edit Employee</a>
                                     </li>
 
                                 </ol>

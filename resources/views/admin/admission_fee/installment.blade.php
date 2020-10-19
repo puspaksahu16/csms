@@ -61,6 +61,7 @@
                                             <th scope="col">Pre Due</th>
                                             <th scope="col">Payable Amount</th>
                                             <th scope="col">Paid</th>
+                                            <th scope="col">Paid Date</th>
                                             <th scope="col">Due Date</th>
                                             <th scope="col">Status</th>
                                             @if(auth()->user()->role->name !== "parent")
@@ -79,10 +80,17 @@
                                                 <td>{{$i->installment_fee}}</td>
                                                 <td>{{$i->paid}}</td>
                                                 <td>
+                                                    @if($i->payment == null)
+                                                        --
+                                                    @else
+                                                        {{date('j M, Y' , strtotime($i->payment->created_at))}}
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     @if($i->due_date == null)
                                                         --
                                                     @else
-                                                        {{date('j F, Y' , strtotime($i->due_date))}}
+                                                        {{date('j M, Y' , strtotime($i->due_date))}}
                                                     @endif
 
                                                 </td>
@@ -122,7 +130,10 @@
 
                                                             {{--Trigger the modal with a button--}}
                                                             @if(!$loop->last)
-                                                                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Next Due date</button>
+                                                                <div class="btn-group">
+                                                                    <button title="Next Due date" type="button" class="btn btn-sm btn-outline-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}"><i class="fa fa-calendar"></i></button>
+                                                                    <a target="_blank" href="{{url('/receive/'.$i->payment_id)}}" title="Receipt" class="btn btn-sm btn-outline-primary"><i class="fa fa-list-ul"></i></a>
+                                                                </div>
                                                             @endif
 
                                                             {{--Modal--}}

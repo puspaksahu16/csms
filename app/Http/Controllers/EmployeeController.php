@@ -209,7 +209,7 @@ class EmployeeController extends Controller
 
         }
        $employee = Employee::find($id);
-       $employee->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id'):auth()->user()->school->id;
+//       $employee->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id') : auth()->user()->school->id;
        $employee->first_name = $request->first_name;
        $employee->last_name = $request->last_name;
         $employee->dob = $request->dob;
@@ -252,7 +252,12 @@ class EmployeeController extends Controller
             $adress->update();
         }
 //        return $a;
-        return redirect()->route('employee.index')->with('success', 'Employee Updated Successfully');
+        if (auth()->user()->role->name == 'admin' OR auth()->user()->role->name == 'super_admin'){
+            return redirect()->route('employee.index')->with('success', 'Employee Updated Successfully');
+        }else{
+            return redirect()->back()->with('success', 'Profile Updated Successfully');
+        }
+
     }
 
     /**
