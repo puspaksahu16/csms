@@ -82,7 +82,7 @@
                                                             <div class="col-6">
                                                                 <div class="form-label-group">
                                                                     <input type="date" name="return_date" class="form-control">
-                                                                    <label for="first-name-column">Return Date</label>
+                                                                    <label for="first-name-column">Returnable Date</label>
                                                                 </div>
                                                             </div>
                                                         </div>

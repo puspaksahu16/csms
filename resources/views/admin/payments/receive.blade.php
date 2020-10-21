@@ -432,18 +432,26 @@
             <th>Payment Mode</th>
             <th>Transection ID</th>
             <th>Payment Details</th>
+            {{--<th>Product Name</th>--}}
             <th>Amount</th>
         </tr>
         </thead>
         <tbody>
         <tr>
+
             <td>@if($payment->type == 1)Cash
                     @else
                         Online
                     @endif</td>
             <td>{{$payment->transaction_id}}</td>
             <td>{{$payment->reason}}</td>
+            {{--<td>--}}
+            {{--@foreach($items as $item)--}}
+            {{--{{$item.','}}--}}
+            {{--@endforeach--}}
+            {{--</td>--}}
             <td>RS<span>{{$payment->amount}}</span></td>
+
         </tr>
         </tbody>
     </table>

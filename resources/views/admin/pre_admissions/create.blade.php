@@ -244,8 +244,50 @@
                                                         <div class="row">
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <textarea name="address" class="form-control"></textarea>
+                                                                    <textarea id="address" name="address" class="form-control"></textarea>
                                                                     <label for="first-name-column">Residence Address</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input id="city" type="text"  class="form-control" placeholder="City" name="city">
+                                                                    <label for="Post">City</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="District" name="district">
+                                                                    <label for="Dist">District</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="zip">
+                                                                    <label for="Zip Code">Zip Code</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="State" name="state">
+                                                                    <label for="State">State</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="Country" name="country">
+                                                                    <label for="State">Country</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" value="1"><label>Same as Permanent</label>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <textarea id="permanent_address" name="permanent_address" class="form-control"></textarea>
+                                                                    <label for="first-name-column">Permanent Address</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
@@ -304,6 +346,18 @@
         </div>
     </div>
     <script>
+        function permanent() {
+            var a = $('#is_same').is(':checked') ? 1 : 0;
+            if (a === 1)
+            {
+                $('#permanent_address').val($('#address').val());
+            }
+            else if (a === 0)
+            {
+                $('#permanent_address').val(null);
+            }
+            // alert(a);
+        }
         function pic(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

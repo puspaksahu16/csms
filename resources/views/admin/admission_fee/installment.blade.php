@@ -61,6 +61,7 @@
                                             <th scope="col">Pre Due</th>
                                             <th scope="col">Payable Amount</th>
                                             <th scope="col">Paid</th>
+                                            <th scope="col">Payment Type</th>
                                             <th scope="col">Paid Date</th>
                                             <th scope="col">Due Date</th>
                                             <th scope="col">Status</th>
@@ -79,6 +80,7 @@
                                                 <td>{{$i->due}}</td>
                                                 <td>{{$i->installment_fee}}</td>
                                                 <td>{{$i->paid}}</td>
+                                                <td>{{!empty($i->payment) ? ($i->payment->type == 1 ? "Cash" : "Online") : "--"}}</td>
                                                 <td>
                                                     @if($i->payment == null)
                                                         --
