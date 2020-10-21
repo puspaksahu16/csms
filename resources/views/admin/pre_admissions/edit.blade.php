@@ -233,46 +233,130 @@
                                                         <div class="row">
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <textarea name="address" class="form-control">{{$address->address}}</textarea>
+                                                                    <textarea name="address" id="address" class="form-control">{{$address->address}}</textarea>
                                                                     <label for="first-name-column">Residence Address</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="City" name="city" value="{{$address->city}}">
+                                                                    <input type="text"  id="city" class="form-control" placeholder="City" name="city" value="{{$address->city}}">
                                                                     <label for="Post">City</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="District" name="district" value="{{$address->district}}">
+                                                                    <input type="text"  id="district" class="form-control" placeholder="District" name="district" value="{{$address->district}}">
                                                                     <label for="Dist">District</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="zip" value="{{$address->zip}}">
+                                                                    <input type="text"  id="zip" class="form-control" placeholder="Zip Code" name="zip" value="{{$address->zip}}">
                                                                     <label for="Zip Code">Zip Code</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="State" name="state" value="{{$address->state}}">
+                                                                    <input type="text"  id="state" class="form-control" placeholder="State" name="state" value="{{$address->state}}">
                                                                     <label for="State">State</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="Country" name="country" value="{{$address->country}}">
+                                                                    <input type="text"  id="country" class="form-control" placeholder="Country" name="country" value="{{$address->country}}">
                                                                     <label for="State">Country</label>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <input onchange="permanent()" type="checkbox" id="is_same" {{$address->is_same == 1 ? 'checked' : ''}} name="is_same" value="1"><label>Same as Permanent</label>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                        @if($address->is_same == 1 )
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <textarea name="permanent_address" class="form-control">{{$address->permanent_address}}</textarea>
+                                                                    <label for="first-name-column">Permanent Address</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="City" name="permanent_city" value="{{$address->permanent_city}}">
+                                                                    <label for="Post">Permanent City</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="District" name="permanent_district" value="{{$address->permanent_district}}">
+                                                                    <label for="Dist">District</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="permanent_zip" value="{{$address->permanent_zip}}">
+                                                                    <label for="Zip Code">Permanent Zip Code</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="State" name="permanent_state" value="{{$address->permanent_state}}">
+                                                                    <label for="State">Permanent State</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-12">
+                                                                <div class="form-label-group">
+                                                                    <input type="text"  class="form-control" placeholder="Country" name="permanent_country" value="{{$address->permanent_country}}">
+                                                                    <label for="State">Permanent Country</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                            @else
+                                                            <div class="row">
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <textarea id="permanent_address" name="permanent_address" class="form-control"></textarea>
+                                                                        <label for="first-name-column">Permanent Address</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text" id="permanent_city" name="permanent_city" class="form-control" placeholder="City">
+                                                                        <label for="Post">City</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text" id="permanent_district" name="permanent_district" class="form-control" placeholder="District">
+                                                                        <label for="Dist">District</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text" id="permanent_zip" name="permanent_zip" class="form-control" placeholder="Zip Code">
+                                                                        <label for="Zip Code">Zip Code</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text" id="permanent_state" name="permanent_state" class="form-control" placeholder="State">
+                                                                        <label for="State">State</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text" id="permanent_country" name="permanent_country" class="form-control" placeholder="Country">
+                                                                        <label for="State">Country</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
 
 
                                                         <div class="col-12">
                                                             <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
-                                                            <a href="{{route('pre_admission.index')}}" class="btn btn-outline-success mr-1 mb-1">Back</a>
+                                                            <a href="{{url('/pre_admissions')}}" class="btn btn-outline-success mr-1 mb-1">Back</a>
 {{--                                                            <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>--}}
                                                         </div>
 
@@ -293,6 +377,28 @@
         </div>
     </div>
     <script>
+        function permanent() {
+            var a = $('#is_same').is(':checked') ? 1 : 0;
+            if (a === 1)
+            {
+                $('#permanent_address').val($('#address').val());
+                $('#permanent_city').val($('#city').val());
+                $('#permanent_district').val($('#district').val());
+                $('#permanent_country').val($('#country').val());
+                $('#permanent_zip').val($('#zip').val());
+                $('#permanent_state').val($('#state').val());
+            }
+            else if (a === 0)
+            {
+                $('#permanent_address').val(null);
+                $('#permanent_city').val(null);
+                $('#permanent_district').val(null);
+                $('#permanent_country').val(null);
+                $('#permanent_zip').val(null);
+                $('#permanent_state').val(null);
+            }
+            // alert(a);
+        }
         function pic(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

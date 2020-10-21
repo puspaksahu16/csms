@@ -132,16 +132,41 @@ class PreAdmissionController extends Controller
         $parent->parent_type = 'pre';
         $parent->save();
 
-        $adress = new Address();
-        $adress->user_id = $pre_admission->id;
-        $adress->district = $request->district;
-        $adress->address = $request->address;
-        $adress->city = $request->city;
-        $adress->state = $request->state;
-        $adress->country = $request->country;
-        $adress->zip = $request->zip;
-        $adress->register_type = 'pre';
-        $adress->save();
+        if ($request->is_same == 1){
+
+            $adress = new Address();
+            $adress->user_id = $pre_admission->id;
+            $adress->district = $request->district;
+            $adress->address = $request->address;
+            $adress->city = $request->city;
+            $adress->state = $request->state;
+            $adress->country = $request->country;
+            $adress->zip = $request->zip;
+            $adress->is_same = $request->is_same;
+            $adress->register_type = 'pre';
+            $adress->permanent_district = $request->permanent_district;
+            $adress->permanent_address = $request->permanent_address;
+            $adress->permanent_city = $request->permanent_city;
+            $adress->permanent_state = $request->permanent_state;
+            $adress->permanent_country = $request->permanent_country;
+            $adress->permanent_zip = $request->permanent_zip;
+
+            $adress->save();
+
+        }else{
+
+            $adress = new Address();
+            $adress->user_id = $pre_admission->id;
+            $adress->district = $request->district;
+            $adress->address = $request->address;
+            $adress->city = $request->city;
+            $adress->state = $request->state;
+            $adress->country = $request->country;
+            $adress->zip = $request->zip;
+            $adress->register_type = 'pre';
+            $adress->save();
+        }
+
 
         return redirect('/pre_admissions')->with("success", "Pre admission Created successfully!");
     }
@@ -159,7 +184,7 @@ class PreAdmissionController extends Controller
         $pre_exams = PreExam::all();
         $schools = School::all();
         $parents = StudentParent::where('student_id',$id)->where('parent_type', 'pre')->first();
-        $address = Address::where('user_id',$id)->first();
+        $address = Address::where('user_id',$id)->where('register_type', 'pre')->first();
         return view('admin.pre_admissions.show', compact(['pre_admission','schools','classes','pre_exams','parents','address','qualifications']));
     }
 
@@ -176,7 +201,7 @@ class PreAdmissionController extends Controller
         $pre_exams = PreExam::all();
         $schools = School::all();
         $parents = StudentParent::where('student_id',$id)->where('parent_type', 'pre')->first();
-        $address = Address::where('user_id',$id)->first();
+        $address = Address::where('user_id',$id)->where('register_type', 'pre')->first();
         return view('admin.pre_admissions.edit', compact(['pre_admission','schools','classes','pre_exams','parents','address','qualifications']));
     }
 
@@ -230,15 +255,37 @@ class PreAdmissionController extends Controller
         $parents->save();
 
 
-        $address = Address::find($id);
-        $address = Address::where('user_id',$id)->first();
-        $address->address = $request->input('address');
-        $address->city = $request->input('city');
-        $address->district = $request->input('district');
-        $address->state = $request->input('state');
-        $address->country = $request->input('country');
-        $address->zip = $request->input('zip');
-        $address->save();
+            $address = Address::find($id);
+            $address = Address::where('user_id',$id)->where('register_type', 'pre')->first();
+        if ($address->is_same == 1 || $request->is_same == 1){
+            $address->user_id = $pre_admission->id;
+            $address->district = $request->district;
+            $address->address = $request->address;
+            $address->city = $request->city;
+            $address->state = $request->state;
+            $address->country = $request->country;
+            $address->zip = $request->zip;
+            $address->is_same = $request->is_same;
+            $address->register_type = 'pre';
+            $address->permanent_district = $request->permanent_district;
+            $address->permanent_address = $request->permanent_address;
+            $address->permanent_city = $request->permanent_city;
+            $address->permanent_state = $request->permanent_state;
+            $address->permanent_country = $request->permanent_country;
+            $address->permanent_zip = $request->permanent_zip;
+            $address->save();
+        }else{
+            $address->is_same = 0;
+            $address->register_type = 'pre';
+            $address->address = $request->input('address');
+            $address->city = $request->input('city');
+            $address->district = $request->input('district');
+            $address->state = $request->input('state');
+            $address->country = $request->input('country');
+            $address->zip = $request->input('zip');
+            $address->save();
+        }
+
 
 
 
