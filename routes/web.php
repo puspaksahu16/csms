@@ -194,6 +194,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/payment_history/{id}','PaymentController@index');
     Route::get('/receive/{id}','PaymentController@receive');
+    Route::get('/receive_store/{id}','PaymentController@Storereceive');
 
     Route::resource('result','ResultController');
     Route::post('/get_roll','ResultController@getRoll');

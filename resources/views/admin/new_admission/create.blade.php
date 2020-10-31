@@ -247,6 +247,24 @@
                                                                                     <label for="last-name-column">Tc Number</label>
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    Category<span style="color: red">*</span>:
+                                                                                   <select class="form-control" id="category" name="category">
+                                                                                       <option>Select Category</option>
+                                                                                       <option value="General">General</option>
+                                                                                       <option value="Saisha">Saisha</option>
+                                                                                   </select>
+                                                                                    <span style="color: red">{{ $errors->first('category') }}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    Blood Group<span style="color: red">*</span>:
+                                                                                    <input type="text" class="form-control" name="blood_group">
+                                                                                    <span style="color: red">{{ $errors->first('blood_group') }}</span>
+                                                                                </div>
+                                                                            </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 Caste<span style="color: red">*</span>:

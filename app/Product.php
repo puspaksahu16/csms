@@ -24,4 +24,5 @@ class Product extends Model
     {
         return view('admin.products.action', compact('products'))->render();
     }
+
 }

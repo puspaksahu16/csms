@@ -133,6 +133,8 @@ class NewAdmissionController extends Controller
             'caste' => 'required',
             'class_id' => 'required',
             'tc' => 'required',
+            'category' => 'required',
+            'blood_group' => 'required',
 
             'mother_first_name' => 'required',
             'mother_last_name' => 'required',
@@ -193,6 +195,8 @@ class NewAdmissionController extends Controller
         $students->dob = $request->dob;
         $students->gender_id = $request->gender_id;
         $students->id_proof = $request->id_proof;
+        $students->category = $request->category;
+        $students->blood_group = $request->blood_group;
 
         if($file = $request->hasFile('photo')) {
             $file = $request->file('photo');

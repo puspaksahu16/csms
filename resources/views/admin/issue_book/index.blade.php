@@ -178,8 +178,9 @@
                                             @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                             <th scope="col">Student Name</th>
                                             @endif
-                                            <th scope="col">Book Name</th>
                                             <th scope="col">Book Id</th>
+                                            <th scope="col">Book Name</th>
+
                                             <th scope="col">Issue Date</th>
                                             <th scope="col">Returnable  Date</th>
                                             @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
@@ -197,8 +198,9 @@
                                                 @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                                 <th>{{$issue_book->student->first_name ." ".$issue_book->student->last_name}}</th>
                                                 @endif
-                                                <th>{{$issue_book->book->book_name}}</th>
                                                 <th>{{$issue_book->book->book_id}}</th>
+                                                <th>{{$issue_book->book->book_name}}</th>
+
                                                 <th>{{date('d-m-Y',strtotime($issue_book->issue_date))}}</th>
                                                 <th>{{date('d-m-Y',strtotime($issue_book->return_date))}}</th>
                                                 @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
