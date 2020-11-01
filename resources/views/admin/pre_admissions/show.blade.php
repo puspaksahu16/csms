@@ -28,7 +28,7 @@
                 <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">
                     <div class="row match-height">
-                        <form class="form">
+
                             @csrf
                             <div class="col-12">
                                 <div class="card">
@@ -237,9 +237,7 @@
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
-                                                <form class="form">
                                                     <div class="form-body">
-
                                                         <div class="row">
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
@@ -278,6 +276,48 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <br/>
+                                                        @if($address->is_same == 1)
+                                                            <div class="row">
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <textarea name="address" class="form-control" readonly>{{$address->permanent_address}}</textarea>
+                                                                        <label for="first-name-column">Permanent Address</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text"  class="form-control" placeholder="Permanent City" name="city" value="{{$address->permanent_city}}" readonly>
+                                                                        <label for="Post">Permanent City</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text"  class="form-control" placeholder="Permanent District" name="district" value="{{$address->permanent_district}}" readonly>
+                                                                        <label for="Dist">Permanent District</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text"  class="form-control" placeholder="Permanent Zip Code" name="zip" value="{{$address->permanent_zip}}" readonly>
+                                                                        <label for="Zip Code">Permanent Zip Code</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text"  class="form-control" placeholder="Permanent State" name="state" value="{{$address->permanent_state}}" readonly>
+                                                                        <label for="State">Permanent State</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 col-12">
+                                                                    <div class="form-label-group">
+                                                                        <input type="text"  class="form-control" placeholder="Permanent Country" name="country" value="{{$address->permanent_country}}" readonly>
+                                                                        <label for="State">Permanent Country</label>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                                @endif
 
 
                                                         <div class="col-12" align="right">
@@ -287,13 +327,12 @@
 
                                                     </div>
 
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                        </form>
+                            </div>
                     </div>
                 </section>
                 <!-- // Basic Floating Label Form section end -->

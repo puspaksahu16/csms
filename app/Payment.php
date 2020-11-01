@@ -17,4 +17,5 @@ class Payment extends Model
     {
         return $this->belongsTo(Student::class, 'student_id','id');
     }
+
 }

@@ -238,7 +238,6 @@
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
-                                                <form class="form">
                                                     <div class="form-body">
 
                                                         <div class="row">
@@ -256,25 +255,25 @@
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="District" name="district">
+                                                                    <input type="text" id="district"  class="form-control" placeholder="District" name="district">
                                                                     <label for="Dist">District</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="zip">
+                                                                    <input type="text" id="zip" class="form-control" placeholder="Zip Code" name="zip">
                                                                     <label for="Zip Code">Zip Code</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="State" name="state">
+                                                                    <input type="text" id="state"  class="form-control" placeholder="State" name="state">
                                                                     <label for="State">State</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="Country" name="country">
+                                                                    <input type="text" id="country" class="form-control" placeholder="Country" name="country">
                                                                     <label for="State">Country</label>
                                                                 </div>
                                                             </div>
@@ -292,31 +291,31 @@
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="City" name="city">
+                                                                    <input type="text" id="permanent_city" name="permanent_city" class="form-control" placeholder="City">
                                                                     <label for="Post">City</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="District" name="district">
+                                                                    <input type="text" id="permanent_district" name="permanent_district" class="form-control" placeholder="District">
                                                                     <label for="Dist">District</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="Zip Code" name="zip">
+                                                                    <input type="text" id="permanent_zip" name="permanent_zip" class="form-control" placeholder="Zip Code">
                                                                     <label for="Zip Code">Zip Code</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="State" name="state">
+                                                                    <input type="text" id="permanent_state" name="permanent_state" class="form-control" placeholder="State">
                                                                     <label for="State">State</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-label-group">
-                                                                    <input type="text"  class="form-control" placeholder="Country" name="country">
+                                                                    <input type="text" id="permanent_country" name="permanent_country" class="form-control" placeholder="Country">
                                                                     <label for="State">Country</label>
                                                                 </div>
                                                             </div>
@@ -331,12 +330,10 @@
                                                     </div>
 
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </section>
@@ -351,10 +348,20 @@
             if (a === 1)
             {
                 $('#permanent_address').val($('#address').val());
+                $('#permanent_city').val($('#city').val());
+                $('#permanent_district').val($('#district').val());
+                $('#permanent_country').val($('#country').val());
+                $('#permanent_zip').val($('#zip').val());
+                $('#permanent_state').val($('#state').val());
             }
             else if (a === 0)
             {
                 $('#permanent_address').val(null);
+                $('#permanent_city').val(null);
+                $('#permanent_district').val(null);
+                $('#permanent_country').val(null);
+                $('#permanent_zip').val(null);
+                $('#permanent_state').val(null);
             }
             // alert(a);
         }

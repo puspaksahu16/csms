@@ -247,6 +247,24 @@
                                                                                     <label for="last-name-column">Tc Number</label>
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    Category<span style="color: red">*</span>:
+                                                                                   <select class="form-control" id="category" name="category">
+                                                                                       <option>Select Category</option>
+                                                                                       <option value="General">General</option>
+                                                                                       <option value="Saisha">Saisha</option>
+                                                                                   </select>
+                                                                                    <span style="color: red">{{ $errors->first('category') }}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="form-label-group">
+                                                                                    Blood Group<span style="color: red">*</span>:
+                                                                                    <input type="text" class="form-control" name="blood_group">
+                                                                                    <span style="color: red">{{ $errors->first('blood_group') }}</span>
+                                                                                </div>
+                                                                            </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
                                                                                 Caste<span style="color: red">*</span>:
@@ -473,45 +491,52 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <textarea name="addresses[resident][address]" class="form-control">{{old('addresses[resident][address]')}}</textarea>
+{{--                                                                                    <textarea name="addresses[resident][address]" class="form-control">{{old('addresses[resident][address]')}}</textarea>--}}
+                                                                                    <textarea id="address" name="address" class="form-control"></textarea>
                                                                                     <label for="first-name-column">Resident Address</label>
                                                                                     <span style="color: red">{{ $errors->first('address') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{old('addresses[resident][city]')}}" type="text"  class="form-control" placeholder="City" name="addresses[resident][city]">
+{{--                                                                                    <input value="{{old('addresses[resident][city]')}}" type="text"  class="form-control" placeholder="City" name="addresses[resident][city]">--}}
+                                                                                    <input id="city" type="text"  class="form-control" placeholder="City" name="city">
                                                                                     <label for="Post">City</label>
                                                                                     <span style="color: red">{{ $errors->first('city') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{old('addresses[resident][district]')}}" type="text"  class="form-control" placeholder="District" name="addresses[resident][district]">
+{{--                                                                                    <input value="{{old('addresses[resident][district]')}}" type="text"  class="form-control" placeholder="District" name="addresses[resident][district]">--}}
+                                                                                    <input type="text" id="district"  class="form-control" placeholder="District" name="district">
                                                                                     <label for="Dist">District</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{old('addresses[resident][zip]')}}" type="text"  class="form-control" placeholder="Zip Code" name="addresses[resident][zip]">
+{{--                                                                                    <input value="{{old('addresses[resident][zip]')}}" type="text"  class="form-control" placeholder="Zip Code" name="addresses[resident][zip]">--}}
+                                                                                    <input type="text" id="zip" class="form-control" placeholder="Zip Code" name="zip">
                                                                                     <label for="Zip Code">Zip Code</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{old('addresses[resident][state]')}}" type="text"  class="form-control" placeholder="State" name="addresses[resident][state]">
+{{--                                                                                    <input value="{{old('addresses[resident][state]')}}" type="text"  class="form-control" placeholder="State" name="addresses[resident][state]">--}}
+                                                                                    <input type="text" id="state"  class="form-control" placeholder="State" name="state">
                                                                                     <label for="State">State</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
-                                                                                    <input value="{{old('addresses[resident][country]')}}" type="text"  class="form-control" placeholder="Country" name="addresses[resident][country]">
+{{--                                                                                    <input value="{{old('addresses[resident][country]')}}" type="text"  class="form-control" placeholder="Country" name="addresses[resident][country]">--}}
+                                                                                    <input type="text" id="country" class="form-control" placeholder="Country" name="country">
                                                                                     <label for="State">Country</label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" checked value="1"><label>Same as Permanent</label>
-                                                                        <div id="permanent" style="display: none">
+                                                                        <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" value="1"><label>Same as Permanent</label>
+{{--                                                                        <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" checked value="1"><label>Same as Permanent</label>--}}
+                                                                        <div id="permanent" >
                                                                             <div class="card-header">
                                                                                 <h4 class="card-title">Permanent Address</h4>
                                                                             </div>
@@ -519,37 +544,43 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
-                                                                                        <textarea name="addresses[permanent][address]" class="form-control">{{old('addresses[permanent][address]')}}</textarea>
+{{--                                                                                        <textarea name="addresses[permanent][address]" class="form-control">{{old('addresses[permanent][address]')}}</textarea>--}}
+                                                                                        <textarea id="permanent_address" name="permanent_address" class="form-control"></textarea>
                                                                                         <label for="first-name-column">Permanent Address</label>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
-                                                                                        <input value="{{old('addresses[permanent][city]')}}" type="text"  class="form-control" placeholder="City" name="addresses[permanent][city]">
+{{--                                                                                        <input value="{{old('addresses[permanent][city]')}}" type="text"  class="form-control" placeholder="City" name="addresses[permanent][city]">--}}
+                                                                                        <input type="text" id="permanent_city" name="permanent_city" class="form-control" placeholder="City">
                                                                                         <label for="Post">City</label>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
-                                                                                        <input value="{{old('addresses[permanent][district]')}}" type="text"  class="form-control" placeholder="District" name="addresses[permanent][district]">
+{{--                                                                                        <input value="{{old('addresses[permanent][district]')}}" type="text"  class="form-control" placeholder="District" name="addresses[permanent][district]">--}}
+                                                                                        <input type="text" id="permanent_district" name="permanent_district" class="form-control" placeholder="District">
                                                                                         <label for="Dist">District</label>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
-                                                                                        <input value="{{old('addresses[permanent][zip]')}}" type="text"  class="form-control" placeholder="Zip Code" name="addresses[permanent][zip]">
+{{--                                                                                        <input value="{{old('addresses[permanent][zip]')}}" type="text"  class="form-control" placeholder="Zip Code" name="addresses[permanent][zip]">--}}
+                                                                                        <input type="text" id="permanent_zip" name="permanent_zip" class="form-control" placeholder="Zip Code">
                                                                                         <label for="Zip Code">Zip Code</label>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
-                                                                                        <input value="{{old('addresses[permanent][state]')}}" type="text"  class="form-control" placeholder="State" name="addresses[permanent][state]">
+{{--                                                                                        <input value="{{old('addresses[permanent][state]')}}" type="text"  class="form-control" placeholder="State" name="addresses[permanent][state]">--}}
+                                                                                        <input type="text" id="permanent_state" name="permanent_state" class="form-control" placeholder="State">
                                                                                         <label for="State">State</label>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
-                                                                                        <input value="{{old('addresses[permanent][country]')}}" type="text"  class="form-control" placeholder="Country" name="addresses[permanent][country]">
+{{--                                                                                        <input value="{{old('addresses[permanent][country]')}}" type="text"  class="form-control" placeholder="Country" name="addresses[permanent][country]">--}}
+                                                                                        <input type="text" id="permanent_country" name="permanent_country" class="form-control" placeholder="Country">
                                                                                         <label for="State">Country</label>
                                                                                     </div>
                                                                                 </div>
@@ -581,13 +612,23 @@
     <script>
         function permanent() {
             var a = $('#is_same').is(':checked') ? 1 : 0;
-            if (a == 0)
+            if  (a === 1)
             {
-                $('#permanent').css('display', 'block');
+                $('#permanent_address').val($('#address').val());
+                $('#permanent_city').val($('#city').val());
+                $('#permanent_district').val($('#district').val());
+                $('#permanent_country').val($('#country').val());
+                $('#permanent_zip').val($('#zip').val());
+                $('#permanent_state').val($('#state').val());
             }
-            else
+            else if (a == 0)
             {
-                $('#permanent').css('display', 'none');
+                $('#permanent_address').val(null);
+                $('#permanent_city').val(null);
+                $('#permanent_district').val(null);
+                $('#permanent_country').val(null);
+                $('#permanent_zip').val(null);
+                $('#permanent_state').val(null);
             }
             // alert(a);
         }

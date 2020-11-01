@@ -220,95 +220,65 @@
                                             <table>
                                                 <tr>
                                                     <td class="font-weight-bold">Resident</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->address}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->address}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">City</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->city}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->city}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">District</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->district}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->district}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Zip Code</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->zip}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->zip}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">State</td>
                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        {{$r_address->state}}
+                                                        {{$address->state}}
                                                     </td>
 
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Country</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->country}}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->country}}</td>
                                                 </tr>
                                             </table>
                                         </div>
                                         <div class="col-12 col-md-12 col-lg-6">
 
-                                                @if($r_address->is_same == 1)
+                                                @if($address->is_same == 1)
                                                 <table class="ml-0 ml-sm-0 ml-lg-0">
                                                     <tr>
                                                         <td class="font-weight-bold">Permanent</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->address}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->address}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">City</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->city}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->city}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">District</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->district}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->district}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">Zip Code</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->zip}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->zip}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">State</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            {{$r_address->state}}
+                                                            {{$address->state}}
                                                         </td>
 
                                                     </tr>
                                                     <tr>
                                                         <td class="font-weight-bold">Country</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$r_address->country}}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$address->country}}</td>
                                                     </tr>
                                                 </table>
-                                                @else
-                                                <table class="ml-0 ml-sm-0 ml-lg-0">
-                                                    <tr>
-                                                        <td class="font-weight-bold">Premanent</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->address}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold">City</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->city}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold">District</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->district}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold">Zip Code</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->zip}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold">State</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            {{$p_address->state}}
-                                                        </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-weight-bold">Country</td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{$p_address->country}}</td>
-                                                    </tr>
-                                            </table>
                                                     @endif
 
                                         </div>

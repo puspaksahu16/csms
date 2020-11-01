@@ -19,11 +19,11 @@ class IssueBookController extends Controller
     public function index()
     {
         if (auth()->user()->role->name == "super_admin") {
-            $issue_books = IssueBook::all();
+            $issue_books = IssueBook::where('status',0)->get();
             $schools = School::all();
         }
         if (auth()->user()->role->name == "admin") {
-            $issue_books = IssueBook::all();
+            $issue_books = IssueBook::where('status',0)->get();
             $students = Student::where('school_id', auth()->user()->school->id)->get();
             $books = Library::where('school_id', auth()->user()->school->id)->get();
         }

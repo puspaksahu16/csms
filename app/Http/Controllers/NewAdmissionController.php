@@ -133,6 +133,8 @@ class NewAdmissionController extends Controller
             'caste' => 'required',
             'class_id' => 'required',
             'tc' => 'required',
+            'category' => 'required',
+            'blood_group' => 'required',
 
             'mother_first_name' => 'required',
             'mother_last_name' => 'required',
@@ -158,30 +160,7 @@ class NewAdmissionController extends Controller
 
 
         $school_id = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
-
         $school = School::find($school_id);
-
-        $address = [];
-        foreach ($request->addresses as $key => $add)
-        {
-            if ($request->is_same == 1) {
-                $add['is_same'] = 1;
-                $add['address_type'] = $key;
-                if (empty($add['address'])){
-                    $radd = $request->addresses['resident'];
-                    $radd['is_same'] = 1;
-                    $radd['address_type'] = $key;
-                    array_push($address, $radd);
-                }else{
-                    array_push($address, $add);
-                }
-            } else {
-                $add['is_same'] = 0;
-                $add['address_type'] = $key;
-                array_push($address, $add);
-            }
-
-        }
         $s = Student::where('school_id', $school_id)->orderBy('id', 'DESC')->get('student_unique_id')->first();
         if (empty($s["student_unique_id"]))
         {
@@ -216,6 +195,8 @@ class NewAdmissionController extends Controller
         $students->dob = $request->dob;
         $students->gender_id = $request->gender_id;
         $students->id_proof = $request->id_proof;
+        $students->category = $request->category;
+        $students->blood_group = $request->blood_group;
 
         if($file = $request->hasFile('photo')) {
             $file = $request->file('photo');
@@ -272,130 +253,40 @@ class NewAdmissionController extends Controller
         $parents->save();
 
 
-        foreach ($address as $add) {
+        if ($request->is_same == 1){
+
             $adress = new Address();
             $adress->user_id = $students->id;
-            $adress->district = $add['district'];
-            $adress->address = $add['address'];
-            $adress->city = $add['city'];
-            $adress->state = $add['state'];
-            $adress->country = $add['country'];
-            $adress->zip = $add['zip'];
-            $adress->address_type = $add['address_type'];
-            $adress->is_same = $add['is_same'];
+            $adress->district = $request->district;
+            $adress->address = $request->address;
+            $adress->city = $request->city;
+            $adress->state = $request->state;
+            $adress->country = $request->country;
+            $adress->zip = $request->zip;
+            $adress->is_same = $request->is_same;
+            $adress->register_type = 'new';
+            $adress->permanent_district = $request->permanent_district;
+            $adress->permanent_address = $request->permanent_address;
+            $adress->permanent_city = $request->permanent_city;
+            $adress->permanent_state = $request->permanent_state;
+            $adress->permanent_country = $request->permanent_country;
+            $adress->permanent_zip = $request->permanent_zip;
+
+            $adress->save();
+
+        }else{
+
+            $adress = new Address();
+            $adress->user_id = $students->id;
+            $adress->district = $request->district;
+            $adress->address = $request->address;
+            $adress->city = $request->city;
+            $adress->state = $request->state;
+            $adress->country = $request->country;
+            $adress->zip = $request->zip;
             $adress->register_type = 'new';
             $adress->save();
         }
-
-
-
-//        $email = User::where('email', $request->mother_email)->first();
-////return $request;
-//        if (empty($email))
-//        {
-//            $user = new User();
-//            $user->name = $request->mother_first_name." ".$request->mother_last_name;
-//            $user->email = $request->mother_email;
-//            $user->role_id = 4;
-//            $user->password = Hash::make($parent_id);
-//            $user->save();
-//
-//            if (!empty($user->id))
-//            {
-//                $students = new Student();
-//                $students->first_name = $request->first_name;
-//                $students->last_name = $request->last_name;
-//                $students->dob = $request->dob;
-//                $students->gender_id = $request->gender_id;
-//                $students->id_proof = $request->id_proof;
-//
-//                if($file = $request->hasFile('photo')) {
-//                    $file = $request->file('photo');
-//                    $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
-//                    $destinationPath = public_path('/images/student_photo');
-//                    $file->move($destinationPath, $fileName);
-//                    $students->photo = $fileName;
-//                }
-//
-//                if($file = $request->hasFile('family_photo')) {
-//                    $file = $request->file('family_photo');
-//                    $fileName = uniqid('file_').'.'.$file->getClientOriginalExtension();
-//                    $destinationPath = public_path('/images/family_photo');
-//                    $file->move($destinationPath, $fileName);
-//                    $students->family_photo = $fileName;
-//                }
-//
-//                $students->ref_no = $request->ref_no;
-//                $students->id_proof_no = $request->id_proof_no;
-//                $students->tc_no = $request->tc_no;
-//                $students->class_id = $request->class_id;
-//                $students->caste = $request->caste;
-//                $students->student_unique_id = $student_id;
-//                $students->school_id = $school_id;
-//                $students->save();
-//
-//
-//
-//                if (!empty($students->id))
-//                {
-//                    $parents = new StudentParent();
-//                    $parents->student_id = $students->id;
-//                    $parents->mother_first_name = $request->mother_first_name;
-//                    $parents->mother_last_name = $request->mother_last_name;
-//                    $parents->mother_mobile = $request->mother_mobile;
-//                    $parents->mother_email = $request->mother_email;
-//                    $parents->mother_occupation = $request->mother_occupation;
-//                    $parents->mother_salary = $request->mother_salary;
-//                    $parents->mother_qualification = $request->mother_qualification;
-//                    $parents->mother_id_type = $request->mother_id_type;
-//                    $parents->mother_id_no = $request->mother_id_no;
-//
-//                    $parents->parent_id = $parent_id;
-//                    $parents->user_id = $user->id;
-//
-//                    $parents->father_first_name = $request->father_first_name;
-//                    $parents->father_last_name = $request->father_last_name;
-//                    $parents->father_mobile = $request->father_mobile;
-//                    $parents->father_email = $request->father_email;
-//                    $parents->father_occupation = $request->father_occupation;
-//                    $parents->father_salary = $request->father_salary;
-//                    $parents->father_qualification = $request->father_qualification;
-//                    $parents->father_id_type = $request->father_id_type;
-//                    $parents->father_id_no = $request->father_id_no;
-//                    $parents->parent_type = 'new';
-//                    $parents->save();
-//
-//
-//                    foreach ($address as $add) {
-//                        $adress = new Address();
-//                        $adress->user_id = $students->id;
-//                        $adress->district = $add['district'];
-//                        $adress->address = $add['address'];
-//                        $adress->city = $add['city'];
-//                        $adress->state = $add['state'];
-//                        $adress->country = $add['country'];
-//                        $adress->zip = $add['zip'];
-//                        $adress->address_type = $add['address_type'];
-//                        $adress->is_same = $add['is_same'];
-//                        $adress->register_type = 'new';
-//                        $adress->save();
-//                    }
-//
-//                    if (empty($parents->id))
-//                    {
-//                        $user = User::find($user->id);
-//                        $user->delete();
-//                        $student = Student::find($students->id);
-//                        $student->delete();
-//                        $student = Student::find($parents->id);
-//                        $student->delete();
-//                        return redirect()->back()->with('error', 'Student created Successfully');
-//                    }
-//                }
-//            }
-//        }else{
-//            return redirect()->back()->with('error', 'Mother Email already exist');
-//        }
 
         return redirect()->route('new_admission.index')->with('success', 'Student created Successfully');
     }
@@ -413,16 +304,8 @@ class NewAdmissionController extends Controller
         $students = Student::find($id);
         $qualifications = Qualification::all();
         $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
-        $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
-        if ($r_address->is_same == 1)
-        {
-            $p_address = [];
-        }
-        else
-        {
-            $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
-        }
-        return view('admin.new_admission.view', compact(['id_proof','classes','students','studentparents','r_address', 'p_address','qualifications']));
+        $address = Address::where('user_id',$id)->where('register_type', 'new')->first();
+        return view('admin.new_admission.view', compact(['id_proof','classes','students','studentparents','address','qualifications']));
     }
 
     /**
@@ -440,36 +323,21 @@ class NewAdmissionController extends Controller
             $schools = School::all();
             $qualifications = Qualification::all();
             $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
-            $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
-            if ($r_address->is_same == 1) {
-                $p_address = [];
-            } else {
-                $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
-            }
+            $address = Address::where('user_id',$id)->where('register_type', 'new')->first();
         }elseif(auth()->user()->role->name == "admin"){
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $students = Student::find($id);
             $qualifications = Qualification::all();
             $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
-            $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
-            if ($r_address->is_same == 1) {
-                $p_address = [];
-            } else {
-                $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
-            }
+            $address = Address::where('user_id',$id)->where('register_type', 'new')->first();
         }elseif(auth()->user()->role->name == "parent"){
             $students = Student::find($id);
             $classes = Createclass::where('school_id', $students->school_id)->get();
             $qualifications = Qualification::all();
             $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
-            $r_address = Address::where('user_id', $id)->where('address_type', 'resident')->first();
-            if ($r_address->is_same == 1) {
-                $p_address = [];
-            } else {
-                $p_address = Address::where('user_id', $id)->where('address_type', 'permanent')->first();
-            }
+            $address = Address::where('user_id',$id)->where('register_type', 'new')->first();
         }
-       return view('admin.new_admission.edit', compact(['id_proof','schools','classes','students','studentparents','r_address', 'p_address','qualifications']));
+       return view('admin.new_admission.edit', compact(['id_proof','schools','classes','students','studentparents','address','qualifications']));
     }
 
     public function edit_profile($id)
@@ -522,27 +390,6 @@ class NewAdmissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $address = [];
-        foreach ($request->addresses as $key => $add)
-        {
-            if ($request->is_same == 1) {
-                $add['is_same'] = 1;
-                $add['address_type'] = $key;
-                if (empty($add['address'])){
-                    $radd = $request->addresses['resident'];
-                    $radd['is_same'] = 1;
-                    $radd['address_type'] = $key;
-                    array_push($address, $radd);
-                }else{
-                    array_push($address, $add);
-                }
-            } else {
-                $add['is_same'] = 0;
-                $add['address_type'] = $key;
-                array_push($address, $add);
-            }
-
-        }
         $students = Student::find($id);
         $students->first_name = $request->first_name;
         $students->last_name = $request->last_name;
@@ -597,19 +444,37 @@ class NewAdmissionController extends Controller
         $parents->parent_type = 'new';
         $parents->update();
 
-        foreach ($address as $add)
-        {
-            $adress = Address::where('user_id', $id)->where('address_type', $add['address_type'])->first();
-            $adress->district = $add['district'];
-            $adress->address = $add['address'];
-            $adress->city = $add['city'];
-            $adress->state = $add['state'];
-            $adress->country = $add['country'];
-            $adress->zip = $add['zip'];
-            $adress->address_type = $add['address_type'];
-            $adress->is_same = $add['is_same'];
-            $adress->register_type = 'new';
-            $adress->update();
+
+        $address = Address::find($id);
+        $address = Address::where('user_id',$id)->where('register_type', 'new')->first();
+        if ($address->is_same == 1 || $request->is_same == 1){
+            $address->user_id = $students->id;
+            $address->district = $request->district;
+            $address->address = $request->address;
+            $address->city = $request->city;
+            $address->state = $request->state;
+            $address->country = $request->country;
+            $address->zip = $request->zip;
+            $address->is_same = $request->is_same;
+            $address->register_type = 'new';
+            $address->permanent_district = $request->permanent_district;
+            $address->permanent_address = $request->permanent_address;
+            $address->permanent_city = $request->permanent_city;
+            $address->permanent_state = $request->permanent_state;
+            $address->permanent_country = $request->permanent_country;
+            $address->permanent_zip = $request->permanent_zip;
+            $address->save();
+        }else{
+            $address->is_same = 0;
+            $address->register_type = 'new';
+            $address->user_id = $students->id;
+            $address->address = $request->input('address');
+            $address->city = $request->input('city');
+            $address->district = $request->input('district');
+            $address->state = $request->input('state');
+            $address->country = $request->input('country');
+            $address->zip = $request->input('zip');
+            $address->save();
         }
         return redirect()->route('new_admission.index')->with('success', 'Student Updated Successfully');
     }
