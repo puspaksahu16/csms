@@ -418,6 +418,7 @@ class ComposerStaticInitc50128c103cd864d13331851b9456c84
     public static $classMap = array (
         'App\\Address' => __DIR__ . '/../..' . '/app/Address.php',
         'App\\AdmissionFee' => __DIR__ . '/../..' . '/app/AdmissionFee.php',
+        'App\\Attendance' => __DIR__ . '/../..' . '/app/Attendance.php',
         'App\\Book' => __DIR__ . '/../..' . '/app/Book.php',
         'App\\BookStock' => __DIR__ . '/../..' . '/app/BookStock.php',
         'App\\Chat' => __DIR__ . '/../..' . '/app/Chat.php',
@@ -431,6 +432,7 @@ class ComposerStaticInitc50128c103cd864d13331851b9456c84
         'App\\GeneralFee' => __DIR__ . '/../..' . '/app/GeneralFee.php',
         'App\\Holiday' => __DIR__ . '/../..' . '/app/Holiday.php',
         'App\\Http\\Controllers\\AdmissionFeeController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdmissionFeeController.php',
+        'App\\Http\\Controllers\\AttendanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/AttendanceController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',

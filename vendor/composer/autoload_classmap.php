@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Address' => $baseDir . '/app/Address.php',
     'App\\AdmissionFee' => $baseDir . '/app/AdmissionFee.php',
+    'App\\Attendance' => $baseDir . '/app/Attendance.php',
     'App\\Book' => $baseDir . '/app/Book.php',
     'App\\BookStock' => $baseDir . '/app/BookStock.php',
     'App\\Chat' => $baseDir . '/app/Chat.php',
@@ -21,6 +22,7 @@ return array(
     'App\\GeneralFee' => $baseDir . '/app/GeneralFee.php',
     'App\\Holiday' => $baseDir . '/app/Holiday.php',
     'App\\Http\\Controllers\\AdmissionFeeController' => $baseDir . '/app/Http/Controllers/AdmissionFeeController.php',
+    'App\\Http\\Controllers\\AttendanceController' => $baseDir . '/app/Http/Controllers/AttendanceController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',

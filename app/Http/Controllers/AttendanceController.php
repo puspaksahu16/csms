@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Attendance;
 use App\Http\Controllers\Controller;
 use App\Student;
 use App\TimeTable;
@@ -16,7 +17,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        //
+        return 1;
     }
 
     /**
@@ -26,9 +27,9 @@ class AttendanceController extends Controller
      */
     public function create($id)
     {
-        $timeable = TimeTable::find($id);
-        $students = Student::where('school_id', $timeable->school_id)->where('class_id', $timeable->class_id)->where('section', $timeable->section_id)->get();
-        return view('admin.attendance.create', compact('students'));
+        $timetable = TimeTable::find($id);
+        $students = Student::where('school_id', $timetable->school_id)->where('class_id', $timetable->class_id)->where('section', $timetable->section_id)->get();
+        return view('admin.attendance.create', compact(['students','timetable']));
     }
 
     /**
@@ -37,9 +38,30 @@ class AttendanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id, Request $request)
     {
-        //
+        $timetable = TimeTable::find($id);
+        foreach ($request->attendance as $key => $att)
+        {
+            foreach ($request->description as $dkey => $des)
+            {
+                if ($key === $dkey)
+                {
+                    $student = Student::find($dkey);
+                    $attendance = Attendance::create([
+                        'school_id' => $student->school_id,
+                        'employee_id' => $timetable->employee_id,
+                        'period_id' => $timetable->period_id,
+                        'class_id' => $student->class_id,
+                        'section_id' => $student->section,
+                        'student_id' => $dkey,
+                        'attendance' => $att[0],
+                        'description' => $des[0],
+                    ]);
+                }
+            }
+        }
+        return redirect()->to('attendances')->with("success", "Attendance Created successfully");
     }
 
     /**

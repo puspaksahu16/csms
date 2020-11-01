@@ -34,9 +34,11 @@
 
                 <div class="row" id="table-striped">
                     <div class="col-12">
+                        <form action="{{ url('attendance/store/'.$timetable->id) }}" method="post">
+                            @csrf
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Create Attendance of {{ $students[0]['classes']['create_class'] }} ({{ $students[0]['student_section']['section'] }})</h4>
+                                <h4 class="card-title">Create Attendance of {{$timetable->period->period_name}} Period in {{ $students[0]['classes']['create_class'] }} ({{ $students[0]['student_section']['section'] }})</h4>
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
@@ -59,17 +61,14 @@
                                                 <td>{{$student->first_name}}</td>
                                                 <td>{{$student->student_unique_id}}</td>
                                                 <td>
-                                                    <select class="form-control" style="background-color: aliceblue; color: #000">
-                                                        {{--<option value="">Select</option>--}}
+                                                    <select name="attendance[{{ $student->id }}][]" class="form-control" style="background-color: aliceblue; color: #000">
                                                         <option value="0">Absent</option>
                                                         <option value="1">Present</option>
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control" style="background-color: aliceblue; color: #000" cols="2" rows="1"></textarea>
+                                                    <textarea name="description[{{ $student->id }}][]" class="form-control" style="background-color: aliceblue; color: #000" cols="2" rows="1"></textarea>
                                                 </td>
-                                                {{--                                                <td><a href="{{route('result.edit', $results->id)}}" class="btn btn-sm btn-primary">Edit</a></td>--}}
-                                                {{--                                                <td><a href="result_delete/{{$results->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -78,6 +77,7 @@
                             </div>
                         </div>
                         <button type="submit" class="pull-right btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
