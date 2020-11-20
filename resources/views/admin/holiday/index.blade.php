@@ -38,34 +38,38 @@
                                                         <div class="col-md-3 col-12">
                                                             <div class="form-label-group">
                                                                 <select  name="school_id" class="form-control">
-                                                                    <option>-SELECT School-</option>
+                                                                    <option value="">-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
-                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                        <option {{ (old('school_id') == $school->id ? "selected" : '') }} value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-3">
                                                             <div class="form-label-group">
-                                                                <input type="text" name="holiday_name" class="form-control">
+                                                                <input type="text" value="{{ old('holiday_name') }}" name="holiday_name" class="form-control">
                                                                 <label for="first-name-column">Name of Holiday</label>
+                                                                <span style="color: red">{{ $errors->first('holiday_name') }}</span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-3">
                                                              <div class="form-label-group">
-                                                                <input type="date" name="from_date" class="form-control">
-                                                                <label for="first-name-column">from Date</label>
+                                                                <input type="date"  value="{{ old('from_date') }}" name="from_date" class="form-control">
+                                                                <label for="first-name-column">From Date</label>
+                                                                 <span style="color: red">{{ $errors->first('from_date') }}</span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-3">
                                                             <div class="form-label-group">
-                                                                <input type="date" name="to_date" class="form-control">
+                                                                <input type="date" value="{{ old('to_date') }}" name="to_date" class="form-control">
                                                                 <label for="first-name-column">To Date</label>
+                                                                <span style="color: red">{{ $errors->first('to_date') }}</span>
                                                             </div>
                                                         </div>
 

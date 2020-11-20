@@ -36,6 +36,10 @@ class IdproofControler extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'id_proof' => 'unique:idproofs|required'
+        ]);
+
         $Idproof = Idproof::create($request->all());
         return redirect('/idproof')->with("success", "Id Proof Created successfully!");
     }

@@ -38,6 +38,26 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'owner_photo' => 'required',
+            'photo' => 'required',
+            'logo' => 'required',
+            'full_name' => 'required',
+            'affliation_no' => 'required',
+            'owner_name' => 'required',
+            'owner_contact_no' => 'required|digits:10',
+            'contact_person' => 'required',
+            'mobile' => 'required|digits:10',
+            'standard' => 'required',
+            'board' => 'required',
+            'classes' => 'required',
+            'email' => 'required|email|unique:users,email',
+
+            'starting_year' => 'required',
+            'facility' => 'required',
+            'address' => 'required',
+        ]);
+
         $data = $request->all();
         $s = School::orderBy('id', 'DESC')->get('registration_no');
         if (count($s) <= 0 )

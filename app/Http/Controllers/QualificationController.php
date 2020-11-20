@@ -36,6 +36,10 @@ class QualificationController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'qualification' => 'unique:qualifications|required'
+        ]);
+
         $qualification = Qualification::create($request->all());
         return redirect('/qualification')->with('success', "Qualification Created successfully!");
     }

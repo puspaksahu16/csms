@@ -46,13 +46,14 @@
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
                                                                 <select name="school_id" class="form-control">
-                                                                    <option>-SELECT School-</option>
+                                                                    <option value="">-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
                                                                         <option value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
@@ -60,8 +61,9 @@
                                                             <div class="col-md-12 col-12">
                                                                 <div class="form-label-group">
                                                                     <select name="class_id" class="form-control">
-                                                                        <option>-SELECT CLASS-</option>
+                                                                        <option value="">-SELECT CLASS-</option>
                                                                     </select>
+                                                                    <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                                 </div>
                                                             </div>
 
@@ -69,25 +71,28 @@
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <select name="class_id" class="form-control">
-                                                                <option>-SELECT CLASS-</option>
+                                                                <option value="">-SELECT CLASS-</option>
                                                                 @foreach($classes as $class)
                                                                     <option value="{{ $class->id }}">{{ $class->create_class }}</option>
                                                                 @endforeach
                                                             </select>
+                                                            <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                         </div>
                                                     </div>
                                                         @endif
                                                         <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Exam Name" name="exam_name">
+                                                            <input type="text" class="form-control" value="{{ old('exam_name') }}" placeholder="Exam Name" name="exam_name">
                                                             <label for="name">Exam Name</label>
+                                                            <span style="color: red">{{ $errors->first('exam_name') }}</span>
                                                         </div>
                                                     </div>
-                                                
+
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="number" class="form-control" placeholder="Full Mark" name="full_mark">
+                                                            <input type="number" class="form-control" value="{{ old('full_mark') }}" placeholder="Full Mark" name="full_mark">
                                                             <label for="name">Full Mark</label>
+                                                            <span style="color: red">{{ $errors->first('full_mark') }}</span>
                                                         </div>
                                                     </div>
 
@@ -97,9 +102,10 @@
                                                                 <option value="">Current Year</option>
                                                                 {{ $year = date('Y') }}
                                                                 @for ($year = 2020; $year <= 2030; $year++)
-                                                                    <option value="{{ $year }}">{{ $year }}</option>
+                                                                    <option {{ (old('current_year') == $year ? "selected" : '') }} value="{{ $year }}">{{ $year }}</option>
                                                                 @endfor
                                                             </select>
+                                                            <span style="color: red">{{ $errors->first('current_year') }}</span>
                                                         </div>
                                                     </div>
 

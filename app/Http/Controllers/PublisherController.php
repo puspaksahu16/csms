@@ -37,6 +37,10 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'unique:publishers|required'
+        ]);
+
         Publisher::create($request->all());
         return redirect()->route('publisher.index')->with('success', 'publisher created Successfully');
     }

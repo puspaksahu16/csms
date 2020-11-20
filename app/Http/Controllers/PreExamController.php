@@ -64,6 +64,16 @@ class PreExamController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'school_id' => 'required',
+            'class_id' => 'required',
+            'exam_name' => 'required',
+            'full_mark' => 'required',
+            'current_year' => 'required',
+
+        ]);
+
+
         $data = $request->all();
         $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
         PreExam::create($data);

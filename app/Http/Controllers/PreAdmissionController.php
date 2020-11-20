@@ -78,6 +78,43 @@ class PreAdmissionController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'photo' => 'required',
+            'family_photo' => 'required',
+            'school_id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'dob' => 'required',
+            'gender' => 'required',
+            'caste' => 'required',
+
+            'mother_first_name' => 'required',
+            'mother_last_name' => 'required',
+            'father_first_name' => 'required',
+            'father_last_name' => 'required',
+            'father_mobile' => 'required|digits:10',
+            'mother_mobile' => 'required|digits:10',
+            'father_email' => 'required|email|unique:users,email',
+            'mother_email' => 'required|email|unique:users,email',
+
+
+
+            'address' => 'required',
+            'city' => 'required',
+            'district' => 'required',
+            'zip' => 'required',
+            'state' => 'required',
+            'country' => 'required',
+            'permanent_address' => 'required',
+            'permanent_city' => 'required',
+            'permanent_district' => 'required',
+            'permanent_zip' => 'required',
+            'permanent_state' => 'required',
+            'permanent_country' => 'required',
+
+        ]);
+
         $r = PreAdmission::orderBy('id', 'DESC')->get('roll_no');
         if (count($r) <= 0)
         {

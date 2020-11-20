@@ -63,13 +63,14 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-label-group">
                                                                 <select id="school_id" onchange="getStandard()" name="school_id" class="form-control">
-                                                                    <option>-SELECT School-</option>
+                                                                    <option value="">-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
                                                                         <option value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
 
@@ -82,6 +83,7 @@
                                                                     {{--@endforeach--}}
                                                                 </select>
                                                                 <label for="standard">Standard</label>
+                                                                <span style="color: red">{{ $errors->first('standard_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
@@ -91,10 +93,11 @@
                                                                 <select type="text" class="form-control"  name="standard_id">
                                                                     <option value="">-Select Standard-</option>
                                                                     @foreach($standards as $standard)
-                                                                        <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                                                        <option {{ (old('standard_id') == $standard->id ? "selected" : '') }} value="{{ $standard->id }}">{{ $standard->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <label for="standard">Standard</label>
+                                                                <span style="color: red">{{ $errors->first('standard_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
@@ -102,18 +105,19 @@
                                                         <div class="form-label-group">
                                                             <select type="text" class="form-control"  name="period_name">
                                                                 <option value="">-Select Period-</option>
-                                                                <option value="1st">1st</option>
-                                                                <option value="2nd">2nd</option>
-                                                                <option value="3rd">3rd</option>
-                                                                <option value="4th">4th</option>
-                                                                <option value="5th">5th</option>
-                                                                <option value="6th">6th</option>
-                                                                <option value="7th">7th</option>
-                                                                <option value="8th">8th</option>
-                                                                <option value="Recess">Recess</option>
+                                                                <option  {{ (old('period_name') == '1st' ? "selected" : '') }} value="1st">1st</option>
+                                                                <option {{ (old('period_name') == '2nd' ? "selected" : '') }} value="2nd">2nd</option>
+                                                                <option {{ (old('period_name') == '3rd' ? "selected" : '') }} value="3rd">3rd</option>
+                                                                <option {{ (old('period_name') == '4th' ? "selected" : '') }} value="4th">4th</option>
+                                                                <option {{ (old('period_name') == '5th' ? "selected" : '') }} value="5th">5th</option>
+                                                                <option {{ (old('period_name') == '6th' ? "selected" : '') }} value="6th">6th</option>
+                                                                <option {{ (old('period_name') == '7th' ? "selected" : '') }}  value="7th">7th</option>
+                                                                <option {{ (old('period_name') == '8th' ? "selected" : '') }} value="8th">8th</option>
+                                                                <option {{ (old('period_name') == 'Recess' ? "selected" : '') }} value="Recess">Recess</option>
                                                             </select>
 {{--                                                           <input type="text" name="period_name" class="form-control">--}}
                                                             <label for="first-name-column">Period Name</label>
+                                                            <span style="color: red">{{ $errors->first('period_name') }}</span>
                                                         </div>
                                                     </div>
 {{--                                                    <div class="col-md-2 col-12">--}}
@@ -129,14 +133,16 @@
 {{--                                                    </div>--}}
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="time" name="time_from" class="form-control">
+                                                            <input type="time" value="{{old('time_from')}}" name="time_from" class="form-control">
                                                             <label for="first-name-column">Time From</label>
+                                                            <span style="color: red">{{ $errors->first('time_from') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="time" name="time_to" class="form-control">
+                                                            <input type="time" value="{{old('time_to')}}" name="time_to" class="form-control">
                                                             <label for="first-name-column">Time To</label>
+                                                            <span style="color: red">{{ $errors->first('time_to') }}</span>
                                                         </div>
                                                     </div>
 

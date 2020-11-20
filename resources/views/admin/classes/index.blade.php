@@ -57,13 +57,14 @@
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
                                                                 <select id="school_id" onchange="getStandard()" name="school_id" class="form-control">
-                                                                    <option>-SELECT School-</option>
+                                                                    <option value="">-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
                                                                         <option value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
 
@@ -76,6 +77,7 @@
                                                                     {{--@endforeach--}}
                                                                 </select>
                                                                 <label for="standard">Standard</label>
+                                                                <span style="color: red">{{ $errors->first('standard_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
@@ -85,23 +87,25 @@
                                                                     <select type="text" class="form-control"  name="standard_id">
                                                                         <option value="">-Select Standard-</option>
                                                                         @foreach($standards as $standard)
-                                                                        <option value="{{ $standard->id }}">{{ $standard->name }}</option>
+                                                                        <option  {{ (old('standard_id') ==  $standard->id  ? "selected" : '') }} value="{{ $standard->id }}">{{ $standard->name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                     <label for="standard">Standard</label>
+                                                                    <span style="color: red">{{ $errors->first('standard_id') }}</span>
                                                                 </div>
                                                             </div>
                                                         @endif
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
                                                             <select name="create_class" class="form-control">
-                                                                <option>-SELECT Class-</option>
+                                                                <option value="">-SELECT Class-</option>
                                                                 @foreach($set_classes as $set_classe )
-                                                                    <option value="{{ $set_classe->name }}"  style="text-transform: uppercase">{{ $set_classe->name }}</option>
+                                                                    <option {{ (old('create_class') ==  $set_classe->name  ? "selected" : '') }} value="{{ $set_classe->name }}"  style="text-transform: uppercase">{{ $set_classe->name }}</option>
                                                                 @endforeach
 
                                                             </select>
                                                             <label for="first-name-column">Class Name</label>
+                                                            <span style="color: red">{{ $errors->first('create_class') }}</span>
                                                         </div>
                                                     </div>
 

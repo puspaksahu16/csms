@@ -46,6 +46,14 @@ class PeriodController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'school_id' => 'required',
+            'standard_id' => 'required',
+            'period_name' => 'required',
+            'time_from' => 'required',
+            'time_to' => 'required'
+        ]);
+
         if (auth()->user()->role->name == "super_admin") {
             $periods = Period::where('school_id', $request->school_id)
 //                ->where('period_name', $request->period_name)

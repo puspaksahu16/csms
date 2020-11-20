@@ -45,20 +45,21 @@
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
                                                                 <select name="school_id" onclick="getClass()" id="school_id" class="form-control">
-                                                                    <option>-SELECT School-</option>
+                                                                    <option value="">-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
                                                                         <option value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <select onchange="getRoll(this.value),getExam(this.value)" name="class_id" id="class" class="form-control">
-                                                                <option>-SELECT CLASS-</option>
+                                                                <option value="">-SELECT CLASS-</option>
                                                                 @if(auth()->user()->role->name == "admin")
                                                                     @foreach($classes as $class)
                                                                         <option value="{{ $class->id }}">{{ $class->create_class }}</option>
@@ -66,46 +67,53 @@
                                                                 @endif
 
                                                             </select>
+                                                            <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <select id="roll_id" name="roll_no" class="form-control">
-                                                                <option>-Roll Number-</option>
+                                                                <option value="">-Roll Number-</option>
                                                                 {{--@foreach($rolls as $roll)--}}
                                                                     {{--<option value="{{ $roll->id }}">{{ $roll->roll_no }}</option>--}}
                                                                 {{--@endforeach--}}
                                                             </select>
+
                                                             <label for="name">Roll Number</label>
+                                                            <span style="color: red">{{ $errors->first('roll_no') }}</span>
                                                         </div>
                                                     </div>
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
                                                                 <select onchange="getMarks(this.value)" id="exam_id" name="exam_id" class="form-control">
-                                                                    <option>-Select Exam-</option>
+                                                                    <option value="">-Select Exam-</option>
                                                                     @foreach($exams as $exam)
                                                                     <option value="{{ $exam->id }}">{{ $exam->exam_name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 <label for="name">Exam</label>
+                                                                <span style="color: red">{{ $errors->first('exam_id') }}</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="number" readonly class="form-control" placeholder="Total Mark" name="total_mark" id="total_mark">
+                                                                <input type="number" readonly class="form-control" value="{{ old('total_mark') }}" placeholder="Total Mark" name="total_mark" id="total_mark">
                                                                 <label for="name">Total Mark</label>
+                                                                <span style="color: red">{{ $errors->first('total_mark') }}</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
-                                                                <input type="number" class="form-control" placeholder="Obtain Mark" id="obtained_mark" name="obtained_mark"  onchange="marks();">
+                                                                <input type="number" class="form-control" value="{{ old('obtained_mark') }}" placeholder="Obtain Mark" id="obtained_mark" name="obtained_mark"  onchange="marks();">
                                                                 <label for="name">Obtain Mark</label>
+                                                                <span style="color: red">{{ $errors->first('obtained_mark') }}</span>
                                                             </div>
                                                         </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="number" class="form-control" placeholder="Percentage" name="percentage" id="percentage" readonly>
+                                                            <input type="number" class="form-control"  value="{{ old('percentage') }}" placeholder="Percentage" name="percentage" id="percentage" readonly>
                                                             <label for="name">Percentage</label>
+                                                            <span style="color: red">{{ $errors->first('percentage') }}</span>
                                                         </div>
                                                     </div>
 

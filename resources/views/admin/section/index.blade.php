@@ -60,35 +60,38 @@
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
                                                                 <select name="school_id" class="form-control">
-                                                                    <option>-SELECT School-</option>
+                                                                    <option value="">-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
-                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                        <option {{ (old('school_id') == $school->id ? "selected" : '') }} value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
                                                             <select name="class_id" class="form-control">
-                                                                <option>-SELECT CLASS-</option>
+                                                                <option value="">-SELECT CLASS-</option>
                                                                 @foreach($classes as $class)
-                                                                    <option value="{{ $class->id }}" style="text-transform: uppercase">{{ $class->create_class }}</option>
+                                                                    <option  {{ (old('class_id') == $class->id ? "selected" : '') }} value="{{ $class->id }}" style="text-transform: uppercase">{{ $class->create_class }}</option>
                                                                 @endforeach
                                                             </select>
+                                                            <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
                                                             <select name="section" class="form-control">
-                                                                <option>-SELECT Section-</option>
+                                                                <option value="">-SELECT Section-</option>
                                                                 @foreach($set_sections as $set_section)
-                                                                    <option value="{{ $set_section->name }}" style="text-transform: uppercase">{{ $set_section->name }}</option>
+                                                                    <option  {{ (old('section') == $set_section->name ? "selected" : '') }} value="{{ $set_section->name }}" style="text-transform: uppercase">{{ $set_section->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                             <label for="first-name-column">Create Section</label>
+                                                            <span style="color: red">{{ $errors->first('section') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-4">

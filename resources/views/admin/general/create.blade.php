@@ -45,52 +45,57 @@
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
                                                                 <select name="school_id" onchange="getClass()" id="school_id" class="form-control">
-                                                                    <option>-SELECT School-</option>
+                                                                    <option value="">-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
                                                                         <option value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="General Name" name="name">
+                                                            <input type="text" class="form-control" value="{{ old('name') }}" placeholder="General Name" name="name">
                                                             <label for="name">General Name</label>
+                                                            <span style="color: red">{{ $errors->first('name') }}</span>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <select name="class_id" id="class" class="form-control">
-                                                                <option>-SELECT CLASS-</option>
+                                                                <option value="">-SELECT CLASS-</option>
                                                                 @if(auth()->user()->role->name == "admin")
                                                                 @foreach($classes as $class)
                                                                     <option value="{{ $class->id }}">{{ $class->create_class }}</option>
                                                                 @endforeach
                                                                 @endif
                                                             </select>
+                                                            <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" placeholder="Price" name="price">
+                                                            <input type="text" class="form-control"  value="{{ old('price') }}" placeholder="Price" name="price">
                                                             <label for="name">Price</label>
+                                                            <span style="color: red">{{ $errors->first('price') }}</span>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <select name="type" class="form-control">
-                                                                <option>-SELECT TYPE-</option>
+                                                                <option value="">-SELECT TYPE-</option>
 
-                                                                <option value="2">Monthly</option>
-                                                                <option value="1">Annually</option>
+                                                                <option {{ (old('type') == 2 ? "selected" : '') }} value="2">Monthly</option>
+                                                                <option {{ (old('type') == 1 ? "selected" : '') }} value="1">Annually</option>
 
                                                             </select>
+                                                            <span style="color: red">{{ $errors->first('type') }}</span>
                                                         </div>
                                                     </div>
 
