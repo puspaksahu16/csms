@@ -20,12 +20,15 @@ class IssueBookController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $issue_books = IssueBook::where('status',0)->get();
+            $students = [];
+            $books = [];
             $schools = School::all();
         }
         if (auth()->user()->role->name == "admin") {
             $issue_books = IssueBook::where('status',0)->get();
             $students = Student::where('school_id', auth()->user()->school->id)->get();
             $books = Library::where('school_id', auth()->user()->school->id)->get();
+
         }
         if (auth()->user()->role->name == "parent") {
              $parents = StudentParent::where('id',auth()->user()->parent->id)->first();

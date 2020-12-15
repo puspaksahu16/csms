@@ -61,10 +61,20 @@
                                                 <td>{{$student->first_name}}</td>
                                                 <td>{{$student->student_unique_id}}</td>
                                                 <td>
-                                                    <select name="attendance[{{ $student->id }}][]" class="form-control" style="background-color: aliceblue; color: #000">
-                                                        <option value="0">Absent</option>
-                                                        <option value="1">Present</option>
-                                                    </select>
+                                                    <div class="custom-control custom-switch custom-switch-success mr-2 mb-1">
+                                                        {{--<p class="mb-0">Success</p>--}}
+                                                        <input type="checkbox" name="attendance[{{ $student->id }}][]" class="custom-control-input" id="customSwitch11{{ $student->id }}">
+                                                        <label class="custom-control-label" for="customSwitch11{{ $student->id }}">
+                                                            {{--<span class="switch-icon-left"><i class="feather icon-check"></i></span>--}}
+                                                            {{--<span class="switch-icon-right"><i class="feather icon-crosshair"></i></span>--}}
+                                                            <span class="switch-icon-left">P</span>
+                                                            <span class="switch-icon-right">A</span>
+                                                        </label>
+                                                    </div>
+                                                    {{--<select name="attendance[{{ $student->id }}][]" class="form-control" style="background-color: aliceblue; color: #000">--}}
+                                                        {{--<option value="0">Absent</option>--}}
+                                                        {{--<option value="1">Present</option>--}}
+                                                    {{--</select>--}}
                                                 </td>
                                                 <td>
                                                     <textarea name="description[{{ $student->id }}][]" class="form-control" style="background-color: aliceblue; color: #000" cols="2" rows="1"></textarea>

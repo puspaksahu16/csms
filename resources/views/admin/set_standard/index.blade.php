@@ -86,7 +86,7 @@
                                                 <th style="text-transform: uppercase">{{$standard->name}}</th>
                                                 <th>{{$standard->created_at->format('d F Y')}}</th>
                                                 <td><a href="{{route('set_standard.edit', $standard->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-                                                <td><a href="Setstandard_delete/{{$standard->id}}" class="btn btn-sm btn-danger">Delete</a></td>
+                                                {{--<td><a href="Setstandard_delete/{{$standard->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>

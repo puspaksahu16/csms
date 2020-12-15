@@ -88,10 +88,9 @@
                                                 <td>{{$student->classes->create_class}}</td>
                                                 <td>
                                                 @if ($student->section == "")
-                                                {{'Not Assign'}}
+                                                    {{'Not Assign'}}
                                                 @else
-
-                                                 {{$student->section}}
+                                                    {{$student->section_data->section}}
                                                 @endif
 
                                                </td>

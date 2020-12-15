@@ -34,7 +34,7 @@ class NewAdmissionController extends Controller
     {
         if (auth()->user()->role->name == "super_admin")
         {
-         $students = Student::with('fee','school')->with(['classes' => function($query){
+         $students = Student::with('fee','school','section_data')->with(['classes' => function($query){
              return $query->with('section')->get();
          }])->get();
 //         return $students;

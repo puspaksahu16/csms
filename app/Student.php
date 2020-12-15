@@ -36,6 +36,10 @@ class Student extends Model
         return $this->hasOne(StudentParent::class, 'student_id');
     }
 
+    public function section_data()
+    {
+        return $this->belongsTo(Section::class,'section');
+    }
 
     public static function laratablesCustomAction($student)
     {

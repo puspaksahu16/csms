@@ -86,7 +86,7 @@
                                                 <th style="text-transform: uppercase">{{$class->name}}</th>
                                                 <th>{{$class->created_at->format('d F Y')}}</th>
                                                 <td><a href="{{route('set_class.edit', $class->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-                                                <td><a href="set_class_delete/{{$class->id}}" class="btn btn-sm btn-danger">Delete</a></td>
+                                                {{--<td><a href="set_class_delete/{{$class->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -17,7 +17,7 @@
             </li>
             <li class=" nav-item"><a href="{{url('/view-timetable')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Timetable</span></a>
             </li>
-            <li class=" nav-item"><a href="{{url('/attendance')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Attendance</span></a>
+            <li class=" nav-item"><a href="{{url('/attendances')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Dashboard">Attendance</span></a>
             </li>
             {{--<li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="PreAdmission">Edit Profile</span></a>--}}
             {{--<ul class="menu-content">--}}

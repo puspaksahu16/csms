@@ -125,7 +125,7 @@
                                                     <td>Inactive</td>
                                                 @endif
                                                 <td><a href="{{route('subject.edit', $subjects->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-                                                <td><a href="subject_delete/{{$subjects->id}}" class="btn btn-sm btn-danger">Delete</a></td>
+                                                {{--<td><a href="subject_delete/{{$subjects->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -181,6 +181,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/create-attendance/{id}','AttendanceController@create');
     Route::post('/attendance/store/{id}','AttendanceController@store');
     Route::get('/attendances','AttendanceController@index');
+    Route::post('/get_attendance','AttendanceController@getAttendance');
 
 
 

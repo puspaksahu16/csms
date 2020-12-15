@@ -99,7 +99,7 @@
                                                 <th>{{$qualification->qualification}}</th>
 
                                                 <td><a href="{{route('qualification.edit', $qualification->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-                                                <td><a href="qualification_delete/{{$qualification->id}}" class="btn btn-sm btn-danger">Delete</a></td>
+                                                {{--<td><a href="qualification_delete/{{$qualification->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>

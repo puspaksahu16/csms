@@ -86,7 +86,7 @@
                                                 <th style="text-transform: uppercase">{{$Idproof->id_proof}}</th>
                                                 <th>{{$Idproof->created_at->format('d F Y')}}</th>
                                                 <td><a href="{{route('idproof.edit', $Idproof->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-                                                <td><a href="idproof_delete/{{$Idproof->id}}" class="btn btn-sm btn-danger">Delete</a></td>
+                                                {{--<td><a href="idproof_delete/{{$Idproof->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>
