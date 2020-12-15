@@ -45,6 +45,11 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'school_id' => 'required'
+        ]);
+
         $data = $request->all();
         $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
         Subject::create($data);

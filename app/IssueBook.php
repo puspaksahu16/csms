@@ -23,4 +23,8 @@ class IssueBook extends Model
     {
         return $this->belongsTo(Library::class,'book_id');
     }
+    public function classes()
+    {
+        return $this->belongsTo(Createclass::class, 'class_id');
+    }
 }

@@ -124,6 +124,17 @@ class TimetableController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'school_id' => 'required',
+            'standard_id' => 'required',
+            'class_id' => 'required',
+            'section_id' => 'required',
+            'day' => 'required',
+            'period_id' => 'required',
+            'subject_id' => 'required',
+            'employee' => 'required',
+        ]);
+
           $periods = TimeTable::where('school_id',$request->school_id)
               ->where('standard_id',$request->standard_id)
               ->where('class_id',$request->class_id)

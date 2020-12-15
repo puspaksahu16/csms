@@ -57,6 +57,7 @@
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
@@ -70,6 +71,7 @@
                                                                         @endforeach
                                                                     @endif
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('standard_id') }}</span>
                                                             </div>
                                                         </div>
                                                     <div class="col-md-6 col-12">
@@ -78,6 +80,7 @@
                                                                 <option value="">-SELECT CLASS-</option>
 
                                                             </select>
+                                                            <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                         </div>
                                                     </div>
                                                         <div class="col-md-6 col-12">
@@ -87,13 +90,14 @@
 
                                                                 </select>
                                                                 <label for="name">Section</label>
+                                                                <span style="color: red">{{ $errors->first('section_id') }}</span>
                                                             </div>
                                                         </div>
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
                                                             <select  name="day" id="day" class="form-control">
-                                                                <option>-Select Day-</option>
+                                                                <option value="">-Select Day-</option>
                                                                 <option value="Monday">Monday</option>
                                                                 <option value="Tuesday">Tuesday</option>
                                                                 <option value="Wednesday">Wednesday</option>
@@ -102,6 +106,7 @@
                                                                 <option value="Saturday">Saturday</option>
                                                                 <option value="Holiday">Holiday</option>
                                                             </select>
+                                                            <span style="color: red">{{ $errors->first('day') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-12">
@@ -113,6 +118,7 @@
 {{--                                                                @endforeach--}}
                                                             </select>
                                                             <label for="name">Period</label>
+                                                            <span style="color: red">{{ $errors->first('period_id') }}</span>
                                                         </div>
                                                     </div>
                                                         <div class="col-md-6 col-12">
@@ -125,6 +131,7 @@
                                                                         @endforeach
                                                                     @endif
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('subject_id') }}</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
@@ -137,6 +144,7 @@
                                                                         @endforeach
                                                                     @endif
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('employee') }}</span>
                                                             </div>
                                                         </div>
                                                     <div class="col-12 pt-2">

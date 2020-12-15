@@ -56,20 +56,22 @@
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
                                                                 <select id="school_id" onchange="getStandard()" name="school_id" class="form-control">
-                                                                    <option>-SELECT School-</option>
+                                                                    <option value="">-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
-                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                        <option {{ (old('school_id') == $school->id ? "selected" : '') }} value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <input autocomplete="off" type="text" class="form-control" placeholder="Subject Name" name="name">
+                                                            <input autocomplete="off" type="text" value="{{old('name')}}" class="form-control" placeholder="Subject Name" name="name">
                                                             <label for="name">Subject Name</label>
+                                                            <span style="color: red">{{ $errors->first('name') }}</span>
                                                         </div>
                                                     </div>
 

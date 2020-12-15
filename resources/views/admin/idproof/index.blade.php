@@ -36,8 +36,9 @@
                                                 <div class="row">
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <input autocomplete="off" type="text" id="first-name-column" class="form-control" placeholder="Create New Id Proof" name="id_proof">
+                                                            <input autocomplete="off" type="text" id="first-name-column" value="{{old('id_proof')}}" class="form-control" placeholder="Create New Id Proof" name="id_proof">
                                                             <label for="first-name-column">Create Id Proof</label>
+                                                            <span style="color: red">{{ $errors->first('id_proof') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">

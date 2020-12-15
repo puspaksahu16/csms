@@ -54,6 +54,40 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'photo' => 'required',
+            'school_id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'dob' => 'required',
+            'mobile' => 'required|digits:10',
+            'email' => 'required|email|unique:users,email',
+
+            'gender_id' => 'required',
+            'id_proof' => 'required',
+            'id_proof_no' => 'required',
+            'experience' => 'required',
+            'caste' => 'required',
+            'employee_qualification' => 'required',
+            'employee_department' => 'required',
+            'employee_designation' => 'required',
+            'employee_salary' => 'required',
+            'role_id' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'district' => 'required',
+            'zip' => 'required',
+            'state' => 'required',
+            'country' => 'required',
+            'permanent_address' => 'required',
+            'permanent_city' => 'required',
+            'permanent_district' => 'required',
+            'permanent_zip' => 'required',
+            'permanent_state' => 'required',
+            'permanent_country' => 'required',
+
+        ]);
+
         $em = Employee::orderBy('id', 'DESC')->get('employee_unique_id');
         if (count($em) <= 0)
         {

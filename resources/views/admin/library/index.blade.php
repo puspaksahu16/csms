@@ -41,46 +41,52 @@
                                                             <div class="col-md-3 col-12">
                                                                 <div class="form-label-group">
                                                                     <select  name="school_id" class="form-control">
-                                                                        <option>-SELECT School-</option>
+                                                                        <option value="">-SELECT School-</option>
 
                                                                         @foreach($schools as $school)
-                                                                            <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                            <option {{ (old('school_id') == $school->id  ? "selected" : '') }}  value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                         @endforeach
 
                                                                     </select>
+                                                                    <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                                 </div>
                                                             </div>
 
 
                                                             <div class="col-3">
                                                                 <div class="form-label-group">
-                                                                    <input type="text" name="book_id" class="form-control">
+                                                                    <input type="text" value="{{old('book_id')}}" name="book_id" class="form-control">
                                                                     <label for="first-name-column">Book ID</label>
+                                                                    <span style="color: red">{{ $errors->first('book_id') }}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-3">
                                                                 <div class="form-label-group">
-                                                                    <input type="text" name="book_name" class="form-control">
+                                                                    <input type="text" value="{{old('book_name')}}" name="book_name" class="form-control">
                                                                     <label for="first-name-column">Book Name</label>
+                                                                    <span style="color: red">{{ $errors->first('book_name') }}</span>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-3">
                                                                 <div class="form-label-group">
-                                                                    <input type="text" name="publisher" class="form-control">
+                                                                    <input type="text" value="{{old('publisher')}}" name="publisher" class="form-control">
                                                                     <label for="first-name-column">Publisher</label>
+                                                                    <span style="color: red">{{ $errors->first('publisher') }}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-3">
                                                                 <div class="form-label-group">
-                                                                    <input type="text" name="edition" class="form-control">
+                                                                    <input type="text" value="{{old('edition')}}" name="edition" class="form-control">
                                                                     <label for="first-name-column">Edition</label>
+                                                                    <span style="color: red">{{ $errors->first('edition') }}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-3">
                                                                 <div class="form-label-group">
-                                                                    <input type="text" name="book_price" class="form-control">
+                                                                    <input type="text"  value="{{old('book_price')}}" name="book_price" class="form-control">
                                                                     <label for="first-name-column">Price</label>
+                                                                    <span style="color: red">{{ $errors->first('book_price') }}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-3"></div>

@@ -36,6 +36,10 @@ class SetStandardController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'unique:set_standards|required'
+        ]);
+
         $standard = SetStandard::create($request->all());
         return redirect('/set_standard')->with("success", "Standard Created successfully!");
     }

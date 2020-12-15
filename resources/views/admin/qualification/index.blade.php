@@ -42,6 +42,7 @@
                                                         <div class="form-label-group">
                                                             <input autocomplete="off" type="text" id="qualification-column" class="form-control" placeholder="Create Qualification" name="qualification">
                                                             <label for="qualification-column">Create Qualification</label>
+                                                            <span style="color: red">{{ $errors->first('qualification') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">

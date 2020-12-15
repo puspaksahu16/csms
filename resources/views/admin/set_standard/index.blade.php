@@ -36,8 +36,9 @@
                                                 <div class="row">
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <input autocomplete="off" type="text" id="first-name-column" class="form-control" placeholder="Create Standard" name="name">
+                                                            <input autocomplete="off" type="text" id="first-name-column" value="{{old('name')}}" class="form-control" placeholder="Create Standard" name="name">
                                                             <label for="first-name-column">Create Standard</label>
+                                                            <span style="color: red">{{ $errors->first('name') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">

@@ -50,6 +50,12 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'school_id' => 'required',
+            'section' => 'required',
+            'class_id' => 'required'
+        ]);
+
         if (auth()->user()->role->name == "super_admin") {
             $sections = Section::where('school_id',$request->school_id)
                 ->where('class_id',$request->class_id)

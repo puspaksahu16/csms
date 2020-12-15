@@ -177,6 +177,9 @@
                                             @endif
                                             @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                             <th scope="col">Student Name</th>
+                                                <th scope="col">Class</th>
+                                                <th scope="col">Section</th>
+                                                <th scope="col">Student Id</th>
                                             @endif
                                             <th scope="col">Book Id</th>
                                             <th scope="col">Book Name</th>
@@ -197,6 +200,9 @@
                                                 @endif
                                                 @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                                 <th>{{$issue_book->student->first_name ." ".$issue_book->student->last_name}}</th>
+                                                    <th>{{$issue_book->student->classes->create_class}}</th>
+                                                    <th>{{$issue_book->student->section}}</th>
+                                                    <th>{{$issue_book->student->student_unique_id}}</th>
                                                 @endif
                                                 <th>{{$issue_book->book->book_id}}</th>
                                                 <th>{{$issue_book->book->book_name}}</th>

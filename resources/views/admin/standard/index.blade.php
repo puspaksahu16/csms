@@ -55,26 +55,28 @@
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
                                                                 <select name="school_id" class="form-control">
-                                                                    <option>-SELECT School-</option>
+                                                                    <option value="">-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
-                                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                        <option  {{ (old('school_id') == $school->id ? "selected" : '') }} value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
+                                                                <span style="color: red">{{ $errors->first('school_id') }}</span>
                                                             </div>
                                                         </div>
                                                     @endif
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
                                                             <select name="name" class="form-control">
-                                                                <option>-SELECT Standard-</option>
+                                                                <option value="">-SELECT Standard-</option>
                                                                 @foreach($set_standards as $set_standard )
-                                                                    <option value="{{ $set_standard->name }}">{{ $set_standard->name }}</option>
+                                                                    <option {{ (old('name') == $set_standard->name ? "selected" : '') }} value="{{ $set_standard->name }}">{{ $set_standard->name }}</option>
                                                                 @endforeach
 
                                                             </select>
                                                             <label for="first-name-column">Create Standard Name</label>
+                                                            <span style="color: red">{{ $errors->first('name') }}</span>
                                                         </div>
                                                     </div>
 
