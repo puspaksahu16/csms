@@ -66,7 +66,6 @@
                                                 <td>{{$key+1}}</td>
                                                 <td>{{$product->school->full_name}}</td>
                                                 <td>{{$product->name}}</td>
-                                                <td>{{$product->name}}</td>
                                                 <td>{{$product->unit}}</td>
                                                 <td><a href="{{route('products.edit', $product->id)}}" class="btn btn-primary">Edit</a></td>
                                             </tr>
