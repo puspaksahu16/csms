@@ -137,6 +137,40 @@
                                 <h4 class="card-title">Class List</h4>
 
                             </div>
+                            <div class="container">
+                                <form class="form" action="{{url('/fetch_class_table')}}" method="get">
+                                    @csrf
+                                    <div class="row">
+                                        @if(auth()->user()->role->name == "super_admin")
+                                            <div class="col-md-4 col-12">
+                                                <div class="form-label-group">
+                                                    <select id="school" onchange="getStd()" name="school_id" class="form-control">
+                                                        <option value="">-SELECT School-</option>
+
+                                                        @foreach($schools as $school)
+                                                            <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                        @endforeach
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-12">
+                                                <div class="form-label-group">
+                                                    <select disabled="true" onchange="standardFiler()" type="text" id="standard" class="form-control"  name="standard_id">
+                                                        <option value="">-Select Standard-</option>
+                                                        {{--@foreach($standards as $standard)--}}
+                                                        {{--<option value="{{ $standard->id }}">{{ $standard->name }}</option>--}}
+                                                        {{--@endforeach--}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                    </div>
+                                </form>
+                            </div>
                             <div class="card-content">
 
                                 <div class="table-responsive">
@@ -153,7 +187,7 @@
 {{--                                            <th></th>--}}
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="std_filter">
                                         @foreach($classes as $key => $classes)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
@@ -195,6 +229,57 @@
                     $.each(response,function(key, value)
                     {
                         $("#standard_id").append('<option value=' + key + '>' + value + '</option>');
+                    });
+
+                }
+            });
+        }
+
+
+
+        function getStd() {
+            var school_id = $('#school').val();
+            // alert(csrf);
+            $.ajax({
+                url : "/get_standard/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#standard").attr('disabled', false);
+                    $("#standard").empty();
+                    $("#standard").append('<option value="">-Select Standard-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#standard").append('<option value=' + key + '>' + value + '</option>');
+                    });
+
+                }
+            });
+        }
+
+        function standardFiler() {
+            var school_id = $('#school').val();
+            var standard_id = $('#standard').val();
+            // alert(class_id);
+            $.ajax({
+                type: "get",
+                url: "/fetch_classby_standard",
+                data:{school_id: school_id, standard_id: standard_id},
+
+                success: function(data){
+                    console.log(data);
+                    $("#std_filter").empty();
+                    $.each(data, function(key, value)
+                    {
+
+                        $("#std_filter").append('<tr>' +
+                            '<td scope="row">' + (key + 1) + '</td>'+
+                            '<td>' + value.school.full_name + '</td>'+
+                            '<td>' + value.standard.name + '</td>'+
+                            '<td>' + value.create_class + '</td>'+
+                            '<td><a href="classes/'+ value.id + '/edit" class="btn btn-primary btn-sm">Edit</a></td>'+
+
+                            '</tr>');
                     });
                 }
             });

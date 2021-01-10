@@ -28,6 +28,12 @@ class PeriodController extends Controller
         return view('admin.period.index',compact(['periods','standards','schools']));
     }
 
+    public function fetchPeriodByStandard( Request $request )
+    {
+        $periods =  Period::with('school','standard')->where('school_id',$request->school_id)->where('standard_id',$request->standard_id)->get();
+        return response($periods);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

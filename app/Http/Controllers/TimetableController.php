@@ -24,14 +24,28 @@ class TimetableController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $timetables = TimeTable::all();
+            $schools = School::all();
+            $classes = Createclass::all();
         }
         elseif (auth()->user()->role->name == "admin"){
             $timetables = TimeTable::where('school_id', auth()->user()->school->id)->get();
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }
-
-        return view('admin.timetable.index',compact(['timetables']));
+        return view('admin.timetable.index',compact(['timetables','schools','classes']));
     }
 
+    public function fetchTimetableByClass( Request $request )
+    {
+        if (auth()->user()->role->name == "super_admin") {
+            $timetables = TimeTable::with('school','class','standard','section','period','subject','employee')->where('school_id',$request->school_id)->where('class_id',$request->class_id)->get();
+        }elseif (auth()->user()->role->name == "admin"){
+            $timetables = TimeTable::with('school','class','standard','section','period','subject','employee')->where('school_id',auth()->user()->school->id)->where('class_id',$request->class_id)->get();
+        }
+
+
+
+        return response($timetables);
+    }
     public function viewTimetable()
     {
         if (auth()->user()->role->name == "parent"){
@@ -132,7 +146,7 @@ class TimetableController extends Controller
             'day' => 'required',
             'period_id' => 'required',
             'subject_id' => 'required',
-            'employee' => 'required',
+            'employee' => 'required'
         ]);
 
           $periods = TimeTable::where('school_id',$request->school_id)
@@ -147,16 +161,6 @@ class TimetableController extends Controller
             ->where('period_id',$request->period_id)
             ->where('employee_id',$request->employee_id)
             ->first();
-
-//            return $periods;
-
-//        $class = TimeTable::where('class_id',$request->class_id)->first();
-//        $section = TimeTable::where('section_id',$request->section_id)->first();
-//        $employee = TimeTable::where('employee_id',$request->employee_id)->first();
-//        $subject = TimeTable::where('subject_id',$request->subject_id)->first();
-//        $days = TimeTable::where('day',$request->day)->first();
-//        $time_from = Period::where('id',$request->period_id)->first('time_from');
-//        $time_to = Period::where('id',$request->period_id)->first('time_to');
 
         if (empty($periods) AND empty($emp)){
             $timetable = new TimeTable();

@@ -21,14 +21,17 @@ class ResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (auth()->user()->role->name == "super_admin") {
             $result = Result::all();
+            $schools = School::all();
+            $classes = Createclass::all();
         }else{
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $result = Result::where('school_id', auth()->user()->school->id)->get();
         }
-        return view('admin.result.index', compact('result'));
+        return view('admin.result.index', compact(['result','schools','classes']));
     }
 
     public function laraResult()
@@ -47,6 +50,16 @@ class ResultController extends Controller
     public function getExam(Request $request)
     {
         return $rolls = PreExam::where('class_id', $request->class_id)->pluck('exam_name', 'id');
+    }
+
+    public function classFiler( Request $request)
+    {
+        if (auth()->user()->role->name == "super_admin") {
+            $result = Result::with('classes', 'students','school')->where('school_id',$request->school_id)->where('class_id',$request->class_id)->get();
+        }elseif (auth()->user()->role->name == "admin"){
+            $result = Result::with('classes', 'students','school')->where('school_id',auth()->user()->school->id)->where('class_id',$request->class_id)->get();
+        }
+        return response($result);
     }
 
     public function enroll($id)

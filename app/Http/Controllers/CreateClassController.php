@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Createclass;
+use App\Result;
 use App\School;
 use App\SetClass;
 use App\Standard;
@@ -42,6 +43,12 @@ class CreateClassController extends Controller
     {
 //        return $id;
         $classes = Createclass::where('school_id', $id)->pluck("create_class", 'id');
+        return response($classes);
+    }
+
+    public function fetchClassByStandard( Request $request )
+    {
+        $classes = CreateClass::with('school','standard')->where('school_id',$request->school_id)->where('standard_id',$request->standard_id)->get();
         return response($classes);
     }
 

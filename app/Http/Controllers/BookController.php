@@ -22,16 +22,31 @@ class BookController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $books = Book::all();
+            $schools = School::all();
+            $classes = Createclass::all();
         }
         else{
             $books = Book::where('school_id', auth()->user()->school->id)->get();
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }
-        return view('admin.books.index', compact('books'));
+        return view('admin.books.index', compact(['books','schools','classes']));
     }
 
     public function laraBooks()
     {
         return Laratables::recordsOf(Book::class);
+    }
+
+    public function fetchBookClass( Request $request )
+    {
+        if (auth()->user()->role->name == "super_admin") {
+            $books = Book::with('schools','classes','standard','subject','publisher')->where('school_id',$request->school_id)->where('class_id',$request->class_id)->get();
+        }elseif (auth()->user()->role->name == "admin"){
+            $books = Book::with('schools','classes','standard','subject','publisher')->where('school_id',auth()->user()->school->id)->where('class_id',$request->class_id)->get();
+        }
+
+
+        return response($books);
     }
 
     /**
@@ -85,12 +100,27 @@ class BookController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $books = Book::all();
+            $schools = School::all();
+            $classes = Createclass::all();
         }else{
             $books = Book::where('school_id', auth()->user()->school->id)->get();
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }
 
-        return view('admin.books.book_fee', compact('books'));
+        return view('admin.books.book_fee', compact(['books','schools','classes']));
     }
+
+    public function fetchBookPriceByClass( Request $request )
+    {
+        if (auth()->user()->role->name == "super_admin") {
+            $books = Book::with('schools','classes','subject','publisher')->where('school_id',$request->school_id)->where('class_id',$request->class_id)->get();
+        }elseif (auth()->user()->role->name == "admin"){
+            $books = Book::with('schools','classes','subject','publisher')->where('school_id',auth()->user()->school->id)->where('class_id',$request->class_id)->get();
+        }
+
+        return response($books);
+    }
+
 
     /**
      * @param Request $request

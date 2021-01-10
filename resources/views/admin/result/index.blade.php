@@ -45,12 +45,44 @@
                                 <h4 class="card-title">Result</h4>
                                 <a class="btn btn-primary" href="{{url('/result/create')}}">Add Result</a>
                             </div>
+                            <div class="container">
+                                <form class="form" action="{{url('/fetch_class_table')}}" method="get">
+                                    @csrf
+                                    <div class="row">
+                                        @if(auth()->user()->role->name == "super_admin")
+                                        <div class="col-md-4">
+                                                <select name="school_id" onclick="getClass()" id="school_id" class="form-control">
+                                                    <option value="">-SELECT School-</option>
+                                                    @foreach($schools as $school)
+                                                        <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                        </div>
+                                        @endif
+                                        <div class="col-md-4">
+                                            <select onchange="classFiler(this.value)" name="class_id" id="class" class="form-control">
+                                                <option value="">-SELECT CLASS-</option>
+{{--                                                @if(auth()->user()->role->name == "admin")--}}
+                                                    @foreach($classes as $class)
+                                                        <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                    @endforeach
+{{--                                                @endif--}}
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
                             <div class="card-content">
                                 <div class="table-responsive">
-                                    <table class="table zero-configuration table-striped" id="">
+                                    <table class="table zero-configuration table-striped">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                            <th scope="col">School</th>
+                                            @endif
                                             <th scope="col">Class Name</th>
                                             <th scope="col">Roll No</th>
                                             <th scope="col">Name</th>
@@ -59,10 +91,13 @@
 {{--                                            <th></th>--}}
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="class_filter">
                                         @foreach($result as $key => $results)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                <td>{{$results->school->full_name}}</td>
+                                                @endif
                                                 <td>{{$results->classes->create_class}}</td>
                                                 <td>{{$results->students->roll_no}}</td>
                                                 <td>{{$results->students->first_name." ".$results->students->last_name}}</td>
@@ -83,3 +118,66 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        function getClass() {
+            var school_id = $('#school_id').val();
+            // alert(csrf);
+            $.ajax({
+                url : "/get_class/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#class").attr('disabled', false);
+                    $("#class").empty();
+                    $("#class").append('<option value="">-Select Class-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#class").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
+        }
+        function classFiler() {
+            var school_id = $('#school_id').val();
+            var class_id = $('#class').val();
+            // alert(class_id);
+            $.ajax({
+                type: "get",
+                url: "/fetch_class_table",
+                data:{school_id: school_id, class_id: class_id},
+
+                success: function(data){
+                    console.log(data);
+                    $("#class_filter").empty();
+                    $.each(data, function(key, value)
+                    {
+                        @if(auth()->user()->role->name == "super_admin")
+                        $("#class_filter").append('<tr>' +
+                            '<td scope="row">' + (key + 1) + '</td>'+
+                            '<td>' + value.school.full_name + '</td>'+
+                        '<td>' + value.classes.create_class + '</td>'+
+                        '<td>' + value.students.roll_no + '</td>'+
+                        '<td>' + value.students.first_name +" "+ value.students.last_name + '</td>'+
+                        '<td>' + value.percentage + '</td>'+
+
+                        '<td><a href="enroll/'+ value.id + '" class="btn btn-warning">Enroll</a></td>'+
+                            '</tr>');
+                        @else
+                        $("#class_filter").append('<tr>' +
+                            '<td scope="row">' + (key + 1) + '</td>'+
+                            '<td>' + value.classes.create_class + '</td>'+
+                            '<td>' + value.students.roll_no + '</td>'+
+                            '<td>' + value.students.first_name +" "+ value.students.last_name + '</td>'+
+                            '<td>' + value.percentage + '</td>'+
+
+                            '<td><a href="enroll/'+ value.id + '" class="btn btn-warning">Enroll</a></td>'+
+                            '</tr>');
+                        @endif
+                    });
+                }
+            });
+        }
+    </script>
+
+@endpush

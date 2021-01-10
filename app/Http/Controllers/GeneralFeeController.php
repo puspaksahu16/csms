@@ -18,11 +18,27 @@ class GeneralFeeController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $general = GeneralFee::all();
+            $schools = School::all();
+            $classes = Createclass::all();
         }else{
             $general = GeneralFee::where('school_id', auth()->user()->school->id)->get();
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }
 
-        return view('admin.general.index' , compact('general'));
+        return view('admin.general.index' , compact(['general','schools','classes']));
+    }
+
+    public function fetchGeneralFeeClass( Request $request )
+    {
+        if (auth()->user()->role->name == "super_admin") {
+            $general = GeneralFee::with('schools','classes')->where('school_id', $request->school_id)->where('class_id', $request->class_id)->get();
+        }
+        elseif (auth()->user()->role->name == "admin"){
+            $general = GeneralFee::with('schools','classes')->where('school_id',auth()->user()->school->id)->where('class_id', $request->class_id)->get();
+        }
+
+
+        return response($general);
     }
 
     /**

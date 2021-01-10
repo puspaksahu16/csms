@@ -11,6 +11,10 @@ class GeneralFee extends Model
     public function classes(){
         return $this->belongsTo(Createclass::class,'class_id');
     }
+    public function schools()
+    {
+        return $this->belongsTo(School::class, 'school_id');
+    }
 
 
 }

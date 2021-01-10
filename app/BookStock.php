@@ -20,5 +20,9 @@ class BookStock extends Model
     {
         return $this->stock_in - $this->stock_out;
     }
+    public function classes()
+    {
+        return $this->belongsTo(Createclass::class, 'class_id');
+    }
 
 }

@@ -17,6 +17,10 @@ class Result extends Model
     {
         return $this->belongsTo(PreAdmission::class, 'roll_no');
     }
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 
     public static function laratablesCustomAction($results)
     {

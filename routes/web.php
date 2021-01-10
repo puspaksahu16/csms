@@ -93,6 +93,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/fetch_class', 'BookController@fetchClass');
     Route::get('/get_class/{id}', 'CreateClassController@getClass');
 
+
+
     Route::resource('publisher', 'PublisherController');
     Route::get('publisher_delete/{id}', 'PublisherController@destroy');
 
@@ -256,5 +258,16 @@ Route::middleware('auth')->group(function () {
 
     Route::get('login/google', 'Auth\LoginController@redirectToProviderGoogle');
     Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallbackGoogle');
+
+
+    Route::get('/fetch_class_table', 'ResultController@classFiler');
+    Route::get('/fetch_book_class', 'BookController@fetchBookClass');
+    Route::get('/fetch_bookstock_class', 'BookStockController@fetchBookStockClass');
+    Route::get('/fetch_generalfee_class', 'GeneralFeeController@fetchGeneralFeeClass');
+    Route::get('/fetch_extra_class', 'ExtraClassController@fetchExtraClass');
+    Route::get('/fetch_bookfee_class', 'BookController@fetchBookPriceByClass');
+    Route::get('/fetch_timetable_class', 'TimetableController@fetchTimetableByClass');
+    Route::get('/fetch_classby_standard', 'CreateClassController@fetchClassByStandard');
+    Route::get('/fetch_periodby_standard', 'PeriodController@fetchPeriodByStandard');
 });
 

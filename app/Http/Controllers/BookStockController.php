@@ -22,17 +22,32 @@ class BookStockController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $stocks = BookStock::all();
+            $schools = School::all();
+            $classes = Createclass::all();
         }else{
             $stocks = BookStock::where('school_id', auth()->user()->school->id)->get();
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }
 
-        return view('admin.book_stocks.index', compact('stocks'));
+        return view('admin.book_stocks.index', compact(['stocks','schools','classes']));
     }
 
     public function laraBookStock()
     {
        return Laratables::recordsOf(BookStock::class);
     }
+
+    public function fetchBookStockClass( Request $request )
+    {
+        if (auth()->user()->role->name == "super_admin") {
+            $stocks = BookStock::with('schools','book','classes','book.subject','book.publisher')->where('school_id', $request->school_id)->where('class_id', $request->class_id)->get();
+        }
+        elseif (auth()->user()->role->name == "admin"){
+            $stocks = BookStock::with('schools','book','classes','book.subject','book.publisher')->where('school_id', auth()->user()->school->id)->where('class_id', $request->class_id)->get();
+        }
+        return response($stocks);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

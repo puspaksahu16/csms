@@ -48,8 +48,38 @@
                                 <h4 class="card-title">Books Stock</h4>
                                 <a class="btn btn-primary" href="{{url('/book_stocks/create')}}">Add</a>
                             </div>
-                            <div class="card-content">
+                            <div class="container">
+                                <form class="form" action="{{url('/fetch_class_table')}}" method="get">
+                                    @csrf
+                                    <div class="row">
+                                        @if(auth()->user()->role->name == "super_admin")
+                                        <div class="col-md-4">
+                                            <select name="school_id" onclick="getClass()" id="school_id" class="form-control">
+                                                <option value="">-SELECT School-</option>
 
+                                                @foreach($schools as $school)
+                                                    <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                @endforeach
+
+                                            </select>
+                                        </div>
+                                        @endif
+                                        <div class="col-md-4">
+                                            <select onchange="classFiler(this.value)" name="class_id" id="class" class="form-control">
+                                                <option value="">-SELECT CLASS-</option>
+                                                @if(auth()->user()->role->name == "admin")
+                                                    @foreach($classes as $class)
+                                                        <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                    @endforeach
+                                                @endif
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-content">
                                 <div class="table-responsive">
                                     <table class="table zero-configuration" id="">
                                         <thead>
@@ -69,7 +99,7 @@
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="class_filter">
                                         @foreach($stocks as $key => $stock)
                                             <tr>
                                                 <td>{{$key+1}}</td>
@@ -99,3 +129,70 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        function getClass() {
+            var school_id = $('#school_id').val();
+            // alert(csrf);
+            $.ajax({
+                url : "/get_class/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#class").attr('disabled', false);
+                    $("#class").empty();
+                    $("#class").append('<option value="">-Select Class-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#class").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
+        }
+        function classFiler() {
+            var school_id = $('#school_id').val();
+            var class_id = $('#class').val();
+            // alert(class_id);
+            $.ajax({
+                type: "get",
+                url: "/fetch_bookstock_class",
+                data:{school_id: school_id, class_id: class_id},
+
+                success: function(data){
+                    console.log(data);
+                    $("#class_filter").empty();
+                    $.each(data, function(key, value)
+                    {
+                        @if(auth()->user()->role->name == "super_admin")
+                        $("#class_filter").append('<tr>' +
+                            '<td scope="row">' + (key + 1) + '</td>'+
+                            '<td>' + value.schools.full_name + '</td>'+
+                            '<td>' + value.book.name + '</td>'+
+                            '<td>' + value.classes.create_class + '</td>'+
+                            '<td>' + value.book.subject.name + '</td>'+
+                            '<td>' + value.book.publisher.name + '</td>'+
+                            '<td>' + value.stock_in + '</td>'+
+                            '<td>' + value.stock_out + '</td>'+
+                            '<td>' + (value.stock_in - value.stock_out) + '</td>'+
+                            '<td><a href="book_stocks/'+ value.id + '/edit" class="btn btn-warning btn-sm">Remove last In</a></td>'+
+                            '</tr>');
+                        @else
+                        $("#class_filter").append('<tr>' +
+                            '<td scope="row">' + (key + 1) + '</td>'+
+                            '<td>' + value.book.name + '</td>'+
+                            '<td>' + value.classes.create_class + '</td>'+
+                            '<td>' + value.book.subject.name + '</td>'+
+                            '<td>' + value.book.publisher.name + '</td>'+
+                            '<td>' + value.stock_in + '</td>'+
+                            '<td>' + value.stock_out + '</td>'+
+                            '<td>' + (value.stock_in - value.stock_out) + '</td>'+
+                            '<td><a href="book_stocks/'+ value.id + '/edit" class="btn btn-warning btn-sm">Remove last In</a></td>'+
+                            '</tr>');
+                        @endif
+                    });
+                }
+            });
+        }
+    </script>
+
+@endpush
