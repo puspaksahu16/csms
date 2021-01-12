@@ -105,15 +105,16 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'school_id' => 'required',
-            'percentage' => 'required',
-            'obtained_mark' => 'required',
-            'total_mark' => 'required',
-            'exam_id' => 'required',
-            'class_id' => 'required',
-            'roll_no' => 'unique:results|required'
-        ]);
+            $this->validate($request, [
+                'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
+                'percentage' => 'required',
+                'obtained_mark' => 'required',
+                'total_mark' => 'required',
+                'exam_id' => 'required',
+                'class_id' => 'required',
+                'roll_no' => 'unique:results|required'
+            ]);
+
 
         $roll = Result::where('roll_no',$request->roll_no)->first();
         if ($roll === null){

@@ -47,7 +47,7 @@ class SubjectController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'school_id' => 'required'
+            'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
         ]);
 
         $data = $request->all();

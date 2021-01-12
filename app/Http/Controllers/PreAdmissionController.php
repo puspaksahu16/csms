@@ -82,7 +82,7 @@ class PreAdmissionController extends Controller
         $request->validate([
             'photo' => 'required',
             'family_photo' => 'required',
-            'school_id' => 'required',
+            'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
             'first_name' => 'required',
             'last_name' => 'required',
             'dob' => 'required',

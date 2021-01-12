@@ -64,13 +64,16 @@ class ExtraClassController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'school_id' => 'required',
-            'price' => 'required',
-            'type' => 'required',
-            'class_id' => 'required',
-            'name' => 'unique:extra_classes|required'
-        ]);
+
+            $this->validate($request, [
+                'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
+                'price' => 'required',
+                'type' => 'required',
+                'class_id' => 'required',
+                'name' => 'unique:extra_classes|required'
+            ]);
+
+
         $data = $request->all();
         $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
         ExtraClass::create($data);

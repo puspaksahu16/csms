@@ -50,7 +50,7 @@ class StandardController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'school_id' => 'required',
+            'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
             'name' => 'required'
         ]);
 

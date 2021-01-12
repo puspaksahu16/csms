@@ -71,11 +71,13 @@ class CreateClassController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'school_id' => 'required',
-            'standard_id' => 'required',
-            'create_class' => 'required'
-        ]);
+            $this->validate($request, [
+                'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
+                'standard_id' => 'required',
+                'create_class' => 'required'
+            ]);
+
+
 
         $data = $request->all();
         $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
