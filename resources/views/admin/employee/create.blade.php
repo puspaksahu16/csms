@@ -218,7 +218,7 @@
                                                                                 <select name="role_id" class="form-control">
                                                                                     <option value="">-choose Role-</option>
                                                                                     @foreach($employee_roles as $employee_role)
-                                                                                        <option {{ (old('role_id') == $employee_role->role_id ? "selected" : '') }} value="{{ $employee_role->role_id }}">{{ $employee_role->role_name }}</option>
+                                                                                        <option {{ (old('role_id') == $employee_role->role_id ? "selected" : '') }} value="{{ $employee_role->role_id }}">{{ ucfirst($employee_role->role_name) }}</option>
                                                                                     @endforeach
                                                                                 </select>
                                                                                 <span style="color: red">{{ $errors->first('role_id') }}</span>

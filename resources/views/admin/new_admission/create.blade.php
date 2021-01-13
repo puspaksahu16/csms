@@ -201,7 +201,7 @@
                                                                             <div class="form-label-group">
                                                                                 TC<span style="color: red">*</span>:
                                                                                 <select class="form-control" name="tc" onchange="yesnoCheck(this);">
-                                                                                    <option value="">- select tc-</option>
+                                                                                    <option value="">-Select TC-</option>
                                                                                     <option {{ (old('id_proof') == "yes" ? "selected" : '') }} value="{{ empty(old('id_proof')) ? 'yes' :  old('id_proof')}}">Yes</option>
                                                                                     <option {{ (old('id_proof') == "no" ? "selected" : '') }} value="{{ empty(old('id_proof')) ? 'no' :  old('id_proof')}}">No</option>
                                                                                 </select>
@@ -261,7 +261,18 @@
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
                                                                                     Blood Group<span style="color: red">*</span>:
-                                                                                    <input type="text" class="form-control" name="blood_group">
+                                                                                    <select name="blood_group" class="form-control">
+                                                                                        <option value="">Select Blood Group</option>
+                                                                                        <option value="A+">A+</option>
+                                                                                        <option value="O+">O+</option>
+                                                                                        <option value="B+">B+</option>
+                                                                                        <option value="AB+">AB+</option>
+                                                                                        <option value="A-">A-</option>
+                                                                                        <option value="O-">O-</option>
+                                                                                        <option value="B-">B-</option>
+                                                                                        <option value="AB-">AB-</option>
+
+                                                                                    </select>
                                                                                     <span style="color: red">{{ $errors->first('blood_group') }}</span>
                                                                                 </div>
                                                                             </div>

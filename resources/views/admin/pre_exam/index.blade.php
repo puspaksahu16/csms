@@ -66,6 +66,7 @@
                                             <th scope="col">Year</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Full Mark</th>
+                                            <th scope="col">Exam Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
@@ -80,6 +81,7 @@
                                                     <td>{{ $pre_exam->exam_name }}</td>
                                                     <td>{{ $pre_exam->current_year }}</td>
                                                     <td>{{ $pre_exam->classes->create_class }}</td>
+                                                    <td>{{ $pre_exam->created_at->format('d-m-Y') }}</td>
                                                     <td>{{ $pre_exam->full_mark }}</td>
                                                     <td><a href="{{route('pre_exam.edit', $pre_exam->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
                                                 </tr>

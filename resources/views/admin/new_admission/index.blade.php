@@ -80,7 +80,7 @@
                                                 @endif
                                                 <td><a href="{{route('new_admission.view', $student->id)}}">{{$student->student_unique_id}}</a></td>
                                                 @if($student->ref_no == '')
-                                                    <td>N/a</td>
+                                                    <td>N/A</td>
                                                     @else
                                                     <td>{{$student->ref_no}}</td>
                                                     @endif
