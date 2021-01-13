@@ -121,42 +121,43 @@ class NewAdmissionController extends Controller
      */
     public function store(Request $request)
     {
+            $request->validate([
+                'photo' => 'required',
+                'family_photo' => 'required',
+                'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'dob' => 'required',
+                'gender_id' => 'required',
+                'caste' => 'required',
+                'class_id' => 'required',
+                'tc' => 'required',
+                'category' => 'required',
+                'blood_group' => 'required',
 
-        $request->validate([
-            'photo' => 'required',
-            'family_photo' => 'required',
-            'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'dob' => 'required',
-            'gender_id' => 'required',
-            'caste' => 'required',
-            'class_id' => 'required',
-            'tc' => 'required',
-            'category' => 'required',
-            'blood_group' => 'required',
+                'mother_first_name' => 'required',
+                'mother_last_name' => 'required',
+                'mother_mobile' => 'required|digits:10',
+                'mother_email' => 'required|email|unique:users,email',
+                'mother_occupation' => 'required',
+                'mother_id_no' => 'required',
+                'mother_id_type' => 'required',
+                'mother_qualification' => 'required',
+                'mother_salary' => 'required',
 
-            'mother_first_name' => 'required',
-            'mother_last_name' => 'required',
-            'mother_mobile' => 'required|digits:10',
-            'mother_email' => 'required|email|unique:users,email',
-            'mother_occupation' => 'required',
-            'mother_id_no' => 'required',
-            'mother_id_type' => 'required',
-            'mother_qualification' => 'required',
-            'mother_salary' => 'required',
+                'father_first_name' => 'required',
+                'father_last_name' => 'required',
+                'father_mobile' => 'required|digits:10',
+                'father_email' => 'required|email',
+                'father_id_type' => 'required',
+                'father_id_no' => 'required',
+                'father_occupation' => 'required',
+                'father_qualification' => 'required',
+                'father_salary' => 'required',
 
-            'father_first_name' => 'required',
-            'father_last_name' => 'required',
-            'father_mobile' => 'required|digits:10',
-            'father_email' => 'required|email',
-            'father_id_type' => 'required',
-            'father_id_no' => 'required',
-            'father_occupation' => 'required',
-            'father_qualification' => 'required',
-            'father_salary' => 'required',
+            ]);
 
-        ]);
+
 
 
         $school_id = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;

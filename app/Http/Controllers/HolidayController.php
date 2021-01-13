@@ -48,12 +48,15 @@ class HolidayController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'school_id' => 'required',
-            'holiday_name' => 'required',
-            'from_date' => 'required',
-            'to_date' => 'required'
-        ]);
+
+            $this->validate($request, [
+                'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
+                'holiday_name' => 'required',
+                'from_date' => 'required',
+                'to_date' => 'required'
+            ]);
+
+
 
         $data = $request->all();
         $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;

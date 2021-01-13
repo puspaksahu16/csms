@@ -64,6 +64,7 @@ class PreExamController extends Controller
      */
     public function store(Request $request)
     {
+
         if (auth()->user()->role->name == 'super_admin')
         {
             $request->validate([
