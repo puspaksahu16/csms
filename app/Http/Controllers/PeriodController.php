@@ -21,6 +21,7 @@ class PeriodController extends Controller
             $periods =  Period::get();
             $standards = Standard::all();
         }else{
+            $schools = null;
             $standards = Standard::where('school_id', auth()->user()->school->id)->get();
             $periods =  Period::where('school_id', auth()->user()->school->id)->get();
         }

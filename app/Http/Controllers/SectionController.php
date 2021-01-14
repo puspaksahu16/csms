@@ -23,6 +23,7 @@ class SectionController extends Controller
             $schools = School::all();
             $set_sections = SetSection::all();
         }else{
+            $schools = null;
             $section = Section::where('school_id', auth()->user()->school->id)->get();
             $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
             $set_sections = SetSection::all();

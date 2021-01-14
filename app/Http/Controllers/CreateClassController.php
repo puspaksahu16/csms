@@ -27,6 +27,7 @@ class CreateClassController extends Controller
             $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
             $standards = Standard::where('school_id', auth()->user()->school->id)->get();
             $set_classes = SetClass::all();
+            $schools = null;
 
         }
         return view('admin.classes.index', compact(['classes','standards','schools','set_classes']));

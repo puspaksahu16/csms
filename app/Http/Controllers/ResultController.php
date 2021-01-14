@@ -28,6 +28,7 @@ class ResultController extends Controller
             $schools = School::all();
             $classes = Createclass::all();
         }else{
+            $schools = null;
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $result = Result::where('school_id', auth()->user()->school->id)->get();
         }

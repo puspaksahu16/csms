@@ -22,10 +22,11 @@ class HolidayController extends Controller
             $schools = School::all();
         }elseif(auth()->user()->role->name == "admin"){
             $holidays = Holiday::where('school_id',auth()->user()->school->id)->get();
+            $schools = null;
         }elseif(auth()->user()->role->name == "parent"){
               $student = StudentParent::with('students')->find(auth()->user()->parent->student_id);
-
              $holidays = Holiday::where('school_id',$student->students->school_id)->get();
+            $schools = null;
         }
         return view('admin.holiday.index', compact(['holidays','schools']));
     }

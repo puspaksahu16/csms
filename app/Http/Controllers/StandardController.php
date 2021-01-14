@@ -23,6 +23,7 @@ class StandardController extends Controller
             $set_standards = SetStandard::all();
             $schools = School::all();
         }else{
+            $schools = null;
             $standards = Standard::where('school_id', auth()->user()->school->id)->get();
             $set_standards = SetStandard::all();
         }

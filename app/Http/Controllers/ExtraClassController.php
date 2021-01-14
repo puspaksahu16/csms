@@ -23,6 +23,7 @@ class ExtraClassController extends Controller
         }else{
             $extraclass = ExtraClass::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+            $schools = null;
         }
 
         return view('admin.extraclasses.index', compact(['extraclass','schools','classes']));

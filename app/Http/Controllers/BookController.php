@@ -28,6 +28,7 @@ class BookController extends Controller
         else{
             $books = Book::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+            $schools = null;
         }
         return view('admin.books.index', compact(['books','schools','classes']));
     }

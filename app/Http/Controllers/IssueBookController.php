@@ -28,6 +28,7 @@ class IssueBookController extends Controller
             $issue_books = IssueBook::where('status',0)->get();
             $students = Student::where('school_id', auth()->user()->school->id)->get();
             $books = Library::where('school_id', auth()->user()->school->id)->get();
+            $schools = null;
 
         }
         if (auth()->user()->role->name == "parent") {
