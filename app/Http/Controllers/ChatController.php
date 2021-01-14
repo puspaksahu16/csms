@@ -33,6 +33,7 @@ class ChatController extends Controller
         }
 
         if (auth()->user()->role->name == "admin"){
+            $schools = null;
             $students = Student::with('parent:student_id,mother_email,id')->where('school_id', auth()->user()->school->id)->get();
             $parents = [];
             foreach ($students as $key => $st){

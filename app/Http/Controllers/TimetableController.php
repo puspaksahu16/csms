@@ -28,6 +28,7 @@ class TimetableController extends Controller
             $classes = Createclass::all();
         }
         elseif (auth()->user()->role->name == "admin"){
+            $schools = null;
             $timetables = TimeTable::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }

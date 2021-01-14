@@ -51,7 +51,12 @@ Route::middleware('auth')->group(function () {
     Route::get('classes_delete/{id}', 'CreateClassController@destroy');
 
 
+    Route::resource('assign_teacher', 'AssignTeacherController');
+    Route::get('/get_employee/{id}', 'AssignTeacherController@getEmployee');
+
+
     Route::resource('section','SectionController');
+    Route::get('section/get_class/{id}','SectionController@getClasses');
     Route::get('section_delete/{id}', 'SectionController@destroy');
 
     Route::resource('idproof', 'IdproofControler');

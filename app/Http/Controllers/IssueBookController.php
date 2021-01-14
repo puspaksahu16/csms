@@ -25,14 +25,16 @@ class IssueBookController extends Controller
             $schools = School::all();
         }
         if (auth()->user()->role->name == "admin") {
+            $schools = null;
             $issue_books = IssueBook::where('status',0)->get();
             $students = Student::where('school_id', auth()->user()->school->id)->get();
             $books = Library::where('school_id', auth()->user()->school->id)->get();
 
         }
         if (auth()->user()->role->name == "parent") {
+            $schools = null;
              $parents = StudentParent::where('id',auth()->user()->parent->id)->first();
-//              $parents->student_id;
+//           $parents->student_id;
              $issue_books = IssueBook::where('student_id',$parents->student_id)->where('status',0)->get();
 //            $students = Student::where('school_id', auth()->user()->school->id)->get();
 //            $books = Library::where('school_id', auth()->user()->school->id)->get();

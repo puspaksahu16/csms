@@ -21,6 +21,7 @@ class GeneralFeeController extends Controller
             $schools = School::all();
             $classes = Createclass::all();
         }else{
+            $schools = null;
             $general = GeneralFee::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }
@@ -52,6 +53,8 @@ class GeneralFeeController extends Controller
         if (auth()->user()->role->name == 'admin')
         {
             $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
+        }else{
+            $classes = null;
         }
         $schools = School::all();
         return view('admin.general.create' , compact(['classes','schools']));
@@ -71,7 +74,7 @@ class GeneralFeeController extends Controller
                 'price' => 'required',
                 'type' => 'required',
                 'class_id' => 'required',
-                'name' => 'unique:general_fees|required'
+                'name' => 'required'
             ]);
 
 

@@ -429,7 +429,7 @@
                             jQuery('select[name="class_id"]').empty();
                             if(data)
                             {
-                                $('select[name="class_id"]').append('<option value=""  style="text-transform: uppercase">-Select Exam-</option>');
+                                $('select[name="class_id"]').append('<option value=""  style="text-transform: uppercase">-Select Class-</option>');
                                 $.each(data,function(key,value){
                                     $('select[name="class_id"]').append($("<option/>", {
                                         value: key,

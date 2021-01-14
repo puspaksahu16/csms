@@ -67,6 +67,7 @@
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Section</th>
+                                            <th scope="col">Roll No</th>
                                             <th scope="col">Admission Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -94,6 +95,7 @@
                                                 @endif
 
                                                </td>
+                                                <td></td>
                                                 <td>{{$student->created_at->format('d F Y')}}</td>
                                                 <td>
 {{--                                                    <a href="{{route('new_admission.view', $student->id)}}" class="btn btn-sm btn-primary">View</a>--}}

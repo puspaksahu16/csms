@@ -21,6 +21,7 @@ class SubjectController extends Controller
             $schools = School::all();
             $subject = Subject::all();
         }else{
+            $schools = null;
             $subject = Subject::where('school_id', auth()->user()->school->id)->get();
         }
 

@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+
 @section('content')
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -59,9 +60,8 @@
                                                     @if(auth()->user()->role->name == "super_admin")
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
-                                                                <select name="school_id" class="form-control">
+                                                                <select name="school_id"  id="school_id" onchange="getClass()" class="form-control">
                                                                     <option value="">-SELECT School-</option>
-
                                                                     @foreach($schools as $school)
                                                                         <option {{ (old('school_id') == $school->id ? "selected" : '') }} value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
@@ -73,11 +73,13 @@
                                                     @endif
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
-                                                            <select name="class_id" class="form-control">
+                                                            <select name="class_id"  id="class" class="form-control">
                                                                 <option value="">-SELECT CLASS-</option>
+                                                                @if(auth()->user()->role->name == "admin")
                                                                 @foreach($classes as $class)
                                                                     <option  {{ (old('class_id') == $class->id ? "selected" : '') }} value="{{ $class->id }}" style="text-transform: uppercase">{{ $class->create_class }}</option>
                                                                 @endforeach
+                                                                    @endif
                                                             </select>
                                                             <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                         </div>
@@ -118,7 +120,7 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table table-striped mb-0 zero-configuration">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -156,3 +158,25 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        function getClass() {
+            var school_id = $('#school_id').val();
+            // alert(school_id);
+            $.ajax({
+                url : "/get_class/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#class").attr('disabled', false);
+                    $("#class").empty();
+                    $("#class").append('<option value="">-Select Class-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#class").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
+        }
+    </script>
+@endpush

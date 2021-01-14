@@ -26,6 +26,7 @@ class BookController extends Controller
             $classes = Createclass::all();
         }
         else{
+            $schools = null;
             $books = Book::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }

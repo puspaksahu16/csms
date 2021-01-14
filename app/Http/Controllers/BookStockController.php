@@ -25,6 +25,7 @@ class BookStockController extends Controller
             $schools = School::all();
             $classes = Createclass::all();
         }else{
+            $schools = null;
             $stocks = BookStock::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }

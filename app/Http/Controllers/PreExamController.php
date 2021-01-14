@@ -39,6 +39,7 @@ class PreExamController extends Controller
             $classes = Createclass::all();
             $schools = School::all();
         }else{
+            $schools = null;
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }
 

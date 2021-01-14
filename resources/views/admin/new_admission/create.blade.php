@@ -503,7 +503,7 @@
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
 {{--                                                                                    <textarea name="addresses[resident][address]" class="form-control">{{old('addresses[resident][address]')}}</textarea>--}}
-                                                                                    <textarea id="address" name="address" class="form-control"></textarea>
+                                                                                    <textarea id="address" name="address" class="form-control">{{ old('address') }}</textarea>
                                                                                     <label for="first-name-column">Resident Address</label>
                                                                                     <span style="color: red">{{ $errors->first('address') }}</span>
                                                                                 </div>
@@ -511,7 +511,7 @@
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
 {{--                                                                                    <input value="{{old('addresses[resident][city]')}}" type="text"  class="form-control" placeholder="City" name="addresses[resident][city]">--}}
-                                                                                    <input id="city" type="text"  class="form-control" placeholder="City" name="city">
+                                                                                    <input id="city" type="text"  class="form-control" placeholder="City" value="{{ old('city') }}" name="city">
                                                                                     <label for="Post">City</label>
                                                                                     <span style="color: red">{{ $errors->first('city') }}</span>
                                                                                 </div>
@@ -519,29 +519,33 @@
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
 {{--                                                                                    <input value="{{old('addresses[resident][district]')}}" type="text"  class="form-control" placeholder="District" name="addresses[resident][district]">--}}
-                                                                                    <input type="text" id="district"  class="form-control" placeholder="District" name="district">
+                                                                                    <input type="text" id="district"  class="form-control" placeholder="District" value="{{ old('district') }}" name="district">
                                                                                     <label for="Dist">District</label>
+                                                                                    <span style="color: red">{{ $errors->first('district') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
 {{--                                                                                    <input value="{{old('addresses[resident][zip]')}}" type="text"  class="form-control" placeholder="Zip Code" name="addresses[resident][zip]">--}}
-                                                                                    <input type="text" id="zip" class="form-control" placeholder="Zip Code" name="zip">
+                                                                                    <input type="text" id="zip" class="form-control" placeholder="Zip Code"  value="{{ old('zip') }}" name="zip">
                                                                                     <label for="Zip Code">Zip Code</label>
+                                                                                    <span style="color: red">{{ $errors->first('zip') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
 {{--                                                                                    <input value="{{old('addresses[resident][state]')}}" type="text"  class="form-control" placeholder="State" name="addresses[resident][state]">--}}
-                                                                                    <input type="text" id="state"  class="form-control" placeholder="State" name="state">
+                                                                                    <input type="text" id="state"  class="form-control" placeholder="State" name="state"  value="{{ old('state') }}">
                                                                                     <label for="State">State</label>
+                                                                                    <span style="color: red">{{ $errors->first('state') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
 {{--                                                                                    <input value="{{old('addresses[resident][country]')}}" type="text"  class="form-control" placeholder="Country" name="addresses[resident][country]">--}}
-                                                                                    <input type="text" id="country" class="form-control" placeholder="Country" name="country">
+                                                                                    <input type="text" id="country" class="form-control" placeholder="Country" name="country" value="{{ old('country') }}">
                                                                                     <label for="State">Country</label>
+                                                                                    <span style="color: red">{{ $errors->first('country') }}</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -556,43 +560,49 @@
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
 {{--                                                                                        <textarea name="addresses[permanent][address]" class="form-control">{{old('addresses[permanent][address]')}}</textarea>--}}
-                                                                                        <textarea id="permanent_address" name="permanent_address" class="form-control"></textarea>
+                                                                                        <textarea id="permanent_address" name="permanent_address" class="form-control">{{ old('permanent_address') }}</textarea>
                                                                                         <label for="first-name-column">Permanent Address</label>
+                                                                                        <span style="color: red">{{ $errors->first('permanent_address') }}</span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
 {{--                                                                                        <input value="{{old('addresses[permanent][city]')}}" type="text"  class="form-control" placeholder="City" name="addresses[permanent][city]">--}}
-                                                                                        <input type="text" id="permanent_city" name="permanent_city" class="form-control" placeholder="City">
+                                                                                        <input type="text" id="permanent_city" name="permanent_city" class="form-control"  value="{{ old('permanent_city') }}" placeholder="City">
                                                                                         <label for="Post">City</label>
+                                                                                        <span style="color: red">{{ $errors->first('permanent_city') }}</span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
 {{--                                                                                        <input value="{{old('addresses[permanent][district]')}}" type="text"  class="form-control" placeholder="District" name="addresses[permanent][district]">--}}
-                                                                                        <input type="text" id="permanent_district" name="permanent_district" class="form-control" placeholder="District">
+                                                                                        <input type="text" id="permanent_district" name="permanent_district"  value="{{ old('permanent_district') }}" class="form-control" placeholder="District">
                                                                                         <label for="Dist">District</label>
+                                                                                        <span style="color: red">{{ $errors->first('permanent_district') }}</span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
 {{--                                                                                        <input value="{{old('addresses[permanent][zip]')}}" type="text"  class="form-control" placeholder="Zip Code" name="addresses[permanent][zip]">--}}
-                                                                                        <input type="text" id="permanent_zip" name="permanent_zip" class="form-control" placeholder="Zip Code">
+                                                                                        <input type="text" id="permanent_zip" name="permanent_zip" class="form-control" value="{{ old('permanent_zip') }}" placeholder="Zip Code">
                                                                                         <label for="Zip Code">Zip Code</label>
+                                                                                        <span style="color: red">{{ $errors->first('permanent_zip') }}</span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
 {{--                                                                                        <input value="{{old('addresses[permanent][state]')}}" type="text"  class="form-control" placeholder="State" name="addresses[permanent][state]">--}}
-                                                                                        <input type="text" id="permanent_state" name="permanent_state" class="form-control" placeholder="State">
+                                                                                        <input type="text" id="permanent_state" name="permanent_state" class="form-control" placeholder="State" value="{{ old('permanent_state') }}">
                                                                                         <label for="State">State</label>
+                                                                                        <span style="color: red">{{ $errors->first('permanent_state') }}</span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6 col-12">
                                                                                     <div class="form-label-group">
 {{--                                                                                        <input value="{{old('addresses[permanent][country]')}}" type="text"  class="form-control" placeholder="Country" name="addresses[permanent][country]">--}}
-                                                                                        <input type="text" id="permanent_country" name="permanent_country" class="form-control" placeholder="Country">
+                                                                                        <input type="text" id="permanent_country" name="permanent_country" class="form-control" placeholder="Country" value="{{ old('permanent_country') }}">
                                                                                         <label for="State">Country</label>
+                                                                                        <span style="color: red">{{ $errors->first('permanent_country') }}</span>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

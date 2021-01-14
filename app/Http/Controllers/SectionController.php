@@ -23,11 +23,17 @@ class SectionController extends Controller
             $schools = School::all();
             $set_sections = SetSection::all();
         }else{
+            $schools = null;
             $section = Section::where('school_id', auth()->user()->school->id)->get();
             $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
             $set_sections = SetSection::all();
         }
         return view("admin.section.index" , compact(['section','classes','schools','set_sections']));
+    }
+    public function getClasses($id)
+    {
+        $classes = Createclass::where("school_id",$id)->pluck("create_class","id");
+        return json_encode($classes);
     }
 
     /**

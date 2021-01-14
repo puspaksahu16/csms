@@ -155,8 +155,21 @@ class NewAdmissionController extends Controller
                 'father_qualification' => 'required',
                 'father_salary' => 'required',
 
-            ]);
+                'district' => 'required',
+                'address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'country' => 'required',
+                'zip' => 'required',
 
+                'permanent_district' => 'required',
+                'permanent_address' => 'required',
+                'permanent_city' => 'required',
+                'permanent_state' => 'required',
+                'permanent_country' => 'required',
+                'permanent_zip' => 'required',
+
+            ]);
 
 
 
@@ -286,6 +299,12 @@ class NewAdmissionController extends Controller
             $adress->country = $request->country;
             $adress->zip = $request->zip;
             $adress->register_type = 'new';
+            $adress->permanent_district = $request->permanent_district;
+            $adress->permanent_address = $request->permanent_address;
+            $adress->permanent_city = $request->permanent_city;
+            $adress->permanent_state = $request->permanent_state;
+            $adress->permanent_country = $request->permanent_country;
+            $adress->permanent_zip = $request->permanent_zip;
             $adress->save();
         }
 

@@ -21,6 +21,7 @@ class ExtraClassController extends Controller
             $schools = School::all();
             $classes = Createclass::all();
         }else{
+            $schools = null;
             $extraclass = ExtraClass::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }
@@ -51,6 +52,8 @@ class ExtraClassController extends Controller
         if (auth()->user()->role->name == 'admin')
         {
             $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
+        }else{
+            $classes = null;
         }
         $schools = School::all();
         return view('admin.extraclasses.create',compact(['classes','schools']));
@@ -70,7 +73,7 @@ class ExtraClassController extends Controller
                 'price' => 'required',
                 'type' => 'required',
                 'class_id' => 'required',
-                'name' => 'unique:extra_classes|required'
+                'name' => 'required'
             ]);
 
 

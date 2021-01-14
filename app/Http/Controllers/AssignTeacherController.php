@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-
-
+use App\AssignTeacher;
+use App\Employee;
 use App\School;
-use App\SetStandard;
 use App\Standard;
 use Illuminate\Http\Request;
 
-class StandardController extends Controller
+class AssignTeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,15 +18,25 @@ class StandardController extends Controller
     public function index()
     {
         if (auth()->user()->role->name == "super_admin") {
-            $standards = Standard::all();
-            $set_standards = SetStandard::all();
             $schools = School::all();
+            $standards = Standard::all();
+            $employees = Employee::where('employee_designation','teacher')->get();
+            $assign_teachers = AssignTeacher::all();
         }else{
             $schools = null;
             $standards = Standard::where('school_id', auth()->user()->school->id)->get();
-            $set_standards = SetStandard::all();
+            $employees = Employee::where('employee_designation','teacher')->where('school_id', auth()->user()->school->id)->get();
+            $assign_teachers = AssignTeacher::where('school_id', auth()->user()->school->id)->get();
         }
-        return view('admin.standard.index', compact(['standards','schools','set_standards']));
+        return view('admin.assign_teacher.index', compact(['schools','standards','employees','assign_teachers']));
+    }
+
+    public function getEmployee($id)
+    {
+//        return $id;
+        $employee = Employee::where('school_id', $id)->pluck("first_name", 'id');
+
+        return response($employee);
     }
 
     /**
@@ -37,9 +46,7 @@ class StandardController extends Controller
      */
     public function create()
     {
-        $schools = School::all();
-        $set_standards = SetStandard::all();
-        return view('admin.standard.index',compact(['schools','set_standards']));
+        //
     }
 
     /**
@@ -52,13 +59,17 @@ class StandardController extends Controller
     {
         $this->validate($request, [
             'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
-            'name' => 'required'
+            'standard_id' => 'required',
+            'employee_id' => 'required'
         ]);
+
+
 
         $data = $request->all();
         $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
-        Standard::create($data);
-        return redirect()->route('standard.index')->with('success', 'standard created Successfully');
+        AssignTeacher::create($data);
+
+        return redirect('/assign_teacher')->with("success", "Teacher assigned successfully!");
     }
 
     /**
@@ -80,9 +91,18 @@ class StandardController extends Controller
      */
     public function edit($id)
     {
-        $standard = Standard::find($id);
-        $set_standards = SetStandard::all();
-        return view('admin.standard.edit', compact(['standard','set_standards']));
+        if (auth()->user()->role->name == "super_admin") {
+            $schools = School::all();
+            $standards = Standard::all();
+            $employees = Employee::where('employee_designation','teacher')->get();
+        }else{
+            $schools = null;
+            $standards = Standard::where('school_id', auth()->user()->school->id)->get();
+            $employees = Employee::where('employee_designation','teacher')->where('school_id', auth()->user()->school->id)->get();
+        }
+        $assign_teacher = AssignTeacher::find($id);
+        return view('admin.assign_teacher.edit', compact(['schools','standards','employees','assign_teacher']));
+
     }
 
     /**
@@ -94,8 +114,8 @@ class StandardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $standard = Standard::find($id)->update($request->all());
-        return redirect('/standard')->with("success", "Standard updated successfully!");
+        $teacher = AssignTeacher::find($id)->update($request->all());
+        return redirect('/assign_teacher')->with("success", "Assigned teacher updated successfully!");
     }
 
     /**
@@ -106,7 +126,6 @@ class StandardController extends Controller
      */
     public function destroy($id)
     {
-        Standard::where('id',$id)->delete();
-        return redirect('/standard')->with("success", "Standard deleted successfully!");
+        //
     }
 }
