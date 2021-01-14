@@ -24,6 +24,7 @@ class GeneralFeeController extends Controller
             $schools = null;
             $general = GeneralFee::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+            $schools = null;
         }
 
         return view('admin.general.index' , compact(['general','schools','classes']));

@@ -28,6 +28,7 @@ class BookStockController extends Controller
             $schools = null;
             $stocks = BookStock::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+            $schools = null;
         }
 
         return view('admin.book_stocks.index', compact(['stocks','schools','classes']));
