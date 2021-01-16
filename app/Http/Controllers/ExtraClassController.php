@@ -74,7 +74,7 @@ class ExtraClassController extends Controller
                 'price' => 'required',
                 'type' => 'required',
                 'class_id' => 'required',
-                'name' => 'required'
+                'name' => 'unique:name|required'
             ]);
 
 

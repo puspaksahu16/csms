@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AssignTeacher;
+use App\Createclass;
 use App\Employee;
 use App\School;
 use App\Standard;
@@ -19,16 +20,16 @@ class AssignTeacherController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $schools = School::all();
-            $standards = Standard::all();
+            $classes = Createclass::all();
             $employees = Employee::where('employee_designation','teacher')->get();
             $assign_teachers = AssignTeacher::all();
         }else{
             $schools = null;
-            $standards = Standard::where('school_id', auth()->user()->school->id)->get();
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $employees = Employee::where('employee_designation','teacher')->where('school_id', auth()->user()->school->id)->get();
             $assign_teachers = AssignTeacher::where('school_id', auth()->user()->school->id)->get();
         }
-        return view('admin.assign_teacher.index', compact(['schools','standards','employees','assign_teachers']));
+        return view('admin.assign_teacher.index', compact(['schools','classes','employees','assign_teachers']));
     }
 
     public function getEmployee($id)
@@ -59,7 +60,7 @@ class AssignTeacherController extends Controller
     {
         $this->validate($request, [
             'school_id' => auth()->user()->role->name == "super_admin" ? 'required' : '',
-            'standard_id' => 'required',
+            'class_id' => 'required',
             'employee_id' => 'required'
         ]);
 
@@ -93,15 +94,15 @@ class AssignTeacherController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $schools = School::all();
-            $standards = Standard::all();
+            $classes = Createclass::all();
             $employees = Employee::where('employee_designation','teacher')->get();
         }else{
             $schools = null;
-            $standards = Standard::where('school_id', auth()->user()->school->id)->get();
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $employees = Employee::where('employee_designation','teacher')->where('school_id', auth()->user()->school->id)->get();
         }
         $assign_teacher = AssignTeacher::find($id);
-        return view('admin.assign_teacher.edit', compact(['schools','standards','employees','assign_teacher']));
+        return view('admin.assign_teacher.edit', compact(['schools','classes','employees','assign_teacher']));
 
     }
 

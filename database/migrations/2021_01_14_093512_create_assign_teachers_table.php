@@ -16,7 +16,7 @@ class CreateAssignTeachersTable extends Migration
         Schema::create('assign_teachers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('school_id');
-            $table->bigInteger('standard_id');
+            $table->bigInteger('class_id');
             $table->bigInteger('employee_id');
             $table->timestamps();
         });

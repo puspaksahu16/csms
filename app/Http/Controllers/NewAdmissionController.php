@@ -37,7 +37,8 @@ class NewAdmissionController extends Controller
          $students = Student::with('fee','school','section_data')->with(['classes' => function($query){
              return $query->with('section')->get();
          }])->get();
-//         return $students;
+         return $students[0]->classes->section;
+
         }else{
             $students = Student::where('school_id', auth()->user()->school->id)->with(['classes' => function($query){
                 return $query->with('section')->get();

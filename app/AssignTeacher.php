@@ -8,9 +8,9 @@ class AssignTeacher extends Model
 {
     protected $guarded = [];
 
-    public function standard()
+    public function class()
     {
-        return $this->belongsTo(Standard::class,'standard_id');
+        return $this->belongsTo(Createclass::class,'class_id');
     }
     public function school()
     {
