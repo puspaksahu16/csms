@@ -21,12 +21,12 @@ class AssignTeacherController extends Controller
         if (auth()->user()->role->name == "super_admin") {
             $schools = School::all();
             $classes = Createclass::all();
-            $employees = Employee::where('employee_designation','teacher')->get();
+            $employees = Employee::all();
             $assign_teachers = AssignTeacher::all();
         }else{
             $schools = null;
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
-            $employees = Employee::where('employee_designation','teacher')->where('school_id', auth()->user()->school->id)->get();
+            $employees = Employee::where('school_id', auth()->user()->school->id)->get();
             $assign_teachers = AssignTeacher::where('school_id', auth()->user()->school->id)->get();
         }
         return view('admin.assign_teacher.index', compact(['schools','classes','employees','assign_teachers']));
@@ -95,11 +95,11 @@ class AssignTeacherController extends Controller
         if (auth()->user()->role->name == "super_admin") {
             $schools = School::all();
             $classes = Createclass::all();
-            $employees = Employee::where('employee_designation','teacher')->get();
+            $employees = Employee::all();
         }else{
             $schools = null;
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
-            $employees = Employee::where('employee_designation','teacher')->where('school_id', auth()->user()->school->id)->get();
+            $employees = Employee::where('school_id', auth()->user()->school->id)->get();
         }
         $assign_teacher = AssignTeacher::find($id);
         return view('admin.assign_teacher.edit', compact(['schools','classes','employees','assign_teacher']));

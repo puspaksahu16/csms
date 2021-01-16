@@ -80,6 +80,19 @@
                                                                 <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
+                                                                <select disabled="disabled" name="employee_id" id="employee_id" class="form-control">
+                                                                    <option value="">-Select Teacher-</option>
+                                                                    @foreach($employees as $employee )
+                                                                        <option {{ (old('employee_id') ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                                <label for="teacher">Teacher Name</label>
+                                                                <span style="color: red">{{ $errors->first('employee_id') }}</span>
+                                                            </div>
+                                                        </div>
                                                     @endif
                                                         @if(auth()->user()->role->name == "admin")
                                                             <div class="col-md-4 col-12">
@@ -94,20 +107,21 @@
                                                                     <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                                 </div>
                                                             </div>
-                                                        @endif
-                                                    <div class="col-md-4 col-12">
-                                                        <div class="form-label-group">
-                                                            <select name="employee_id" id="employee_id" class="form-control">
-                                                                <option value="">-Select Teacher-</option>
-{{--                                                                @foreach($employees as $employee )--}}
-{{--                                                                    <option {{ (old('employee_id') ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name }}</option>--}}
-{{--                                                                @endforeach--}}
+                                                            <div class="col-md-4 col-12">
+                                                                <div class="form-label-group">
+                                                                    <select  name="employee_id" id="employee_id" class="form-control">
+                                                                        <option value="">-Select Teacher-</option>
+                                                                        @foreach($employees as $employee )
+                                                                            <option {{ (old('employee_id') ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name }}</option>
+                                                                        @endforeach
 
-                                                            </select>
-                                                            <label for="teacher">Teacher Name</label>
-                                                            <span style="color: red">{{ $errors->first('employee_id') }}</span>
-                                                        </div>
-                                                    </div>
+                                                                    </select>
+                                                                    <label for="teacher">Teacher Name</label>
+                                                                    <span style="color: red">{{ $errors->first('employee_id') }}</span>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+
 
                                                     <div class="col-4">
                                                         <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
