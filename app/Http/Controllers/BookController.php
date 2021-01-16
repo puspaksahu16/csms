@@ -29,7 +29,6 @@ class BookController extends Controller
             $schools = null;
             $books = Book::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
-            $schools = null;
         }
         return view('admin.books.index', compact(['books','schools','classes']));
     }
@@ -105,6 +104,7 @@ class BookController extends Controller
             $schools = School::all();
             $classes = Createclass::all();
         }else{
+            $schools = null;
             $books = Book::where('school_id', auth()->user()->school->id)->get();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }

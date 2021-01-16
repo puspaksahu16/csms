@@ -116,6 +116,7 @@ class PreExamController extends Controller
             $classes = Createclass::all();
             $schools = School::all();
         }else{
+            $schools = null;
             $pre_exam = PreExam::find($id);
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }

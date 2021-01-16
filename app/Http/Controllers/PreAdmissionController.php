@@ -224,6 +224,7 @@ class PreAdmissionController extends Controller
     public function show($id)
     {
         $pre_admission = PreAdmission::find($id);
+        $qualifications = null;
         $classes = Createclass::all();
         $pre_exams = PreExam::all();
         $schools = School::all();
@@ -241,6 +242,7 @@ class PreAdmissionController extends Controller
     public function edit($id)
     {
         $pre_admission = PreAdmission::find($id);
+        $qualifications = null;
         $classes = Createclass::all();
         $pre_exams = PreExam::all();
         $schools = School::all();
