@@ -74,7 +74,7 @@ class ExtraClassController extends Controller
                 'price' => 'required',
                 'type' => 'required',
                 'class_id' => 'required',
-                'name' => 'required'
+                'name' => 'unique:name|required'
             ]);
 
 
@@ -106,6 +106,7 @@ class ExtraClassController extends Controller
 
         if (auth()->user()->role->name == 'admin')
         {
+            $schools = null;
             $extraclass = ExtraClass::find($id);
             $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
         }elseif (auth()->user()->role->name == 'super_admin'){

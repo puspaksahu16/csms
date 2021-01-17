@@ -122,8 +122,15 @@ class TimetableController extends Controller
             $classes = Createclass::all();
             $schools = School::all();
             $periods = Period::all();
-
+            $standards = null;
+            $subjects = null;
+            $employees = null;
+            $sections = null;
         }else{
+            $sections = null;
+            $periods = null;
+            $schools = null;
+            $classes = null;
             $standards = Standard::where('school_id', auth()->user()->school->id)->get();
             $subjects = Subject::where('school_id', auth()->user()->school->id)->get();
             $employees = Employee::where('school_id', auth()->user()->school->id)->get();

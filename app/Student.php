@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+
     public function classes()
     {
         return $this->belongsTo(Createclass::class, 'class_id');
@@ -26,10 +27,10 @@ class Student extends Model
         return $this->belongsTo(School::class, 'school_id');
     }
 
-    public function student_section()
-    {
-        return $this->belongsTo(Section::class, 'section');
-    }
+//    public function student_section()
+//    {
+//        return $this->belongsTo(Section::class, 'section');
+//    }
 
     public function parent()
     {

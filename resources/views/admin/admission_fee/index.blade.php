@@ -51,6 +51,9 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                            <th scope="col">School</th>
+                                            @endif
                                             <th scope="col">Student ID</th>
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Class</th>
@@ -66,6 +69,9 @@
                                         @foreach($student_fees as $key => $sf)
                                         <tr>
                                             <th scope="row">{{$key+1}}</th>
+                                            @if(auth()->user()->role->name == "super_admin")
+                                            <td>{{$sf->students->school->full_name}}</td>
+                                            @endif
                                             <td>{{$sf->students->student_unique_id}}</td>
                                             <td>{{$sf->students->first_name." ".$sf->students->last_name}}</td>
                                             <td>{{$sf->students->classes->create_class}}</td>
