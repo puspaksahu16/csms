@@ -346,12 +346,14 @@ class NewAdmissionController extends Controller
             $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
             $address = Address::where('user_id',$id)->where('register_type', 'new')->first();
         }elseif(auth()->user()->role->name == "admin"){
+            $schools = null;
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $students = Student::find($id);
             $qualifications = Qualification::all();
             $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
             $address = Address::where('user_id',$id)->where('register_type', 'new')->first();
         }elseif(auth()->user()->role->name == "parent"){
+            $schools = null;
             $students = Student::find($id);
             $classes = Createclass::where('school_id', $students->school_id)->get();
             $qualifications = Qualification::all();

@@ -107,12 +107,18 @@ class CreateClassController extends Controller
      */
     public function edit($id)
     {
-        $schools = School::all();
-        $set_classes = SetClass::all();
-       $classes = Createclass::find($id);
-        $standards = Standard::all();
+        if (auth()->user()->role->name == "super_admin") {
+            $schools = School::all();
+            $set_classes = SetClass::all();
+            $classes = Createclass::find($id);
+            $standards = Standard::all();
+        }elseif (auth()->user()->role->name == "admin"){
+            $standards = Standard::where('school_id', auth()->user()->school->id)->get();
+            $schools = null;
+            $set_classes = SetClass::all();
+            $classes = Createclass::find($id);
+        }
        return view('admin.classes.edit', compact(['classes','standards','schools','set_classes']));
-
     }
 
     /**

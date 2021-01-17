@@ -114,9 +114,12 @@
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
                                                             <select class="form-control" name="board">
-                                                                <option {{ $school->board == 'ICSE' ? "selected" : "" }} value="ICSE">ICSE</option>
-                                                                <option  {{ $school->board == 'CBSE' ? "selected" : "" }} value="CBSE">CBSE</option>
-                                                                <option  {{ $school->board == 'HSE' ? "selected" : "" }} value="HSE">HSE</option>
+                                                                <option {{ $school->board == "CBSE" ? "selected" : '' }} value="CBSE">CBSE</option>
+                                                                <option {{ $school->board == "ICSE" ? "selected" : '' }} value="CBSE">ICSE</option>
+                                                                <option {{ $school->board == "HSE" ? "selected" : '' }} value="HSE">HSE</option>
+
+                                                                <option {{ $school->board == "ICSE + HSE" ? "selected" : '' }} value="ICSE + HSE">ICSE + HSE</option>
+                                                                <option {{ $school->board == "NCERT" ? "selected" : '' }} value="NCERT">NCERT</option>
                                                             </select>
                                                         </div>
                                                     </div>
