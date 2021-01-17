@@ -99,8 +99,8 @@
                                                         <div class="form-label-group">
                                                             <select name="create_class" class="form-control">
                                                                 <option value="">-SELECT Class-</option>
-                                                                @foreach($classes as $set_class )
-                                                                    <option {{ (old('create_class') ==  $set_class->name  ? "selected" : '') }} value="{{ $set_class->name }}"  style="text-transform: uppercase">{{ $set_class->create_class }}</option>
+                                                                @foreach($set_classes as $set_class )
+                                                                    <option {{ (old('create_class') ==  $set_class->name  ? "selected" : '') }} value="{{ $set_class->name }}"  style="text-transform: uppercase">{{ $set_class->name }}</option>
                                                                 @endforeach
 
                                                             </select>

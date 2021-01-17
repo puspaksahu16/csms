@@ -56,6 +56,7 @@ class PreAdmissionController extends Controller
         }else{
             $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
             $pre_exams = PreExam::where('school_id', auth()->user()->school->id)->get();
+            $schools = null;
         }
         return view ('admin.pre_admissions.create', compact(['classes', 'pre_exams','schools']));
 

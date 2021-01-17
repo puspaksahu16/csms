@@ -94,6 +94,7 @@ class ResultController extends Controller
             $rolls = PreAdmission::all();
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $exams = PreExam::all();
+            $schools = null;
         }
         return view('admin.result.create',compact(['classes', 'rolls','schools','exams']));
     }
