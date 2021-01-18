@@ -170,6 +170,12 @@ class EmployeeController extends Controller
                     $adress->country = $request->country;
                     $adress->zip = $request->zip;
                     $adress->register_type = 'Employee';
+                    $adress->permanent_district = $request->permanent_district;
+                    $adress->permanent_address = $request->permanent_address;
+                    $adress->permanent_city = $request->permanent_city;
+                    $adress->permanent_state = $request->permanent_state;
+                    $adress->permanent_country = $request->permanent_country;
+                    $adress->permanent_zip = $request->permanent_zip;
                     $adress->save();
                 }
             }
@@ -211,7 +217,8 @@ class EmployeeController extends Controller
         $classes = Createclass::all();
         $schools = School::all();
         $qualifications = Qualification::all();
-        return view('admin.employee.edit',compact(['id_proof', 'classes','schools','qualifications','employee','address']));
+        $employee_roles = EmployeeRole::all();
+        return view('admin.employee.edit',compact(['id_proof', 'classes','schools','qualifications','employee','address', 'employee_roles']));
     }
 
     /**
@@ -225,6 +232,8 @@ class EmployeeController extends Controller
     {
        $employee = Employee::find($id);
 //       $employee->school_id = auth()->user()->role->name == "super_admin" ? $request->input('school_id') : auth()->user()->school->id;
+       $employee->user->role_id = $request->role_id;
+        $employee->user->save();
        $employee->first_name = $request->first_name;
        $employee->last_name = $request->last_name;
         $employee->dob = $request->dob;
@@ -280,6 +289,12 @@ class EmployeeController extends Controller
             $address->state = $request->input('state');
             $address->country = $request->input('country');
             $address->zip = $request->input('zip');
+            $address->permanent_district = $request->permanent_district;
+            $address->permanent_address = $request->permanent_address;
+            $address->permanent_city = $request->permanent_city;
+            $address->permanent_state = $request->permanent_state;
+            $address->permanent_country = $request->permanent_country;
+            $address->permanent_zip = $request->permanent_zip;
             $address->save();
         }
 //        return $a;

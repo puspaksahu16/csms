@@ -330,6 +330,12 @@ class PreAdmissionController extends Controller
             $address->state = $request->input('state');
             $address->country = $request->input('country');
             $address->zip = $request->input('zip');
+            $address->permanent_district = $request->permanent_district;
+            $address->permanent_address = $request->permanent_address;
+            $address->permanent_city = $request->permanent_city;
+            $address->permanent_state = $request->permanent_state;
+            $address->permanent_country = $request->permanent_country;
+            $address->permanent_zip = $request->permanent_zip;
             $address->save();
         }
 

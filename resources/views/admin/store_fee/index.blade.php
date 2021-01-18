@@ -71,7 +71,7 @@
                                             <td>{{$student->student_unique_id}}</td>
                                             <td>{{$student->first_name." ".$student->last_name}}</td>
                                             <td>{{$student->classes->create_class}}</td>
-                                            <td>{{$student->section}}</td>
+                                            <td>{{!empty($student->section_data->section) ? $student->section_data->section : "Not Assign"}}</td>
                                             <td>
                                                 <a href="{{url('/store_fee/'.$student->id)}}" class="btn btn-sm btn-primary">Store fee</a>
                                                 <a href="{{url('/store_payment_history/'.$student->id)}}" class="btn btn-sm btn-success">Payment History</a>

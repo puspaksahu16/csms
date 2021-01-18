@@ -75,7 +75,7 @@
                                             <td>{{$sf->students->student_unique_id}}</td>
                                             <td>{{$sf->students->first_name." ".$sf->students->last_name}}</td>
                                             <td>{{$sf->students->classes->create_class}}</td>
-                                            <td>{{$sf->students->section}}</td>
+                                            <td>{{!empty($sf->students->section_data->section) ? $sf->students->section_data->section : "Not Assign"}}</td>
                                             <td>{{ $sf->due }}</td>
                                             <td>{{ $sf->fine }}</td>
                                             <td>{{ $sf->paid }}</td>

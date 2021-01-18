@@ -21,12 +21,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Assign Teacher</h2>
+                            <h2 class="content-header-title float-left mb-0">Assign Class Teacher</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Assign Teacher</a>
+                                    <li class="breadcrumb-item"><a href="#">Assign Class Teacher</a>
                                     </li>
 
                                 </ol>
@@ -45,7 +45,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Teacher Assign</h4>
+                                    <h4 class="card-title">Assign Class Teacher</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">

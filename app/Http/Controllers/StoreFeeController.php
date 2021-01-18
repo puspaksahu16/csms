@@ -19,7 +19,14 @@ class StoreFeeController extends Controller
      */
     public function index()
     {
-        $students = Student::with('school')->get();
+        if (auth()->user()->role->name == "parent")
+        {
+            $students = Student::with('school')->find(auth()->user()->parent->student_id);
+        }elseif (auth()->user()->role->name == "admin"){
+            $students = Student::with('school')->where('school_id', auth()->user()->profile_id)->get();
+        }else{
+            $students = Student::with('school')->get();
+        }
 
         return view('admin.store_fee.index', compact('students'));
     }

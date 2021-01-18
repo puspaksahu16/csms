@@ -194,6 +194,19 @@
                                                                             <label for="Experience"> Experience</label>
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="col-md-6 col-12">
+                                                                        <div class="form-label-group">
+                                                                            <select name="role_id" class="form-control">
+                                                                                <option value="">-choose Role-</option>
+                                                                                @foreach($employee_roles as $employee_role)
+                                                                                    <option {{ $employee->user->role_id == $employee_role->role_id ? "selected" : '' }} value="{{ $employee_role->role_id }}">{{ ucfirst($employee_role->role_name) }}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            <span style="color: red">{{ $errors->first('role_id') }}</span>
+                                                                        </div>
+                                                                    </div>
+
                                                                     <div class="col-md-6 col-12">
                                                                         <div class="form-label-group">
                                                                             <tr>

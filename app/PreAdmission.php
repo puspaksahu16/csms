@@ -28,4 +28,8 @@ class PreAdmission extends Model
     {
         return view('admin.pre_admissions.action', compact('pre_admission'))->render();
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

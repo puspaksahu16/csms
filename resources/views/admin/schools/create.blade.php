@@ -126,9 +126,9 @@
                                                                 <option>SELECT BOARD</option>
                                                                 <option {{ (old('board') == "CBSE" ? "selected" : '') }} value="CBSE">CBSE</option>
                                                                 <option {{ (old('board') == "ICSE" ? "selected" : '') }} value="CBSE">ICSE</option>
-                                                                <option {{ (old('board') == "HSE" ? "selected" : '') }} value="HSE">HSE</option>
+                                                                <option {{ (old('board') == "ISE" ? "selected" : '') }} value="HSE">ISE</option>
 
-                                                                <option {{ (old('board') == "ICSE + HSE" ? "selected" : '') }} value="ICSE + HSE">ICSE + HSE</option>
+                                                                <option {{ (old('board') == "ICSE + ISE" ? "selected" : '') }} value="ICSE + ISE">ICSE + ISE</option>
                                                                 <option {{ (old('board') == "NCERT" ? "selected" : '') }} value="NCERT">NCERT</option>
                                                             </select>
                                                             <span style="color: red">{{ $errors->first('board') }}</span>

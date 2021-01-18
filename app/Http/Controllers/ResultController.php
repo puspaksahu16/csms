@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\Createclass;
 use App\Idproof;
 use App\PreAdmission;
@@ -68,14 +69,16 @@ class ResultController extends Controller
         $id_proof = Idproof::all();
         $schools = School::all();
         $qualifications = Qualification::all();
-         $details = PreAdmission::find($id);
+        $details = PreAdmission::find($id);
+
         if (auth()->user()->role->name == "super_admin") {
            $classes = Createclass::where('school_id', $details->school_id)->get();
         }else{
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }
         $parent_details = StudentParent::where('student_id', $details->id)->where('parent_type', 'pre')->first();
-        return view('admin.new_admission.create', compact(['id_proof', 'classes','schools','qualifications', 'details', 'parent_details']));
+        $address_details = Address::where('user_id', $id)->where('register_type', 'pre')->first();
+        return view('admin.new_admission.create', compact(['id_proof', 'classes','schools','qualifications', 'details', 'parent_details', 'address_details']));
     }
 
     /**

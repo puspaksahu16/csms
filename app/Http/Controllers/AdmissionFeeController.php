@@ -26,8 +26,19 @@ class AdmissionFeeController extends Controller
     {
         if (auth()->user()->role->name == "parent")
         {
-//            return auth()->user()->parent->student_id;
-             $student_fees = AdmissionFee::with('students')->where('student_id', auth()->user()->parent->student_id)->get();
+            $student_fees = AdmissionFee::with('students')->where('student_id', auth()->user()->parent->student_id)->get();
+        }elseif (auth()->user()->role->name == "admin"){
+             $students = AdmissionFee::with(['students' => function ($q){
+                return $q->where('school_id', auth()->user()->profile_id)->get();
+            }])->get();
+            $student_fees = [];
+             foreach ($students as $s)
+             {
+                 if ($s->students !== null)
+                 {
+                     array_push($student_fees, $s);
+                 }
+             }
         }else{
             $student_fees = AdmissionFee::with('students')->get();
         }
