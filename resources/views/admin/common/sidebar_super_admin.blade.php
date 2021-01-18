@@ -62,7 +62,7 @@
                     <li><a href="{{url('/standard')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Assign Standard</span></a></li>
                     <li><a href="{{url('/classes')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Assign Class</span></a></li>
                     <li><a href="{{url('/section')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Assign Section</span></a></li>
-                    <li><a href="{{url('/assign_teacher')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Assign Teacher</span></a></li>
+                    <li><a href="{{url('/assign_teacher')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Assign Class Teacher</span></a></li>
 
                 </ul>
             </li>

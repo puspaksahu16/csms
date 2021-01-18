@@ -6,6 +6,7 @@ use App\AssignTeacher;
 use App\Createclass;
 use App\Employee;
 use App\School;
+use App\SetSection;
 use App\Standard;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class AssignTeacherController extends Controller
     public function getEmployee($id)
     {
 //        return $id;
-        $employee = Employee::where('school_id', $id)->pluck("first_name", 'id');
+        $employee = Employee::where('school_id', $id)->get();
 
         return response($employee);
     }
@@ -96,13 +97,15 @@ class AssignTeacherController extends Controller
             $schools = School::all();
             $classes = Createclass::all();
             $employees = Employee::all();
+            $set_sections = SetSection::all();
         }else{
             $schools = null;
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $employees = Employee::where('school_id', auth()->user()->school->id)->get();
+            $set_sections = SetSection::all();
         }
         $assign_teacher = AssignTeacher::find($id);
-        return view('admin.assign_teacher.edit', compact(['schools','classes','employees','assign_teacher']));
+        return view('admin.assign_teacher.edit', compact(['schools','classes','employees','assign_teacher','set_sections']));
 
     }
 

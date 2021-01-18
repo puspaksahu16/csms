@@ -90,12 +90,19 @@
                                                                 <?php
                                                                     $year = date('Y') ;
                                                                 ?>
-                                                                @for ($year = 2020; $year <= 2030; $year++)
+                                                                @for ($year = 2021; $year <= 2030; $year++)
                                                                     <option {{ $pre_exam->current_year == $year ? "selected" : "" }} value="{{ $year }}">{{ $year }}</option>
                                                                 @endfor
                                                             </select>
                                                         </div>
                                                     </div>
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="date" class="form-control" value="{{ $pre_exam->exam_date }}" placeholder="Exam Date" name="exam_date">
+                                                                <label for="name">Exam Date</label>
+                                                                <span style="color: red">{{ $errors->first('exam_date') }}</span>
+                                                            </div>
+                                                        </div>
 
                                                     <div class="col-12 pt-2">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>

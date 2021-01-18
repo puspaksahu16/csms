@@ -101,13 +101,20 @@
                                                             <select id="year" class="form-control" name="current_year" >
                                                                 <option value="">Current Year</option>
                                                                 {{ $year = date('Y') }}
-                                                                @for ($year = 2020; $year <= 2030; $year++)
+                                                                @for ($year = 2021; $year <= 2030; $year++)
                                                                     <option {{ (old('current_year') == $year ? "selected" : '') }} value="{{ $year }}">{{ $year }}</option>
                                                                 @endfor
                                                             </select>
                                                             <span style="color: red">{{ $errors->first('current_year') }}</span>
                                                         </div>
                                                     </div>
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <input type="date" class="form-control" value="{{ old('exam_date') }}" placeholder="Exam Date" name="exam_date">
+                                                                <label for="name">Exam Date</label>
+                                                                <span style="color: red">{{ $errors->first('exam_date') }}</span>
+                                                            </div>
+                                                        </div>
 
                                                     <div class="col-12 pt-2">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>

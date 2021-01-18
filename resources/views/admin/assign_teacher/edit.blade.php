@@ -41,7 +41,7 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     @if(auth()->user()->role->name == "super_admin")
-                                                        <div class="col-md-4 col-12">
+                                                        <div class="col-md-3 col-12">
                                                             <div class="form-label-group">
                                                                 <select name="school_id"   onchange="getClass()" id="school_id" class="form-control">
                                                                     <option>-SELECT School-</option>
@@ -53,9 +53,9 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4 col-12">
+                                                        <div class="col-md-3 col-12">
                                                             <div class="form-label-group">
-                                                                <select  disabled="disabled" type="text" id="class_id" class="form-control"  name="class_id">
+                                                                <select  disabled="disabled" type="text"  onchange="getSection(this.value)" id="class_id" class="form-control"  name="class_id">
                                                                     <option value="">-Select Class-</option>
                                                                     @foreach($classes as $class)
                                                                         <option  {{ $class->id == $assign_teacher->class_id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
@@ -64,13 +64,25 @@
                                                                 <label for="standard">Class</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4 col-12">
+                                                        <div class="col-md-3 col-12">
+                                                            <div class="form-label-group">
+                                                                <select id="section" name="section_id" class="form-control">
+                                                                    <option  value="">-Select Section-</option>
+                                                                    @foreach($set_sections as $set_section)
+                                                                        <option  {{ $set_section->id == $assign_teacher->section_id ? "selected" : " " }} value="{{ $set_section->id }}">{{ $set_section->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="name">Section</label>
+                                                                <span style="color: red">{{ $errors->first('section_id') }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-12">
                                                             <div class="form-label-group">
                                                                 {{--                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class"  value="{{$classes->create_class}}">--}}
                                                                 <select disabled="disabled" name="employee_id" id="employee_id" class="form-control">
                                                                     <option>-Select Teacher-</option>
                                                                     @foreach($employees as $employee )
-                                                                        <option {{ ($assign_teacher->employee_id ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name }}</option>
+                                                                        <option {{ ($assign_teacher->employee_id ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name." ".$employee->last_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
@@ -81,7 +93,7 @@
                                                         @elseif(auth()->user()->role->name == "admin")
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
-                                                                <select type="text" id="class_id" class="form-control"  name="class_id">
+                                                                <select type="text" onchange="getSection(this.value)" id="class_id" class="form-control"  name="class_id">
                                                                     <option value="">-Select Class-</option>
                                                                     @foreach($classes as $class)
                                                                         <option  {{ $class->id == $assign_teacher->class_id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
@@ -92,11 +104,23 @@
                                                         </div>
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
+                                                                <select id="section" name="section_id" class="form-control">
+                                                                    <option  value="">-Select Section-</option>
+                                                                    @foreach($set_sections as $set_section)
+                                                                        <option  {{ $set_section->id == $assign_teacher->section_id ? "selected" : " " }} value="{{ $set_section->id }}">{{ $set_section->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="name">Section</label>
+                                                                <span style="color: red">{{ $errors->first('section_id') }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
                                                                 {{--                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class"  value="{{$classes->create_class}}">--}}
                                                                 <select name="employee_id" id="employee_id" class="form-control">
                                                                     <option>-Select Teacher-</option>
                                                                     @foreach($employees as $employee )
-                                                                        <option {{ ($assign_teacher->employee_id ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name }}</option>
+                                                                        <option {{ ($assign_teacher->employee_id ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name." ".$employee->last_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
@@ -161,7 +185,7 @@
                 }
             });
             $.ajax({
-                url : "/get_employee/"+school_id,
+                url : "/get_assign_employee/"+school_id,
                 type:'get',
                 success: function(response) {
                     console.log(response);
@@ -170,11 +194,35 @@
                     $("#employee_id").append('<option value="">-Select Teacher-</option>');
                     $.each(response,function(key, value)
                     {
-                        $("#employee_id").append('<option value=' + key + '>' + value + '</option>');
+                        $("#employee_id").append('<option value=' + value.id + ' style="text-transform: uppercase">' + value.first_name + " " + value.last_name + '</option>');
                     });
 
                 }
             });
+        }
+        function getSection(id) {
+            // alert(id);
+            $.ajax({
+                url: "/get_section",
+                type: "post",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    class_id: id
+                },
+                success: function(result){
+                    console.log(result);
+                    $('#section').empty();
+                    if(result)
+                    {
+                        $('#section').append('<option value="">-Select Section-</option>');
+                        $.each(result,function(key,value){
+                            $('#section').append($("<option/>", {
+                                value: key,
+                                text: value
+                            }));
+                        });
+                    }
+                }});
         }
     </script>
 @endpush

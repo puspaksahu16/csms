@@ -133,8 +133,29 @@ class SectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $section = Section::find($id)->update($request->all());
-        return redirect('/section')->with("success", "Section updated successfully!");
+        if (auth()->user()->role->name == "super_admin") {
+            $sections = Section::where('school_id',$request->school_id)
+                ->where('class_id',$request->class_id)
+                ->where('section',$request->section)->first();
+            if (empty($sections)){
+                $section = Section::find($id)->update($request->all());
+                return redirect('/section')->with("success", "Section updated successfully!");
+            }else{
+                return redirect()->route('section.index')->with('error', 'Section Duplicate Entry');
+            }
+        }elseif (auth()->user()->role->name == "admin"){
+            $sections = Section::where('class_id',$request->class_id)
+                ->where('section',$request->section)->first();
+            if (empty($sections)){
+                $section = Section::find($id)->update($request->all());
+                return redirect('/section')->with("success", "Section updated successfully!");
+            }else{
+                return redirect()->route('section.index')->with('error', 'Section Duplicate Entry');
+            }
+        }
+
+
+
     }
 
     /**

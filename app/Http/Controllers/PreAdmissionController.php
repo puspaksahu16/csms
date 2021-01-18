@@ -117,12 +117,14 @@ class PreAdmissionController extends Controller
         ]);
 
         $r = PreAdmission::orderBy('id', 'DESC')->get('roll_no');
+
         if (count($r) <= 0)
         {
-            $roll_no = 101;
+            $rl_id = 101;
         }else{
-            $roll_no = $r[0]["roll_no"] + 1;
+            $rl_id = substr($r[0]["roll_no"], 10) + 1;
         }
+        $roll_no = date('Y').'-ROLL-'.$rl_id;
 
 //        return $request;
         $pre_admission = new PreAdmission();

@@ -19,6 +19,7 @@ class CreatePreExamsTable extends Migration
             $table->bigInteger('full_mark');
             $table->bigInteger('class_id');
             $table->year('current_year');
+			$table->date('exam_date');
             $table->bigInteger('is_active')->default(1);
             $table->timestamps();
         });

@@ -21,4 +21,8 @@ class AssignTeacher extends Model
     {
         return $this->belongsTo(Employee::class,'employee_id');
     }
+    public function section()
+    {
+        return $this->belongsTo(SetSection::class,'section_id');
+    }
 }

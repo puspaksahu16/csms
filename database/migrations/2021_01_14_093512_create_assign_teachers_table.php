@@ -17,6 +17,7 @@ class CreateAssignTeachersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('school_id');
             $table->bigInteger('class_id');
+			$table->bigInteger('section_id');
             $table->bigInteger('employee_id');
             $table->timestamps();
         });

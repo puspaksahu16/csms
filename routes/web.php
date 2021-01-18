@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('assign_teacher', 'AssignTeacherController');
-    Route::get('/get_employee/{id}', 'AssignTeacherController@getEmployee');
+    Route::get('/get_assign_employee/{id}', 'AssignTeacherController@getEmployee');
 
 
     Route::resource('section','SectionController');

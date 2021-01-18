@@ -277,7 +277,7 @@
                                                             </div>
                                                         </div>
                                                         <br/>
-                                                        @if($address->is_same == 1)
+
                                                             <div class="row">
                                                                 <div class="col-md-6 col-12">
                                                                     <div class="form-label-group">
@@ -317,7 +317,7 @@
                                                                 </div>
 
                                                             </div>
-                                                                @endif
+
 
 
                                                         <div class="col-12" align="right">
