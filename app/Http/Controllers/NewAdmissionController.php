@@ -38,14 +38,28 @@ class NewAdmissionController extends Controller
              return $query->with('section')->get();
          }])->get();
 //         return $students[0]->classes->section;
-
+            $schools = School::all();
+            $classes = Createclass::all();
         }else{
             $students = Student::where('school_id', auth()->user()->school->id)->with(['classes' => function($query){
                 return $query->with('section')->get();
             }])->get();
+            $schools = null;
+            $classes =  Createclass::where('school_id', auth()->user()->school->id)->get();
 //            $sections = SetSection::all();
         }
-       return view('admin.new_admission.index', compact(['students']));
+       return view('admin.new_admission.index', compact(['students','schools','classes']));
+    }
+
+    public function fetchNewAdmissionByClass( Request $request )
+    {
+        if (auth()->user()->role->name == "super_admin") {
+            $student = Student::with('school','classes','section_data','fee')->where('school_id',$request->school_id)->where('class_id',$request->class_id)->get();
+        }elseif(auth()->user()->role->name == "admin"){
+            $student = Student::with('school','classes','section_data','fee')->where('school_id',auth()->user()->school->id)->where('class_id',$request->class_id)->get();
+        }
+
+       return response($student);
     }
 
     public function section_assign(Request $request, $id)

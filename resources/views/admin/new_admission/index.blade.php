@@ -53,7 +53,47 @@
                                 <a class="btn btn-primary" href="{{url('/new_admission/create')}}">Add</a>
                             </div>
                             <div class="card-content">
+                                <div class="container">
+                                    <form class="form" action="{{url('/fetch_class_table')}}" method="get">
+                                        @csrf
+                                        <div class="row">
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <div class="col-md-4">
+                                                    <select name="school_id" onclick="getClass()" id="school_id" class="form-control">
+                                                        <option value="">-SELECT School-</option>
 
+                                                        @foreach($schools as $school)
+                                                            <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                        @endforeach
+
+                                                    </select>
+                                                </div>
+                                            @endif
+                                            <div class="col-md-4">
+                                                <select onchange="getSection(this.value)" name="class_id" id="class" class="form-control">
+                                                    <option value="">-SELECT CLASS-</option>
+                                                    @if(auth()->user()->role->name == "admin")
+                                                        @foreach($classes as $class)
+                                                            <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                        @endforeach
+                                                    @endif
+
+                                                </select>
+                                            </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-label-group">
+                                                        <select onchange="classFiler(this.value)" id="section" name="section_id" class="form-control">
+                                                            <option  value="">-Select Section-</option>
+
+                                                        </select>
+                                                        <label for="name">Section</label>
+                                                        <span style="color: red">{{ $errors->first('section_id') }}</span>
+                                                    </div>
+                                                </div>
+
+                                        </div>
+                                    </form>
+                                </div>
                                 <div class="table-responsive">
                                     <table class="table zero-configuration table-striped" id="">
                                         <thead>
@@ -72,12 +112,12 @@
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="class_filter">
                                         @foreach($students as $key => $student)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 @if(auth()->user()->role->name == "super_admin")
-                                                <td>{{$student->school['full_name']}}</td>
+                                                <td>{{$student->school->full_name}}</td>
                                                 @endif
                                                 <td><a href="{{route('new_admission.view', $student->id)}}">{{$student->student_unique_id}}</a></td>
                                                 @if($student->ref_no == '')
@@ -116,7 +156,7 @@
                                                                     <form class="form" method="POST" action="{{ url('/assign_section/'.$student->id) }}">
                                                                         @csrf
                                                                         <div class="form-label-group">
-                                                                            <select name="section" class="form-control">
+                                                                            <select name="section" id="section" class="form-control">
                                                                                 <option>-SELECT Section-</option>
                                                                                 @foreach($student->classes->section as $section)
                                                                                     <option value="{{ $section->id }}">{{ $section->section }}</option>
@@ -165,3 +205,96 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        function getClass() {
+            var school_id = $('#school_id').val();
+            // alert(csrf);
+            $.ajax({
+                url : "/get_class/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#class").attr('disabled', false);
+                    $("#class").empty();
+                    $("#class").append('<option value="">-Select Class-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#class").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
+        }
+        function getSection(id) {
+            // alert(id);
+            $.ajax({
+                url: "/get_section",
+                type: "post",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    class_id: id
+                },
+                success: function(result){
+                    console.log(result);
+                    $('#section').empty();
+                    if(result)
+                    {
+                        $('#section').append('<option value="">-Select Section-</option>');
+                        $.each(result,function(key,value){
+                            $('#section').append($("<option/>", {
+                                value: key,
+                                text: value
+                            }));
+                        });
+                    }
+                }});
+        }
+        function classFiler() {
+        var school_id = $('#school_id').val();
+        var class_id = $('#class').val();
+        var section = $('#section').val();
+         // alert(section);
+        $.ajax({
+            type: "get",
+            url: "/fetch_new_admission_class",
+            data:{school_id: school_id, class_id: class_id, section: section},
+
+            success: function(data){
+                console.log(data);
+                $("#class_filter").empty();
+                $.each(data, function(key, value)
+                {
+                    @if(auth()->user()->role->name == "super_admin")
+                    $("#class_filter").append('<tr>' +
+                        '<td scope="row">' + (key + 1) + '</td>'+
+                        '<td>' + value.school.full_name + '</td>'+
+                        '<td><a href="/new_admission/'+ value.id + '/view">' + value.student_unique_id + '</a></td>'+
+                        '<td>' + value.ref_no + '</td>'+
+                        '<td>' + value.first_name +" "+ value.last_name +'</td>'+
+                        '<td>' + value.classes.create_class + '</td>'+
+                        '<td>' + value.section_data.section + '</td>'+
+                        '<td></td>'+
+                        '<td>' + value.created_at + '</td>'+
+                        '<td><a href="#" data-toggle="modal" data-target="#myModal'+value.id+'" class="btn btn-sm btn-primary">Assign Section</a>'+(value.fee.fee == null ? '<a href="/admission_fee_create/'+ value.id + '" class="btn btn-sm btn-success"">Admission Fee</a>' : '<a href="/admission_fee_edit/'+ value.fee.id + '" class="btn btn-sm btn-warning">Edit Admission Fee</a>')  +' </td>'+
+                        '</tr>');
+                    @else
+                    $("#class_filter").append('<tr>' +
+                        '<td scope="row">' + (key + 1) + '</td>'+
+                        '<td><a href="/new_admission/'+ value.id + '/view">' + value.student_unique_id + '</a></td>'+
+                        '<td>' + value.ref_no + '</td>'+
+                        '<td>' + value.first_name +" "+ value.last_name +'</td>'+
+                        '<td>' + value.classes.create_class + '</td>'+
+                        '<td>' + value.section_data.section + '</td>'+
+                        '<td></td>'+
+                        '<td>' + value.created_at + '</td>'+
+                        '<td><a href="#" data-toggle="modal" data-target="#myModal'+value.id+'" class="btn btn-sm btn-primary">Assign Section</a>'+(value.fee.fee == null ? '<a href="/admission_fee_create/'+ value.id + '" class="btn btn-sm btn-success"">Admission Fee</a>' : '<a href="/admission_fee_edit/'+ value.fee.id + '" class="btn btn-sm btn-warning">Edit Admission Fee</a>')  +' </td>'+
+                        '</tr>');
+
+                    @endif
+
+                });
+            }
+        });
+        }
+    </script>
+    @endpush

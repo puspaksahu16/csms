@@ -43,8 +43,6 @@ class TimetableController extends Controller
             $timetables = TimeTable::with('school','class','standard','section','period','subject','employee')->where('school_id',auth()->user()->school->id)->where('class_id',$request->class_id)->get();
         }
 
-
-
         return response($timetables);
     }
     public function viewTimetable()

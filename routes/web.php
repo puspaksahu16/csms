@@ -144,6 +144,7 @@ Route::middleware('auth')->group(function () {
     Route::get('get_school','NewAdmissionController@getSchools');
     Route::get('new_admission/getclass/{id}','NewAdmissionController@getClasses');
     Route::post('/assign_section/{id}','NewAdmissionController@section_assign');
+    Route::get('/fetch_new_admission_class', 'NewAdmissionController@fetchNewAdmissionByClass');
 
     Route::resource('admission_fee','AdmissionFeeController');
     Route::get('/admission_fee_create/{id}','AdmissionFeeController@AdmissionFee');
