@@ -64,13 +64,13 @@
                                         @foreach($parents as $key => $parent)
                                             <tr>
                                             <th scope="row">{{$key+1}}</th>
-                                                <td><a href="{{route('new_admission.view', $parent->student_id)}}">{{$parent->parent_id}}</a></td>
+                                            <td><a href="{{route('new_admission.view', $parent->student_id)}}">{{$parent->parent_id}}</a></td>
                                             <td>{{$parent->mother_first_name." ".$parent->mother_last_name}}</td>
                                             <td>{{$parent->mother_email}}</td>
                                             <td>{{$parent->mother_mobile}}</td>
                                             <td>{{$parent->students->first_name." ".$parent->students->last_name}}</td>
                                             <td>{{$parent->students->classes->create_class}}</td>
-                                            <td>{{$parent->students->section}}</td>
+                                            <td>{{!empty($parent->students->section_data->section) ? $parent->students->section_data->section : "Not Assign"}}</td>
                                             <td></td>
                                             </tr>
                                         @endforeach

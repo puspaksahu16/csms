@@ -116,7 +116,9 @@ class PreAdmissionController extends Controller
 
         ]);
 
-        $r = PreAdmission::orderBy('id', 'DESC')->get('roll_no');
+        $school_id = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+
+        $r = PreAdmission::where('school_id', $school_id)->orderBy('id', 'DESC')->get('roll_no');
 
         if (count($r) <= 0)
         {
@@ -124,7 +126,7 @@ class PreAdmissionController extends Controller
         }else{
             $rl_id = substr($r[0]["roll_no"], 10) + 1;
         }
-        $roll_no = date('Y').'-ROLL-'.$rl_id;
+        $roll_no = date('Y').'-TR-'.$rl_id;
 
 //        return $request;
         $pre_admission = new PreAdmission();
@@ -156,7 +158,7 @@ class PreAdmissionController extends Controller
         }
 
         $pre_admission->roll_no = $roll_no;
-        $pre_admission->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id:auth()->user()->school->id;
+        $pre_admission->school_id = $school_id;
         $pre_admission->save();
 
         $parent = new StudentParent();
