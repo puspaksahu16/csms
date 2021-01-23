@@ -104,13 +104,20 @@ class NewAdmissionController extends Controller
      */
     public function create()
     {
-        $id_proof = Idproof::all();
+        $school = School::with('students')->find(auth()->user()->school->id);
+
         if (auth()->user()->role->name == "super_admin") {
             $classes = Createclass::all();
-        }else{
-            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+            $schools = School::all();
+        }elseif (auth()->user()->role->name == "admin"){
+            if ( count($school->students) < $school->total_strength){
+                $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+            }else{
+                return redirect()->route('new_admission.index')->with('error', 'Total Strength limit has cross, please contact to admin');
+            }
+
         }
-        $schools = School::all();
+        $id_proof = Idproof::all();
         $qualifications = Qualification::all();
         return view('admin.new_admission.create',compact(['id_proof', 'classes','schools','qualifications']));
     }

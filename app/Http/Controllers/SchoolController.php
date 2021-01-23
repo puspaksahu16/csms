@@ -54,6 +54,8 @@ class SchoolController extends Controller
             'email' => 'required|email|unique:users,email',
 
             'starting_year' => 'required',
+            'total_strength' => 'required',
+            'subscription_type' => 'required',
             'facility' => 'required',
             'address' => 'required',
         ]);
@@ -145,6 +147,8 @@ class SchoolController extends Controller
         $school->affliation_no =$request->affliation_no;
         $school->owner_name =$request->owner_name;
         $school->owner_contact_no =$request->owner_contact_no;
+        $school->total_strength =$request->total_strength;
+        $school->subscription_type =$request->subscription_type;
 
         if($file = $request->hasFile('owner_photo')) {
             $file = $request->file('owner_photo');

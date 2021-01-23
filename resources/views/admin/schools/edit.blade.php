@@ -103,6 +103,22 @@
                                                     </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
+                                                            <input type="number" value="{{$school->total_strength }}" class="form-control" placeholder="Total Strength" name="total_strength">
+                                                            <label for="name">Total Strength</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
+                                                            <select class="form-control" name="subscription_type">
+                                                                <option value="">- Select Subscription -</option>
+                                                                <option {{ $school->subscription_type == "1" ? "selected" : ''}} value="1">6 Month</option>
+                                                                <option {{ $school->subscription_type == "2" ? "selected" : '' }} value="2">1 Year</option>
+                                                            </select>
+                                                            <label for="name">Subscription Type</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
                                                             <select class="form-control" name="standard">
                                                                 <option {{ $school->standard == 'Pre-Primary' ? "selected" : "" }} value="Pre-Primary">Pre-Primary</option>
                                                                 <option  {{ $school->standard == 'Primary' ? "selected" : "" }} value="Primary">Primary</option>

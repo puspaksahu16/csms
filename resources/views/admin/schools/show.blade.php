@@ -92,6 +92,20 @@
 
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
+                                                            <input type="text" class="form-control" disabled placeholder="Owner Contact No"  value="{{$school->total_strength}}" name="total_strength">
+                                                            <label for="name">Total Strength</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
+                                                            <input type="text" class="form-control" disabled placeholder="Owner Contact No" value="@if($school->subscription_type == 0) --- @elseif($school->subscription_type == 1) 6 Month @else 1 Year @endif" name="subscription_type">
+                                                            <label for="name">Subscription Type</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
                                                             <input type="text" class="form-control" disabled placeholder="Contact Person Name" value="{{$school->contact_person}}" name="contact_person">
                                                             <label for="name">Contact Person Name</label>
                                                         </div>

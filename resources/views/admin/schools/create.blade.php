@@ -110,6 +110,24 @@
                                                     </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
+                                                            <input type="number" value="{{ old('total_strength') }}" class="form-control" placeholder="Total Strength" name="total_strength">
+                                                            <label for="name">Total Strength</label>
+                                                            <span style="color: red">{{ $errors->first('total_strength') }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
+                                                            <select class="form-control" name="subscription_type">
+                                                                <option value="">- Select Subscription -</option>
+                                                                <option {{ (old('subscription_type') == "1" ? "selected" : '') }} value="1">6 Month</option>
+                                                                <option {{ (old('subscription_type') == "2" ? "selected" : '') }} value="2">1 Year</option>
+                                                            </select>
+                                                            <label for="name">Subscription Type</label>
+                                                            <span style="color: red">{{ $errors->first('subscription_type') }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
                                                             <select class="form-control" name="standard">
                                                                 <option>SELECT STANDARD</option>
                                                                 <option {{ (old('standard') == "Pre-Primary" ? "selected" : '') }} value="Pre-Primary">Pre-Primary</option>
