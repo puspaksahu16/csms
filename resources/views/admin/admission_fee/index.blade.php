@@ -26,13 +26,13 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Admission Fee</a>
+                                    <li class="breadcrumb-item"><a href="#">Annual Fee</a>
                                     </li>
                                 </ol>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>w
 
             </div>
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
@@ -41,7 +41,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Admission Fee</h4>
+                                <h4 class="card-title">Annual Fee</h4>
                                 {{--<a class="btn btn-primary" href="{{url('/pre_admissions/create')}}">Add</a>--}}
                             </div>
                             <div class="card-content">

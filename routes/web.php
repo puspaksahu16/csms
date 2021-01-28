@@ -147,6 +147,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/fetch_new_admission_class', 'NewAdmissionController@fetchNewAdmissionByClass');
 
     Route::resource('admission_fee','AdmissionFeeController');
+    Route::get('/monthly_fees','AdmissionFeeController@MonthlyFee');
     Route::get('/admission_fee_create/{id}','AdmissionFeeController@AdmissionFee');
     Route::post('/update_installment/{id}','AdmissionFeeController@updateInstallment');
 

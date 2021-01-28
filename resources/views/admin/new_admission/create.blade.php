@@ -221,7 +221,7 @@
                                                                                     @endif
                                                                                 </select>
 
-                                                                                <span style="color: #fff;font-size: 10px">Tips: Please slect school to choose class</span>
+                                                                                <span style="color: #fff;font-size: 10px">Tips: Please select school to choose class</span>
                                                                                 <span style="color: red">{{ $errors->first('class_id') }}</span>
                                                                             </div>
                                                                         </div>
