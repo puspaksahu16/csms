@@ -177,9 +177,9 @@
                                                         </div>
                                                     </div>
                                                     @if(empty($student->fee->fee))
-                                                        <a href="{{url('/admission_fee_create/'. $student->id)}}" class="btn btn-sm btn-success">Admission Fee</a>
+                                                        <a href="{{url('/admission_fee_create/'. $student->id)}}" class="btn btn-sm btn-success">Annual Fee</a>
                                                     @else
-                                                        <a href="{{url('/admission_fee_edit/'. $student->fee->id)}}" class="btn btn-sm btn-warning">Edit Admission Fee</a>
+                                                        <a href="{{url('/admission_fee_edit/'. $student->fee->id)}}" class="btn btn-sm btn-warning">Edit Annual Fee</a>
                                                     @endif
 
                                                     {{--@if(empty($student->fee->store_fee))--}}

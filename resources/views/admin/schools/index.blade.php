@@ -70,12 +70,20 @@
                                                     <td>{{$school->email}}</td>
                                                     <td>{{$school->mobile}}</td>
                                                     <td>{{$school->total_strength}}</td>
-                                                    <td>@if($school->subscription_type == 0)
+                                                    <td>
+                                                        @php
+                                                            $today = date_create(date('Y-m-d'));
+                                                            $created_at = date_create($school->created_at->format('Y-m-d'));
+                                                            $diff = date_diff($created_at, $today)->format("%a")
+                                                        @endphp
+                                                        @if($school->subscription_type == 0)
                                                             ----
                                                         @elseif($school->subscription_type == 1)
-                                                            6 Month
+                                                            {{ 180 - $diff." days to Renew" }}
+                                                        @elseif($school->subscription_type == 2)
+                                                            {{ 360 - $diff." days to Renew" }}
                                                         @else
-                                                            1 Year
+                                                            {{ 30 - $diff." days to Renew" }}
                                                         @endif
                                                     </td>
                                                     <td>{{$school->created_at->format('d-M-y')}}</td>

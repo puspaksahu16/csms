@@ -22,6 +22,11 @@ class Student extends Model
         return $this->hasOne(AdmissionFee::class, 'student_id');
     }
 
+    public function monthly_fee()
+    {
+        return $this->hasOne(MonthlyFee::class, 'student_id');
+    }
+
     public function school()
     {
         return $this->belongsTo(School::class, 'school_id');

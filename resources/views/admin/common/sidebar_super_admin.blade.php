@@ -35,7 +35,8 @@
             </li>
             <li class=" nav-item"><a href="#"><i class="fa fa-shopping-bag"></i><span class="menu-title" data-i18n="Account">Accounts</span></a>
                 <ul class="menu-content">
-                    <li><a href="{{url('/admission_fee')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="Admissionfee">Admission fee</span></a></li>
+                    <li><a href="{{url('/admission_fee')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="AnnualFee">Annual Fee</span></a></li>
+                    <li><a href="{{url('/monthly_fees')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="MonthlyFee">Monthly Fee</span></a></li>
                     <li><a href="{{ url('/store_fees') }}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="StoreFee">Store Fee</span></a></li>
                 </ul>
             </li>

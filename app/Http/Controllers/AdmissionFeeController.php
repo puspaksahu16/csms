@@ -8,6 +8,7 @@ use App\BookStock;
 use App\ExtraClass;
 use App\GeneralFee;
 use App\Installment;
+use App\MonthlyFee;
 use App\Payment;
 use App\Stock;
 use App\Student;
@@ -169,7 +170,41 @@ class AdmissionFeeController extends Controller
      */
     public function AdmissionFeeStore($id, Request $request)
     {
-//        return$id;
+//        return$request;
+
+        $monthly_genera_fee = [];
+        $annual_general_fee = [];
+        $request_general_fee = $request->general;
+        if (!empty($request_general_fee)){
+            foreach ($request_general_fee as $gf)
+            {
+                $general_fee = GeneralFee::find($gf);
+                if ($general_fee->type == 2)
+                {
+                    array_push($monthly_genera_fee, $general_fee->id);
+                }elseif ($general_fee->type == 1){
+                    array_push($annual_general_fee, $general_fee->id);
+                }
+            }
+        }
+
+        $monthly_cca_fee = [];
+        $annual_cca_fee = [];
+
+        $request_ecc_fee = $request->ecc;
+        if (!empty($request_ecc_fee)){
+            foreach ($request_ecc_fee as $ref)
+            {
+                $ecc_fee = ExtraClass::find($ref);
+                if ($ecc_fee->type == 2)
+                {
+                    array_push($monthly_cca_fee, $ecc_fee->id);
+                }elseif ($ecc_fee->type == 1){
+                    array_push($annual_cca_fee, $ecc_fee->id);
+                }
+            }
+        }
+
         $af = AdmissionFee::where('student_id', $id)->first();
 
         if (empty($af))
@@ -178,23 +213,55 @@ class AdmissionFeeController extends Controller
 
             $admission_fee = new AdmissionFee();
             $admission_fee->student_id = $id;
-            $admission_fee->general = json_encode($request->general);
-//            $products = [];
-//            foreach ($request->product as $p)
-//            {
-//                if (!empty($p['id']))
-//                {
-//                    array_push($products, $p);
-//                }
-//            }
-//            $admission_fee->product = json_encode($products);
-            $admission_fee->ecc = json_encode($request->ecc);
-//            $admission_fee->book = json_encode($request->book);
+            $admission_fee->discount_type = $request->discount_type;
+            $admission_fee->discount = $request->discount;
+            $admission_fee->general = json_encode($annual_general_fee);
+
+            $admission_fee->ecc = json_encode($annual_cca_fee);
             $admission_fee->fee = $fee;
             $admission_fee->save();
+
+            if (count($monthly_genera_fee) > 0 AND count($monthly_cca_fee) > 0)
+            {
+                $month_fee = new MonthlyFee();
+                $month_fee->student_id = $id;
+                $month_fee->general_fee_id = json_encode($monthly_genera_fee);
+                $month_fee->ecc_fee_id = json_encode($monthly_cca_fee);
+                $month_fee->fee = 0;
+                $month_fee->fine = 0;
+                $month_fee->due = 0;
+                $month_fee->paid = 0;
+                $month_fee->status = "Pending";
+                $month_fee->fee_no = 1;
+                $month_fee->save();
+            }elseif (count($monthly_genera_fee) > 0){
+                $month_fee = new MonthlyFee();
+                $month_fee->student_id = $id;
+                $month_fee->general_fee_id = json_encode($monthly_genera_fee);
+                $month_fee->ecc_fee_id = json_encode($monthly_cca_fee);
+                $month_fee->fee = 0;
+                $month_fee->fine = 0;
+                $month_fee->due = 0;
+                $month_fee->paid = 0;
+                $month_fee->status = "Pending";
+                $month_fee->fee_no = 1;
+                $month_fee->save();
+            }elseif (count($monthly_cca_fee) > 0){
+                $month_fee = new MonthlyFee();
+                $month_fee->student_id = $id;
+                $month_fee->general_fee_id = json_encode($monthly_genera_fee);
+                $month_fee->ecc_fee_id = json_encode($monthly_cca_fee);
+                $month_fee->fee = 0;
+                $month_fee->fine = 0;
+                $month_fee->due = 0;
+                $month_fee->paid = 0;
+                $month_fee->status = "Pending";
+                $month_fee->fee_no = 1;
+                $month_fee->save();
+            }
+
             $sf = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->where('student_id', $id)->first();
-//            foreach ($student_fees as $sf)
-//            {
+
                 $all_general_fee = json_decode($sf->general);
                 if (!empty($all_general_fee)){
                     foreach ($all_general_fee as $agf)
@@ -204,21 +271,9 @@ class AdmissionFeeController extends Controller
                         {
                             $fee += $general_fee->price;
                         }
-                        elseif ($general_fee->type == 2)
-                        {
-                            $fee += ($general_fee->price * 12);
-                        }
                     }
                 }
-//                $all_product_fee = json_decode($sf->product);
-//                if (!empty($all_product_fee)){
-//                    foreach ($all_product_fee as $apf)
-//                    {
-//                        $product_fee = Stock::find($apf->id);
-//                        $pp = $apf->quantity * $product_fee->price;
-//                        $fee += $pp;
-//                    }
-//                }
+
                 $all_ecc_fee = json_decode($sf->ecc);
                 if (!empty($all_ecc_fee)){
                     foreach ($all_ecc_fee as $aef)
@@ -228,22 +283,15 @@ class AdmissionFeeController extends Controller
                         {
                             $fee += $ecc_fee->price;
                         }
-                        elseif ($ecc_fee->type == 2)
-                        {
-                            $fee += ($ecc_fee->price * 12);
-                        }
                     }
                 }
-//                $all_book_fee = json_decode($sf->book);
-//                if (!empty($all_book_fee)){
-//                    foreach ($all_book_fee as $abf)
-//                    {
-//                        $book_fee = Book::find($abf);
-//                        $fee += $book_fee->price;
-//                    }
-//                }
-//            }
 
+            if ($request->discount_type == 'percentage')
+            {
+                $fee = $fee - ($fee * ($request->discount / 100));
+            }elseif ($request->discount_type == 'amount'){
+                $fee = $fee - $request->discount;
+            }
             $sf->fee = $fee;
             $sf->update();
             return redirect()->route('new_admission.index')->with('success', 'Admission Fee Created Successfully');
@@ -460,6 +508,8 @@ class AdmissionFeeController extends Controller
         $af = AdmissionFee::where('id', $id)->first();
         $af->general = json_encode($request->general);
         $af->ecc = json_encode($request->ecc);
+        $af->discount_type = $request->discount_type;
+        $af->discount = $request->discount;
         $af->update();
         $sf = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->where('id', $id)->first();
 
@@ -520,6 +570,21 @@ class AdmissionFeeController extends Controller
 
             return redirect()->route('new_admission.index')->with('success', 'Admission Fee updated Successfully');
 
+    }
+
+
+    public function MonthlyFee()
+    {
+        if (auth()->user()->role->name == "super_admin")
+        {
+            $students = Student::with('monthly_fee')->get();
+        }
+        elseif(auth()->user()->role->name == "admin")
+        {
+            $students = Student::where('school_id', auth()->user()->school->id)->with('monthly_fee')->get();
+        }
+
+        return $students;
     }
 
     /**

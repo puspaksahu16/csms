@@ -19,12 +19,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Admission Fee</h2>
+                            <h2 class="content-header-title float-left mb-0">Annual Fee</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Admission Fee</a>
+                                    <li class="breadcrumb-item"><a href="#">Annual Fee</a>
                                     </li>
                                 </ol>
                             </div>
@@ -59,6 +59,10 @@
                                                             <div class="stepwizard-step">
                                                                 <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
                                                                 <p>Extra Co-Activity</p>
+                                                            </div>
+                                                            <div class="stepwizard-step">
+                                                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                                                <p>Discount</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -142,6 +146,30 @@
                                                                         @endforeach
                                                                         </tbody>
                                                                     </table>
+                                                                </div>
+                                                                <button class="btn btn-success pull-right waves-effect waves-light" type="Update" >Update</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row setup-content" id="step-3">
+                                                            <div class="card-header">
+                                                                <h4 class="card-title">Discount</h4>
+                                                            </div>
+                                                            <div class="container">
+                                                                <br/><br/>
+                                                                <div class="row">
+                                                                    <div class="col-3">
+                                                                        <label>Discount Type</label>
+                                                                        <select name="discount_type" class="form-control">
+                                                                            <option value="">-Select-</option>
+                                                                            <option {{ $addmision_fee->discount_type == "percentage" ? "selected" : '' }} value="percentage">Percentage</option>
+                                                                            <option {{ $addmision_fee->discount_type == "amount" ? "selected" : '' }} value="amount">Amount</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <label>Discount</label>
+                                                                        <input name="discount" value="{{ $addmision_fee->discount }}" type="text" class="form-control">
+                                                                    </div>
                                                                 </div>
                                                                 <button class="btn btn-success pull-right waves-effect waves-light" type="Update" >Update</button>
                                                             </div>

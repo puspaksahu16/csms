@@ -111,8 +111,9 @@
                                                         <div class="form-label-group">
                                                             <select class="form-control" name="subscription_type">
                                                                 <option value="">- Select Subscription -</option>
-                                                                <option {{ $school->subscription_type == "1" ? "selected" : ''}} value="1">6 Month</option>
-                                                                <option {{ $school->subscription_type == "2" ? "selected" : '' }} value="2">1 Year</option>
+                                                                <option {{ $school->subscription_type == "3" ? "selected" : '' }} value="3">30 Days</option>
+                                                                <option {{ $school->subscription_type == "1" ? "selected" : '' }} value="1">180 Days</option>
+                                                                <option {{ $school->subscription_type == "2" ? "selected" : '' }} value="2">360 Days</option>
                                                             </select>
                                                             <label for="name">Subscription Type</label>
                                                         </div>
