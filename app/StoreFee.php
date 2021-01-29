@@ -14,4 +14,5 @@ class StoreFee extends Model
     {
         return $this->belongsTo(Createclass::class, 'class_id');
     }
+
 }

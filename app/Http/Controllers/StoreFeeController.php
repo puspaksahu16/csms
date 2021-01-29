@@ -53,8 +53,11 @@ class StoreFeeController extends Controller
         {
             $fee = 0;
 
+
             $store_fee = new StoreFee();
             $store_fee->student_id = $id;
+
+
             $products = [];
             foreach ($request->product as $p)
             {
@@ -115,7 +118,6 @@ class StoreFeeController extends Controller
         return view('admin.store_fee.pay', ['fee' => $fee->store_fee, 'id' => $fee->id ]);
     }
 
-
     public function payment(Request $request, $id)
     {
         $sf = StoreFee::find($id);
@@ -123,6 +125,15 @@ class StoreFeeController extends Controller
         $data['reason'] = 'Store_Fee';
         $data['student_id'] = $sf->student_id;
         $data['product_id'] = $sf->id;
+        $student = Student::find($sf->student_id);
+        $in_sf = Payment::where('school_id', $student->school_id)->orderBy('invoice_no','DESC')->first();
+        if (!empty($in_sf)){
+            $invoice = $in_sf->invoice_no + 1;
+        }else{
+            $invoice = 1;
+        }
+        $data['school_id'] = $student->school_id;
+        $data['invoice_no'] = $invoice;
 
         if ($request->amount == $sf['store_fee'])
         {

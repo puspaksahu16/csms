@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Payment;
 use App\Product;
+use App\Stock;
 use App\StoreFee;
 use App\StudentParent;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class PaymentController extends Controller
     public function receive($id)
     {
 
-         $payment = Payment::where('id', $id)->first();
+        return $payment = Payment::find($id);
 
 //          $products = StoreFee::where('id',$payment->product_id)->get('product');
 //          $books = StoreFee::where('id',$payment->product_id)->get('book');
@@ -57,35 +58,17 @@ class PaymentController extends Controller
     }
     public function Storereceive($id)
     {
-        $payment = Payment::where('id', $id)->first();
-
-        $products = StoreFee::where('id',$payment->product_id)->get('product');
+        $payment = Payment::find($id);
+        $products = StoreFee::find($payment->product_id);
         $books = StoreFee::where('id',$payment->product_id)->get('book');
 
+        $json_toArray = json_decode($products->product,true);
 
-
-        foreach ($products as $pr){
-             $item =  $pr->product;
-
+        foreach ($json_toArray as $key => $result){
+            $json_toArray[$key]['product'] = Stock::where('id', $result['id'])->with('products','sizes')->get(['size_id','product_id','price']);
         }
+        return view('admin.payments.receive_store', ['payment' => $payment,'results' => $json_toArray]);
 
-         $json_toArray = json_decode($item,true);
-       $array_ids = array_column($json_toArray, 'id');
-
-       $array_qty = array_column($json_toArray, 'quantity');
-
-
-          $results = Product::whereIn('id', $array_ids)->get(['size','name']);
-
-//        $result_toArray = json_decode($results,true);
-//        return $array_name = array_column($result_toArray,'name');
-
-
-//        $items = $array_name;
-
-
-//        return view('admin.payments.receive', compact(['payment']));
-        return view('admin.payments.receive_store', compact(['payment','results', 'json_toArray']));
     }
     /**
      * Show the form for creating a new resource.

@@ -162,6 +162,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/installment','AdmissionFeeController@update');
     Route::get('/installment/{id}','AdmissionFeeController@InstallmentFee');
+    Route::get('/receive/{id}','AdmissionFeeController@receive')->name('admission-fee');
 
 
 
@@ -205,7 +206,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/admission_due_date/{id}','AdmissionFeeController@admissionDueDate');
 
     Route::get('/payment_history/{id}','PaymentController@index');
-    Route::get('/receive/{id}','PaymentController@receive');
+
     Route::get('/receive_store/{id}','PaymentController@Storereceive');
 
     Route::resource('result','ResultController');
