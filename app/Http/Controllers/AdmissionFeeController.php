@@ -15,6 +15,7 @@ use App\Student;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use function Sodium\compare;
 
 class AdmissionFeeController extends Controller
 {
@@ -172,6 +173,7 @@ class AdmissionFeeController extends Controller
     {
 //        return$request;
 
+        $monthly_fee = 0;
         $monthly_genera_fee = [];
         $annual_general_fee = [];
         $request_general_fee = $request->general;
@@ -181,6 +183,7 @@ class AdmissionFeeController extends Controller
                 $general_fee = GeneralFee::find($gf);
                 if ($general_fee->type == 2)
                 {
+                    $monthly_fee += $general_fee->price;
                     array_push($monthly_genera_fee, $general_fee->id);
                 }elseif ($general_fee->type == 1){
                     array_push($annual_general_fee, $general_fee->id);
@@ -198,6 +201,7 @@ class AdmissionFeeController extends Controller
                 $ecc_fee = ExtraClass::find($ref);
                 if ($ecc_fee->type == 2)
                 {
+                    $monthly_fee += $ecc_fee->price;
                     array_push($monthly_cca_fee, $ecc_fee->id);
                 }elseif ($ecc_fee->type == 1){
                     array_push($annual_cca_fee, $ecc_fee->id);
@@ -227,7 +231,7 @@ class AdmissionFeeController extends Controller
                 $month_fee->student_id = $id;
                 $month_fee->general_fee_id = json_encode($monthly_genera_fee);
                 $month_fee->ecc_fee_id = json_encode($monthly_cca_fee);
-                $month_fee->fee = 0;
+                $month_fee->fee = $monthly_fee;
                 $month_fee->fine = 0;
                 $month_fee->due = 0;
                 $month_fee->paid = 0;
@@ -239,7 +243,7 @@ class AdmissionFeeController extends Controller
                 $month_fee->student_id = $id;
                 $month_fee->general_fee_id = json_encode($monthly_genera_fee);
                 $month_fee->ecc_fee_id = json_encode($monthly_cca_fee);
-                $month_fee->fee = 0;
+                $month_fee->fee = $monthly_fee;
                 $month_fee->fine = 0;
                 $month_fee->due = 0;
                 $month_fee->paid = 0;
@@ -251,7 +255,7 @@ class AdmissionFeeController extends Controller
                 $month_fee->student_id = $id;
                 $month_fee->general_fee_id = json_encode($monthly_genera_fee);
                 $month_fee->ecc_fee_id = json_encode($monthly_cca_fee);
-                $month_fee->fee = 0;
+                $month_fee->fee = $monthly_fee;
                 $month_fee->fine = 0;
                 $month_fee->due = 0;
                 $month_fee->paid = 0;
@@ -577,14 +581,23 @@ class AdmissionFeeController extends Controller
     {
         if (auth()->user()->role->name == "super_admin")
         {
-            $students = Student::with('monthly_fee')->get();
+            $monthly_fees = Student::with('monthly_fee')->get();
         }
         elseif(auth()->user()->role->name == "admin")
         {
-            $students = Student::where('school_id', auth()->user()->school->id)->with('monthly_fee')->get();
+            $monthly_fees = Student::with('monthly_fee')->where('school_id', auth()->user()->school->id)->get();
+        }
+        $students = [];
+        foreach ($monthly_fees as $mf)
+        {
+            if (!empty($mf->monthly_fee))
+            {
+                array_push($students, $mf);
+            }
         }
 
         return $students;
+        return view('admin.monthly_fee.index', compact('students'));
     }
 
     /**
