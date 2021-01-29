@@ -123,9 +123,12 @@ class AdmissionFeeController extends Controller
     public function InstallmentFee($id)
     {
         $installments = Installment::where('student_id', $id)->get();
-
-
         return view('admin.admission_fee.installment', compact(['installments', 'id']));
+    }
+    public function receive($id)
+    {
+         $payment = Payment::find($id);
+         return view('admin.payments.receive' , compact(['payment']));
     }
 
     /**
@@ -374,6 +377,15 @@ class AdmissionFeeController extends Controller
         $data = $request->all();
         $data['reason'] = 'Admission Fee';
         $data['student_id'] = $student_id;
+        $student = Student::find($student_id);
+        $in_sf = Payment::where('school_id', $student->school_id)->orderBy('invoice_no','DESC')->first();
+        if (!empty($in_sf)){
+            $invoice = $in_sf->invoice_no + 1;
+        }else{
+            $invoice = 1;
+        }
+        $data['school_id'] = $student->school_id;
+        $data['invoice_no'] = $invoice;
 
 
         if ($request->amount <= $installment->installment_fee)
@@ -382,6 +394,9 @@ class AdmissionFeeController extends Controller
             $installment->status = "Paid";
             $installment->paid = $request->amount;
             $installment->payment_id = $payment->id;
+            $installment->student_id = $student_id;
+
+
             $installment->update();
             $due = $installment->installment_fee - $request->amount;
             $installment_due = Installment::where('student_id', $student_id)->where('installment_no', $installment->installment_no + 1)->first();

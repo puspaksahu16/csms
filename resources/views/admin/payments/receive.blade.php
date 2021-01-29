@@ -44,7 +44,7 @@
 
         table { font-size: 75%; table-layout: fixed; width: 100%; }
         table { border-collapse: separate; border-spacing: 2px; }
-        th, td { border-width: 1px; padding: 0.5em; position: relative; text-align: left; }
+        th, td { border-width: 1px; padding: 0.5em; position: relative; text-align: center; }
         th, td { border-radius: 0.25em; border-style: solid; }
         th { background: #EEE; border-color: #BBB; }
         td { border-color: #DDD; }
@@ -95,9 +95,9 @@
 
         table.inventory td:nth-child(1) { width: 26%; }
         table.inventory td:nth-child(2) { width: 38%; }
-        table.inventory td:nth-child(3) { text-align: right; width: 12%; }
-        table.inventory td:nth-child(4) { text-align: right; width: 12%; }
-        table.inventory td:nth-child(5) { text-align: right; width: 12%; }
+        table.inventory td:nth-child(3) { text-align: center; width: 12%; }
+        table.inventory td:nth-child(4) { text-align: center; width: 12%; }
+        table.inventory td:nth-child(5) { text-align: center; width: 12%; }
 
         /* table balance */
 
@@ -399,27 +399,32 @@
 </head>
 <body>
 <header>
-    <h1>CSMS Pro Invoice</h1>
-    <address>
-        <p>{{$payment->address->address}}</p>
-        <p>{{$payment->address->city}}<br>{{$payment->address->district}}, {{$payment->address->state}}</p>
-        <p>{{$payment->address->zip}}</p>
-    </address>
+    <h1>{{$payment->student->school->full_name}}</h1>
+
     <span><img alt="" src="http://www.jonathantneal.com/examples/invoice/logo.png"><input type="file" accept="image/*"></span>
 </header>
 <article>
     <h1>Recipient</h1>
     <address>
         <p>{{$payment->student->first_name}} {{$payment->student->last_name}}</p>
+        <br/>
+        <br/>
+        <p style="font-size: 12px;">{{$payment->address->address}}</p>
+        <p style="font-size: 12px;">{{$payment->address->city}}<br>{{$payment->address->district}}, {{$payment->address->state}}</p>
+        <p style="font-size: 12px;">{{$payment->address->zip}}</p>
     </address>
     <table class="meta">
+        <tr>
+            <th>Invoice No. #</th>
+            <td>INV-{{$payment->invoice_no}}</td>
+        </tr>
         <tr>
             <th>Student UID #</th>
             <td>{{$payment->student->student_unique_id}}</td>
         </tr>
         <tr>
             <th>Date</th>
-            <td>{{$payment->created_at}}</td>
+            <td>{{$payment->created_at->format('d/m/Y')}}</td>
         </tr>
         <tr>
             <th>Amount </th>

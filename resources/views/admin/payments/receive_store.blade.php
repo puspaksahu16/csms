@@ -44,7 +44,7 @@
 
         table { font-size: 75%; table-layout: fixed; width: 100%; }
         table { border-collapse: separate; border-spacing: 2px; }
-        th, td { border-width: 1px; padding: 0.5em; position: relative; text-align: left; }
+        th, td { border-width: 1px; padding: 0.5em; position: relative; text-align: center; }
         th, td { border-radius: 0.25em; border-style: solid; }
         th { background: #EEE; border-color: #BBB; }
         td { border-color: #DDD; }
@@ -95,9 +95,9 @@
 
         table.inventory td:nth-child(1) { width: 26%; }
         table.inventory td:nth-child(2) { width: 38%; }
-        table.inventory td:nth-child(3) { text-align: right; width: 12%; }
-        table.inventory td:nth-child(4) { text-align: right; width: 12%; }
-        table.inventory td:nth-child(5) { text-align: right; width: 12%; }
+        table.inventory td:nth-child(3) { text-align: center; width: 12%; }
+        table.inventory td:nth-child(4) { text-align: center; width: 12%; }
+        table.inventory td:nth-child(5) { text-align: center; width: 12%; }
 
         /* table balance */
 
@@ -399,31 +399,55 @@
 </head>
 <body>
 <header>
-    <h1>CSMS Pro Invoice</h1>
-    <address>
-        <p>{{$payment->address->address}}</p>
-        <p>{{$payment->address->city}}<br>{{$payment->address->district}}, {{$payment->address->state}}</p>
-        <p>{{$payment->address->zip}}</p>
-    </address>
+    <h1>{{$payment->student->school->full_name}}</h1>
+
     <span><img alt="" src="http://www.jonathantneal.com/examples/invoice/logo.png"><input type="file" accept="image/*"></span>
 </header>
 <article>
     <h1>Recipient</h1>
     <address>
         <p>{{$payment->student->first_name}} {{$payment->student->last_name}}</p>
+        <br/>
+        <p style="font-size: 12px;">{{$payment->address->address}}</p>
+        <p style="font-size: 12px;">{{$payment->address->city}}<br>{{$payment->address->district}}, {{$payment->address->state}}</p>
+        <p style="font-size: 12px;">{{$payment->address->zip}}</p>
     </address>
     <table class="meta">
+        <tr>
+            <th>Invoice No. #</th>
+            <td>INV-{{$payment->invoice_no}}</td>
+        </tr>
+
         <tr>
             <th>Student UID #</th>
             <td>{{$payment->student->student_unique_id}}</td>
         </tr>
         <tr>
             <th>Date</th>
-            <td>{{$payment->created_at}}</td>
+            <td>{{$payment->created_at->format('d/m/Y')}}</td>
         </tr>
         <tr>
             <th>Amount </th>
-            <td>Rs<span>{{$payment->amount}}</span></td>
+            <td>Rs <span> {{$payment->amount}} /-</span></td>
+        </tr>
+        <tr>
+            <th>Payment Mode</th>
+            <td>@if($payment->type == 1)Cash
+                @else
+                    Online
+                @endif</td>
+        </tr>
+        <tr>
+            <th>Pay for</th>
+            <td>
+                @if($payment->reason == 'Store_Fee')
+                    Store Fee
+                    @endif
+            </td>
+        </tr>
+        <tr>
+            <th>Transection ID</th>
+            <td>{{$payment->transaction_id}}</td>
         </tr>
     </table>
     <table class="inventory">
@@ -431,35 +455,31 @@
         <tr>
             <th>Product Name</th>
             <th>Size</th>
-            <th>Payment Mode</th>
-            <th>Transection ID</th>
-            <th>Payment Details</th>
-
-
+            <th>Quantity</th>
+            <th>Price per Quantity</th>
+            <th>Subtotal</th>
         </tr>
         </thead>
         <tbody>
         @foreach($results as $result)
+
         <tr>
-            <td>{{$result->name}}</td>
-            <td>{{$result->size}}</td>
-            <td>@if($payment->type == 1)Cash
-                @else
-                Online
-                @endif</td>
-            <td>{{$payment->transaction_id}}</td>
-            <td>{{$payment->reason}}</td>
+            <td>{{$result['product'][0]['products']['name']}}</td>
+            <td>{{$result['product'][0]['sizes']['name']}}</td>
 
-
-
+            <td>{{$result['quantity']}}</td>
+            <td>{{$result['product'][0]['price']}} /-</td>
+            <td>{{$result['product'][0]['price'] * $result['quantity']}} /-</td>
         </tr>
+
         @endforeach
         </tbody>
     </table>
     <u></u>
     <div align="right">
-        <h5>Amount</h5>
-        RS<span>{{$payment->amount}}</span>
+        <h6>Total Amount</h6>
+<br/>
+        Rs <span>{{$payment->amount}} /-</span>
     </div>
     <br/>
     <div align="right">

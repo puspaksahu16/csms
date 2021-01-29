@@ -275,7 +275,30 @@
                         '<td>' + value.section_data.section + '</td>'+
                         '<td></td>'+
                         '<td>' + value.created_at + '</td>'+
-                        '<td><a href="#" data-toggle="modal" data-target="#myModal'+value.id+'" class="btn btn-sm btn-primary">Assign Section</a>'+(value.fee.fee == null ? '<a href="/admission_fee_create/'+ value.id + '" class="btn btn-sm btn-success"">Admission Fee</a>' : '<a href="/admission_fee_edit/'+ value.fee.id + '" class="btn btn-sm btn-warning">Edit Admission Fee</a>')  +' </td>'+
+                        // '<td><a href="#" data-toggle="modal" data-target="#myModal'+value.id+'" class="btn btn-sm btn-primary">Assign Section</a>'+(value.fee.fee == null ? '<a href="/admission_fee_create/'+ value.id + '" class="btn btn-sm btn-success"">Admission Fee</a>' : '<a href="/admission_fee_edit/'+ value.fee.id + '" class="btn btn-sm btn-warning">Edit Admission Fee</a>')  +' </td>'+
+                        '<td><a href="#" data-toggle="modal" data-target="#myModal'+value.id+'" class="btn btn-sm btn-primary">Assign Section</a>' +
+                        '<div class="modal" id="myModal'+value.id+'">' +
+                        '<div class="modal-dialog">' +
+                        '<div class="modal-content">' +
+                        '<div class="modal-header">' +
+                        '<h4 class="modal-title">Assign Section</h4>' +
+                        '<button type="button" class="close" data-dismiss="modal">&times;</button>' +
+                        '</div>' +
+                        '<div class="modal-body">'+
+                        '<form class="form" method="POST" action="/assign_section/'+ value.id+'">'+
+                        '<div class="form-label-group">'+
+                        '<select name="section" id="section" class="form-control">'+
+                        '<option>-SELECT Section-</option>'+
+                        '<option value="'+ value.id +'">'+ value.section +'</option>'+
+                        '</select>'+
+                        '<label for="first-name-column">Create Section</label>'+
+                        '</div>'+
+                        '<button class="btn btn-success btn-sm pull-right" type="submit">Submit</button>'+
+                        '</form>'+
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>'+(value.fee.fee == null ? '<a href="/admission_fee_create/'+ value.id + '" class="btn btn-sm btn-success"">Admission Fee</a>' : '<a href="/admission_fee_edit/'+ value.fee.id + '" class="btn btn-sm btn-warning">Edit Admission Fee</a>')  +' </td>'+
                         '</tr>');
                     @else
                     $("#class_filter").append('<tr>' +
@@ -289,7 +312,32 @@
                         '<td>' + value.created_at + '</td>'+
                         '<td><a href="#" data-toggle="modal" data-target="#myModal'+value.id+'" class="btn btn-sm btn-primary">Assign Section</a>'+(value.fee.fee == null ? '<a href="/admission_fee_create/'+ value.id + '" class="btn btn-sm btn-success"">Admission Fee</a>' : '<a href="/admission_fee_edit/'+ value.fee.id + '" class="btn btn-sm btn-warning">Edit Admission Fee</a>')  +' </td>'+
                         '</tr>');
+                {{--<div class="modal" id="myModal{{$student->id}}">--}}
+                {{--    <div class="modal-dialog">--}}
+                {{--    <div class="modal-content">--}}
 
+                {{--    <!-- Modal Header -->--}}
+                {{--    <div class="modal-header"><h4 class="modal-title">Assign Section</h4><button type="button" class="close" data-dismiss="modal">&times;</button></div>--}}
+
+                {{--<!-- Modal body -->--}}
+                {{--<div class="modal-body">--}}
+                {{--    <form class="form" method="POST" action="{{ url('/assign_section/'.$student->id) }}">--}}
+                {{--    @csrf--}}
+                {{--    <div class="form-label-group">--}}
+                {{--    <select name="section" id="section" class="form-control">--}}
+                {{--    <option>-SELECT Section-</option>--}}
+                {{--@foreach($student->classes->section as $section)--}}
+                {{--<option value="{{ $section->id }}">{{ $section->section }}</option>--}}
+                {{--    @endforeach--}}
+                {{--    </select>--}}
+                {{--    <label for="first-name-column">Create Section</label>--}}
+                {{--</div>--}}
+                {{--<button class="btn btn-success btn-sm pull-right" type="submit">Submit</button>--}}
+                {{--    </form>--}}
+                {{--    </div>--}}
+                {{--    </div>--}}
+                {{--    </div>--}}
+                {{--    </div>--}}
                     @endif
 
                 });
