@@ -58,9 +58,9 @@
                                             <th scope="col">Student Name</th>
                                             <th scope="col">Class</th>
                                             <th scope="col">Section</th>
-                                            <th scope="col">Due</th>
+                                            <th scope="col">Total Due</th>
                                             <th scope="col">Total Fine</th>
-                                            <th scope="col">Paid</th>
+                                            <th scope="col">Total Paid</th>
                                             <th scope="col">Monthly Fee</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -80,52 +80,9 @@
                                             <td>{{ $mf->monthly_fee->fine }}</td>
                                             <td>{{ $mf->monthly_fee->paid }}</td>
                                             <td>{{ $mf->monthly_fee->fee }}</td>
-                                            {{--<td>--}}
-                                                {{--@if($sf->installment > 0)--}}
-                                                    {{--@if(auth()->user()->role->name == "parent")--}}
-                                                        {{--<a href="{{url('/installment/'.$mf->student_id)}}" class="btn btn-sm btn-primary">View Installment</a>--}}
-                                                    {{--@else--}}
-                                                        {{--<a href="{{url('/installment/'.$mf->student_id)}}" class="btn btn-sm btn-primary">Pay Installment</a>--}}
-                                                    {{--@endif--}}
-                                                {{--@else--}}
-                                                    {{--Trigger the modal with a button--}}
-                                                    {{--<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal{{ $sf->id }}">Installment</button>--}}
-                                                    {{--Modal--}}
-                                                    {{--<div class="modal fade" id="myModal{{ $sf->id }}" role="dialog">--}}
-                                                        {{--<div class="modal-dialog">--}}
-
-                                                            {{--<!-- Modal content-->--}}
-                                                            {{--<div class="modal-content">--}}
-                                                                {{--<div class="modal-header">--}}
-                                                                    {{--<h4 class="modal-title">Add Installment Term</h4>--}}
-                                                                    {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
-                                                                {{--</div>--}}
-                                                                {{--<div class="modal-body">--}}
-                                                                    {{--<form action="{{ url('/update_installment/'.$sf->id) }}" method="POST">--}}
-                                                                        {{--@csrf--}}
-                                                                        {{--<select class="form-control" name="installment">--}}
-                                                                            {{--<option value="">-Select Installment Term-</option>--}}
-                                                                            {{--<option value="1">1 Time</option>--}}
-                                                                            {{--<option value="2">2 Times</option>--}}
-                                                                            {{--<option value="4">4 Times</option>--}}
-                                                                            {{--<option value="10">10 Times</option>--}}
-                                                                            {{--<option value="12">12 Times</option>--}}
-                                                                        {{--</select>--}}
-                                                                        {{--<br>--}}
-                                                                        {{--<button type="submit" class="btn btn-success">Submit</button>--}}
-                                                                    {{--</form>--}}
-                                                                {{--</div>--}}
-                                                            {{--</div>--}}
-
-                                                        {{--</div>--}}
-                                                    {{--</div>--}}
-                                                {{--@endif--}}
-
-
-
-
-{{--                                                <a href="{{url('/payment_history/'.$sf->student_id)}}" class="btn btn-sm btn-success">Payment History</a>--}}
-                                            {{--</td>--}}
+                                            <td>
+                                                <a href="{{url('/monthly_payment_history/'.$mf->id)}}" class="btn btn-sm btn-success">Payment History</a>
+                                            </td>
                                         </tr>
                                             @endforeach
                                         </tbody>

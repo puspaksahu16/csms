@@ -611,7 +611,7 @@ class AdmissionFeeController extends Controller
             }
         }
 
-        return $students;
+//        return $students;
         return view('admin.monthly_fee.index', compact('students'));
     }
 
