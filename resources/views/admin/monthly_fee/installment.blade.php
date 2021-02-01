@@ -31,9 +31,9 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Installment</a>
+                                    <li class="breadcrumb-item"><a href="#">Monthly Fee</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Installment List</a>
+                                    <li class="breadcrumb-item"><a href="#">Monthly Fee History</a>
                                     </li>
                                 </ol>
                             </div>
@@ -47,7 +47,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Installment</h4>
+                                <h4 class="card-title">Monthly Fee History</h4>
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
@@ -75,10 +75,10 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 <td>{{$i->students->first_name." ".$i->students->last_name}}</td>
-                                                <td>{{$i->installment_fee - $i->fine - $i->due}}</td>
+                                                <td>{{$i->monthly_fee - $i->fine - $i->due}}</td>
                                                 <td>{{$i->fine}}</td>
                                                 <td>{{$i->due}}</td>
-                                                <td>{{$i->installment_fee}}</td>
+                                                <td>{{$i->monthly_fee}}</td>
                                                 <td>{{$i->paid}}</td>
                                                 <td>{{!empty($i->payment) ? ($i->payment->type == 1 ? "Cash" : "Online") : "--"}}</td>
                                                 <td>
@@ -100,7 +100,7 @@
                                                 @if(auth()->user()->role->name !== "parent")
                                                     <td>
                                                         @if($i->status == "Pending")
-                                                            <a href="{{url('/pay/'.$i->id)}}" class="btn btn-sm btn-primary">Pay</a>
+                                                            <a href="{{url('/monthly_pay/'.$i->id)}}" class="btn btn-sm btn-primary">Pay</a>
 
                                                             {{--Trigger the modal with a button--}}
                                                             <button type="button" {{ $i->status == "Paid" ? 'disable':'' }} class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}">Fine</button>
@@ -116,7 +116,7 @@
                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <form action="{{ url('/admission_fee_fine/'.$i->id) }}" method="POST">
+                                                                            <form action="{{ url('/monthly_fee_fine/'.$i->id) }}" method="POST">
                                                                                 @csrf
                                                                                 <input class="form-control" name="fine" placeholder="Fine">
                                                                                 <br>
@@ -149,7 +149,7 @@
                                                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <form action="{{ url('/admission_due_date/'.$i->id) }}" method="POST">
+                                                                            <form action="{{ url('/monthly_due_date/'.$i->id) }}" method="POST">
                                                                                 @csrf
                                                                                 <input class="form-control" name="due_date" placeholder="Due Date"type="date" >
                                                                                 <br>

@@ -18,7 +18,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Accounts</a>
+                                    <li class="breadcrumb-item"><a href="#">Monthly Fee</a>
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Pay</a>
                                     </li>
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" action="{{url('/payment/'.$id)}}" method="POST">
+                                        <form class="form" action="{{url('/monthly_payment/'.$id)}}" method="POST">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">

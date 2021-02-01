@@ -147,9 +147,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/fetch_new_admission_class', 'NewAdmissionController@fetchNewAdmissionByClass');
 
     Route::resource('admission_fee','AdmissionFeeController');
-    Route::get('/monthly_fees','AdmissionFeeController@MonthlyFee');
     Route::get('/admission_fee_create/{id}','AdmissionFeeController@AdmissionFee');
     Route::post('/update_installment/{id}','AdmissionFeeController@updateInstallment');
+
+
+    Route::get('/monthly_fees','AdmissionFeeController@MonthlyFee');
+    Route::post('/total_month/{id}','AdmissionFeeController@TotalMonth');
+    Route::get('/monthly_fee_history/{id}','AdmissionFeeController@monthlyFeeHistory');
+    Route::post('/monthly_fee_fine/{id}','AdmissionFeeController@monthlyFeeFine');
 
     //product fee create
     Route::get('/store_fee_create/{id}','AdmissionFeeController@StoreFee');
@@ -201,9 +206,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/parents_update/{id}','NewAdmissionController@parentUpdate');
 
     Route::get('/pay/{id}','AdmissionFeeController@pay');
+    Route::get('/monthly_pay/{id}','AdmissionFeeController@monthlyPay');
     Route::post('/payment/{id}','AdmissionFeeController@payment');
+    Route::post('/monthly_payment/{id}','AdmissionFeeController@monthlyPayment');
     Route::post('/admission_fee_fine/{id}','AdmissionFeeController@admissionFeeFine');
     Route::post('/admission_due_date/{id}','AdmissionFeeController@admissionDueDate');
+    Route::post('/monthly_due_date/{id}','AdmissionFeeController@monthlyDueDate');
 
     Route::get('/payment_history/{id}','PaymentController@index');
 

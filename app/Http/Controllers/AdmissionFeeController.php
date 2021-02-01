@@ -9,6 +9,7 @@ use App\ExtraClass;
 use App\GeneralFee;
 use App\Installment;
 use App\MonthlyFee;
+use App\MonthlyFeeHistory;
 use App\Payment;
 use App\Stock;
 use App\Student;
@@ -238,8 +239,7 @@ class AdmissionFeeController extends Controller
                 $month_fee->fine = 0;
                 $month_fee->due = 0;
                 $month_fee->paid = 0;
-                $month_fee->status = "Pending";
-                $month_fee->fee_no = 1;
+
                 $month_fee->save();
             }elseif (count($monthly_genera_fee) > 0){
                 $month_fee = new MonthlyFee();
@@ -250,8 +250,7 @@ class AdmissionFeeController extends Controller
                 $month_fee->fine = 0;
                 $month_fee->due = 0;
                 $month_fee->paid = 0;
-                $month_fee->status = "Pending";
-                $month_fee->fee_no = 1;
+
                 $month_fee->save();
             }elseif (count($monthly_cca_fee) > 0){
                 $month_fee = new MonthlyFee();
@@ -262,8 +261,7 @@ class AdmissionFeeController extends Controller
                 $month_fee->fine = 0;
                 $month_fee->due = 0;
                 $month_fee->paid = 0;
-                $month_fee->status = "Pending";
-                $month_fee->fee_no = 1;
+
                 $month_fee->save();
             }
 
@@ -613,6 +611,137 @@ class AdmissionFeeController extends Controller
 
 //        return $students;
         return view('admin.monthly_fee.index', compact('students'));
+    }
+
+    public function TotalMonth(Request $request, $id)
+    {
+        $monthly_fee = MonthlyFee::find($id);
+
+        $monthly_fee->total_month = $request->total_month;
+        $monthly_fee->update();
+
+
+
+        $monthly_fee_history = MonthlyFeeHistory::where('student_id', $monthly_fee->student_id)->get();
+
+        if (count($monthly_fee_history) > 0)
+        {
+            foreach($monthly_fee_history as $history)
+            {
+                $history->delete();
+            }
+        }
+        for ($i=1; $i <= $monthly_fee->total_month; $i++)
+        {
+            $mfh = new MonthlyFeeHistory();
+            $mfh->student_id = $monthly_fee->student_id;
+            $mfh->installment_no = $i;
+            $mfh->monthly_fee = $monthly_fee->fee;
+            $mfh->save();
+        }
+
+        return redirect()->back()->with("success", 'Total month updated Successfully');
+    }
+
+    public function monthlyFeeHistory($id)
+    {
+        $monthly_fee_history = MonthlyFeeHistory::where('student_id', $id)->get();
+
+        return view('admin.monthly_fee.installment',['installments' => $monthly_fee_history]);
+
+    }
+
+    public function monthlyFeeFine(Request $request, $id)
+    {
+        $installment = MonthlyFeeHistory::find($id);
+        $installment->fine += $request->fine;
+        $installment->monthly_fee += $request->fine;
+        $installment->update();
+        return redirect()->to('monthly_fee_history/'.$installment->student_id)->with('success', 'Fine Added Successfully');
+    }
+
+    public function monthlyPay($id)
+    {
+        $installment = MonthlyFeeHistory::find($id);
+        return view('admin.monthly_fee.pay', compact(['installment', 'id']));
+    }
+
+    public function monthlyPayment(Request $request, $id)
+    {
+        $installment = MonthlyFeeHistory::find($id);
+        $student_id = $installment->student_id;
+//        $af = AdmissionFee::where('student_id', $student_id)->first();
+//        $pa = Payment::where('student_id', $student_id)->sum('amount');
+        $data = $request->all();
+        $data['reason'] = 'Monthly Fee';
+        $data['student_id'] = $student_id;
+        $student = Student::find($student_id);
+        $in_sf = Payment::where('school_id', $student->school_id)->orderBy('invoice_no','DESC')->first();
+        if (!empty($in_sf)){
+            $invoice = $in_sf->invoice_no + 1;
+        }else{
+            $invoice = 1;
+        }
+        $data['school_id'] = $student->school_id;
+        $data['invoice_no'] = $invoice;
+
+
+        if ($request->amount <= $installment->monthly_fee)
+        {
+            $payment = Payment::create($data);
+            $installment->status = "Paid";
+            $installment->paid = $request->amount;
+            $installment->payment_id = $payment->id;
+            $installment->student_id = $student_id;
+
+
+            $installment->update();
+            $due = $installment->monthly_fee - $request->amount;
+            $installment_due = MonthlyFeeHistory::where('student_id', $student_id)->where('installment_no', $installment->installment_no + 1)->first();
+            if (!empty($installment_due)){
+                $installment_due->due = $due;
+                $installment_due->monthly_fee = $installment_due->monthly_fee + $due;
+                $installment_due->update();
+            }else{
+//                return $installment->due;
+                if ($due != 0)
+                {
+                    $new_installment = new MonthlyFeeHistory();
+                    $new_installment->student_id = $student_id;
+                    $new_installment->installment_no = $installment->installment_no + 1;
+                    $new_installment->monthly_fee = $due;
+                    $new_installment->due = $due;
+                    $new_installment->save();
+                }
+            }
+
+            return redirect()->to('monthly_fee_history/'.$student_id)->with('success', 'Payment Successfully Done');
+        }else{
+            return redirect()->back()->with('error', 'Payment Amount is Grater than Total Amount');
+        }
+
+    }
+    public function monthlyDueDate(Request $request, $id)
+    {
+        date_default_timezone_set('Asia/Calcutta');
+
+        $due_date = MonthlyFeeHistory::find($id);
+        $next = MonthlyFeeHistory::where('installment_no', ($due_date->installment_no + 1))->where('student_id', $due_date->student_id)->get();
+        if ($next[0]['status'] == 'Pending'){
+            if ($request->due_date > date('Y-m-d H:i:s'))
+            {
+                $a = $id+1;
+                $due = MonthlyFeeHistory::find($a);
+                $due->due_date = $request->due_date;
+                $due->update();
+                return redirect()->to('monthly_fee_history/'.$due_date->student_id)->with('success', 'Due Date Successfully Added');
+            }else{
+                return redirect()->to('monthly_fee_history/'.$due_date->student_id)->with('error', 'Due Date Must be greater then today');
+            }
+        }else{
+            return redirect()->to('monthly_fee_history/'.$due_date->student_id)->with('error', 'Next Payment is already Paid');
+        }
+
     }
 
     /**
