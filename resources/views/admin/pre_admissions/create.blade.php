@@ -119,7 +119,7 @@
                                                             <select name="gender" class="form-control">
                                                                 <option  value="">-Select Gender-</option>
                                                                 <option {{ (old('gender') == 1 ? "selected" : '') }}  value="1">MALE</option>
-                                                                <option {{ (old('gender') == 1 ? "selected" : '') }}  value="2">FEMALE</option>
+                                                                <option {{ (old('gender') == 2 ? "selected" : '') }}  value="2">FEMALE</option>
                                                             </select>
 
                                                             <label for="country-floating">Gender</label>
@@ -451,7 +451,7 @@
         function getExam(id) {
             // alert(id);
             $.ajax({
-                url: "/get_exam",
+                url: "/get_pre_exam",
                 type: "post",
                 data:{
                     "_token": "{{ csrf_token() }}",

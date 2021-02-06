@@ -226,7 +226,7 @@
                                                 <th>{{$assign_teacher->school->full_name}}</th>
                                                 @endif
                                                 <th>{{$assign_teacher->class->create_class}}</th>
-                                                <th>{{$assign_teacher->section->name}}</th>
+                                                <th>{{$assign_teacher->section->section}}</th>
                                                 <th>{{$assign_teacher->employee->first_name." ".$assign_teacher->employee->last_name}}</th>
                                                 <td><a href="{{route('assign_teacher.edit', $assign_teacher->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
 {{--                                                <td><a href="classes_delete/{{$classes->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}

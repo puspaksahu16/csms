@@ -92,7 +92,7 @@
                                             <th scope="col">Class</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Type</th>
-                                            <th scope="col">Status</th>
+                                            {{--<th scope="col">Status</th>--}}
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
@@ -112,11 +112,11 @@
                                                         <td>Monthly</td>
                                                     @endif
 
-                                                    @if($extraclasses->is_active == '1')
-                                                        <td><button class="btn-info">Active</button></td>
-                                                    @else
-                                                        <td><button class="btn-danger">Inactive</button></td>
-                                                    @endif
+                                                    {{--@if($extraclasses->is_active == '1')--}}
+                                                        {{--<td><button class="btn-info">Active</button></td>--}}
+                                                    {{--@else--}}
+                                                        {{--<td><button class="btn-danger">Inactive</button></td>--}}
+                                                    {{--@endif--}}
                                                     <td><a href="{{route('extraclasses.edit', $extraclasses->id)}}" class="btn btn-primary">Edit</a></td>
                                                 </tr>
                                                 @endforeach

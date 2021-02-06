@@ -75,20 +75,25 @@ class NewAdmissionController extends Controller
     {
         if (auth()->user()->role->name == "super_admin")
         {
-            $parents = StudentParent::all()->where('user_id','!==',null);
+            $parents = StudentParent::where('parent_type','new')->get();
 
         }else{
              $students = Student::with('parent')->where('school_id',auth()->user()->school->id)->get();
             $parents = [];
              foreach ($students as $key => $st){
-                 array_push($parents,$st->parent);
+                 if ($st->parent->parent_type == 'new'){
+                     array_push($parents,$st->parent);
+                 }
+
              }
 
 //            return $parents = StudentParent::with(['students' => function($query){
 //                return $query->with('school')->get();
 //            }])->get();
         }
-        return view('admin.parents.index', compact(['parents']));
+//        return $parents;
+
+        return view('admin.parents.index', compact('parents'));
 
     }
 
@@ -104,12 +109,14 @@ class NewAdmissionController extends Controller
      */
     public function create()
     {
-        $school = School::with('students')->find(auth()->user()->school->id);
+
 
         if (auth()->user()->role->name == "super_admin") {
             $classes = Createclass::all();
             $schools = School::all();
         }elseif (auth()->user()->role->name == "admin"){
+
+            $school = School::with('students')->find(auth()->user()->school->id);
             if ( count($school->students) < $school->total_strength){
                 $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             }else{

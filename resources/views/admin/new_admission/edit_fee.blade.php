@@ -147,7 +147,7 @@
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
-                                                                <button class="btn btn-success pull-right waves-effect waves-light" type="Update" >Update</button>
+                                                                <button class="btn btn-primary nextBtn pull-right" type="button" >Next</button>
                                                             </div>
                                                         </div>
 

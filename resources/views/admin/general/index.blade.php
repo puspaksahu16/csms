@@ -93,7 +93,7 @@
                                             <th scope="col">Class</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Type</th>
-                                            <th scope="col">Status</th>
+                                            {{--<th scope="col">Status</th>--}}
                                             <th scope="col">Action</th>
                                         </tr>
                                         </thead>
@@ -113,11 +113,11 @@
                                                     <td>Monthly</td>
                                                 @endif
 
-                                                @if($generals->is_active == '1')
-                                                    <td><button class="btn-info">Active</button></td>
-                                                @else
-                                                    <td><button class="btn-danger">Inactive</button></td>
-                                                @endif
+                                                {{--@if($generals->is_active == '1')--}}
+                                                    {{--<td><button class="btn-info">Active</button></td>--}}
+                                                {{--@else--}}
+                                                    {{--<td><button class="btn-danger">Inactive</button></td>--}}
+                                                {{--@endif--}}
                                                 <td><a href="{{route('general.edit', $generals->id)}}" class="btn btn-primary btn-sm">Edit</a></td>
                                             </tr>
                                         @endforeach

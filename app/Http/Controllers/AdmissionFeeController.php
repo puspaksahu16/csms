@@ -31,8 +31,10 @@ class AdmissionFeeController extends Controller
         {
             $student_fees = AdmissionFee::with('students')->where('student_id', auth()->user()->parent->student_id)->get();
         }elseif (auth()->user()->role->name == "admin"){
+//            return  auth()->user()->school->id;
+//             $student_fees = AdmissionFee::with('students')->where('school_id', auth()->user()->school->id)->get();
              $students = AdmissionFee::with(['students' => function ($q){
-                return $q->where('school_id', auth()->user()->profile_id)->get();
+                return $q->where('school_id', auth()->user()->school->id)->get();
             }])->get();
             $student_fees = [];
              foreach ($students as $s)
@@ -217,10 +219,12 @@ class AdmissionFeeController extends Controller
 
         if (empty($af))
         {
+//            $student = Student::find($id);
             $fee = 0;
 
             $admission_fee = new AdmissionFee();
             $admission_fee->student_id = $id;
+//            $admission_fee->school_id = $student->school_id;
             $admission_fee->discount_type = $request->discount_type;
             $admission_fee->discount = $request->discount;
             $admission_fee->general = json_encode($annual_general_fee);

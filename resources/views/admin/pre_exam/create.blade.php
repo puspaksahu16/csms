@@ -111,7 +111,7 @@
                                                         <div class="col-md-12 col-12">
                                                             <div class="form-label-group">
                                                                 <input type="date" class="form-control" value="{{ old('exam_date') }}" placeholder="Exam Date" name="exam_date">
-                                                                <label for="name">Exam Date</label>
+                                                                <label for="name">Exam Date (Optional)</label>
                                                                 <span style="color: red">{{ $errors->first('exam_date') }}</span>
                                                             </div>
                                                         </div>

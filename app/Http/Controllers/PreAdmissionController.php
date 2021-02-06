@@ -33,7 +33,7 @@ class PreAdmissionController extends Controller
         return view('admin.pre_admissions.index', compact(['pre_admissions']));
     }
 
-    public function getExam(Request $request)
+    public function getPreExam(Request $request)
     {
         return $rolls = PreExam::where('class_id', $request->class_id)->pluck('exam_name', 'id');
     }

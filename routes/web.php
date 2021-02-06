@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('pre_admissions', 'PreAdmissionController');
     Route::get('get_school','PreAdmissionController@getSchools');
-    Route::post('/get_exam','PreAdmissionController@getExam');
+    Route::post('/get_pre_exam','PreAdmissionController@getPreExam');
     Route::get('pre_admissions/getclass/{id}','PreAdmissionController@getClasses');
     Route::get('lara_pre_admission','PreAdmissionController@laraPreAdmission')->name('lara_pre_admission');
     Route::get('pre_admissions_delete/{id}','PreAdmissionController@Update_status');

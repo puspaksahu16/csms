@@ -23,12 +23,12 @@ class AssignTeacherController extends Controller
             $schools = School::all();
             $classes = Createclass::all();
             $employees = Employee::all();
-            $assign_teachers = AssignTeacher::all();
+            $assign_teachers = AssignTeacher::with('school','class','employee','section')->get();
         }else{
             $schools = null;
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $employees = Employee::where('school_id', auth()->user()->school->id)->get();
-            $assign_teachers = AssignTeacher::where('school_id', auth()->user()->school->id)->get();
+            $assign_teachers = AssignTeacher::where('school_id', auth()->user()->school->id)->with('school','class','employee','section')->get();
         }
         return view('admin.assign_teacher.index', compact(['schools','classes','employees','assign_teachers']));
     }

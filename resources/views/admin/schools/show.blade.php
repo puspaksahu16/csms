@@ -99,7 +99,7 @@
 
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
-                                                            <input type="text" class="form-control" disabled placeholder="Owner Contact No" value="@if($school->subscription_type == 0) --- @elseif($school->subscription_type == 1) 6 Month @else 1 Year @endif" name="subscription_type">
+                                                            <input type="text" class="form-control" disabled placeholder="Owner Contact No" value="@if($school->subscription_type == 0) --- @elseif($school->subscription_type == 1) 180 Days @elseif($school->subscription_type == 2) 360 Days @else 30 Days @endif" name="subscription_type">
                                                             <label for="name">Subscription Type</label>
                                                         </div>
                                                     </div>

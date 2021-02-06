@@ -59,7 +59,7 @@
                                                 @if(auth()->user()->role->name == "super_admin" || auth()->user()->role->name == "admin" )
                                                 <th>{{$issue_book->student->first_name ." ".$issue_book->student->last_name}}</th>
                                                     <th>{{$issue_book->student->classes->create_class}}</th>
-                                                    <th>{{$issue_book->student->section}}</th>
+                                                    <th>{{$issue_book->student->section_data->section}}</th>
                                                     <th>{{$issue_book->student->student_unique_id}}</th>
                                                 @endif
                                                 <th>{{$issue_book->book->book_name}}</th>
