@@ -275,12 +275,14 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input onchange="permanent()" type="checkbox" id="is_same" {{$address->is_same == 1 ? 'checked' : ''}} name="is_same" value="1"><label>Same as Permanent</label>
+{{--                                                                    <input onchange="permanent()" type="checkbox" id="is_same" {{$address->is_same == 1 ? 'checked' : ''}} name="is_same" value="1"><label>Same as Permanent</label>--}}
                                                                     <br/>
+
+                                                                    <div class="card-header">
+                                                                        <h4 class="card-title">Resident Address</h4>
+                                                                    </div>
                                                                     <br/>
-                                                                    <br/>
-                                                                    <br/>
-                                                                    @if($address->is_same == 1 )
+
                                                                         <div class="row">
                                                                             <div class="col-md-6 col-12">
                                                                                 <div class="form-label-group">
@@ -319,46 +321,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    @else
-                                                                        <div class="row">
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <textarea id="permanent_address" name="permanent_address" class="form-control"></textarea>
-                                                                                    <label for="first-name-column">Permanent Address</label>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text" id="permanent_city" name="permanent_city" class="form-control" placeholder="City">
-                                                                                    <label for="Post">City</label>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text" id="permanent_district" name="permanent_district" class="form-control" placeholder="District">
-                                                                                    <label for="Dist">District</label>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text" id="permanent_zip" name="permanent_zip" class="form-control" placeholder="Zip Code">
-                                                                                    <label for="Zip Code">Zip Code</label>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text" id="permanent_state" name="permanent_state" class="form-control" placeholder="State">
-                                                                                    <label for="State">State</label>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6 col-12">
-                                                                                <div class="form-label-group">
-                                                                                    <input type="text" id="permanent_country" name="permanent_country" class="form-control" placeholder="Country">
-                                                                                    <label for="State">Country</label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    @endif
+
                                                                     <button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
                                                                 </div>
                                                             </div>

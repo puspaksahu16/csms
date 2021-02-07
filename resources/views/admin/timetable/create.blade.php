@@ -144,7 +144,7 @@
                                                                         @endforeach
                                                                     @endif
                                                                 </select>
-                                                                <span style="color: red">{{ $errors->first('employee') }}</span>
+                                                                <span style="color: red">{{ $errors->first('employee_id') }}</span>
                                                             </div>
                                                         </div>
                                                     <div class="col-12 pt-2">

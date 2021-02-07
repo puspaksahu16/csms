@@ -82,7 +82,14 @@
                                                     <td>{{ $pre_exam->current_year }}</td>
                                                     <td>{{ $pre_exam->classes->create_class }}</td>
                                                     <td>{{ $pre_exam->full_mark }}</td>
-                                                    <td>{{ date('d F Y', strtotime($pre_exam->exam_date)) }}</td>
+                                                    <td>
+                                                        @if($pre_exam->exam_date == "")
+                                                            ---
+                                                        @else
+                                                            {{ date('d F Y', strtotime($pre_exam->exam_date)) }}
+                                                        @endif
+
+                                                    </td>
 
                                                     <td><a href="{{route('pre_exam.edit', $pre_exam->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
                                                 </tr>

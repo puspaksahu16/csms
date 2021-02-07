@@ -49,7 +49,7 @@ class IssueBookController extends Controller
             $issue_books = IssueBook::where('status',1)->get();
         }
         if (auth()->user()->role->name == "admin") {
-            $issue_books = IssueBook::where('status',1)->get();
+            $issue_books = IssueBook::where('status',1)->where('school_id', auth()->user()->school->id)->get();
         }
         return view('admin.return_book.index', compact(['issue_books']));
     }

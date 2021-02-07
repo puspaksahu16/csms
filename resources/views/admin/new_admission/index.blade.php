@@ -289,7 +289,7 @@
                         '<div class="form-label-group">'+
                         '<select name="section" id="section" class="form-control">'+
                         '<option>-SELECT Section-</option>'+
-                        '<option value="'+ value.id +'">'+ value.section +'</option>'+
+                        '<option value="'+ value.id +'">'+ value.section_data.section +'</option>'+
                         '</select>'+
                         '<label for="first-name-column">Create Section</label>'+
                         '</div>'+

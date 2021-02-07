@@ -66,12 +66,18 @@ class AssignTeacherController extends Controller
         ]);
 
 
+        $check_emp =  AssignTeacher::where('employee_id', $request->employee_id)->first();
+        if (empty($check_emp)){
+            $data = $request->all();
+            $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
+            AssignTeacher::create($data);
+            return redirect('/assign_teacher')->with("success", "Teacher assigned successfully!");
+        }else{
+            return redirect('/assign_teacher')->with("error", "Teacher already assigned!");
+        }
 
-        $data = $request->all();
-        $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
-        AssignTeacher::create($data);
 
-        return redirect('/assign_teacher')->with("success", "Teacher assigned successfully!");
+
     }
 
     /**
@@ -118,8 +124,14 @@ class AssignTeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $teacher = AssignTeacher::find($id)->update($request->all());
-        return redirect('/assign_teacher')->with("success", "Assigned teacher updated successfully!");
+        $check_emp =  AssignTeacher::where('employee_id', $request->employee_id)->first();
+        if (empty($check_emp)){
+            $teacher = AssignTeacher::find($id)->update($request->all());
+            return redirect('/assign_teacher')->with("success", "Assigned teacher updated successfully!");
+        }else{
+            return redirect(route('assign_teacher.edit', $id))->with("error", "Assigned teacher already exist!");
+        }
+
     }
 
     /**

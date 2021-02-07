@@ -17,6 +17,20 @@
                     @endif
                 </div>
             @endif
+
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        @if(is_array(session()->get('error')))
+                            <ul>
+                                @foreach (session()->get('error') as $message)
+                                    <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                        @else
+                            {{ session()->get('error') }}
+                        @endif
+                    </div>
+                @endif
             <div class="content-header row">
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">

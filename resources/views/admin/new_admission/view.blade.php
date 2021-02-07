@@ -62,7 +62,12 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Id proof</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $students->idproof->id_proof }}</td>
+                                                    <td>&nbsp;@if($students->id_proof == '')
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;---
+                                                        @else
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;{{ $students->idproof->id_proof }}
+                                                                  @endif
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="font-weight-bold">Id Proof No</td>

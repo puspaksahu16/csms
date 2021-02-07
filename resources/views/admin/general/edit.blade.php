@@ -79,16 +79,16 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <tr>
-                                                                <br/>
-                                                                <td><input {{ 1 == $general->is_active ? "checked" : " " }} type="radio" name="is_active" value="1">Active</td>
-                                                                <td><input  {{ 0 == $general->is_active ? "checked" : " " }}  type="radio" name="is_active" value="0">Inactive</td>
-                                                            </tr>
-                                                            <label for="email-id-column">Status</label>
-                                                        </div>
-                                                    </div>
+{{--                                                    <div class="col-md-6 col-12">--}}
+{{--                                                        <div class="form-label-group">--}}
+{{--                                                            <tr>--}}
+{{--                                                                <br/>--}}
+{{--                                                                <td><input {{ 1 == $general->is_active ? "checked" : " " }} type="radio" name="is_active" value="1">Active</td>--}}
+{{--                                                                <td><input  {{ 0 == $general->is_active ? "checked" : " " }}  type="radio" name="is_active" value="0">Inactive</td>--}}
+{{--                                                            </tr>--}}
+{{--                                                            <label for="email-id-column">Status</label>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
                                                     <div class="col-12 pt-2">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
