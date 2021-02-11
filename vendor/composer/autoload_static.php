@@ -517,6 +517,7 @@ class ComposerStaticInitc50128c103cd864d13331851b9456c84
         'App\\Student' => __DIR__ . '/../..' . '/app/Student.php',
         'App\\StudentParent' => __DIR__ . '/../..' . '/app/StudentParent.php',
         'App\\Subject' => __DIR__ . '/../..' . '/app/Subject.php',
+        'App\\SubscriptionPlan' => __DIR__ . '/../..' . '/app/SubscriptionPlan.php',
         'App\\TimeTable' => __DIR__ . '/../..' . '/app/TimeTable.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',

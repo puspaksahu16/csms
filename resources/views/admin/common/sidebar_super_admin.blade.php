@@ -16,6 +16,8 @@
             </li>
             <li class=" nav-item"><a href="{{url('/schools')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Schools">Schools</span></a>
             </li>
+            <li class=" nav-item"><a href="{{url('/subscription_plans')}}"><i class="fa fa-address-book"></i><span class="menu-title" data-i18n="Schools">Subscription Plans</span></a>
+            </li>
             <li class=" nav-item"><a href="{{url('/parents')}}"><i class="fa fa-user"></i><span class="menu-title" data-i18n="Schools">Parents</span></a>
             </li>
             <li class=" nav-item"><a href="{{url('/employee')}}"><i class="fa fa-user"></i><span class="menu-title" data-i18n="Schools">Employee</span></a>

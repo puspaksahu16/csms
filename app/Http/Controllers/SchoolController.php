@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\School;
+use App\SubscriptionPlan;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -100,7 +101,22 @@ class SchoolController extends Controller
                 $file->move($destinationPath, $fileName);
                 $data['logo'] = $fileName;
             }
+            if ($request->subscription_type == 1){
+                $data['total_days'] = 30;
+            }elseif ($request->subscription_type == 2){
+                $data['total_days'] = 180;
+            }else{
+                $data['total_days'] = 360;
+            }
             $school = School::create($data);
+            if ($school->save()){
+                $subscription_plan = new SubscriptionPlan();
+                $subscription_plan->school_id = $school->id;
+                $subscription_plan->subscription_type = $request->subscription_type;
+                $subscription_plan->save();
+            }
+
+
             return redirect()->route('schools.index')->with('success', 'School created successfully');
         }else{
             return redirect()->back()->with('error', 'Something Went Wrong');
@@ -198,6 +214,36 @@ class SchoolController extends Controller
         $school->update();
         return redirect()->route('schools.index')->with('success', 'School deleted successfully');
 
+    }
+
+    public function schoolRenewal(Request $request, $id)
+    {
+        $school_renewal = School::find($id);
+        $days = $school_renewal->total_days;
+        $students = $school_renewal->total_strength;
+        $school_renewal->total_strength = $students + $request->total_strength;
+        $school_renewal->subscription_type = $request->subscription_type;
+        if ($request->subscription_type == 1){
+            $school_renewal->total_days = $days  + 30;
+        }elseif ($request->subscription_type == 2){
+            $school_renewal->total_days = $days  + 180;
+        }else{
+            $school_renewal->total_days = $days  + 360;
+        }
+        $school_renewal->update();
+        if ($school_renewal->update()){
+            $subscription_plan = new SubscriptionPlan();
+            $subscription_plan->school_id = $school_renewal->id;
+            $subscription_plan->subscription_type = $request->subscription_type;
+            $subscription_plan->save();
+        }
+        return redirect()->route('schools.index')->with('success', 'Renewal added successfully');
+    }
+
+    public function subscriptionPlan()
+    {
+        $subscription_plans = SubscriptionPlan::all();
+        return view('admin.subscription_history.index', compact('subscription_plans'));
     }
     /**
      * Remove the specified resource from storage.

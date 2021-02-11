@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('schools', 'SchoolController');
     });
     Route::get('schools_delete/{id}','SchoolController@Update_status');
+    Route::post('school_renewal/{id}','SchoolController@schoolRenewal');
+    Route::get('subscription_plans','SchoolController@subscriptionPlan' );
 
 
 

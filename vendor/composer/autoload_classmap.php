@@ -107,6 +107,7 @@ return array(
     'App\\Student' => $baseDir . '/app/Student.php',
     'App\\StudentParent' => $baseDir . '/app/StudentParent.php',
     'App\\Subject' => $baseDir . '/app/Subject.php',
+    'App\\SubscriptionPlan' => $baseDir . '/app/SubscriptionPlan.php',
     'App\\TimeTable' => $baseDir . '/app/TimeTable.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
