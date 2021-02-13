@@ -36,7 +36,7 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table table-striped mb-0  zero-configuration">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -77,3 +77,6 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+@endpush

@@ -47,7 +47,7 @@
                                                     @if(auth()->user()->role->name == "super_admin")
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
-                                                                <select name="school_id" class="form-control">
+                                                                <select name="school_id"  id="school_id" onchange="getClass()"  class="form-control">
                                                                     <option>-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
@@ -57,19 +57,33 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                    @endif
-                                                    <div class="col-md-4 col-12">
-                                                        <div class="form-label-group">
-                                                            <select name="class_id" class="form-control">
-                                                                <option>-SELECT CLASS-</option>
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
+                                                                <select name="class_id" id="class" class="form-control" disabled>
+                                                                    <option>-SELECT CLASS-</option>
 
-                                                                @foreach($classes as $class)
-                                                                    <option {{ $class->id == $section->class_id  ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                @endforeach
+                                                                    @foreach($classes as $class)
+                                                                        <option {{ $class->id == $section->class_id  ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    @endforeach
 
-                                                            </select>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                        @elseif(auth()->user()->role->name == "admin")
+                                                        <div class="col-md-4 col-12">
+                                                            <div class="form-label-group">
+                                                                <select name="class_id" id="class" class="form-control">
+                                                                    <option>-SELECT CLASS-</option>
+
+                                                                    @foreach($classes as $class)
+                                                                        <option {{ $class->id == $section->class_id  ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+
 
                                                     <div class="col-md-4 col-12">
                                                         <div class="form-label-group">
@@ -121,3 +135,26 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        function getClass() {
+            var school_id = $('#school_id').val();
+            // alert(school_id);
+            $.ajax({
+                url : "/get_class/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#class").attr('disabled', false);
+                    $("#class").empty();
+                    $("#class").append('<option value="">-Select Class-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#class").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
+        }
+    </script>
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+@endpush

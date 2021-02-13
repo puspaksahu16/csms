@@ -115,7 +115,7 @@ class NewAdmissionController extends Controller
             $classes = Createclass::all();
             $schools = School::all();
         }elseif (auth()->user()->role->name == "admin"){
-
+            $schools = null;
             $school = School::with('students')->find(auth()->user()->school->id);
             if ( count($school->students) < $school->total_strength){
                 $classes = Createclass::where('school_id', auth()->user()->school->id)->get();

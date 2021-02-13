@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+
 @section('content')
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -58,7 +59,7 @@
                                             <th scope="col">Created Date</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
-{{--                                            <th></th>--}}
+                                            <th></th>
                                         </tr>
                                         </thead>
                                             <tbody>
@@ -76,20 +77,57 @@
                                                             $created_at = date_create($school->created_at->format('Y-m-d'));
                                                             $diff = date_diff($created_at, $today)->format("%a")
                                                         @endphp
-                                                        @if($school->subscription_type == 0)
+                                                        @if($school->total_days == 0)
                                                             ----
-                                                        @elseif($school->subscription_type == 1)
-                                                            {{ 180 - $diff." days to Renew" }}
-                                                        @elseif($school->subscription_type == 2)
-                                                            {{ 360 - $diff." days to Renew" }}
                                                         @else
-                                                            {{ 30 - $diff." days to Renew" }}
+                                                            {{ $school->total_days - $diff." days to Renew" }}
                                                         @endif
                                                     </td>
                                                     <td>{{$school->created_at->format('d-M-y')}}</td>
                                                     <td>{{$school->is_active == 1 ? 'Active' : "Inactive"}}</td>
                                                     <td><a href="{{route('schools.edit', $school->id)}}" class="btn btn-sm btn-primary">Edit</a></td>
-{{--                                                    <td><a href="schools_delete/{{$school->id}}" class="btn btn-sm btn-danger">Delete</a></td>--}}
+                                                    <td>
+                                                        <a href="#" data-toggle="modal" data-target="#myModal{{$school->id}}" class="btn btn-sm btn-warning">Renewal</a>
+                                                        <div class="modal" id="myModal{{$school->id}}">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+
+                                                                    <!-- Modal Header -->
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Renewal</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    </div>
+
+                                                                    <!-- Modal body -->
+                                                                    <div class="modal-body">
+                                                                        <form class="form" method="POST" action="{{ url('/school_renewal',$school->id) }}">
+                                                                            @csrf
+                                                                            <div class="form-label-group">
+                                                                                <input type="text" class="form-control" placeholder="No of Student" name="total_strength">
+                                                                                <label for="first-name-column">Add no of student</label>
+                                                                            </div>
+                                                                            <div class="form-label-group">
+                                                                                <select class="form-control" name="subscription_type">
+                                                                                    <option value="">- Select Subscription -</option>
+                                                                                    <option  value="1">30 Days</option>
+                                                                                    <option value="2">180 Days</option>
+                                                                                    <option value="3">360 Days</option>
+                                                                                </select>
+                                                                                <label for="name">Subscription Type</label>
+                                                                            </div>
+                                                                            <button class="btn btn-success btn-sm pull-right" type="submit">Submit</button>
+                                                                        </form>
+                                                                    </div>
+
+                                                                    <!-- Modal footer -->
+                                                                    {{--                                                                <div class="modal-footer">--}}
+                                                                    {{--                                                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>--}}
+                                                                    {{--                                                                </div>--}}
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
@@ -103,3 +141,6 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+@endpush

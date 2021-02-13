@@ -299,7 +299,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input onchange="permanent()" {{ (old('is_same') == 1 ? "checked" : '') }} type="checkbox" id="is_same" name="is_same" value="1"><label>Same as Permanent</label>
+                                                                    <input onchange="permanent()" {{ (old('is_same') == 1 ? "checked" : '') }} type="checkbox" id="is_same" name="is_same" value="1"><label>Same as Resident</label>
                                                                     {{--                                                                        <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" checked value="1"><label>Same as Permanent</label>--}}
                                                                     <div id="permanent" >
                                                                         <div class="card-header">
@@ -431,4 +431,7 @@
     </script>
     <script src="{{ asset('admin_assets/vendors/js/extensions/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('admin_assets/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+
+        <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+
 @endpush

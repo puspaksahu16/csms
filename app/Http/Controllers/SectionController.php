@@ -116,7 +116,8 @@ class SectionController extends Controller
             $section = Section::find($id);
             return view('admin.section.edit',compact(['section','classes','schools','set_sections']));
         }else{
-            $classes = CreateClass::all();
+
+            $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
             $set_sections = SetSection::all();
             $section = Section::find($id);
             return view('admin.section.edit',compact(['section','classes','set_sections']));

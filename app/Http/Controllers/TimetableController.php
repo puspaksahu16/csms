@@ -152,7 +152,7 @@ class TimetableController extends Controller
             'day' => 'required',
             'period_id' => 'required',
             'subject_id' => 'required',
-            'employee' => 'required'
+            'employee_id' => 'required'
         ]);
 
           $periods = TimeTable::where('school_id',$request->school_id)

@@ -290,7 +290,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <input onchange="permanent()" {{ (old('is_same') == 1 ? "checked" : '') }} type="checkbox" id="is_same" name="is_same" value="1"><label>Same as Permanent</label>
+                                                        <input onchange="permanent()" {{ (old('is_same') == 1 ? "checked" : '') }} type="checkbox" id="is_same" name="is_same" value="1"><label>Same as Resident</label>
                                                         <br>
                                                         <br>
                                                         <br>
@@ -475,3 +475,6 @@
         }
     </script>
 @endsection
+@push('scripts')
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+@endpush

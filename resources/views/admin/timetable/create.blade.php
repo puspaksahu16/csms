@@ -144,7 +144,7 @@
                                                                         @endforeach
                                                                     @endif
                                                                 </select>
-                                                                <span style="color: red">{{ $errors->first('employee') }}</span>
+                                                                <span style="color: red">{{ $errors->first('employee_id') }}</span>
                                                             </div>
                                                         </div>
                                                     <div class="col-12 pt-2">
@@ -314,4 +314,8 @@
             });
         }
     </script>
+
+        <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+
 @endpush
+

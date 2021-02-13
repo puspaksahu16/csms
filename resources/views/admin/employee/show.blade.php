@@ -224,7 +224,7 @@
                                                         </div>
                                                     </div>
 {{--                                                    <input onchange="permanent()" type="checkbox" id="is_same" name="is_same" {{$r_address->is_same == 1 ? 'checked' : ''}} value="1"><label>Same as Resident</label>--}}
-                                                    @if($r_address->is_same == 1)
+
                                                     <div id="permanent" >
                                                         <div class="card-header">
                                                             <h4 class="card-title">Permanent Address</h4>
@@ -271,7 +271,7 @@
 
                                                 </div>
                                             </div>
-                                                @endif
+
                                                 <div align="right">
                                                     <a href="{{route('employee.index')}}" class="btn btn-sm btn-primary">Back</a>
                                                 </div>
@@ -323,3 +323,6 @@
         }
     </script>
 @endsection
+@push('scripts')
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+@endpush

@@ -292,4 +292,7 @@
 
     <script src="{{ asset('admin_assets/vendors/js/extensions/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('admin_assets/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+
+        <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+
 @endpush
