@@ -103,23 +103,6 @@
                                                     </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
-                                                            <input type="number" value="{{$school->total_strength }}" class="form-control" placeholder="Total Strength" name="total_strength">
-                                                            <label for="name">Total Strength</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-6">
-                                                        <div class="form-label-group">
-                                                            <select class="form-control" name="subscription_type">
-                                                                <option value="">- Select Subscription -</option>
-                                                                <option {{ $school->subscription_type == "3" ? "selected" : '' }} value="3">30 Days</option>
-                                                                <option {{ $school->subscription_type == "1" ? "selected" : '' }} value="1">180 Days</option>
-                                                                <option {{ $school->subscription_type == "2" ? "selected" : '' }} value="2">360 Days</option>
-                                                            </select>
-                                                            <label for="name">Subscription Type</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-6">
-                                                        <div class="form-label-group">
                                                             <select class="form-control" name="standard">
                                                                 <option {{ $school->standard == 'Pre-Primary' ? "selected" : "" }} value="Pre-Primary">Pre-Primary</option>
                                                                 <option  {{ $school->standard == 'Primary' ? "selected" : "" }} value="Primary">Primary</option>
@@ -165,6 +148,23 @@
                                                                 <option {{ $school->facility == 'Day-Cum-Boarding' ? "selected" : " " }} value="Day-Cum-Boarding">Day-Cum-Boarding</option>
                                                                 <option {{ $school->facility == 'No-Boarding' ? "selected" : " " }} value="No-Boarding">No-Boarding</option>
                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
+                                                            <input type="number" value="{{$school->total_strength }}" class="form-control" placeholder="Total Strength" name="total_strength">
+                                                            <label for="name">Total Strength</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <div class="form-label-group">
+                                                            <select class="form-control" name="subscription_type">
+                                                                <option value="">- Select Subscription -</option>
+                                                                <option {{ $school->subscription_type == "3" ? "selected" : '' }} value="3">30 Days</option>
+                                                                <option {{ $school->subscription_type == "1" ? "selected" : '' }} value="1">180 Days</option>
+                                                                <option {{ $school->subscription_type == "2" ? "selected" : '' }} value="2">360 Days</option>
+                                                            </select>
+                                                            <label for="name">Subscription Type</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-6">

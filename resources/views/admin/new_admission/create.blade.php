@@ -253,7 +253,7 @@
                                                                                    <select class="form-control" id="category" name="category">
                                                                                        <option>Select Category</option>
                                                                                        <option value="General">General</option>
-                                                                                       <option value="Saisha">Saisha</option>
+                                                                                       <option value="Other">Other</option>
                                                                                    </select>
                                                                                     <span style="color: red">{{ $errors->first('category') }}</span>
                                                                                 </div>

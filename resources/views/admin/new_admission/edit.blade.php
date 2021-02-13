@@ -175,6 +175,35 @@
                                                                             <label for="last-name-column">Tc Number</label>
                                                                         </div>
                                                                     </div>
+                                                                        <div class="col-md-6 col-12">
+                                                                            <div class="form-label-group">
+                                                                                Category<span style="color: red">*</span>:
+                                                                                <select class="form-control" id="category" name="category">
+                                                                                    <option>Select Category</option>
+                                                                                    <option {{ $students->category == "General" ? "selected" : "" }} value="General">General</option>
+                                                                                    <option {{ $students->category == "Other" ? "selected" : "" }} value="Other">Other</option>
+                                                                                </select>
+                                                                                <span style="color: red">{{ $errors->first('category') }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-12">
+                                                                            <div class="form-label-group">
+                                                                                Blood Group<span style="color: red">*</span>:
+                                                                                <select name="blood_group" class="form-control">
+                                                                                    <option value="">Select Blood Group</option>
+                                                                                    <option {{ $students->blood_group == "A+" ? "selected" : "" }} value="A+">A+</option>
+                                                                                    <option {{ $students->blood_group == "O+" ? "selected" : "" }} value="O+">O+</option>
+                                                                                    <option {{ $students->blood_group == "B+" ? "selected" : "" }} value="B+">B+</option>
+                                                                                    <option {{ $students->blood_group == "AB+" ? "selected" : "" }} value="AB+">AB+</option>
+                                                                                    <option {{ $students->blood_group == "A-" ? "selected" : "" }} value="A-">A-</option>
+                                                                                    <option {{ $students->blood_group == "O-" ? "selected" : "" }} value="O-">O-</option>
+                                                                                    <option {{ $students->blood_group == "B-" ? "selected" : "" }} value="B-">B-</option>
+                                                                                    <option {{ $students->blood_group == "AB-" ? "selected" : "" }} value="AB-">AB-</option>
+
+                                                                                </select>
+                                                                                <span style="color: red">{{ $errors->first('blood_group') }}</span>
+                                                                            </div>
+                                                                        </div>
                                                                     <div class="col-md-6 col-12">
                                                                         <div class="form-label-group">
                                                                             <select class="form-control" name="class_id">
