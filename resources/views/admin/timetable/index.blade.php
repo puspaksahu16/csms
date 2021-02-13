@@ -124,6 +124,7 @@
     </div>
 @endsection
         @push('scripts')
+            <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
             <script>
                 function getClass() {
                     var school_id = $('#school_id').val();
@@ -189,3 +190,4 @@
             </script>
 
     @endpush
+

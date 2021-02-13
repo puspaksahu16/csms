@@ -67,20 +67,8 @@
             </div>
         </div>
     </div>
-    <script>
-        function readURL1(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#blahid')
-                        .attr('src', e.target.result)
-                        .width(130)
-                        .height(150);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
 @endsection
+@push('scripts')
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+@endpush

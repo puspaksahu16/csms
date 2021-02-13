@@ -124,3 +124,6 @@
         }
     </script>
 @endsection
+@push('scripts')
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+@endpush

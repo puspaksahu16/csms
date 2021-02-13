@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+
 @section('content')
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -140,3 +141,6 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+@endpush
