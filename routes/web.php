@@ -128,6 +128,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/fetch_school_bookstock','BookStockController@fetchschoolBookstock');
     Route::post('/fetch_book_details','BookStockController@fetchBookDetails');
     Route::get('lara_book_stock','BookStockController@laraBookStock')->name('lara_book_stock');
+    Route::get('/get_book_standard_class' , 'BookController@bookStandardClass');
 
     Route::resource('damages', 'DamageController');
     Route::post('fetch_damage_product_details', 'DamageController@fetchDamageProductDetails');

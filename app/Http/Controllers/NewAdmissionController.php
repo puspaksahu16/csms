@@ -367,9 +367,10 @@ class NewAdmissionController extends Controller
     {
         $id_proof = Idproof::all();
         if (auth()->user()->role->name == "super_admin") {
-            $classes = Createclass::all();
+
             $students = Student::find($id);
             $schools = School::all();
+            $classes = Createclass::where('school_id', $students->school_id)->get();
             $qualifications = Qualification::all();
             $studentparents = StudentParent::where('student_id', $id)->where('parent_type', 'new')->first();
             $address = Address::where('user_id',$id)->where('register_type', 'new')->first();

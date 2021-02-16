@@ -43,24 +43,39 @@
                                                 @csrf
                                             <div class="form-body">
                                                 <div class="row">
+
+                                                    @if(auth()->user()->role->name == "super_admin")
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <label for="name">School</label>
+                                                                <select  id="school_id" onchange="getClass()" class="form-control" name="school_id">
+                                                                    <option>-Select School-</option>
+                                                                    @foreach($schools as $school)
+                                                                        <option  {{ $general->school_id == $school->id ? "selected" : " " }} value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <select name="class_id" id="class" class="form-control">
+                                                                    <option>-SELECT CLASS-</option>
+                                                                    @foreach($classes as $class)
+                                                                        <option {{ $class->id == $general->class_id ? "selected" : " " }}  value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    @endforeach
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder="General Name" name="name" value="{{$general->name}}">
                                                             <label for="name">General Name</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
-                                                        <div class="form-label-group">
-                                                            <select name="class_id" class="form-control">
-                                                                <option>-SELECT CLASS-</option>
 
-                                                                @foreach($classes as $class)
-                                                                    <option {{ $class->id == $general->class_id ? "selected" : " " }}  value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                @endforeach
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder="Price" name="price" value="{{$general->price}}">
@@ -125,5 +140,25 @@
     </script>
 @endsection
 @push('scripts')
+    <script>
+        function getClass() {
+            var school_id = $('#school_id').val();
+            // alert(csrf);
+            $.ajax({
+                url : "/get_class/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#class").attr('disabled', false);
+                    $("#class").empty();
+                    $("#class").append('<option value="">-Select Class-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#class").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
+        }
+    </script>
     <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
 @endpush

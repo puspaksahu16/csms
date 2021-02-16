@@ -97,7 +97,7 @@
 
                                                                     @if(auth()->user()->role->name == "super_admin")
                                                                         <div class="col-md-6 col-12">
-                                                                            <select name="school_id" class="form-control">
+                                                                            <select  onchange="getClass()" id="school_id" name="school_id" class="form-control">
                                                                                 <option>-SELECT School-</option>
 
                                                                                 @foreach($schools as $school)
@@ -177,7 +177,7 @@
                                                                     </div>
                                                                     <div class="col-md-6 col-12">
                                                                         <div class="form-label-group">
-                                                                            <select class="form-control" name="class_id">
+                                                                            <select id="class" class="form-control" name="class_id">
                                                                                 <option value="">-Select class-</option>
                                                                                 @foreach($classes as $class)
                                                                                     <option {{ $class->id == $students->class_id ? "selected" : " " }}  value="{{ $class->id }}">{{ $class->create_class }}</option>
@@ -485,18 +485,24 @@
 @endsection
 @push('scripts')
     <script>
-        // $(document).ready(function () {
-        //     var a = $('#is_same').is(':checked') ? 1 : 0;
-        //     alert(a);
-        //     if (a == 0)
-        //     {
-        //         $('#permanent').css('display', 'block');
-        //     }
-        //     else
-        //     {
-        //         $('#permanent').css('display', 'none');
-        //     }
-        // });
+        function getClass() {
+            var school_id = $('#school_id').val();
+            // alert(school_id);
+            $.ajax({
+                url : "/get_class/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#class").attr('disabled', false);
+                    $("#class").empty();
+                    $("#class").append('<option value="">-Select Class-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#class").append('<option value=' + key + '>' + value + '</option>');
+                    });
+                }
+            });
+        }
         function permanent() {
             var a = $('#is_same').is(':checked') ? 1 : 0;
             if (a === 1)

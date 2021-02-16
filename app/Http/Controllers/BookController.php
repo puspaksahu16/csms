@@ -10,6 +10,7 @@ use App\Standard;
 use App\Subject;
 use Freshbitsweb\Laratables\Laratables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -182,14 +183,35 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function bookStandardClass(Request $request)
+    {
+        if (auth()->user()->role->name == "super_admin"){
+            return $classes = Createclass::where('school_id', $request->school_id)->where('standard_id', $request->standard_id)->pluck('create_class', 'id');
+        }elseif (auth()->user()->role->name == "admin"){
+            return $classes = Createclass::where('school_id', Auth::user()->school->id)->where('standard_id', $request->standard_id)->pluck('create_class', 'id');
+        }
+
+    }
     public function edit($id)
     {
         $books = Book::find($id);
-        $classes = Createclass::all();
-        $subject = Subject::all();
-        $publisher = Publisher::all();
-        $standard = Standard::all();
-        return view('admin.books.edit', compact(['books','standard','publisher','subject','classes']));
+        if (auth()->user()->role->name == "super_admin"){
+            $schools = School::all();
+            $classes = Createclass::where('school_id', $books->school_id)->where('standard_id',$books->standard_id )->get();
+            $subject = Subject::where('school_id', $books->school_id)->get();
+            $publisher = Publisher::all();
+            $standard = Standard::where('school_id', $books->school_id)->get();
+
+        }elseif(auth()->user()->role->name == "admin"){
+            $schools = null;
+            $classes = Createclass::where('school_id', Auth::user()->school->id)->where('standard_id',$books->standard_id )->get();
+            $subject = Subject::where('school_id', Auth::user()->school->id)->get();
+            $publisher = Publisher::all();
+            $standard = Standard::where('school_id', Auth::user()->school->id)->get();
+        }
+
+
+        return view('admin.books.edit', compact(['schools','books','standard','publisher','subject','classes']));
     }
 
     /**
@@ -202,7 +224,7 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         Book::find($id)->update($request->all());
-        return redirect('/books')->with('message', 'Status changed!');
+        return redirect('/books')->with('success', 'Book updated successfully!');
     }
 
     /**

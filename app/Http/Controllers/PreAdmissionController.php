@@ -247,12 +247,22 @@ class PreAdmissionController extends Controller
     public function edit($id)
     {
         $pre_admission = PreAdmission::find($id);
-        $qualifications = null;
-        $classes = Createclass::all();
-        $pre_exams = PreExam::all();
-        $schools = School::all();
-        $parents = StudentParent::where('student_id',$id)->where('parent_type', 'pre')->first();
-        $address = Address::where('user_id',$id)->where('register_type', 'pre')->first();
+        if (auth()->user()->role->name == "super_admin") {
+            $schools = School::all();
+            $classes = Createclass::where('school_id', $pre_admission->school_id)->get();
+            $pre_exams = PreExam::where('school_id', $pre_admission->school_id)->where('class_id', $pre_admission->class_id)->get();
+            $parents = StudentParent::where('student_id',$id)->where('parent_type', 'pre')->first();
+            $address = Address::where('user_id',$id)->where('register_type', 'pre')->first();
+            $qualifications = null;
+        }elseif (auth()->user()->role->name == "admin") {
+            $qualifications = null;
+            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+            $pre_exams = PreExam::where('school_id', auth()->user()->school->id)->where('class_id', $pre_admission->class_id)->get();
+            $schools = null;
+            $parents = StudentParent::where('student_id',$id)->where('parent_type', 'pre')->first();
+            $address = Address::where('user_id',$id)->where('register_type', 'pre')->first();
+        }
+
         return view('admin.pre_admissions.edit', compact(['pre_admission','schools','classes','pre_exams','parents','address','qualifications']));
     }
 

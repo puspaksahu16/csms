@@ -66,83 +66,43 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3 col-12">
-                                                            <div class="form-label-group">
-                                                                <select  disabled="disabled" type="text"  onchange="getSection(this.value)" id="class_id" class="form-control"  name="class_id">
-                                                                    <option value="">-Select Class-</option>
-                                                                    @foreach($classes as $class)
-                                                                        <option  {{ $class->id == $assign_teacher->class_id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <label for="standard">Class</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-12">
-                                                            <div class="form-label-group">
-                                                                <select id="section" name="section_id" class="form-control">
-                                                                    <option  value="">-Select Section-</option>
-                                                                    @foreach($set_sections as $set_section)
-                                                                        <option  {{ $set_section->id == $assign_teacher->section_id ? "selected" : " " }} value="{{ $set_section->id }}">{{ $set_section->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <label for="name">Section</label>
-                                                                <span style="color: red">{{ $errors->first('section_id') }}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-12">
-                                                            <div class="form-label-group">
-                                                                {{--                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class"  value="{{$classes->create_class}}">--}}
-                                                                <select disabled="disabled" name="employee_id" id="employee_id" class="form-control">
-                                                                    <option>-Select Teacher-</option>
-                                                                    @foreach($employees as $employee )
-                                                                        <option {{ ($assign_teacher->employee_id ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name." ".$employee->last_name }}</option>
-                                                                    @endforeach
-
-                                                                </select>
-                                                                <label for="first-name-column">Teacher Name</label>
-                                                            </div>
-                                                        </div>
-
-                                                        @elseif(auth()->user()->role->name == "admin")
-                                                        <div class="col-md-4 col-12">
-                                                            <div class="form-label-group">
-                                                                <select type="text" onchange="getSection(this.value)" id="class_id" class="form-control"  name="class_id">
-                                                                    <option value="">-Select Class-</option>
-                                                                    @foreach($classes as $class)
-                                                                        <option  {{ $class->id == $assign_teacher->class_id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <label for="standard">Class</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4 col-12">
-                                                            <div class="form-label-group">
-                                                                <select id="section" name="section_id" class="form-control">
-                                                                    <option  value="">-Select Section-</option>
-                                                                    @foreach($set_sections as $set_section)
-                                                                        <option  {{ $set_section->id == $assign_teacher->section_id ? "selected" : " " }} value="{{ $set_section->id }}">{{ $set_section->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <label for="name">Section</label>
-                                                                <span style="color: red">{{ $errors->first('section_id') }}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4 col-12">
-                                                            <div class="form-label-group">
-                                                                {{--                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class"  value="{{$classes->create_class}}">--}}
-                                                                <select name="employee_id" id="employee_id" class="form-control">
-                                                                    <option>-Select Teacher-</option>
-                                                                    @foreach($employees as $employee )
-                                                                        <option {{ ($assign_teacher->employee_id ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name." ".$employee->last_name }}</option>
-                                                                    @endforeach
-
-                                                                </select>
-                                                                <label for="first-name-column">Teacher Name</label>
-                                                            </div>
-                                                        </div>
                                                     @endif
+                                                        <div class="col-md-3 col-12">
+                                                            <div class="form-label-group">
+                                                                <select  type="text"  onchange="getSection(this.value)" id="class_id" class="form-control"  name="class_id">
+                                                                    <option value="">-Select Class-</option>
+                                                                    @foreach($classes as $class)
+                                                                        <option  {{ $class->id == $assign_teacher->class_id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="standard">Class</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-12">
+                                                            <div class="form-label-group">
+                                                                <select id="section" name="section_id" class="form-control">
+                                                                    <option  value="">-Select Section-</option>
+                                                                    @foreach($sections as $section)
+                                                                        <option  {{ $section->id == $assign_teacher->section_id ? "selected" : " " }} value="{{ $section->id }}">{{ $section->section }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="name">Section</label>
+                                                                <span style="color: red">{{ $errors->first('section_id') }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 col-12">
+                                                            <div class="form-label-group">
+                                                                {{--                                                            <input type="text" id="create_class" class="form-control" placeholder="Class Name" name="create_class"  value="{{$classes->create_class}}">--}}
+                                                                <select  name="employee_id" id="employee_id" class="form-control">
+                                                                    <option>-Select Teacher-</option>
+                                                                    @foreach($employees as $employee )
+                                                                        <option {{ ($assign_teacher->employee_id ==  $employee->id  ? "selected" : '') }} value="{{ $employee->id }}"  style="text-transform: uppercase">{{ $employee->first_name." ".$employee->last_name }}</option>
+                                                                    @endforeach
 
-
+                                                                </select>
+                                                                <label for="first-name-column">Teacher Name</label>
+                                                            </div>
+                                                        </div>
 
 
                                                     <div class="col-4">

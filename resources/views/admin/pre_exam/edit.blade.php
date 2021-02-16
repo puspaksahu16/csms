@@ -141,7 +141,7 @@
     </script>
     <script type="text/javascript">
         function get_class(value) {
-            // alert(1);
+            // alert(value);
             $('#class_show').hide();
             jQuery.ajax({
                 url : '/get_class/' +value,
