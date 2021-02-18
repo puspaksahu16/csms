@@ -6,6 +6,7 @@ use App\AssignTeacher;
 use App\Createclass;
 use App\Employee;
 use App\School;
+use App\Section;
 use App\SetSection;
 use App\Standard;
 use Illuminate\Http\Request;
@@ -99,19 +100,20 @@ class AssignTeacherController extends Controller
      */
     public function edit($id)
     {
+        $assign_teacher = AssignTeacher::find($id);
         if (auth()->user()->role->name == "super_admin") {
             $schools = School::all();
-            $classes = Createclass::all();
-            $employees = Employee::all();
-            $set_sections = SetSection::all();
+            $classes = Createclass::where('school_id', $assign_teacher->school_id)->get();
+            $employees = Employee::where('school_id', $assign_teacher->school_id)->get();
+            $sections = Section::where('school_id', $assign_teacher->school_id)->where('class_id', $assign_teacher->class_id)->get();
         }else{
             $schools = null;
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
             $employees = Employee::where('school_id', auth()->user()->school->id)->get();
-            $set_sections = SetSection::all();
+            $sections = Section::where('school_id', auth()->user()->school->id)->where('class_id', $assign_teacher->class_id)->get();
         }
-        $assign_teacher = AssignTeacher::find($id);
-        return view('admin.assign_teacher.edit', compact(['schools','classes','employees','assign_teacher','set_sections']));
+
+        return view('admin.assign_teacher.edit', compact(['schools','classes','employees','assign_teacher','sections']));
 
     }
 

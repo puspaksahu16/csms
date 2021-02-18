@@ -50,6 +50,7 @@ class BookStockController extends Controller
         return response($stocks);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *

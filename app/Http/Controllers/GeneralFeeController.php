@@ -6,6 +6,7 @@ use App\Createclass;
 use App\GeneralFee;
 use App\School;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GeneralFeeController extends Controller
 {
@@ -107,8 +108,16 @@ class GeneralFeeController extends Controller
     public function edit($id)
     {
         $general = GeneralFee::find($id);
-        $classes = CreateClass::all();
-        return view('admin.general.edit',compact(['general','classes']));
+        if (auth()->user()->role->name == 'super_admin'){
+            $schools = School::all();
+            $classes = CreateClass::where('school_id',$general->school_id )->get();
+        }elseif (auth()->user()->role->name == 'admin'){
+            $schools = null;
+            $classes = CreateClass::where('school_id', Auth::user()->school->id )->get();
+        }
+
+
+        return view('admin.general.edit',compact(['schools','general','classes']));
     }
 
     /**

@@ -51,7 +51,7 @@
                                                                     <option>-SELECT School-</option>
 
                                                                     @foreach($schools as $school)
-                                                                        <option {{ $section->school->id == $section->school_id  ? "selected" : " " }} value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                        <option {{ $school->id == $section->school_id  ? "selected" : " " }} value="{{ $school->id }}">{{ $school->full_name }}</option>
                                                                     @endforeach
 
                                                                 </select>
@@ -59,7 +59,7 @@
                                                         </div>
                                                         <div class="col-md-4 col-12">
                                                             <div class="form-label-group">
-                                                                <select name="class_id" id="class" class="form-control" disabled>
+                                                                <select name="class_id" id="class" class="form-control">
                                                                     <option>-SELECT CLASS-</option>
 
                                                                     @foreach($classes as $class)

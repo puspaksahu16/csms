@@ -62,7 +62,7 @@
                                                     @if(auth()->user()->role->name == "super_admin")
 
                                                         <div class="col-md-12 col-12">
-                                                            <select name="school_id" class="form-control">
+                                                            <select onchange="get_class(this.value)" name="school_id" class="form-control">
                                                                 <option>-SELECT School-</option>
 
                                                                 @foreach($schools as $school)
@@ -72,6 +72,7 @@
                                                             </select>
                                                             <label for="first-name-column"></label>
                                                         </div>
+
                                                     @endif
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
@@ -102,22 +103,22 @@
                                                             <label for="country-floating">Gender</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-label-group">
-                                                            <select name="class_id" class="form-control">
-                                                                <option>-SELECT CLASS-</option>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-label-group">
+                                                                <select  onchange="getExam(this.value)" name="class_id" id="class_id" class="form-control">
+                                                                    <option>-SELECT CLASS-</option>
 
-                                                                @foreach($classes as $class)
-                                                                    <option {{ $class->id == $pre_admission->class_id ? "selected" : " "  }} value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                @endforeach
+                                                                    @foreach($classes as $class)
+                                                                        <option {{ $class->id == $pre_admission->class_id ? "selected" : " "  }} value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    @endforeach
 
-                                                            </select>
+                                                                </select>
 
+                                                            </div>
                                                         </div>
-                                                    </div>
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <select name="pre_exam_id" class="form-control">
+                                                            <select name="pre_exam_id" id="pre_exam_id" class="form-control">
                                                                 <option>-SELECT EXAM-</option>
                                                                 @foreach($pre_exams as $pre_exam)
                                                                     <option {{ $pre_exam->id == $pre_admission->pre_exam_id ? "selected" : " "  }} value="{{ $pre_exam->id }}">{{ $pre_exam->exam_name }}</option>
@@ -268,9 +269,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <input onchange="permanent()" type="checkbox" id="is_same" {{$address->is_same == 1 ? 'checked' : ''}} name="is_same" value="1"><label>Same as Permanent</label>
-                                                    <br/>
-                                                    <br/>
+{{--                                                        <input onchange="permanent()" type="checkbox" id="is_same" {{$address->is_same == 1 ? 'checked' : ''}} name="is_same" value="1"><label>Same as Permanent</label>--}}
+
                                                     <br/>
                                                     <br/>
 
@@ -390,5 +390,50 @@
     </script>
 @endsection
 @push('scripts')
+    <script type="text/javascript">
+        function get_class(value) {
+            // alert(value);
+            $('#class_show').hide();
+            jQuery.ajax({
+                url : '/get_class/' +value,
+                type : "GET",
+                dataType : "json",
+                success:function(data)
+                {
+                    console.log(data);
+                    $('#class_id').empty();
+                    $('#class_id').append('<option value="">Select Class</option>');
+                    jQuery.each(data, function(key,value){
+                        $('#class_id').append('<option value="'+ key +'">'+ value +'</option>');
+                    });
+                }
+            });
+        }
+        function getExam(id) {
+            // alert(id);
+            $.ajax({
+                url: "/get_pre_exam",
+                type: "post",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    class_id: id
+                },
+                success: function(result){
+                    console.log(result);
+                    $('#pre_exam_id').empty();
+                    if(result)
+                    {
+                        $('#pre_exam_id').append('<option value="">-Select-</option>');
+                        $.each(result,function(key,value){
+                            $('#pre_exam_id').append($("<option/>", {
+                                value: key,
+                                text: value
+                            }));
+                        });
+                    }
+                    // $("#div1").html(result);
+                }});
+        }
+    </script>
     <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
 @endpush

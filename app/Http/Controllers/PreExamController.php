@@ -113,7 +113,7 @@ class PreExamController extends Controller
     {
         if (auth()->user()->role->name == "super_admin") {
             $pre_exam = PreExam::find($id);
-            $classes = Createclass::all();
+            $classes = Createclass::where('school_id', $pre_exam->school_id)->get();
             $schools = School::all();
         }else{
             $schools = null;

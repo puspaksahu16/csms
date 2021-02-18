@@ -103,16 +103,14 @@ class ExtraClassController extends Controller
      */
     public function edit($id)
     {
-
+        $extraclass = ExtraClass::find($id);
         if (auth()->user()->role->name == 'admin')
         {
             $schools = null;
-            $extraclass = ExtraClass::find($id);
             $classes = CreateClass::where('school_id', auth()->user()->school->id)->get();
         }elseif (auth()->user()->role->name == 'super_admin'){
-            $extraclass = ExtraClass::find($id);
             $schools = School::all();
-            $classes = Createclass::all();
+            $classes = Createclass::where('school_id', $extraclass->school_id)->get();
         }
 
         return view('admin.extraclasses.edit', compact(['extraclass','classes','schools']));

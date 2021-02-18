@@ -15,7 +15,7 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Store</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Product</a>
+                                    <li class="breadcrumb-item"><a href="#">Book Edit</a>
                                     </li>
 
                                 </ol>
@@ -42,67 +42,84 @@
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
+                                                    @if(auth()->user()->role->name == "super_admin")
+                                                            <div class="col-md-12 col-12">
+                                                                <div class="form-label-group">
+                                                                    <label for="name">School</label>
+                                                                    <select  id="school_id" onchange="getStandard()" class="form-control" name="school_id">
+                                                                        <option>-Select School-</option>
+                                                                        @foreach($schools as $school)
+                                                                            <option  {{ $books->school_id == $school->id ? "selected" : " " }} value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                    @endif
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <label for="name">Standard</label>
+                                                                <select   onchange="getClass(this.value)" id="standard_id" class="form-control" name="standard_id">
+                                                                    <option>-Select Standard-</option>
+                                                                    @foreach($standard as $std)
+                                                                        <option  {{ $std->id == $books->standard_id ? "selected" : " " }} value="{{ $std->id }}">{{ $std->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <label for="name">Class</label>
+                                                                <select class="form-control" name="class_id" id="class_id">
+                                                                    <option>-Select Class-</option>
+                                                                    @foreach($classes as $class)
+                                                                        <option  {{ $class->id == $books->class_id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                                    @endforeach
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <label for="name">Publisher</label>
+                                                                <select class="form-control" name="publisher_id">
+                                                                    <option>-Select Publisher-</option>
+
+                                                                    @foreach($publisher as $publishers)
+
+                                                                        <option  {{ $publishers->id == $books->publisher_id ? "selected" : " " }} value="{{ $publishers->id }}">{{ $publishers->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-12">
+                                                            <div class="form-label-group">
+                                                                <label for="name">Subject</label>
+                                                                <select class="form-control" name="subject_id">
+                                                                    <option>-Select Subject-</option>
+                                                                    @foreach($subject as $subjects)
+                                                                        <option  {{ $subjects->id == $books->subject_id ? "selected" : " " }} value="{{ $subjects->id }}">{{ $subjects->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
                                                             <input type="text" class="form-control" placeholder="Product Name" name="name" value="{{$books->name}}">
                                                             <label for="name">Book Name</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 col-12">
-                                                        <div class="form-label-group">
-                                                            <label for="name">Standard</label>
-                                                            <select class="form-control" name="standard_id">
-                                                                @foreach($standard as $std)
-                                                                    <option>-Select Class-</option>
-                                                                    <option  {{ $std->id == $books->standard_id ? "selected" : " " }} value="{{ $std->id }}">{{ $std->name }}</option>
-                                                                @endforeach
-                                                            </select>
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
-                                                        <div class="form-label-group">
-                                                            <label for="name">Class</label>
-                                                            <select class="form-control" name="class_id">
-                                                                @foreach($classes as $class)
-                                                                    <option>-Select Class-</option>
-                                                                    <option  {{ $class->id == $books->class_id ? "selected" : " " }} value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                                @endforeach
-                                                            </select>
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
-                                                        <div class="form-label-group">
-                                                            <label for="name">Publisher</label>
-                                                            <select class="form-control" name="publisher_id">
-                                                                @foreach($publisher as $publishers)
-                                                                    <option>-Select Class-</option>
-                                                                    <option  {{ $publishers->id == $books->publisher_id ? "selected" : " " }} value="{{ $publishers->id }}">{{ $publishers->name }}</option>
-                                                                @endforeach
-                                                            </select>
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-12">
-                                                        <div class="form-label-group">
-                                                            <label for="name">Subject</label>
-                                                            <select class="form-control" name="subject_id">
-                                                                @foreach($subject as $subjects)
-                                                                    <option>-Select Class-</option>
-                                                                    <option  {{ $subjects->id == $books->subject_id ? "selected" : " " }} value="{{ $subjects->id }}">{{ $subjects->name }}</option>
-                                                                @endforeach
-                                                            </select>
-
-                                                        </div>
-                                                    </div>
                                                     </div>
                                                     <div class="col-12 pt-2">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -118,5 +135,46 @@
 
 @endsection
 @push('scripts')
+    <script>
+        function getStandard() {
+            var school_id = $('#school_id').val();
+            // alert(csrf);
+            $.ajax({
+                url : "/get_standard/"+school_id,
+                type:'get',
+                success: function(response) {
+                    console.log(response);
+                    $("#standard_id").attr('disabled', false);
+                    $("#standard_id").empty();
+                    $("#standard_id").append('<option value="">-Select Standard-</option>');
+                    $.each(response,function(key, value)
+                    {
+                        $("#standard_id").append('<option value=' + key + '>' + value + '</option>');
+                    });
+
+                }
+            });
+        }
+        function getClass(value) {
+
+            var school_id = $('#school_id').val();
+            var standard_id = value;
+            // alert(standard_id);
+            $.ajax({
+                type: "get",
+                url: "/get_book_standard_class",
+                data:{school_id: school_id, standard_id: standard_id},
+                success: function(data){
+                    console.log(data);
+                    $("#class_id").empty();
+                    $.each(data, function(key, value)
+                    {
+                        $("#class_id").append('<option value=' + key + '>' + value + '</option>');
+                    });
+
+                }
+            });
+        }
+    </script>
     <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
 @endpush
