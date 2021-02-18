@@ -43,7 +43,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Products Price</h4>
+                                <h4 class="card-title">Products Stock</h4>
                                 <a class="btn btn-primary" href="{{url('/stocks/create')}}">Add</a>
                             </div>
                             <div class="card-content">

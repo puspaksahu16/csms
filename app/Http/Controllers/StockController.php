@@ -163,7 +163,7 @@ class StockController extends Controller
         }
 
         if ($selectedproduct->gender == 1) {
-            $genders = [['id' => 1, 'name' => 'boys'],['id' => 2, 'name' => 'girls']];
+            $genders = [['id' => 1, 'name' => 'Boys'],['id' => 2, 'name' => 'Girls']];
         }
 
         return response(['colors' => $colors, 'sizes' => $sizes, 'types' => $types, 'genders' => $genders]);
