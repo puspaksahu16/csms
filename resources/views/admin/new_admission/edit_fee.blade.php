@@ -91,7 +91,7 @@
                                                                             <tr>
                                                                                 <td>
                                                                                     <div class="custom-control custom-checkbox">
-                                                                                        <input type="checkbox" class="custom-control-input"  {{ !empty($selected_general) ? in_array($gf->id, $selected_general) ? "checked" : "" : "" }} name="general[]" value="{{ $gf->id }}" id="{{$gf->name.$key}}">
+                                                                                        <input type="checkbox" class="custom-control-input" {{ !empty($selected_general_monthly) ? (in_array($gf->id, $selected_general_monthly) ? "checked" : "") : "" }}   {{ !empty($selected_general) ? (in_array($gf->id, $selected_general) ? "checked" : "" ) : "" }} name="general[]" value="{{ $gf->id }}" id="{{$gf->name.$key}}">
                                                                                         <label class="custom-control-label" for="{{$gf->name.$key}}"></label>
                                                                                     </div>
                                                                                 </td>
@@ -134,7 +134,7 @@
                                                                             <tr>
                                                                                 <td>
                                                                                     <div class="custom-control custom-checkbox">
-                                                                                        <input type="checkbox" class="custom-control-input"  {{ !empty($selected_classes) ? in_array($ec->id, $selected_classes) ? "checked" : "" : "" }} name="ecc[]" value="{{ $ec->id }}" id="{{$ec->name.$key}}">
+                                                                                        <input type="checkbox" class="custom-control-input" {{ !empty($selected_ecc_monthly) ? (in_array($gf->id, $selected_ecc_monthly) ? "checked" : "") : "" }}  {{ !empty($selected_classes) ? in_array($ec->id, $selected_classes) ? "checked" : "" : "" }} name="ecc[]" value="{{ $ec->id }}" id="{{$ec->name.$key}}">
                                                                                         <label class="custom-control-label" for="{{$ec->name.$key}}"></label>
                                                                                     </div>
                                                                                 </td>

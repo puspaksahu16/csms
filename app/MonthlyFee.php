@@ -10,4 +10,9 @@ class MonthlyFee extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function history()
+    {
+        return $this->hasMany(MonthlyFeeHistory::class);
+    }
 }

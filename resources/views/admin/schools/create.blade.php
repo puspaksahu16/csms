@@ -175,7 +175,7 @@
                                                     </div>
                                                     <div class="col-md-6 col-6">
                                                         <div class="form-label-group">
-                                                            <select class="form-control" name="subscription_type">
+                                                            <select required class="form-control" name="subscription_type">
                                                                 <option value="">- Select Subscription -</option>
                                                                 <option {{ (old('subscription_type') == "1" ? "selected" : '') }} value="1">30 Days</option>
                                                                 <option {{ (old('subscription_type') == "2" ? "selected" : '') }} value="2">180 Days</option>

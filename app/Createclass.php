@@ -20,4 +20,9 @@ class Createclass extends Model
     {
         return $this->hasMany(Section::class, 'class_id');
     }
+
+    public function class_teacher()
+    {
+        return $this->hasOne(AssignTeacher::class, 'class_id');
+    }
 }

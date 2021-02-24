@@ -42,7 +42,7 @@ class Stock extends Model
     }
 
     public function getAvailableStocksAttribute(){
-    	return $this->stock_in - $this->stock_out - $this->damage['damage'];
+    	return $this->stock_in - $this->stock_out - ( !empty($this->damage['damage']) ? $this->damage['damage'] : 0);
     }
 
 }

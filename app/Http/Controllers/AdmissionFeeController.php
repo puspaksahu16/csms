@@ -502,15 +502,28 @@ class AdmissionFeeController extends Controller
 //        return $products;
          $selected_general = json_decode($addmision_fee->general);
          $selected_classes = json_decode($addmision_fee->ecc);
+
+         $monthly_fee = MonthlyFee::where('student_id', $addmision_fee->student_id)->first();
+
+        if (!empty($monthly_fee))
+        {
+            $selected_general_monthly = json_decode($monthly_fee->general_fee_id);
+            $selected_ecc_monthly = json_decode($addmision_fee->ecc_fee_id);
+        }else{
+            $selected_general_monthly = [];
+            $selected_ecc_monthly = [];
+        }
+
 //         $selected_books = json_decode($addmision_fee->book);
           $student = Student::find($addmision_fee->student_id);
+
          $std_id = $student->class_id;
         $general_fees = GeneralFee::where('class_id', $std_id)->where('school_id', $student->school_id)->get();
 
         $extra_classes = ExtraClass::where('class_id', $std_id)->where('school_id', $student->school_id)->get();
         $book = Book::with('stock')->where('class_id', $std_id)->get();
 
-        return view('admin.new_admission.edit_fee',compact(['id', 'general_fees', 'extra_classes','addmision_fee','selected_general','selected_classes']));
+        return view('admin.new_admission.edit_fee',compact(['id', 'selected_general_monthly', 'selected_ecc_monthly', 'general_fees', 'extra_classes','addmision_fee','selected_general','selected_classes']));
 
 
     }
@@ -525,13 +538,59 @@ class AdmissionFeeController extends Controller
     public function update(Request $request, $id)
     {
 //        return 1;
+        $monthly_fee = 0;
+        $monthly_genera_fee = [];
+        $annual_general_fee = [];
+        $request_general_fee = $request->general;
+        if (!empty($request_general_fee)){
+            foreach ($request_general_fee as $gf)
+            {
+                $general_fee = GeneralFee::find($gf);
+                if ($general_fee->type == 2)
+                {
+                    $monthly_fee += $general_fee->price;
+                    array_push($monthly_genera_fee, $general_fee->id);
+                }elseif ($general_fee->type == 1){
+                    array_push($annual_general_fee, $general_fee->id);
+                }
+            }
+        }
+
+        $monthly_cca_fee = [];
+        $annual_cca_fee = [];
+
+        $request_ecc_fee = $request->ecc;
+        if (!empty($request_ecc_fee)){
+            foreach ($request_ecc_fee as $ref)
+            {
+                $ecc_fee = ExtraClass::find($ref);
+                if ($ecc_fee->type == 2)
+                {
+                    $monthly_fee += $ecc_fee->price;
+                    array_push($monthly_cca_fee, $ecc_fee->id);
+                }elseif ($ecc_fee->type == 1){
+                    array_push($annual_cca_fee, $ecc_fee->id);
+                }
+            }
+        }
+
+
+
+
         $fee = 0;
         $af = AdmissionFee::where('id', $id)->first();
-        $af->general = json_encode($request->general);
-        $af->ecc = json_encode($request->ecc);
+        $af->general = json_encode($annual_general_fee);
+        $af->ecc = json_encode($annual_cca_fee);
         $af->discount_type = $request->discount_type;
         $af->discount = $request->discount;
         $af->update();
+
+        $mf = MonthlyFee::where('student_id', $af->student_id)->first();
+        $mf->ecc_fee_id = json_encode($monthly_genera_fee);
+        $mf->general_fee_id = json_encode($monthly_cca_fee);
+        $mf->fee = $monthly_fee;
+        $mf->update();
+
         $sf = AdmissionFee::with('students:first_name,last_name,student_unique_id,id')->where('id', $id)->first();
 
         $all_general_fee = json_decode($sf->general);
@@ -598,11 +657,12 @@ class AdmissionFeeController extends Controller
     {
         if (auth()->user()->role->name == "super_admin")
         {
-            $monthly_fees = Student::with('monthly_fee')->get();
+           $monthly_fees = Student::with('monthly_fee')->get();
         }
         elseif(auth()->user()->role->name == "admin")
         {
-            $monthly_fees = Student::with('monthly_fee')->where('school_id', auth()->user()->school->id)->get();
+            $monthly_fees = Student::with('monthly_fee.history')->where('school_id', auth()->user()->school->id)->get();
+//            return $monthly_fees;
         }
         $students = [];
         foreach ($monthly_fees as $mf)
@@ -641,6 +701,7 @@ class AdmissionFeeController extends Controller
             $mfh->student_id = $monthly_fee->student_id;
             $mfh->installment_no = $i;
             $mfh->monthly_fee = $monthly_fee->fee;
+            $mfh->monthly_fee_id = $monthly_fee->id;
             $mfh->save();
         }
 
@@ -649,7 +710,7 @@ class AdmissionFeeController extends Controller
 
     public function monthlyFeeHistory($id)
     {
-        $monthly_fee_history = MonthlyFeeHistory::where('student_id', $id)->get();
+        $monthly_fee_history = MonthlyFeeHistory::where('monthly_fee_id', $id)->get();
 
         return view('admin.monthly_fee.installment',['installments' => $monthly_fee_history]);
 
@@ -661,7 +722,11 @@ class AdmissionFeeController extends Controller
         $installment->fine += $request->fine;
         $installment->monthly_fee += $request->fine;
         $installment->update();
-        return redirect()->to('monthly_fee_history/'.$installment->student_id)->with('success', 'Fine Added Successfully');
+
+        $monthly_fee = MonthlyFee::find($installment->monthly_fee_id);
+        $monthly_fee->fine += $request->fine;
+        $monthly_fee->update();
+        return redirect()->to('monthly_fee_history/'.$installment->monthly_fee_id)->with('success', 'Fine Added Successfully');
     }
 
     public function monthlyPay($id)
@@ -701,11 +766,15 @@ class AdmissionFeeController extends Controller
 
             $installment->update();
             $due = $installment->monthly_fee - $request->amount;
-            $installment_due = MonthlyFeeHistory::where('student_id', $student_id)->where('installment_no', $installment->installment_no + 1)->first();
+            $installment_due = MonthlyFeeHistory::where('monthly_fee_id', $installment->monthly_fee_id)->where('installment_no', $installment->installment_no + 1)->first();
+            $monthly_fee = MonthlyFee::where('student_id', $student_id)->first();
             if (!empty($installment_due)){
                 $installment_due->due = $due;
                 $installment_due->monthly_fee = $installment_due->monthly_fee + $due;
                 $installment_due->update();
+                $monthly_fee->paid += $installment->paid;
+                $monthly_fee->due = ($monthly_fee->fine + ($monthly_fee->fee * $monthly_fee->total_month)) - $monthly_fee->paid;
+                $monthly_fee->update();
             }else{
 //                return $installment->due;
                 if ($due != 0)
@@ -719,7 +788,7 @@ class AdmissionFeeController extends Controller
                 }
             }
 
-            return redirect()->to('monthly_fee_history/'.$student_id)->with('success', 'Payment Successfully Done');
+            return redirect()->to('monthly_fee_history/'.$installment->monthly_fee_id)->with('success', 'Payment Successfully Done');
         }else{
             return redirect()->back()->with('error', 'Payment Amount is Grater than Total Amount');
         }
@@ -738,12 +807,12 @@ class AdmissionFeeController extends Controller
                 $due = MonthlyFeeHistory::find($a);
                 $due->due_date = $request->due_date;
                 $due->update();
-                return redirect()->to('monthly_fee_history/'.$due_date->student_id)->with('success', 'Due Date Successfully Added');
+                return redirect()->to('monthly_fee_history/'.$due_date->monthly_fee_id)->with('success', 'Due Date Successfully Added');
             }else{
-                return redirect()->to('monthly_fee_history/'.$due_date->student_id)->with('error', 'Due Date Must be greater then today');
+                return redirect()->to('monthly_fee_history/'.$due_date->monthly_fee_id)->with('error', 'Due Date Must be greater then today');
             }
         }else{
-            return redirect()->to('monthly_fee_history/'.$due_date->student_id)->with('error', 'Next Payment is already Paid');
+            return redirect()->to('monthly_fee_history/'.$due_date->monthly_fee_id)->with('error', 'Next Payment is already Paid');
         }
 
     }

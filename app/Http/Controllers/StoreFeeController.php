@@ -23,7 +23,8 @@ class StoreFeeController extends Controller
         {
             $students = Student::with('school')->find(auth()->user()->parent->student_id);
         }elseif (auth()->user()->role->name == "admin"){
-            $students = Student::with('school')->where('school_id', auth()->user()->profile_id)->get();
+            $students = Student::with('school')->where('school_id', auth()->user()->school->id)->get();
+
         }else{
             $students = Student::with('school')->get();
         }

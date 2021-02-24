@@ -38,7 +38,7 @@
                             @csrf
                         <div class="card">
                             <div class="card-header table-card-header">
-                                <h4 class="card-title">Create Attendance of {{$timetable->period->period_name}} Period in {{ $students[0]['classes']['create_class'] }} ({{ $students[0]['student_section']['section'] }})</h4>
+                                <h4 class="card-title">Create Attendance of {{$timetable->period->period_name}} Period in {{ $timetable->class->create_class }} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}</h4>
                             </div>
                             <div class="card-content">
                                 <div class="table-responsive">
@@ -63,7 +63,7 @@
                                                 <td>
                                                     <div class="custom-control custom-switch custom-switch-success mr-2 mb-1">
                                                         {{--<p class="mb-0">Success</p>--}}
-                                                        <input type="checkbox" name="attendance[{{ $student->id }}][]" class="custom-control-input" id="customSwitch11{{ $student->id }}">
+                                                        <input type="checkbox" name="attendance[{{ $student->id }}][attendance][]" class="custom-control-input" id="customSwitch11{{ $student->id }}">
                                                         <label class="custom-control-label" for="customSwitch11{{ $student->id }}">
                                                             {{--<span class="switch-icon-left"><i class="feather icon-check"></i></span>--}}
                                                             {{--<span class="switch-icon-right"><i class="feather icon-crosshair"></i></span>--}}
@@ -77,7 +77,7 @@
                                                     {{--</select>--}}
                                                 </td>
                                                 <td>
-                                                    <textarea name="description[{{ $student->id }}][]" class="form-control" style="background-color: aliceblue; color: #000" cols="2" rows="1"></textarea>
+                                                    <textarea name="attendance[{{ $student->id }}][description][]" class="form-control" style="background-color: aliceblue; color: #000" cols="2" rows="1"></textarea>
                                                 </td>
                                             </tr>
                                         @endforeach

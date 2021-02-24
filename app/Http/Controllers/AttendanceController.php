@@ -20,7 +20,8 @@ class AttendanceController extends Controller
     {
         if (auth()->user()->role->name === 'teacher')
         {
-            $attendances = Attendance::with(['classes', 'section'])->where('employee_id', auth()->user()->employee->id)->get();
+//            return auth()->user()->id;
+             $attendances = Attendance::with(['classes', 'section'])->where('employee_id', auth()->user()->employee->id)->get();
             $class = [];
             $section = [];
             foreach ($attendances as $att_classes)
@@ -103,28 +104,24 @@ class AttendanceController extends Controller
     public function store($id, Request $request)
     {
         $timetable = TimeTable::find($id);
-//        return $request->attendance;
-        foreach ($request->attendance as $key => $att)
-        {
-            foreach ($request->description as $dkey => $des)
+
+//        return $timetable->employee_id;
+
+            foreach ($request->attendance as $key => $att)
             {
-                if ($key === $dkey)
-                {
-                    $student = Student::find($dkey);
-                    $attendance = Attendance::create([
-                        'school_id' => $student->school_id,
-                        'employee_id' => $timetable->employee_id,
-                        'period_id' => $timetable->period_id,
-                        'class_id' => $student->class_id,
-                        'section_id' => $student->section,
-                        'student_id' => $dkey,
-                        'attendance' => $att[0] === 'on' ? 1 : 0,
-                        'month' =>  date('m'),
-                        'description' => $des[0],
-                    ]);
-                }
+                $attendance = Attendance::create([
+                    'school_id' => $timetable->school_id,
+                    'employee_id' => $timetable->employee_id,
+                    'period_id' => $timetable->period_id,
+                    'class_id' => $timetable->class_id,
+                    'section_id' => $timetable->section_id,
+                    'student_id' => $key,
+                    'attendance' => !empty($att['attendance'][0]) ? 1 : 0,
+                    'month' =>  date('m'),
+                    'description' => $att['description'][0],
+                ]);
             }
-        }
+
         return redirect()->to('attendances')->with("success", "Attendance Created successfully");
     }
 

@@ -53,7 +53,7 @@ class TimetableController extends Controller
         }elseif (auth()->user()->role->name == "teacher"){
             $employee = Employee::find(auth()->user()->employee->id);
             $timetables = TimeTable::where('school_id', $employee->school_id)->get();
-//            return $timetables;
+            return $timetables->class->class_teacher;
         }
 
         return view('admin.timetable.timetable',compact(['timetables']));
@@ -155,13 +155,24 @@ class TimetableController extends Controller
             'employee_id' => 'required'
         ]);
 
-          $periods = TimeTable::where('school_id',$request->school_id)
-              ->where('standard_id',$request->standard_id)
-              ->where('class_id',$request->class_id)
-              ->where('section_id',$request->section_id)
-              ->where('day',$request->day)
-              ->where('period_id',$request->period_id)
-              ->first();
+          if(auth()->user()->role->name == "super_admin")
+          {
+              $periods = TimeTable::where('school_id',$request->school_id)
+                  ->where('standard_id',$request->standard_id)
+                  ->where('class_id',$request->class_id)
+                  ->where('section_id',$request->section_id)
+                  ->where('day',$request->day)
+                  ->where('period_id',$request->period_id)
+                  ->first();
+          }elseif(auth()->user()->role->name == "admin"){
+              $periods = TimeTable::where('school_id', auth()->user()->school->id)
+                  ->where('standard_id',$request->standard_id)
+                  ->where('class_id',$request->class_id)
+                  ->where('section_id',$request->section_id)
+                  ->where('day',$request->day)
+                  ->where('period_id',$request->period_id)
+                  ->first();
+          }
 
         $emp = TimeTable::where('day',$request->day)
             ->where('period_id',$request->period_id)

@@ -399,38 +399,39 @@
 </head>
 <body>
 <header>
-    <h1>{{$payment->student->school->full_name}}</h1>
-
-    <span><img alt="" src="http://www.jonathantneal.com/examples/invoice/logo.png"><input type="file" accept="image/*"></span>
+    <h1 >{{$payment->student->school->full_name}}</h1>
+    <p align="center" style="font-size: 12px;">{{$payment->address->address}} {{$payment->address->city}} {{$payment->address->district}}, {{$payment->address->state}} {{$payment->address->zip}}</p>
+    {{--<span><img alt="" src="http://www.jonathantneal.com/examples/invoice/logo.png"><input type="file" accept="image/*"></span>--}}
 </header>
-<article>
-    <h1>Recipient</h1>
-    <address>
-        <p>{{$payment->student->first_name}} {{$payment->student->last_name}}</p>
-        <br/>
-        <br/>
-        <p style="font-size: 12px;">{{$payment->address->address}}</p>
-        <p style="font-size: 12px;">{{$payment->address->city}}<br>{{$payment->address->district}}, {{$payment->address->state}}</p>
-        <p style="font-size: 12px;">{{$payment->address->zip}}</p>
-    </address>
-    <table class="meta">
-        <tr>
-            <th>Invoice No. #</th>
-            <td>INV-{{$payment->invoice_no}}</td>
-        </tr>
-        <tr>
-            <th>Student UID #</th>
-            <td>{{$payment->student->student_unique_id}}</td>
-        </tr>
-        <tr>
-            <th>Date</th>
-            <td>{{$payment->created_at->format('d/m/Y')}}</td>
-        </tr>
-        <tr>
-            <th>Amount </th>
-            <td>Rs<span>{{$payment->amount}}</span></td>
-        </tr>
-    </table>
+
+<div>
+    {{--<h1>Recipient</h1>--}}
+
+
+    <div >
+        <table >
+            <tr><p>Student Name :{{$payment->student->first_name}} {{$payment->student->last_name}}</p></tr>
+            <tr><p>Payment For :{{$payment->reason}}</p></tr>
+        </table>
+        <table class="meta">
+            <tr>
+                <th>Invoice No. #</th>
+                <td>INV-{{$payment->invoice_no}}</td>
+            </tr>
+            <tr>
+                <th>Student UID #</th>
+                <td>{{$payment->student->student_unique_id}}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{$payment->created_at->format('d/m/Y')}}</td>
+            </tr>
+            <tr>
+                <th>Amount </th>
+                <td>Rs &nbsp;<span>{{$payment->amount}} /-</span></td>
+            </tr>
+        </table>
+    </div>
     <table class="inventory">
         <thead>
         <tr>
@@ -445,17 +446,17 @@
         <tr>
 
             <td>@if($payment->type == 1)Cash
-                    @else
-                        Online
-                    @endif</td>
-            <td>{{$payment->transaction_id}}</td>
+                @else
+                    Online
+                @endif</td>
+            <td>{{!empty($payment->transaction_id) ? $payment->transaction_id : "--"}}</td>
             <td>{{$payment->reason}}</td>
             {{--<td>--}}
             {{--@foreach($items as $item)--}}
             {{--{{$item.','}}--}}
             {{--@endforeach--}}
             {{--</td>--}}
-            <td>RS<span>{{$payment->amount}}</span></td>
+            <td><span>{{$payment->amount}}</span> /-</td>
 
         </tr>
         </tbody>
@@ -464,7 +465,7 @@
         <button style="color: red" onclick="window.print()">Print</button>
     </div>
 
-</article>
+</div>
 
 </body>
 </html>

@@ -66,7 +66,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
+                                                                        @if(date('l') == $timetable->day && $timetable->class->class_teacher->employee_id == auth()->user()->employee->id)
                                                                             <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
                                                                         @endif
                                                                     @endif
@@ -81,9 +81,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -96,9 +94,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -111,9 +107,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -129,9 +123,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -144,9 +136,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -159,9 +149,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -174,9 +162,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -192,7 +178,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
+                                                                        @if(date('l') == $timetable->day && $timetable->class->class_teacher->employee_id == auth()->user()->employee->id)
                                                                             <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
                                                                         @endif
                                                                     @endif
@@ -207,9 +193,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -222,9 +206,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -237,9 +219,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -255,9 +235,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -270,9 +248,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -285,9 +261,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -300,9 +274,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -318,7 +290,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
+                                                                        @if(date('l') == $timetable->day && $timetable->class->class_teacher->employee_id == auth()->user()->employee->id)
                                                                             <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
                                                                         @endif
                                                                     @endif
@@ -333,9 +305,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -348,9 +318,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -363,9 +331,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -381,9 +347,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -396,9 +360,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -411,9 +373,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -426,9 +386,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -444,7 +402,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
+                                                                        @if(date('l') == $timetable->day && $timetable->class->class_teacher->employee_id == auth()->user()->employee->id)
                                                                             <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
                                                                         @endif
                                                                     @endif
@@ -459,9 +417,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -474,9 +430,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -489,9 +443,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -507,9 +459,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -522,9 +472,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -537,9 +485,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -552,9 +498,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -570,7 +514,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
+                                                                        @if(date('l') == $timetable->day && $timetable->class->class_teacher->employee_id == auth()->user()->employee->id)
                                                                             <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
                                                                         @endif
                                                                     @endif
@@ -585,9 +529,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -600,9 +542,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -615,9 +555,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -633,9 +571,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -648,9 +584,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -663,9 +597,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -678,9 +610,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -696,7 +626,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
+                                                                        @if(date('l') == $timetable->day && $timetable->class->class_teacher->employee_id == auth()->user()->employee->id)
                                                                             <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
                                                                         @endif
                                                                     @endif
@@ -711,9 +641,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -726,9 +654,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -741,9 +667,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -759,9 +683,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -774,9 +696,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -789,9 +709,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -804,9 +722,7 @@
                                                                         ({{$timetable->employee->first_name." ".$timetable->employee->last_name}})
                                                                     @elseif(auth()->user()->role->name == "teacher")
                                                                         {{$timetable->class->create_class}} {{ !empty($timetable->section->section) ? "(".$timetable->section->section.")" : "" }}
-                                                                        @if(date('l') == $timetable->day)
-                                                                            <br><a href="{{ url('/create-attendance/'.$timetable->id) }}" class="btn btn-sm btn-outline-warning">Attendance</a>
-                                                                        @endif
+
                                                                     @endif
                                                                 @endif
                                                             @endforeach

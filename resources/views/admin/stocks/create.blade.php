@@ -135,11 +135,16 @@
 
 <!-- <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.css"> -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{{--<script src="https://www.jsdelivr.com/package/npm/vuelidate"></script>--}}
 <script>
     // import Swal from 'sweetalert2';
     // import Swal from 'sweetalert/dist/sweetalert.min.js'
     // Vue.use(window.Sweetalert);
     // const Swal = require('sweetalert');
+
+    // Vue.use(window.vuelidate.default);
+    //
+    // const { required, minLength, numeric, email, maxValue, helpers  } = window.validators;
     var app = new Vue({
         el: '#app',
         data: {
@@ -159,6 +164,13 @@
                 quantity: '',
             }] //the declared array
         },
+        // validations: {
+        //     $each: {
+        //         sp: {
+        //             required,
+        //         }
+        //     }
+        // },
         methods:{
                 addItem(){
                     var my_object = {

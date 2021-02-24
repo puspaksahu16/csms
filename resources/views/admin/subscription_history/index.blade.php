@@ -36,6 +36,7 @@
                                             <th scope="col">#</th>
 
                                             <th scope="col">Name</th>
+                                            <th scope="col">Students Added</th>
                                             <th scope="col">Subscription Plan</th>
                                             <th scope="col">Date</th>
                                         </tr>
@@ -45,14 +46,16 @@
                                                 <tr>
                                                     <th scope="row">{{$key+1}}</th>
                                                     <td>{{$subscription_plan->school->full_name}}</td>
+                                                    <td>{{$subscription_plan->added_students}}</td>
                                                     <td>
                                                         @if($subscription_plan->subscription_type == 1)
                                                         30 days
                                                             @elseif($subscription_plan->subscription_type == 2)
                                                         180 days
-                                                            @else
+                                                            @elseif($subscription_plan->subscription_type == 3)
                                                         360 days
-
+                                                            @else
+                                                        --
                                                         @endif
 
                                                     </td>

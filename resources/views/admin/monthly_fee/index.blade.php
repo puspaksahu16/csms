@@ -79,46 +79,52 @@
                                             <td>{{ $mf->monthly_fee->due }}</td>
                                             <td>{{ $mf->monthly_fee->fine }}</td>
                                             <td>{{ $mf->monthly_fee->paid }}</td>
+
                                             <td>{{ $mf->monthly_fee->fee }}</td>
+                                            @php
+                                                $history = $mf->monthly_fee->history->where('status', 'Paid')
+                                            @endphp
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target="#myModal{{$mf->monthly_fee->id}}" class="btn btn-sm btn-primary">Total Month</a>
-                                                <div class="modal" id="myModal{{$mf->monthly_fee->id}}">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
+                                                @if(count($history) == 0)
+                                                    <a href="#" data-toggle="modal" data-target="#myModal{{$mf->monthly_fee->id}}" class="btn btn-sm btn-primary">Total Month</a>
+                                                    <div class="modal" id="myModal{{$mf->monthly_fee->id}}">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
 
-                                                            <!-- Modal Header -->
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Assign Section</h4>
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <!-- Modal Header -->
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">Assign Section</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+
+                                                                <!-- Modal body -->
+                                                                <div class="modal-body">
+                                                                    <form class="form" method="POST" action="{{ url('/total_month/'.$mf->monthly_fee->id) }}">
+                                                                        @csrf
+                                                                        <div class="form-label-group">
+                                                                            <select name="total_month" class="form-control">
+                                                                                <option>-Select Months-</option>
+                                                                                <option value="10">10 Months</option>
+                                                                                <option value="11">11 Months</option>
+                                                                                <option value="12">12 Months</option>
+                                                                            </select>
+                                                                            <label for="first-name-column">Create Section</label>
+                                                                        </div>
+                                                                        <button class="btn btn-success btn-sm pull-right" type="submit">Submit</button>
+                                                                    </form>
+                                                                </div>
+
+                                                                <!-- Modal footer -->
+                                                                {{--                                                                <div class="modal-footer">--}}
+                                                                {{--                                                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>--}}
+                                                                {{--                                                                </div>--}}
+
                                                             </div>
-
-                                                            <!-- Modal body -->
-                                                            <div class="modal-body">
-                                                                <form class="form" method="POST" action="{{ url('/total_month/'.$mf->monthly_fee->id) }}">
-                                                                    @csrf
-                                                                    <div class="form-label-group">
-                                                                        <select name="total_month" class="form-control">
-                                                                            <option>-Select Months-</option>
-                                                                            <option value="10">10 Months</option>
-                                                                            <option value="11">11 Months</option>
-                                                                            <option value="12">12 Months</option>
-                                                                        </select>
-                                                                        <label for="first-name-column">Create Section</label>
-                                                                    </div>
-                                                                    <button class="btn btn-success btn-sm pull-right" type="submit">Submit</button>
-                                                                </form>
-                                                            </div>
-
-                                                            <!-- Modal footer -->
-                                                            {{--                                                                <div class="modal-footer">--}}
-                                                            {{--                                                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>--}}
-                                                            {{--                                                                </div>--}}
-
                                                         </div>
                                                     </div>
-                                                </div>
+                                                @endif
 
-                                                <a href="{{url('/monthly_fee_history/'.$mf->id)}}" class="btn btn-sm btn-success"> History</a>
+                                                <a href="{{url('/monthly_fee_history/'.$mf->monthly_fee->id)}}" class="btn btn-sm btn-success"> History</a>
                                             </td>
                                         </tr>
                                             @endforeach

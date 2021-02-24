@@ -49,7 +49,7 @@
 
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <select onchange="pay_type()" id="payment_methode" name="type" class="form-control">
+                                                            <select required onchange="pay_type()" id="payment_methode" name="type" class="form-control">
                                                                 <option value="">-SELECT PAY TYPE-</option>
                                                                 <option value="1">Cash</option>
                                                                 <option value="2">Online</option>
@@ -65,13 +65,13 @@
                                                     </div>
                                                     <div class="col-md-12 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="text" value="{{ $fee }}" class="form-control" placeholder="Amount" readonly name="amount">
+                                                            <input required type="text" value="{{ $fee }}" class="form-control" placeholder="Amount" readonly name="amount">
                                                             <label for="name">Amount</label>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-12 pt-2">
-                                                        <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                                                        <input onclick="this.disabled=true;this.value='Loading...';this.form.submit();" type="submit" class="btn btn-primary mr-1 mb-1" value="Submit">
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
                                                     </div>
                                                 </div>

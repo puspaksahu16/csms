@@ -136,6 +136,8 @@
                                                                     <button title="Next Due date" type="button" class="btn btn-sm btn-outline-warning" data-toggle="modal" data-target="#myModal{{ $i->id }}"><i class="fa fa-calendar"></i></button>
                                                                     <a target="_blank" href="{{url('/receive/'.$i->payment_id)}}" title="Receipt" class="btn btn-sm btn-outline-primary"><i class="fa fa-list-ul"></i></a>
                                                                 </div>
+                                                            @else
+                                                                <a target="_blank" href="{{url('/receive',$i->payment_id)}}" title="Receipt" class="btn btn-sm btn-outline-primary"><i class="fa fa-list-ul"></i></a>
                                                             @endif
 
                                                             {{--Modal--}}

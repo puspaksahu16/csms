@@ -75,7 +75,7 @@
 
                                                     </div>
                                                     <div align="right">
-                                                        <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
+                                                        <input  onclick="this.disabled=true;this.value='Submiting...';this.form.submit();" type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit" >
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                                     </div>
                                                 @elseif(auth()->user()->role->name == "admin")
@@ -102,7 +102,7 @@
                                                         </div>
                                                     </div>
                                                     <div align="right">
-                                                        <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
+                                                        <input onclick="this.disabled=true;this.value='Submiting...';this.form.submit();" type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
                                                         <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                                     </div>
                                                 @endif
@@ -179,4 +179,10 @@
 @endsection
 @push('scripts')
     <script src="{{asset('admin_assets/vendors/js/vendors.min.js') }}"></script>
+    <script>
+        function submitabc() {
+            alert(1);
+            // $("#" +).attr('disabled','disabled');
+        }
+    </script>
 @endpush

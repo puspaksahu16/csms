@@ -227,14 +227,17 @@ class SchoolController extends Controller
             $school_renewal->total_days = $days  + 30;
         }elseif ($request->subscription_type == 2){
             $school_renewal->total_days = $days  + 180;
-        }else{
+        }elseif($request->subscription_type == 3){
             $school_renewal->total_days = $days  + 360;
+        }else{
+            $school_renewal->total_days = $days;
         }
         $school_renewal->update();
         if ($school_renewal->update()){
             $subscription_plan = new SubscriptionPlan();
             $subscription_plan->school_id = $school_renewal->id;
             $subscription_plan->subscription_type = $request->subscription_type;
+            $subscription_plan->added_students = $request->total_strength;
             $subscription_plan->save();
         }
         return redirect()->route('schools.index')->with('success', 'Renewal added successfully');

@@ -26,7 +26,7 @@ class PaymentController extends Controller
     public function receive($id)
     {
 
-        return $payment = Payment::find($id);
+         $payment = Payment::find($id);
 
 //          $products = StoreFee::where('id',$payment->product_id)->get('product');
 //          $books = StoreFee::where('id',$payment->product_id)->get('book');
