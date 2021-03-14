@@ -31,7 +31,7 @@
                         <div class="col-12" style="margin: auto">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Create Stock</h4>
+                                    <h4 class="card-title">Create Book Stock</h4>
                                     @if(auth()->user()->role->name == "super_admin")
                                         <select @change="school()" class="form-control" v-model="school_id">
                                             <option disabled value="">Select School</option>
@@ -95,7 +95,7 @@
                                                 <span class="btn btn-primary " @click="addItem()">add</span>
                                                 <div class="col-12 pt-2">
                                                     <button @click="submitData()" class="btn btn-primary mr-1 mb-1">Submit</button>
-                                                    <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                    <a href="{{ url()->previous() }}" class="btn btn-outline-warning mr-1 mb-1">Back</a>
                                                 </div>
                                             </div>
                                         <!-- </form> -->

@@ -2,14 +2,16 @@
 
 namespace League\Flysystem\Util;
 
-use ErrorException;
-use finfo;
+use League\MimeTypeDetection\FinfoMimeTypeDetector;
+use League\MimeTypeDetection\GeneratedExtensionToMimeTypeMap;
+use League\MimeTypeDetection\MimeTypeDetector;
 
 /**
  * @internal
  */
 class MimeType
 {
+<<<<<<< HEAD
     protected static $extensionToMimeTypeMap = [
         'hqx' => 'application/mac-binhex40',
         'cpt' => 'application/mac-compactpro',
@@ -189,53 +191,65 @@ class MimeType
         'ott' => 'application/vnd.oasis.opendocument.text-template',
         'webp' => 'image/webp',
     ];
+=======
+    protected static $extensionToMimeTypeMap = GeneratedExtensionToMimeTypeMap::MIME_TYPES_FOR_EXTENSIONS;
+    protected static $detector;
+
+    public static function useDetector(MimeTypeDetector $detector)
+    {
+        static::$detector = $detector;
+    }
+
+    /**
+     * @return MimeTypeDetector
+     */
+    protected static function detector()
+    {
+        if ( ! static::$detector instanceof MimeTypeDetector) {
+            static::$detector = new FinfoMimeTypeDetector();
+        }
+
+        return static::$detector;
+    }
+
+>>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
     /**
      * Detects MIME Type based on given content.
      *
      * @param mixed $content
      *
-     * @return string|null MIME Type or NULL if no mime type detected
+     * @return string MIME Type
      */
     public static function detectByContent($content)
     {
-        if ( ! class_exists('finfo') || ! is_string($content)) {
-            return null;
+        if (is_string($content)) {
+            return static::detector()->detectMimeTypeFromBuffer($content);
         }
-        try {
-            $finfo = new finfo(FILEINFO_MIME_TYPE);
 
-            return $finfo->buffer($content) ?: null;
-            // @codeCoverageIgnoreStart
-        } catch (ErrorException $e) {
-            // This is caused by an array to string conversion error.
-        }
-    } // @codeCoverageIgnoreEnd
+        return 'text/plain';
+    }
 
     /**
      * Detects MIME Type based on file extension.
      *
      * @param string $extension
      *
-     * @return string|null MIME Type or NULL if no extension detected
+     * @return string MIME Type
      */
     public static function detectByFileExtension($extension)
     {
-        return isset(static::$extensionToMimeTypeMap[$extension])
-            ? static::$extensionToMimeTypeMap[$extension]
-            : 'text/plain';
+        return static::detector()->detectMimeTypeFromPath('artificial.' . $extension) ?: 'text/plain';
     }
 
     /**
      * @param string $filename
      *
-     * @return string|null MIME Type or NULL if no extension detected
+     * @return string MIME Type
      */
     public static function detectByFilename($filename)
     {
-        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-
-        return empty($extension) ? 'text/plain' : static::detectByFileExtension($extension);
+        return static::detector()->detectMimeTypeFromPath($filename) ?: 'text/plain';
     }
 
     /**

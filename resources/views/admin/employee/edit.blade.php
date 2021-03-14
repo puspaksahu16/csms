@@ -69,7 +69,7 @@
                                                         @method('put')
                                                         <div class="row setup-content" id="step-1">
                                                             <div class="card-header">
-                                                                <h4 class="card-title">Employee Details</h4>
+                                                                <h4 class="card-title">Edit Employee Details</h4>
                                                             </div>
 
                                                             <div class="container">

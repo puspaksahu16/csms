@@ -15,7 +15,7 @@
                                     </li>
                                     <li class="breadcrumb-item"><a href="#">Store</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Books Price</a>
+                                    <li class="breadcrumb-item"><a href="#">Update Books Price</a>
                                     </li>
                                 </ol>
                             </div>
@@ -31,19 +31,27 @@
                         <div class="col-12" style="margin: auto">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Create price</h4>
-                                    @if(auth()->user()->role->name == "super_admin")
-                                        <select @change="school()" class="form-control" v-model="school_id">
-                                            <option disabled value="">Select School</option>
-                                            <option v-for=" school in schools" :value="school.id">@{{school.full_name}}</option>
-                                        </select>
-                                    @endif
+                                    <h4 class="card-title">Update Books Price</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
                                         <!-- <form class="form" > -->
-                                        @csrf
+
                                         <div class="form-body">
+                                            @csrf
+                                            <div class="row">
+                                                @if(auth()->user()->role->name == "super_admin")
+                                                    <div class="col-md-12 col-12">
+                                                        <div class="form-label-group">
+                                                            <select @change="school()" class="form-control" v-model="school_id">
+                                                                <option disabled value="">Select School</option>
+                                                                <option v-for=" school in schools" :value="school.id">@{{school.full_name}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+
                                             <div class="row" v-for="(item, index) in rowData">
                                                 <div class="col-md-2 col-12">
                                                     <div class="form-label-group">
@@ -92,7 +100,7 @@
                                             <span class="btn btn-primary " @click="addItem()">add</span>
                                             <div class="col-12 pt-2">
                                                 <button @click="submitData()" class="btn btn-primary mr-1 mb-1">Submit</button>
-                                                <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                <a href="{{ url()->previous() }}" class="btn btn-outline-warning mr-1 mb-1">Back</a>
                                             </div>
                                         </div>
                                         <!-- </form> -->

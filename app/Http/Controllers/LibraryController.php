@@ -57,11 +57,16 @@ class LibraryController extends Controller
             ]);
 
 
-
+        $books = Library::where('book_id', $request->book_id)->where('school_id', auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id)->first();
         $data = $request->all();
         $data['school_id'] = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
-        Library::create($data);
-        return redirect()->route('library.index')->with('success', 'Book created Successfully');
+        if (empty($books)){
+            Library::create($data);
+            return redirect()->route('library.index')->with('success', 'Book created Successfully');
+        }else{
+            return redirect()->route('library.index')->with('error', 'You have entered Duplicate Book ID');
+        }
+
     }
 
     /**

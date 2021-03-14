@@ -112,7 +112,7 @@ class HeaderBag implements \IteratorAggregate, \Countable
     {
         $headers = $this->all((string) $key);
         if (2 < \func_num_args()) {
-            @trigger_error(sprintf('Passing a third argument to "%s()" is deprecated since Symfony 4.4, use method "all()" instead', __METHOD__), E_USER_DEPRECATED);
+            @trigger_error(sprintf('Passing a third argument to "%s()" is deprecated since Symfony 4.4, use method "all()" instead', __METHOD__), \E_USER_DEPRECATED);
 
             if (!func_get_arg(2)) {
                 return $headers;
@@ -218,7 +218,11 @@ class HeaderBag implements \IteratorAggregate, \Countable
             return $default;
         }
 
+<<<<<<< HEAD
         if (false === $date = \DateTime::createFromFormat(DATE_RFC2822, $value)) {
+=======
+        if (false === $date = \DateTime::createFromFormat(\DATE_RFC2822, $value)) {
+>>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             throw new \RuntimeException(sprintf('The "%s" HTTP header is not parseable (%s).', $key, $value));
         }
 

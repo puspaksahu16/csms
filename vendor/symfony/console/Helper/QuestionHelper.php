@@ -33,7 +33,8 @@ class QuestionHelper extends Helper
 {
     private $inputStream;
     private static $shell;
-    private static $stty;
+    private static $stty = true;
+    private static $stdinIsInteractive;
 
     /**
      * Asks a question to the user.
@@ -64,6 +65,7 @@ class QuestionHelper extends Helper
             $interviewer = function () use ($output, $question) {
                 return $this->doAsk($output, $question);
             };
+<<<<<<< HEAD
 
             return $this->validateAttempts($interviewer, $output, $question);
         } catch (MissingInputException $exception) {
@@ -73,6 +75,17 @@ class QuestionHelper extends Helper
                 throw $exception;
             }
 
+=======
+
+            return $this->validateAttempts($interviewer, $output, $question);
+        } catch (MissingInputException $exception) {
+            $input->setInteractive(false);
+
+            if (null === $fallbackOutput = $this->getDefaultAnswer($question)) {
+                throw $exception;
+            }
+
+>>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             return $fallbackOutput;
         }
     }
@@ -104,10 +117,15 @@ class QuestionHelper extends Helper
     {
         $this->writePrompt($output, $question);
 
-        $inputStream = $this->inputStream ?: STDIN;
+        $inputStream = $this->inputStream ?: \STDIN;
         $autocomplete = $question->getAutocompleterCallback();
 
-        if (null === $autocomplete || !Terminal::hasSttyAvailable()) {
+        if (\function_exists('sapi_windows_cp_set')) {
+            // Codepage used by cmd.exe on Windows to allow special characters (éàüñ).
+            @sapi_windows_cp_set(1252);
+        }
+
+        if (null === $autocomplete || !self::$stty || !Terminal::hasSttyAvailable()) {
             $ret = false;
             if ($question->isHidden()) {
                 try {
@@ -164,13 +182,21 @@ class QuestionHelper extends Helper
             $choices = $question->getChoices();
 
             if (!$question->isMultiselect()) {
+<<<<<<< HEAD
                 return isset($choices[$default]) ? $choices[$default] : $default;
+=======
+                return $choices[$default] ?? $default;
+>>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             }
 
             $default = explode(',', $default);
             foreach ($default as $k => $v) {
                 $v = $question->isTrimmable() ? trim($v) : $v;
+<<<<<<< HEAD
                 $default[$k] = isset($choices[$v]) ? $choices[$v] : $v;
+=======
+                $default[$k] = $choices[$v] ?? $v;
+>>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             }
         }
 
@@ -406,7 +432,7 @@ class QuestionHelper extends Helper
                 $exe = $tmpExe;
             }
 
-            $sExec = shell_exec($exe);
+            $sExec = shell_exec('"'.$exe.'"');
             $value = $trimmable ? rtrim($sExec) : $sExec;
             $output->writeln('');
 
@@ -417,13 +443,14 @@ class QuestionHelper extends Helper
             return $value;
         }
 
-        if (Terminal::hasSttyAvailable()) {
+        if (self::$stty && Terminal::hasSttyAvailable()) {
             $sttyMode = shell_exec('stty -g');
-
             shell_exec('stty -echo');
-            $value = fgets($inputStream, 4096);
-            shell_exec(sprintf('stty %s', $sttyMode));
+        } elseif ($this->isInteractiveInput($inputStream)) {
+            throw new RuntimeException('Unable to hide the response.');
+        }
 
+<<<<<<< HEAD
             if (false === $value) {
                 throw new MissingInputException('Aborted.');
             }
@@ -431,21 +458,23 @@ class QuestionHelper extends Helper
                 $value = trim($value);
             }
             $output->writeln('');
+=======
+        $value = fgets($inputStream, 4096);
+>>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
-            return $value;
+        if (self::$stty && Terminal::hasSttyAvailable()) {
+            shell_exec(sprintf('stty %s', $sttyMode));
         }
 
-        if (false !== $shell = $this->getShell()) {
-            $readCmd = 'csh' === $shell ? 'set mypassword = $<' : 'read -r mypassword';
-            $command = sprintf("/usr/bin/env %s -c 'stty -echo; %s; stty echo; echo \$mypassword'", $shell, $readCmd);
-            $sCommand = shell_exec($command);
-            $value = $trimmable ? rtrim($sCommand) : $sCommand;
-            $output->writeln('');
-
-            return $value;
+        if (false === $value) {
+            throw new MissingInputException('Aborted.');
         }
+        if ($trimmable) {
+            $value = trim($value);
+        }
+        $output->writeln('');
 
-        throw new RuntimeException('Unable to hide the response.');
+        return $value;
     }
 
     /**
@@ -461,6 +490,7 @@ class QuestionHelper extends Helper
     {
         $error = null;
         $attempts = $question->getMaxAttempts();
+
         while (null === $attempts || $attempts--) {
             if (null !== $error) {
                 $this->writeError($output, $error);
@@ -477,30 +507,30 @@ class QuestionHelper extends Helper
         throw $error;
     }
 
-    /**
-     * Returns a valid unix shell.
-     *
-     * @return string|bool The valid shell name, false in case no valid shell is found
-     */
-    private function getShell()
+    private function isInteractiveInput($inputStream): bool
     {
-        if (null !== self::$shell) {
-            return self::$shell;
+        if ('php://stdin' !== (stream_get_meta_data($inputStream)['uri'] ?? null)) {
+            return false;
         }
 
-        self::$shell = false;
-
-        if (file_exists('/usr/bin/env')) {
-            // handle other OSs with bash/zsh/ksh/csh if available to hide the answer
-            $test = "/usr/bin/env %s -c 'echo OK' 2> /dev/null";
-            foreach (['bash', 'zsh', 'ksh', 'csh'] as $sh) {
-                if ('OK' === rtrim(shell_exec(sprintf($test, $sh)))) {
-                    self::$shell = $sh;
-                    break;
-                }
-            }
+        if (null !== self::$stdinIsInteractive) {
+            return self::$stdinIsInteractive;
         }
 
-        return self::$shell;
+        if (\function_exists('stream_isatty')) {
+            return self::$stdinIsInteractive = stream_isatty(fopen('php://stdin', 'r'));
+        }
+
+        if (\function_exists('posix_isatty')) {
+            return self::$stdinIsInteractive = posix_isatty(fopen('php://stdin', 'r'));
+        }
+
+        if (!\function_exists('exec')) {
+            return self::$stdinIsInteractive = true;
+        }
+
+        exec('stty 2> /dev/null', $output, $status);
+
+        return self::$stdinIsInteractive = 1 !== $status;
     }
 }

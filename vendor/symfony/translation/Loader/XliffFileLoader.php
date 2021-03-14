@@ -41,7 +41,7 @@ class XliffFileLoader implements LoaderInterface
         $catalogue = new MessageCatalogue($locale);
         $this->extract($resource, $catalogue, $domain);
 
-        if (class_exists('Symfony\Component\Config\Resource\FileResource')) {
+        if (class_exists(FileResource::class)) {
             $catalogue->addResource(new FileResource($resource));
         }
 
@@ -53,12 +53,20 @@ class XliffFileLoader implements LoaderInterface
         try {
             $dom = XmlUtils::loadFile($resource);
         } catch (\InvalidArgumentException $e) {
+<<<<<<< HEAD
             throw new InvalidResourceException(sprintf('Unable to load "%s": %s.', $resource, $e->getMessage()), $e->getCode(), $e);
+=======
+            throw new InvalidResourceException(sprintf('Unable to load "%s": ', $resource).$e->getMessage(), $e->getCode(), $e);
+>>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         }
 
         $xliffVersion = XliffUtils::getVersionNumber($dom);
         if ($errors = XliffUtils::validateSchema($dom)) {
+<<<<<<< HEAD
             throw new InvalidResourceException(sprintf('Invalid resource provided: "%s"; Errors: %s.', $resource, XliffUtils::getErrorsAsString($errors)));
+=======
+            throw new InvalidResourceException(sprintf('Invalid resource provided: "%s"; Errors: ', $resource).XliffUtils::getErrorsAsString($errors));
+>>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         }
 
         if ('1.2' === $xliffVersion) {
@@ -139,7 +147,7 @@ class XliffFileLoader implements LoaderInterface
 
                 // If the xlf file has another encoding specified, try to convert it because
                 // simple_xml will always return utf-8 encoded values
-                $target = $this->utf8ToCharset((string) (isset($segment->target) ? $segment->target : $source), $encoding);
+                $target = $this->utf8ToCharset((string) ($segment->target ?? $source), $encoding);
 
                 $catalogue->set((string) $source, $target, $domain);
 

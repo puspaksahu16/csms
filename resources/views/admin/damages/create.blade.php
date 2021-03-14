@@ -106,7 +106,7 @@
                                                 <span class="btn btn-primary " @click="addItem()">add</span>
                                                 <div class="col-12 pt-2">
                                                     <button @click="submitData()" class="btn btn-primary mr-1 mb-1">Submit</button>
-                                                    <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                    <a href="{{ url()->previous() }}" class="btn btn-outline-warning mr-1 mb-1">Back</a>
                                                 </div>
                                             </div>
                                         <!-- </form> -->
