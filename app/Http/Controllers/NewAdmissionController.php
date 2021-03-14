@@ -337,8 +337,8 @@ class NewAdmissionController extends Controller
             $adress->save();
         }
 
-        $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', 'http://sms.crunchymedia.in/api/mt/SendSMS?user=AUMSHREECOMMUNICATION&password=Mkmishr@&senderid=CSMPRO&channel=Trans&DCS=0&flashsms=0&number='.$request->mother_mobile.'&text=Student ID:'.$student_id.'Parent Login ID:'.$request->mother_email.' Parent ID/Password:'.$parent_id.'&route=02');
+//        $client = new \GuzzleHttp\Client();
+//        $response = $client->request('GET', 'http://sms.crunchymedia.in/api/mt/SendSMS?user=AUMSHREECOMMUNICATION&password=Mkmishr@&senderid=CSMPRO&channel=Trans&DCS=0&flashsms=0&number='.$request->mother_mobile.'&text=Student ID:'.$student_id.'Parent Login ID:'.$request->mother_email.' Parent ID/Password:'.$parent_id.'&route=02');
 
 
         return redirect()->route('new_admission.index')->with('success', 'Student created Successfully');
