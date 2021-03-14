@@ -33,7 +33,7 @@
                         <div class="col-6" style="margin: auto">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Create Extra Class Fee</h4>
+                                    <h4 class="card-title">Edit Extra Classes Fee</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -97,7 +97,7 @@
 
                                                     <div class="col-12 pt-2">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
-                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                        <a href="{{ url()->previous() }}" class="btn btn-outline-warning mr-1 mb-1">Back</a>
                                                     </div>
                                                 </div>
                                             </div>

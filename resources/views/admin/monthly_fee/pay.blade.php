@@ -72,7 +72,7 @@
 
                                                     <div class="col-12 pt-2">
                                                         <input onclick="this.disabled=true;this.value='Loading...';this.form.submit();" type="submit" class="btn btn-primary mr-1 mb-1" value="Submit">
-                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                        <a href="{{ url()->previous() }}" class="btn btn-outline-warning mr-1 mb-1">Back</a>
                                                     </div>
                                                 </div>
                                             </div>

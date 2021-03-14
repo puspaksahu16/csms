@@ -26,7 +26,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Assigned Teacher</a>
+                                    <li class="breadcrumb-item"><a href="#">Edit Class Teacher</a>
                                     </li>
 
                                 </ol>
@@ -44,7 +44,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Edit Assigned Teacher</h4>
+                                    <h4 class="card-title">Edit Class Teacher</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">

@@ -53,7 +53,7 @@ class TimetableController extends Controller
         }elseif (auth()->user()->role->name == "teacher"){
             $employee = Employee::find(auth()->user()->employee->id);
             $timetables = TimeTable::where('school_id', $employee->school_id)->get();
-            return $timetables->class->class_teacher;
+//            return $timetables->class->class_teacher;
         }
 
         return view('admin.timetable.timetable',compact(['timetables']));

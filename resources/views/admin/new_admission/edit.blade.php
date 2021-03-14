@@ -19,12 +19,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">New Admission</h2>
+                            <h2 class="content-header-title float-left mb-0">Edit Details</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('\dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">New Admission</a>
+                                    <li class="breadcrumb-item"><a href="#">New Details</a>
                                     </li>
 
                                 </ol>
@@ -72,7 +72,7 @@
                                                         @method('put')
                                                         <div class="row setup-content" id="step-1">
                                                             <div class="card-header">
-                                                                <h4 class="card-title">Student Details</h4>
+                                                                <h4 class="card-title">Edit Student Details</h4>
                                                             </div>
 
                                                             <div class="container">

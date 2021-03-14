@@ -33,40 +33,42 @@
                         <div class="card">
                             <div class="card-header table-card-header">
                                 <h4 class="card-title">Books Price</h4>
-                                <a class="btn btn-primary" href="{{url('/book_price_update')}}">Update</a>
+                                <a class="btn btn-primary" href="{{url('/book_price_update')}}">Add/Update</a>
                             </div>
-                            <div class="container">
-                                <form class="form" action="{{url('/fetch_class_table')}}" method="get">
-                                    @csrf
-                                    <div class="row">
-                                        @if(auth()->user()->role->name == "super_admin")
-                                        <div class="col-md-4">
-                                            <select name="school_id" onclick="getClass()" id="school_id" class="form-control">
-                                                <option value="">-SELECT School-</option>
 
-                                                @foreach($schools as $school)
-                                                    <option value="{{ $school->id }}">{{ $school->full_name }}</option>
-                                                @endforeach
-
-                                            </select>
-                                        </div>
-                                        @endif
-                                        <div class="col-md-4">
-                                            <select onchange="classFiler(this.value)" name="class_id" id="class" class="form-control">
-                                                <option value="">-SELECT CLASS-</option>
-                                                @if(auth()->user()->role->name == "admin")
-                                                    @foreach($classes as $class)
-                                                        <option value="{{ $class->id }}">{{ $class->create_class }}</option>
-                                                    @endforeach
-                                                @endif
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                </form>
-                            </div>
                             <div class="card-content">
+                                <div class="container">
+                                    {{--<form class="form" action="{{url('/fetch_class_table')}}" method="get">--}}
+                                        {{--@csrf--}}
+                                        <div class="row">
+                                            @if(auth()->user()->role->name == "super_admin")
+                                                <div class="col-md-4">
+                                                    <select name="school_id" onclick="getClass()" id="school_id" class="form-control">
+                                                        <option value="">-SELECT School-</option>
+
+                                                        @foreach($schools as $school)
+                                                            <option value="{{ $school->id }}">{{ $school->full_name }}</option>
+                                                        @endforeach
+
+                                                    </select>
+                                                </div>
+                                            @endif
+                                            <div class="col-md-4">
+                                                <select onchange="classFiler(this.value)" name="class_id" id="class" class="form-control">
+                                                    <option value="">-SELECT CLASS-</option>
+                                                    @if(auth()->user()->role->name == "admin")
+                                                        @foreach($classes as $class)
+                                                            <option value="{{ $class->id }}">{{ $class->create_class }}</option>
+                                                        @endforeach
+                                                    @endif
+
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    {{--</form>--}}
+                                </div>
+                                <br>
                                 <div class="table-responsive">
                                     <table class="table zero-configuration mb-0">
                                         <thead>

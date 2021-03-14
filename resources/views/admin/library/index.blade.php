@@ -17,6 +17,13 @@
                     @endif
                 </div>
             @endif
+
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
+
             <div class="content-body"><!-- Basic Horizontal form layout section start -->
                 <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">
@@ -89,8 +96,7 @@
                                                                     <span style="color: red">{{ $errors->first('book_price') }}</span>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-3"></div>
-                                                            <div class="col-3">
+                                                            <div class="col-4">
 
                                                                 <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
                                                                 <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
@@ -132,7 +138,7 @@
                                                                     <label for="first-name-column">Price</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-4">
+                                                            <div class="col-4 btn-group">
                                                                 <input type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light" value="Submit">
                                                                 <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                                             </div>

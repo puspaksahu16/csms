@@ -8,10 +8,11 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "facade/ignition": "^1.16",
         "fideloper/proxy": "^4.0",
         "freshbitsweb/laratables": "^2.3",
+        "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^6.0",
         "laravel/socialite": "^4.4",
         "laravel/tinker": "^1.0"
