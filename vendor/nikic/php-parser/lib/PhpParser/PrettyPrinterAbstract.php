@@ -756,11 +756,7 @@ abstract class PrettyPrinterAbstract
 
                 $itemStartPos = $origArrItem->getStartTokenPos();
                 $itemEndPos = $origArrItem->getEndTokenPos();
-<<<<<<< HEAD
-                \assert($itemStartPos >= 0 && $itemEndPos >= 0);
-=======
                 \assert($itemStartPos >= 0 && $itemEndPos >= 0 && $itemStartPos >= $pos);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
                 $origIndentLevel = $this->indentLevel;
                 $lastElemIndentLevel = $this->origTokens->getIndentationBefore($itemStartPos) + $indentAdjustment;

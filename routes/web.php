@@ -22,7 +22,20 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
 
     Route::get('/test', function () {
-        return auth()->user()->role;
+//        return auth()->user()->user_employee_role->employee_role->role_name;
+//         $a = auth()->user()->role->employee_role;
+//        foreach ($a as $p){
+//            if ($p->id === auth()->user()->user_employee_role->employee_role_id){
+//               return $p->role_name;
+//            }
+//        }
+
+//        $menu_items = \App\MenuItem::get()->groupBy('category');
+//        foreach ($menu_items as $key => $menu_item){
+//            foreach ($menu_item as $item){
+//                return $item['id'];
+//            }
+//        }
     });
 
     Route::middleware('auth')->group(function () {
@@ -200,6 +213,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/attendance/store/{id}','AttendanceController@store');
     Route::get('/attendances','AttendanceController@index');
     Route::post('/get_attendance','AttendanceController@getAttendance');
+
+
+    // Employee Roles
+
+    Route::resource('employees_roles', 'EmployeeRoleController');
 
 
 

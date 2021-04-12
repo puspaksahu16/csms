@@ -17,6 +17,7 @@ return array(
     'App\\Createclass' => $baseDir . '/app/Createclass.php',
     'App\\Damage' => $baseDir . '/app/Damage.php',
     'App\\Employee' => $baseDir . '/app/Employee.php',
+    'App\\EmployeeMenuItem' => $baseDir . '/app/EmployeeMenuItem.php',
     'App\\EmployeeRole' => $baseDir . '/app/EmployeeRole.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\ExtraClass' => $baseDir . '/app/ExtraClass.php',
@@ -37,6 +38,7 @@ return array(
     'App\\Http\\Controllers\\CreateClassController' => $baseDir . '/app/Http/Controllers/CreateClassController.php',
     'App\\Http\\Controllers\\DamageController' => $baseDir . '/app/Http/Controllers/DamageController.php',
     'App\\Http\\Controllers\\EmployeeController' => $baseDir . '/app/Http/Controllers/EmployeeController.php',
+    'App\\Http\\Controllers\\EmployeeRoleController' => $baseDir . '/app/Http/Controllers/EmployeeRoleController.php',
     'App\\Http\\Controllers\\ExtraClassController' => $baseDir . '/app/Http/Controllers/ExtraClassController.php',
     'App\\Http\\Controllers\\GeneralFeeController' => $baseDir . '/app/Http/Controllers/GeneralFeeController.php',
     'App\\Http\\Controllers\\HolidayController' => $baseDir . '/app/Http/Controllers/HolidayController.php',
@@ -77,6 +79,7 @@ return array(
     'App\\Installment' => $baseDir . '/app/Installment.php',
     'App\\IssueBook' => $baseDir . '/app/IssueBook.php',
     'App\\Library' => $baseDir . '/app/Library.php',
+    'App\\MenuItem' => $baseDir . '/app/MenuItem.php',
     'App\\MonthlyFee' => $baseDir . '/app/MonthlyFee.php',
     'App\\MonthlyFeeHistory' => $baseDir . '/app/MonthlyFeeHistory.php',
     'App\\Payment' => $baseDir . '/app/Payment.php',
@@ -110,6 +113,7 @@ return array(
     'App\\SubscriptionPlan' => $baseDir . '/app/SubscriptionPlan.php',
     'App\\TimeTable' => $baseDir . '/app/TimeTable.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'App\\UserEmployeeRole' => $baseDir . '/app/UserEmployeeRole.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonConverterInterface' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonConverterInterface.php',
@@ -943,16 +947,11 @@ return array(
     'Freshbitsweb\\Laratables\\QueryHandler' => $vendorDir . '/freshbitsweb/laratables/src/QueryHandler.php',
     'Freshbitsweb\\Laratables\\RecordsTransformer' => $vendorDir . '/freshbitsweb/laratables/src/RecordsTransformer.php',
     'Freshbitsweb\\Laratables\\RelationshipsManager' => $vendorDir . '/freshbitsweb/laratables/src/RelationshipsManager.php',
-<<<<<<< HEAD
-    'GuzzleHttp\\Client' => $vendorDir . '/guzzlehttp/guzzle/src/Client.php',
-    'GuzzleHttp\\ClientInterface' => $vendorDir . '/guzzlehttp/guzzle/src/ClientInterface.php',
-=======
     'GuzzleHttp\\BodySummarizer' => $vendorDir . '/guzzlehttp/guzzle/src/BodySummarizer.php',
     'GuzzleHttp\\BodySummarizerInterface' => $vendorDir . '/guzzlehttp/guzzle/src/BodySummarizerInterface.php',
     'GuzzleHttp\\Client' => $vendorDir . '/guzzlehttp/guzzle/src/Client.php',
     'GuzzleHttp\\ClientInterface' => $vendorDir . '/guzzlehttp/guzzle/src/ClientInterface.php',
     'GuzzleHttp\\ClientTrait' => $vendorDir . '/guzzlehttp/guzzle/src/ClientTrait.php',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'GuzzleHttp\\Cookie\\CookieJar' => $vendorDir . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',
     'GuzzleHttp\\Cookie\\CookieJarInterface' => $vendorDir . '/guzzlehttp/guzzle/src/Cookie/CookieJarInterface.php',
     'GuzzleHttp\\Cookie\\FileCookieJar' => $vendorDir . '/guzzlehttp/guzzle/src/Cookie/FileCookieJar.php',
@@ -964,10 +963,6 @@ return array(
     'GuzzleHttp\\Exception\\GuzzleException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/GuzzleException.php',
     'GuzzleHttp\\Exception\\InvalidArgumentException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/InvalidArgumentException.php',
     'GuzzleHttp\\Exception\\RequestException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/RequestException.php',
-<<<<<<< HEAD
-    'GuzzleHttp\\Exception\\SeekException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/SeekException.php',
-=======
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'GuzzleHttp\\Exception\\ServerException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/ServerException.php',
     'GuzzleHttp\\Exception\\TooManyRedirectsException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/TooManyRedirectsException.php',
     'GuzzleHttp\\Exception\\TransferException' => $vendorDir . '/guzzlehttp/guzzle/src/Exception/TransferException.php',
@@ -981,26 +976,18 @@ return array(
     'GuzzleHttp\\Handler\\Proxy' => $vendorDir . '/guzzlehttp/guzzle/src/Handler/Proxy.php',
     'GuzzleHttp\\Handler\\StreamHandler' => $vendorDir . '/guzzlehttp/guzzle/src/Handler/StreamHandler.php',
     'GuzzleHttp\\MessageFormatter' => $vendorDir . '/guzzlehttp/guzzle/src/MessageFormatter.php',
-<<<<<<< HEAD
-=======
     'GuzzleHttp\\MessageFormatterInterface' => $vendorDir . '/guzzlehttp/guzzle/src/MessageFormatterInterface.php',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'GuzzleHttp\\Middleware' => $vendorDir . '/guzzlehttp/guzzle/src/Middleware.php',
     'GuzzleHttp\\Pool' => $vendorDir . '/guzzlehttp/guzzle/src/Pool.php',
     'GuzzleHttp\\PrepareBodyMiddleware' => $vendorDir . '/guzzlehttp/guzzle/src/PrepareBodyMiddleware.php',
     'GuzzleHttp\\Promise\\AggregateException' => $vendorDir . '/guzzlehttp/promises/src/AggregateException.php',
     'GuzzleHttp\\Promise\\CancellationException' => $vendorDir . '/guzzlehttp/promises/src/CancellationException.php',
     'GuzzleHttp\\Promise\\Coroutine' => $vendorDir . '/guzzlehttp/promises/src/Coroutine.php',
-<<<<<<< HEAD
-    'GuzzleHttp\\Promise\\EachPromise' => $vendorDir . '/guzzlehttp/promises/src/EachPromise.php',
-    'GuzzleHttp\\Promise\\FulfilledPromise' => $vendorDir . '/guzzlehttp/promises/src/FulfilledPromise.php',
-=======
     'GuzzleHttp\\Promise\\Create' => $vendorDir . '/guzzlehttp/promises/src/Create.php',
     'GuzzleHttp\\Promise\\Each' => $vendorDir . '/guzzlehttp/promises/src/Each.php',
     'GuzzleHttp\\Promise\\EachPromise' => $vendorDir . '/guzzlehttp/promises/src/EachPromise.php',
     'GuzzleHttp\\Promise\\FulfilledPromise' => $vendorDir . '/guzzlehttp/promises/src/FulfilledPromise.php',
     'GuzzleHttp\\Promise\\Is' => $vendorDir . '/guzzlehttp/promises/src/Is.php',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'GuzzleHttp\\Promise\\Promise' => $vendorDir . '/guzzlehttp/promises/src/Promise.php',
     'GuzzleHttp\\Promise\\PromiseInterface' => $vendorDir . '/guzzlehttp/promises/src/PromiseInterface.php',
     'GuzzleHttp\\Promise\\PromisorInterface' => $vendorDir . '/guzzlehttp/promises/src/PromisorInterface.php',
@@ -1008,24 +995,12 @@ return array(
     'GuzzleHttp\\Promise\\RejectionException' => $vendorDir . '/guzzlehttp/promises/src/RejectionException.php',
     'GuzzleHttp\\Promise\\TaskQueue' => $vendorDir . '/guzzlehttp/promises/src/TaskQueue.php',
     'GuzzleHttp\\Promise\\TaskQueueInterface' => $vendorDir . '/guzzlehttp/promises/src/TaskQueueInterface.php',
-<<<<<<< HEAD
-=======
     'GuzzleHttp\\Promise\\Utils' => $vendorDir . '/guzzlehttp/promises/src/Utils.php',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'GuzzleHttp\\Psr7\\AppendStream' => $vendorDir . '/guzzlehttp/psr7/src/AppendStream.php',
     'GuzzleHttp\\Psr7\\BufferStream' => $vendorDir . '/guzzlehttp/psr7/src/BufferStream.php',
     'GuzzleHttp\\Psr7\\CachingStream' => $vendorDir . '/guzzlehttp/psr7/src/CachingStream.php',
     'GuzzleHttp\\Psr7\\DroppingStream' => $vendorDir . '/guzzlehttp/psr7/src/DroppingStream.php',
     'GuzzleHttp\\Psr7\\FnStream' => $vendorDir . '/guzzlehttp/psr7/src/FnStream.php',
-<<<<<<< HEAD
-    'GuzzleHttp\\Psr7\\InflateStream' => $vendorDir . '/guzzlehttp/psr7/src/InflateStream.php',
-    'GuzzleHttp\\Psr7\\LazyOpenStream' => $vendorDir . '/guzzlehttp/psr7/src/LazyOpenStream.php',
-    'GuzzleHttp\\Psr7\\LimitStream' => $vendorDir . '/guzzlehttp/psr7/src/LimitStream.php',
-    'GuzzleHttp\\Psr7\\MessageTrait' => $vendorDir . '/guzzlehttp/psr7/src/MessageTrait.php',
-    'GuzzleHttp\\Psr7\\MultipartStream' => $vendorDir . '/guzzlehttp/psr7/src/MultipartStream.php',
-    'GuzzleHttp\\Psr7\\NoSeekStream' => $vendorDir . '/guzzlehttp/psr7/src/NoSeekStream.php',
-    'GuzzleHttp\\Psr7\\PumpStream' => $vendorDir . '/guzzlehttp/psr7/src/PumpStream.php',
-=======
     'GuzzleHttp\\Psr7\\Header' => $vendorDir . '/guzzlehttp/psr7/src/Header.php',
     'GuzzleHttp\\Psr7\\InflateStream' => $vendorDir . '/guzzlehttp/psr7/src/InflateStream.php',
     'GuzzleHttp\\Psr7\\LazyOpenStream' => $vendorDir . '/guzzlehttp/psr7/src/LazyOpenStream.php',
@@ -1037,7 +1012,6 @@ return array(
     'GuzzleHttp\\Psr7\\NoSeekStream' => $vendorDir . '/guzzlehttp/psr7/src/NoSeekStream.php',
     'GuzzleHttp\\Psr7\\PumpStream' => $vendorDir . '/guzzlehttp/psr7/src/PumpStream.php',
     'GuzzleHttp\\Psr7\\Query' => $vendorDir . '/guzzlehttp/psr7/src/Query.php',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'GuzzleHttp\\Psr7\\Request' => $vendorDir . '/guzzlehttp/psr7/src/Request.php',
     'GuzzleHttp\\Psr7\\Response' => $vendorDir . '/guzzlehttp/psr7/src/Response.php',
     'GuzzleHttp\\Psr7\\Rfc7230' => $vendorDir . '/guzzlehttp/psr7/src/Rfc7230.php',
@@ -1049,18 +1023,11 @@ return array(
     'GuzzleHttp\\Psr7\\Uri' => $vendorDir . '/guzzlehttp/psr7/src/Uri.php',
     'GuzzleHttp\\Psr7\\UriNormalizer' => $vendorDir . '/guzzlehttp/psr7/src/UriNormalizer.php',
     'GuzzleHttp\\Psr7\\UriResolver' => $vendorDir . '/guzzlehttp/psr7/src/UriResolver.php',
-<<<<<<< HEAD
-=======
     'GuzzleHttp\\Psr7\\Utils' => $vendorDir . '/guzzlehttp/psr7/src/Utils.php',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'GuzzleHttp\\RedirectMiddleware' => $vendorDir . '/guzzlehttp/guzzle/src/RedirectMiddleware.php',
     'GuzzleHttp\\RequestOptions' => $vendorDir . '/guzzlehttp/guzzle/src/RequestOptions.php',
     'GuzzleHttp\\RetryMiddleware' => $vendorDir . '/guzzlehttp/guzzle/src/RetryMiddleware.php',
     'GuzzleHttp\\TransferStats' => $vendorDir . '/guzzlehttp/guzzle/src/TransferStats.php',
-<<<<<<< HEAD
-    'GuzzleHttp\\UriTemplate' => $vendorDir . '/guzzlehttp/guzzle/src/UriTemplate.php',
-=======
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'GuzzleHttp\\Utils' => $vendorDir . '/guzzlehttp/guzzle/src/Utils.php',
     'Hamcrest\\Arrays\\IsArray' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
     'Hamcrest\\Arrays\\IsArrayContaining' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
@@ -2284,28 +2251,6 @@ return array(
     'League\\Flysystem\\Util\\ContentListingFormatter' => $vendorDir . '/league/flysystem/src/Util/ContentListingFormatter.php',
     'League\\Flysystem\\Util\\MimeType' => $vendorDir . '/league/flysystem/src/Util/MimeType.php',
     'League\\Flysystem\\Util\\StreamHasher' => $vendorDir . '/league/flysystem/src/Util/StreamHasher.php',
-<<<<<<< HEAD
-    'League\\OAuth1\\Client\\Credentials\\ClientCredentials' => $vendorDir . '/league/oauth1-client/src/Client/Credentials/ClientCredentials.php',
-    'League\\OAuth1\\Client\\Credentials\\ClientCredentialsInterface' => $vendorDir . '/league/oauth1-client/src/Client/Credentials/ClientCredentialsInterface.php',
-    'League\\OAuth1\\Client\\Credentials\\Credentials' => $vendorDir . '/league/oauth1-client/src/Client/Credentials/Credentials.php',
-    'League\\OAuth1\\Client\\Credentials\\CredentialsException' => $vendorDir . '/league/oauth1-client/src/Client/Credentials/CredentialsException.php',
-    'League\\OAuth1\\Client\\Credentials\\CredentialsInterface' => $vendorDir . '/league/oauth1-client/src/Client/Credentials/CredentialsInterface.php',
-    'League\\OAuth1\\Client\\Credentials\\TemporaryCredentials' => $vendorDir . '/league/oauth1-client/src/Client/Credentials/TemporaryCredentials.php',
-    'League\\OAuth1\\Client\\Credentials\\TokenCredentials' => $vendorDir . '/league/oauth1-client/src/Client/Credentials/TokenCredentials.php',
-    'League\\OAuth1\\Client\\Server\\Bitbucket' => $vendorDir . '/league/oauth1-client/src/Client/Server/Bitbucket.php',
-    'League\\OAuth1\\Client\\Server\\Magento' => $vendorDir . '/league/oauth1-client/src/Client/Server/Magento.php',
-    'League\\OAuth1\\Client\\Server\\Server' => $vendorDir . '/league/oauth1-client/src/Client/Server/Server.php',
-    'League\\OAuth1\\Client\\Server\\Trello' => $vendorDir . '/league/oauth1-client/src/Client/Server/Trello.php',
-    'League\\OAuth1\\Client\\Server\\Tumblr' => $vendorDir . '/league/oauth1-client/src/Client/Server/Tumblr.php',
-    'League\\OAuth1\\Client\\Server\\Twitter' => $vendorDir . '/league/oauth1-client/src/Client/Server/Twitter.php',
-    'League\\OAuth1\\Client\\Server\\User' => $vendorDir . '/league/oauth1-client/src/Client/Server/User.php',
-    'League\\OAuth1\\Client\\Server\\Uservoice' => $vendorDir . '/league/oauth1-client/src/Client/Server/Uservoice.php',
-    'League\\OAuth1\\Client\\Server\\Xing' => $vendorDir . '/league/oauth1-client/src/Client/Server/Xing.php',
-    'League\\OAuth1\\Client\\Signature\\HmacSha1Signature' => $vendorDir . '/league/oauth1-client/src/Client/Signature/HmacSha1Signature.php',
-    'League\\OAuth1\\Client\\Signature\\PlainTextSignature' => $vendorDir . '/league/oauth1-client/src/Client/Signature/PlainTextSignature.php',
-    'League\\OAuth1\\Client\\Signature\\Signature' => $vendorDir . '/league/oauth1-client/src/Client/Signature/Signature.php',
-    'League\\OAuth1\\Client\\Signature\\SignatureInterface' => $vendorDir . '/league/oauth1-client/src/Client/Signature/SignatureInterface.php',
-=======
     'League\\MimeTypeDetection\\EmptyExtensionToMimeTypeMap' => $vendorDir . '/league/mime-type-detection/src/EmptyExtensionToMimeTypeMap.php',
     'League\\MimeTypeDetection\\ExtensionMimeTypeDetector' => $vendorDir . '/league/mime-type-detection/src/ExtensionMimeTypeDetector.php',
     'League\\MimeTypeDetection\\ExtensionToMimeTypeMap' => $vendorDir . '/league/mime-type-detection/src/ExtensionToMimeTypeMap.php',
@@ -2335,7 +2280,6 @@ return array(
     'League\\OAuth1\\Client\\Signature\\RsaSha1Signature' => $vendorDir . '/league/oauth1-client/src/Signature/RsaSha1Signature.php',
     'League\\OAuth1\\Client\\Signature\\Signature' => $vendorDir . '/league/oauth1-client/src/Signature/Signature.php',
     'League\\OAuth1\\Client\\Signature\\SignatureInterface' => $vendorDir . '/league/oauth1-client/src/Signature/SignatureInterface.php',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'Mockery' => $vendorDir . '/mockery/mockery/library/Mockery.php',
     'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
     'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
@@ -3362,13 +3306,10 @@ return array(
     'Psr\\Container\\ContainerExceptionInterface' => $vendorDir . '/psr/container/src/ContainerExceptionInterface.php',
     'Psr\\Container\\ContainerInterface' => $vendorDir . '/psr/container/src/ContainerInterface.php',
     'Psr\\Container\\NotFoundExceptionInterface' => $vendorDir . '/psr/container/src/NotFoundExceptionInterface.php',
-<<<<<<< HEAD
-=======
     'Psr\\Http\\Client\\ClientExceptionInterface' => $vendorDir . '/psr/http-client/src/ClientExceptionInterface.php',
     'Psr\\Http\\Client\\ClientInterface' => $vendorDir . '/psr/http-client/src/ClientInterface.php',
     'Psr\\Http\\Client\\NetworkExceptionInterface' => $vendorDir . '/psr/http-client/src/NetworkExceptionInterface.php',
     'Psr\\Http\\Client\\RequestExceptionInterface' => $vendorDir . '/psr/http-client/src/RequestExceptionInterface.php',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'Psr\\Http\\Message\\MessageInterface' => $vendorDir . '/psr/http-message/src/MessageInterface.php',
     'Psr\\Http\\Message\\RequestInterface' => $vendorDir . '/psr/http-message/src/RequestInterface.php',
     'Psr\\Http\\Message\\ResponseInterface' => $vendorDir . '/psr/http-message/src/ResponseInterface.php',

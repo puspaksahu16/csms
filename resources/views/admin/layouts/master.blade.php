@@ -144,6 +144,11 @@
     @include('admin.common.sidebar_parent')
 @elseif(auth()->user()->role->name == 'teacher')
     @include('admin.common.sidebar_teacher')
+@else
+
+{{--    @if(auth()->user()->user_employee_role->employee_role->role_name == 'Teacher')--}}
+        @include('admin.common.sidebar_employee')
+{{--    @endif--}}
 @endif
 <!-- END: Main Menu-->
 

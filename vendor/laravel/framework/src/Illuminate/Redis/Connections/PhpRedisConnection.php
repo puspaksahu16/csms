@@ -33,10 +33,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      *
      * @param  \Redis  $client
      * @param  callable|null  $connector
-<<<<<<< HEAD
-=======
      * @param  array  $config
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
      * @return void
      */
     public function __construct($client, callable $connector = null, array $config = [])
@@ -224,19 +221,11 @@ class PhpRedisConnection extends Connection implements ConnectionContract
         foreach (array_slice($dictionary, 0, 3) as $i => $value) {
             if (in_array($value, ['nx', 'xx', 'ch', 'incr', 'NX', 'XX', 'CH', 'INCR'], true)) {
                 $options[] = $value;
-<<<<<<< HEAD
 
                 unset($dictionary[$i]);
             }
         }
 
-=======
-
-                unset($dictionary[$i]);
-            }
-        }
-
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         return $this->command('zadd', array_merge([$key], [$options], array_values($dictionary)));
     }
 

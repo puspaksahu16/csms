@@ -17,13 +17,8 @@ namespace Symfony\Component\Mime\Encoder;
  * Encodes the domain part of an address using IDN. This is compatible will all
  * SMTP servers.
  *
-<<<<<<< HEAD
- * This encoder does not support email addresses with non-ASCII characters in
- * local-part (the substring before @).
-=======
  * Note: It leaves the local part as is. In case there are non-ASCII characters
  * in the local part then it depends on the SMTP Server if this is supported.
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
  *
  * @author Christian Schmidt
  */

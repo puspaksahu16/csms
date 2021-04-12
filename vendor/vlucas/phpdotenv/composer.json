@@ -23,11 +23,7 @@
     "require-dev": {
         "ext-filter": "*",
         "ext-pcre": "*",
-<<<<<<< HEAD
-        "phpunit/phpunit": "^4.8.35 || ^5.0 || ^6.0 || ^7.0"
-=======
         "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20"
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     },
     "autoload": {
         "psr-4": {
@@ -38,12 +34,9 @@
         "ext-filter": "Required to use the boolean validator.",
         "ext-pcre": "Required to use most of the library."
     },
-<<<<<<< HEAD
-=======
     "config": {
         "preferred-install": "dist"
     },
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     "extra": {
         "branch-alias": {
             "dev-master": "3.6-dev"

@@ -11,23 +11,6 @@
 
 use Symfony\Polyfill\Mbstring as p;
 
-<<<<<<< HEAD
-if (!defined('MB_CASE_UPPER')) {
-    define('MB_CASE_UPPER', 0);
-    define('MB_CASE_LOWER', 1);
-    define('MB_CASE_TITLE', 2);
-}
-
-if (!function_exists('mb_strlen')) {
-    function mb_convert_encoding($s, $to, $from = null) { return p\Mbstring::mb_convert_encoding($s, $to, $from); }
-    function mb_decode_mimeheader($s) { return p\Mbstring::mb_decode_mimeheader($s); }
-    function mb_encode_mimeheader($s, $charset = null, $transferEnc = null, $lf = null, $indent = null) { return p\Mbstring::mb_encode_mimeheader($s, $charset, $transferEnc, $lf, $indent); }
-    function mb_decode_numericentity($s, $convmap, $enc = null) { return p\Mbstring::mb_decode_numericentity($s, $convmap, $enc); }
-    function mb_encode_numericentity($s, $convmap, $enc = null, $is_hex = false) { return p\Mbstring::mb_encode_numericentity($s, $convmap, $enc, $is_hex); }
-    function mb_convert_case($s, $mode, $enc = null) { return p\Mbstring::mb_convert_case($s, $mode, $enc); }
-    function mb_internal_encoding($enc = null) { return p\Mbstring::mb_internal_encoding($enc); }
-    function mb_language($lang = null) { return p\Mbstring::mb_language($lang); }
-=======
 if (\PHP_VERSION_ID >= 80000) {
     return require __DIR__.'/bootstrap80.php';
 }
@@ -57,7 +40,6 @@ if (!function_exists('mb_language')) {
     function mb_language($language = null) { return p\Mbstring::mb_language($language); }
 }
 if (!function_exists('mb_list_encodings')) {
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     function mb_list_encodings() { return p\Mbstring::mb_list_encodings(); }
 }
 if (!function_exists('mb_encoding_aliases')) {

@@ -43,11 +43,7 @@ class Printer
     protected $autoFlush = false;
 
     /**
-<<<<<<< HEAD
-     * @var resource|closed-resource
-=======
      * @psalm-var resource|closed-resource
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
      */
     protected $out;
 
@@ -99,17 +95,10 @@ class Printer
      */
     public function flush(): void
     {
-<<<<<<< HEAD
-        if ($this->out && \strncmp($this->outTarget, 'php://', 6) !== 0) {
-            \assert(\is_resource($this->out));
-
-            \fclose($this->out);
-=======
         if ($this->out && strncmp($this->outTarget, 'php://', 6) !== 0) {
             assert(is_resource($this->out));
 
             fclose($this->out);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         }
     }
 
@@ -123,15 +112,9 @@ class Printer
     public function incrementalFlush(): void
     {
         if ($this->out) {
-<<<<<<< HEAD
-            \assert(\is_resource($this->out));
-
-            \fflush($this->out);
-=======
             assert(is_resource($this->out));
 
             fflush($this->out);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         } else {
             flush();
         }
@@ -140,15 +123,9 @@ class Printer
     public function write(string $buffer): void
     {
         if ($this->out) {
-<<<<<<< HEAD
-            \assert(\is_resource($this->out));
-
-            \fwrite($this->out, $buffer);
-=======
             assert(is_resource($this->out));
 
             fwrite($this->out, $buffer);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
             if ($this->autoFlush) {
                 $this->incrementalFlush();

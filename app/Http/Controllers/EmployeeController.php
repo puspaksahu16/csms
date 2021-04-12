@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Createclass;
 use App\Employee;
+use App\EmployeeMenuItem;
 use App\EmployeeRole;
 use App\Idproof;
+use App\MenuItem;
 use App\Qualification;
 use App\School;
 use App\User;
+use App\UserEmployeeRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -38,12 +41,16 @@ class EmployeeController extends Controller
      */
     public function create()
     {
+//        if (auth()->user()->role->name == "super_admin") {
+//
+//        }
         $id_proof = Idproof::all();
         $classes = Createclass::all();
         $schools = School::all();
         $qualifications = Qualification::all();
         $employee_roles = EmployeeRole::all();
-        return view('admin.employee.create',compact(['id_proof', 'classes','schools','qualifications', 'employee_roles']));
+        $menu_items = MenuItem::all();
+        return view('admin.employee.create',compact(['id_proof', 'classes','schools','qualifications', 'employee_roles','menu_items']));
     }
 
     /**
@@ -74,7 +81,7 @@ class EmployeeController extends Controller
                 'employee_department' => 'required',
                 'employee_designation' => 'required',
                 'employee_salary' => 'required',
-                'role_id' => 'required',
+                'employee_role_id' => 'required',
                 'address' => 'required',
                 'city' => 'required',
                 'district' => 'required',
@@ -104,12 +111,19 @@ class EmployeeController extends Controller
 
         if (empty($email)) {
             $user = new User();
+            $employee_role = EmployeeRole::find($request->employee_role_id);
             $user->name = $request->first_name . " " . $request->last_name;
             $user->email = $request->email;
-            $user->role_id = $request->role_id;
+            $user->role_id = $employee_role->role_id;
             $user->password = Hash::make($employee_id);
             $user->save();
             if (!empty($user->id)) {
+                $user_employee_role = new UserEmployeeRole();
+                $user_employee_role->user_id = $user->id;
+                $user_employee_role->employee_role_id = $request->employee_role_id;
+                $user_employee_role->save();
+
+
                 $employees = New Employee();
                 $employees->first_name = $request->first_name;
                 $employees->last_name = $request->last_name;
@@ -137,6 +151,19 @@ class EmployeeController extends Controller
                 $employees->employee_salary = $request->employee_salary;
                 $employees->school_id = auth()->user()->role->name == "super_admin" ? $request->school_id : auth()->user()->school->id;
                 $employees->save();
+
+                foreach ($request->employee_menu_item as $key => $employee_menu_item){
+                    $menu_item = MenuItem::find($employee_menu_item);
+                    $employee_menu_item = new EmployeeMenuItem();
+                    $employee_menu_item->user_id = $user->id;
+                    $employee_menu_item->category = $menu_item->category;
+                    $employee_menu_item->category_icon = $menu_item->category_icon;
+                    $employee_menu_item->item = $menu_item->item;
+                    $employee_menu_item->url = $menu_item->url;
+                    $employee_menu_item->menu_item_id = $menu_item->id;
+                    $employee_menu_item->employee_id = $employees->id;
+                    $employee_menu_item->save();
+                }
 
                 if ($request->is_same == 1){
 
@@ -212,13 +239,15 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $address = Address::where('user_id',$id)->where('register_type', 'Employee')->first();
-        $employee = Employee::find($id);
+        $employee = Employee::with('menu')->find($id);
         $id_proof = Idproof::all();
         $classes = Createclass::all();
         $schools = School::all();
         $qualifications = Qualification::all();
         $employee_roles = EmployeeRole::all();
-        return view('admin.employee.edit',compact(['id_proof', 'classes','schools','qualifications','employee','address', 'employee_roles']));
+        $menu_items = MenuItem::all();
+
+        return view('admin.employee.edit',compact(['menu_items','id_proof', 'classes','schools','qualifications','employee','address', 'employee_roles']));
     }
 
     /**
@@ -258,6 +287,25 @@ class EmployeeController extends Controller
         $employee->experience = $request->experience;
         $employee->caste = $request->caste;
         $employee->update();
+
+//        $emp_menus = EmployeeMenuItem::where('employee_id', $id)->get();
+
+//        foreach ($request->employee_menu_item as $key => $employee_menu_item){
+//            foreach ( $emp_menus as $emp_menu){
+//                $emp_menu->menu_item_id;
+//            }
+//            $menu_item = MenuItem::find($employee_menu_item);
+//
+////            $employee->employee_id = $id;
+//            $employee->category = $menu_item->category;
+//            $employee->category_icon = $menu_item->category_icon;
+//            $employee->item = $menu_item->item;
+//            $employee->url = $menu_item->url;
+//            $employee->menu_item_id = $menu_item->id;
+//            $employee->employee_id = $id;
+////            $employee_menu_item->save();
+//            $employee->update();
+//        }
 
 
         $address = Address::find($id);

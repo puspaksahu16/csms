@@ -215,10 +215,10 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-12">
                                                                             <div class="form-label-group">
-                                                                                <select name="role_id" class="form-control">
+                                                                                <select name="employee_role_id" class="form-control">
                                                                                     <option value="">-choose Role-</option>
                                                                                     @foreach($employee_roles as $employee_role)
-                                                                                        <option {{ (old('role_id') == $employee_role->role_id ? "selected" : '') }} value="{{ $employee_role->role_id }}">{{ ucfirst($employee_role->role_name) }}</option>
+                                                                                        <option {{ (old('role_id') == $employee_role->id ? "selected" : '') }} value="{{ $employee_role->id }}">{{ ucfirst($employee_role->role_name) }}</option>
                                                                                     @endforeach
                                                                                 </select>
                                                                                 <span style="color: red">{{ $errors->first('role_id') }}</span>
@@ -236,6 +236,25 @@
                                                                                 <label for="email-id-column">Caste</label>
                                                                                 <span style="color: red">{{ $errors->first('caste') }}</span>
                                                                             </div>
+                                                                        </div>
+                                                                        <div class="col-md-12 col-12">
+                                                                            <label for="email-id-column">Employee Menu</label>
+                                                                            <div class="form-label-group">
+                                                                                    <br/>
+                                                                                <div class="row">
+                                                                                @foreach($menu_items as $menu_item)
+                                                                                <div class="col-md-4">
+                                                                                    @if(!empty($menu_item->item))
+                                                                                        <input type="checkbox" name="employee_menu_item[]" value="{{$menu_item->id}}">&nbsp; {{$menu_item->category." ".'/'." ".$menu_item->item}}
+                                                                                    @else
+                                                                                        <input type="checkbox" name="employee_menu_item[]" value="{{$menu_item->id}}">&nbsp; {{$menu_item->category}}
+                                                                                    @endif
+                                                                                </div>
+                                                                                @endforeach
+                                                                                </div>
+
+                                                                            </div>
+{{--                                                                            <span style="color: red">{{ $errors->first('caste') }}</span>--}}
                                                                         </div>
                                                                 </div>
                                                                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>

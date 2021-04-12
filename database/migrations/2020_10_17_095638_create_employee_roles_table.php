@@ -16,6 +16,7 @@ class CreateEmployeeRolesTable extends Migration
         Schema::create('employee_roles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('role_id');
+            $table->integer('school_id');
             $table->string('role_name');
             $table->timestamps();
         });

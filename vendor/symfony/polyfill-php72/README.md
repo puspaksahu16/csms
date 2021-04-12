@@ -15,12 +15,8 @@ Moved to core since 7.2 (was in the optional XML extension earlier):
 - [`utf8_encode`](https://php.net/utf8_encode)
 - [`utf8_decode`](https://php.net/utf8_decode)
 
-<<<<<<< HEAD
-Also, it provides a constant added to PHP 7.2:
-=======
 Also, it provides constants added to PHP 7.2:
 - [`PHP_FLOAT_*`](https://php.net/reserved.constants#constant.php-float-dig)
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 - [`PHP_OS_FAMILY`](https://php.net/reserved.constants#constant.php-os-family)
 
 More information can be found in the

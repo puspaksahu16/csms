@@ -11,8 +11,6 @@
 
 use Symfony\Polyfill\Iconv as p;
 
-<<<<<<< HEAD
-=======
 if (extension_loaded('iconv')) {
     return;
 }
@@ -21,7 +19,6 @@ if (\PHP_VERSION_ID >= 80000) {
     return require __DIR__.'/bootstrap80.php';
 }
 
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 if (!defined('ICONV_IMPL')) {
     define('ICONV_IMPL', 'Symfony');
 }
@@ -36,13 +33,9 @@ if (!defined('ICONV_MIME_DECODE_CONTINUE_ON_ERROR')) {
 }
 
 if (!function_exists('iconv')) {
-<<<<<<< HEAD
-    function iconv($from, $to, $s) { return p\Iconv::iconv($from, $to, $s); }
-=======
     function iconv($from_encoding, $to_encoding, $string) { return p\Iconv::iconv($from_encoding, $to_encoding, $string); }
 }
 if (!function_exists('iconv_get_encoding')) {
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     function iconv_get_encoding($type = 'all') { return p\Iconv::iconv_get_encoding($type); }
 }
 if (!function_exists('iconv_set_encoding')) {

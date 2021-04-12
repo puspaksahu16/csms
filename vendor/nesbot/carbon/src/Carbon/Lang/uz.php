@@ -52,11 +52,8 @@ return [
     'after' => ':timeдан кейин',
     'before' => ':time олдин',
     'diff_now' => 'ҳозир',
-<<<<<<< HEAD
-=======
     'diff_today' => 'Бугун',
     'diff_today_regexp' => 'Бугун(?:\\s+соат)?',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     'diff_yesterday' => 'Кеча',
     'diff_yesterday_regexp' => 'Кеча(?:\\s+соат)?',
     'diff_tomorrow' => 'Эртага',

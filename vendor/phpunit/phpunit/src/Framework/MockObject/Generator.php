@@ -234,10 +234,6 @@ final class Generator
      * @psalm-param class-string<RealInstanceType> $originalClassName
      * @psalm-return MockObject&RealInstanceType
      *
-     * @psalm-template RealInstanceType of object
-     * @psalm-param class-string<RealInstanceType> $originalClassName
-     * @psalm-return MockObject&RealInstanceType
-     *
      * @throws RuntimeException
      */
     public function getMockForAbstractClass(string $originalClassName, array $arguments = [], string $mockClassName = '', bool $callOriginalConstructor = true, bool $callOriginalClone = true, bool $callAutoload = true, array $mockedMethods = null, bool $cloneArguments = true): MockObject
@@ -572,15 +568,9 @@ final class Generator
     public function mockInterfaceMethods(string $interfaceName, bool $cloneArguments): array
     {
         try {
-<<<<<<< HEAD
-            $class = new \ReflectionClass($interfaceName);
-            // @codeCoverageIgnoreStart
-        } catch (\ReflectionException $e) {
-=======
             $class = new ReflectionClass($interfaceName);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             throw new RuntimeException(
                 $e->getMessage(),
                 (int) $e->getCode(),
@@ -601,11 +591,7 @@ final class Generator
     /**
      * @psalm-param class-string $interfaceName
      *
-<<<<<<< HEAD
-     * @return \ReflectionMethod[]
-=======
      * @return ReflectionMethod[]
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
      */
     private function userDefinedInterfaceMethods(string $interfaceName): array
     {
@@ -918,11 +904,7 @@ final class Generator
             );
         }
 
-<<<<<<< HEAD
-        if (\is_array($explicitMethods)) {
-=======
         if (is_array($explicitMethods)) {
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             foreach ($explicitMethods as $methodName) {
                 if ($class !== null && $class->hasMethod($methodName)) {
                     try {
@@ -1100,33 +1082,19 @@ final class Generator
     /**
      * @see https://github.com/sebastianbergmann/phpunit/issues/4139#issuecomment-605409765
      */
-<<<<<<< HEAD
-    private function isConstructor(\ReflectionMethod $method): bool
-    {
-        $methodName = \strtolower($method->getName());
-=======
     private function isConstructor(ReflectionMethod $method): bool
     {
         $methodName = strtolower($method->getName());
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
         if ($methodName === '__construct') {
             return true;
         }
 
-<<<<<<< HEAD
-        if (\PHP_MAJOR_VERSION >= 8) {
-            return false;
-        }
-
-        $className  = \strtolower($method->getDeclaringClass()->getName());
-=======
         if (PHP_MAJOR_VERSION >= 8) {
             return false;
         }
 
         $className = strtolower($method->getDeclaringClass()->getName());
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
         return $methodName === $className;
     }

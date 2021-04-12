@@ -1077,11 +1077,7 @@ final class Configuration
             $phpVersionOperator = (string) $node->getAttribute('phpVersionOperator');
         }
 
-<<<<<<< HEAD
-        return \version_compare(\PHP_VERSION, $phpVersion, (new VersionComparisonOperator($phpVersionOperator))->asString());
-=======
         return version_compare(PHP_VERSION, $phpVersion, (new VersionComparisonOperator($phpVersionOperator))->asString());
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     }
 
     /**

@@ -489,11 +489,7 @@ class ErrorHandler
         if ($this->isRecursive) {
             $log = 0;
         } else {
-<<<<<<< HEAD
-            if (\PHP_VERSION_ID < (\PHP_VERSION_ID < 70400 ? 70316 : 70404) && !\defined('HHVM_VERSION')) {
-=======
             if (\PHP_VERSION_ID < (\PHP_VERSION_ID < 70400 ? 70316 : 70404)) {
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                 $currentErrorHandler = set_error_handler('var_dump');
                 restore_error_handler();
             }
@@ -505,11 +501,7 @@ class ErrorHandler
             } finally {
                 $this->isRecursive = false;
 
-<<<<<<< HEAD
-                if (\PHP_VERSION_ID < (\PHP_VERSION_ID < 70400 ? 70316 : 70404) && !\defined('HHVM_VERSION')) {
-=======
                 if (\PHP_VERSION_ID < (\PHP_VERSION_ID < 70400 ? 70316 : 70404)) {
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                     set_error_handler($currentErrorHandler);
                 }
             }

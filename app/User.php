@@ -61,4 +61,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Employee::class, 'user_id');
     }
+    public function user_employee_role()
+    {
+        return $this->hasOne(UserEmployeeRole::class, 'user_id');
+    }
 }

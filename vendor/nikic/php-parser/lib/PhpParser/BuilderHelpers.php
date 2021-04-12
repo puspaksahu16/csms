@@ -197,13 +197,10 @@ final class BuilderHelpers
             throw new \LogicException('void type cannot be nullable');
         }
 
-<<<<<<< HEAD
-=======
         if ($nullable && (string) $type === 'mixed') {
             throw new \LogicException('mixed type cannot be nullable');
         }
 
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         return $nullable ? new NullableType($type) : $type;
     }
 

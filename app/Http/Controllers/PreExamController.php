@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Createclass;
+use App\Employee;
 use App\PreExam;
 use App\School;
 use Freshbitsweb\Laratables\Laratables;
@@ -20,8 +21,13 @@ class PreExamController extends Controller
         if (auth()->user()->role->name == "super_admin")
         {
             $pre_exams = PreExam::all();
-        }else{
+        }
+        elseif (auth()->user()->role->name == "admin"){
             $pre_exams = PreExam::where('school_id', auth()->user()->school->id)->get();
+        }
+        else{
+            $emp_id = Employee::where('user_id',auth()->user()->id)->first();
+            $pre_exams = PreExam::where('school_id', $emp_id->school_id)->get();
         }
 
         return view('admin.pre_exam.index', compact('pre_exams'));
@@ -38,9 +44,14 @@ class PreExamController extends Controller
         {
             $classes = Createclass::all();
             $schools = School::all();
-        }else{
+        }elseif (auth()->user()->role->name == "admin"){
             $schools = null;
             $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+        }
+        else{
+            $emp_id = Employee::where('user_id',auth()->user()->id)->first();
+            $schools = null;
+            $classes = Createclass::where('school_id', $emp_id->school_id)->get();
         }
 
         return  view('admin.pre_exam.create', compact(['classes', 'schools']));
@@ -115,10 +126,16 @@ class PreExamController extends Controller
             $pre_exam = PreExam::find($id);
             $classes = Createclass::where('school_id', $pre_exam->school_id)->get();
             $schools = School::all();
+        }
+        elseif (auth()->user()->role->name == "admin"){
+                $schools = null;
+                $pre_exam = PreExam::find($id);
+                $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
         }else{
-            $schools = null;
-            $pre_exam = PreExam::find($id);
-            $classes = Createclass::where('school_id', auth()->user()->school->id)->get();
+                $emp_id = Employee::where('user_id',auth()->user()->id)->first();
+                $schools = null;
+                $pre_exam = PreExam::find($id);
+                $classes = Createclass::where('school_id', $emp_id->school_id)->get();
         }
         return view('admin.pre_exam.edit', compact(['pre_exam','classes','schools']));
 

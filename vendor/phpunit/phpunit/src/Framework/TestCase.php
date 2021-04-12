@@ -1511,11 +1511,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
             }
 
             if ($this->deprecatedExpectExceptionMessageRegExpUsed) {
-<<<<<<< HEAD
-                $this->addWarning('expectExceptionMessageRegExp() is deprecated in PHPUnit 8 and will be removed in PHPUnit 9.');
-=======
                 $this->addWarning('expectExceptionMessageRegExp() is deprecated in PHPUnit 8 and will be removed in PHPUnit 9. Use expectExceptionMessageMatches() instead.');
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             }
 
             return;
@@ -1829,13 +1825,8 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         $this->recordDoubledType('SoapClient');
 
         if ($originalClassName === '') {
-<<<<<<< HEAD
-            $fileName          = \pathinfo(\basename(\parse_url($wsdlFile, \PHP_URL_PATH)), \PATHINFO_FILENAME);
-            $originalClassName = \preg_replace('/\W/', '', $fileName);
-=======
             $fileName          = pathinfo(basename(parse_url($wsdlFile, PHP_URL_PATH)), PATHINFO_FILENAME);
             $originalClassName = preg_replace('/\W/', '', $fileName);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         }
 
         if (!class_exists($originalClassName)) {

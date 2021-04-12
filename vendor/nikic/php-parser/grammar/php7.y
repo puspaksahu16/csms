@@ -1004,11 +1004,7 @@ callable_expr:
 ;
 
 callable_variable:
-<<<<<<< HEAD
-      simple_variable                                       { $$ = Expr\Variable[$1]; }
-=======
       simple_variable                                       { $$ = $1; }
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
     | array_object_dereferencable '[' optional_expr ']'     { $$ = Expr\ArrayDimFetch[$1, $3]; }
     | array_object_dereferencable '{' expr '}'              { $$ = Expr\ArrayDimFetch[$1, $3]; }
     | function_call                                         { $$ = $1; }
@@ -1028,11 +1024,8 @@ variable:
     | static_member                                         { $$ = $1; }
     | array_object_dereferencable T_OBJECT_OPERATOR property_name
           { $$ = Expr\PropertyFetch[$1, $3]; }
-<<<<<<< HEAD
-=======
     | array_object_dereferencable T_NULLSAFE_OBJECT_OPERATOR property_name
           { $$ = Expr\NullsafePropertyFetch[$1, $3]; }
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 ;
 
 simple_variable:

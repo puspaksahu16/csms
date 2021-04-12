@@ -19,11 +19,8 @@ final class NumericLiteralSeparatorEmulator extends TokenEmulator
         return Emulative::PHP_7_4;
     }
 
-<<<<<<< HEAD
-=======
     public function isEmulationNeeded(string $code) : bool
     {
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         return preg_match('~[0-9]_[0-9]~', $code)
             || preg_match('~0x[0-9a-f]+_[0-9a-f]~i', $code);
     }

@@ -43,8 +43,6 @@ trait DetectsLostConnections
             'SQLSTATE[HY000] [2002] Connection refused',
             'running with the --read-only option so it cannot execute this statement',
             'The connection is broken and recovery is not possible. The connection is marked by the client driver as unrecoverable. No attempt was made to restore the connection.',
-<<<<<<< HEAD
-=======
             'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Try again',
             'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known',
             'SQLSTATE[HY000]: General error: 7 SSL SYSCALL error: EOF detected',
@@ -52,7 +50,6 @@ trait DetectsLostConnections
             'SSL: Connection timed out',
             'SQLSTATE[HY000]: General error: 1105 The last transaction was aborted due to Seamless Scaling. Please retry.',
             'Temporary failure in name resolution',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         ]);
     }
 }

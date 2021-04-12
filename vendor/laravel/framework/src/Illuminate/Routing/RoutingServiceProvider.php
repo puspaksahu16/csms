@@ -144,11 +144,7 @@ class RoutingServiceProvider extends ServiceProvider
                 return (new DiactorosFactory)->createRequest($app->make('request'));
             }
 
-<<<<<<< HEAD
-            throw new BindingResolutionException('Unable to resolve PSR request. Please install symfony/psr-http-message-bridge and nyholm/psr7.');
-=======
             throw new BindingResolutionException('Unable to resolve PSR request. Please install the symfony/psr-http-message-bridge and nyholm/psr7 packages.');
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         });
     }
 
@@ -168,11 +164,7 @@ class RoutingServiceProvider extends ServiceProvider
                 return new ZendPsrResponse;
             }
 
-<<<<<<< HEAD
-            throw new BindingResolutionException('Unable to resolve PSR response. Please install nyholm/psr7.');
-=======
             throw new BindingResolutionException('Unable to resolve PSR response. Please install the nyholm/psr7 package.');
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         });
     }
 

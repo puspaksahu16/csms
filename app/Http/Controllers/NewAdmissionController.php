@@ -7,6 +7,7 @@ use App\AdmissionFee;
 use App\Book;
 use App\BookStock;
 use App\Createclass;
+use App\Employee;
 use App\ExtraClass;
 use App\GeneralFee;
 use App\Idproof;
@@ -77,21 +78,37 @@ class NewAdmissionController extends Controller
         {
             $parents = StudentParent::where('parent_type','new')->get();
 
-        }else{
-             $students = Student::with('parent')->where('school_id',auth()->user()->school->id)->get();
+        }elseif(auth()->user()->role->name == "admin"){
+
+            $students = Student::with('parent')->where('school_id',auth()->user()->school->id)->get();
+
+
             $parents = [];
-             foreach ($students as $key => $st){
-                 if ($st->parent->parent_type == 'new'){
-                     array_push($parents,$st->parent);
-                 }
+            foreach ($students as $key => $st){
+                if ($st->parent->parent_type == 'new'){
+                    array_push($parents,$st->parent);
+                }
 
-             }
+            }
 
-//            return $parents = StudentParent::with(['students' => function($query){
-//                return $query->with('school')->get();
-//            }])->get();
         }
-//        return $parents;
+        else{
+
+            $emp_id = Employee::where('user_id',auth()->user()->id)->first();
+            $students = Student::with('parent')->where('school_id',$emp_id->school_id)->get();
+
+
+            $parents = [];
+            foreach ($students as $key => $st){
+                if ($st->parent->parent_type == 'new'){
+                    array_push($parents,$st->parent);
+                }
+
+            }
+
+        }
+
+
 
         return view('admin.parents.index', compact('parents'));
 

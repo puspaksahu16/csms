@@ -66,11 +66,7 @@ class Schedule
 
         if (! class_exists(Container::class)) {
             throw new RuntimeException(
-<<<<<<< HEAD
-                'A container implementation is required to use the scheduler. Please install illuminate/container.'
-=======
                 'A container implementation is required to use the scheduler. Please install the illuminate/container package.'
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             );
         }
 
@@ -153,11 +149,7 @@ class Schedule
         if ($job instanceof Closure) {
             if (! class_exists(CallQueuedClosure::class)) {
                 throw new RuntimeException(
-<<<<<<< HEAD
-                    'To enable support for closure jobs, please install illuminate/queue.'
-=======
                     'To enable support for closure jobs, please install the illuminate/queue package.'
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                 );
             }
 
@@ -309,11 +301,7 @@ class Schedule
                 $this->dispatcher = Container::getInstance()->make(Dispatcher::class);
             } catch (BindingResolutionException $e) {
                 throw new RuntimeException(
-<<<<<<< HEAD
-                    'Unable to resolve the dispatcher from the service container. Please bind it or install illuminate/bus.',
-=======
                     'Unable to resolve the dispatcher from the service container. Please bind it or install the illuminate/bus package.',
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                     $e->getCode(), $e
                 );
             }

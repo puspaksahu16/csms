@@ -38,11 +38,7 @@ final class Version
         }
 
         if (self::$version === '') {
-<<<<<<< HEAD
-            self::$version = (new VersionId('8.5.3', \dirname(__DIR__, 2)))->getVersion();
-=======
             self::$version = (new VersionId('8.5.14', dirname(__DIR__, 2)))->getVersion();
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         }
 
         return self::$version;

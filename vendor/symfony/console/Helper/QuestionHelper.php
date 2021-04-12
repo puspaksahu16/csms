@@ -65,7 +65,6 @@ class QuestionHelper extends Helper
             $interviewer = function () use ($output, $question) {
                 return $this->doAsk($output, $question);
             };
-<<<<<<< HEAD
 
             return $this->validateAttempts($interviewer, $output, $question);
         } catch (MissingInputException $exception) {
@@ -75,17 +74,6 @@ class QuestionHelper extends Helper
                 throw $exception;
             }
 
-=======
-
-            return $this->validateAttempts($interviewer, $output, $question);
-        } catch (MissingInputException $exception) {
-            $input->setInteractive(false);
-
-            if (null === $fallbackOutput = $this->getDefaultAnswer($question)) {
-                throw $exception;
-            }
-
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             return $fallbackOutput;
         }
     }
@@ -182,21 +170,13 @@ class QuestionHelper extends Helper
             $choices = $question->getChoices();
 
             if (!$question->isMultiselect()) {
-<<<<<<< HEAD
-                return isset($choices[$default]) ? $choices[$default] : $default;
-=======
                 return $choices[$default] ?? $default;
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             }
 
             $default = explode(',', $default);
             foreach ($default as $k => $v) {
                 $v = $question->isTrimmable() ? trim($v) : $v;
-<<<<<<< HEAD
-                $default[$k] = isset($choices[$v]) ? $choices[$v] : $v;
-=======
                 $default[$k] = $choices[$v] ?? $v;
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             }
         }
 
@@ -450,17 +430,7 @@ class QuestionHelper extends Helper
             throw new RuntimeException('Unable to hide the response.');
         }
 
-<<<<<<< HEAD
-            if (false === $value) {
-                throw new MissingInputException('Aborted.');
-            }
-            if ($trimmable) {
-                $value = trim($value);
-            }
-            $output->writeln('');
-=======
         $value = fgets($inputStream, 4096);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
         if (self::$stty && Terminal::hasSttyAvailable()) {
             shell_exec(sprintf('stty %s', $sttyMode));

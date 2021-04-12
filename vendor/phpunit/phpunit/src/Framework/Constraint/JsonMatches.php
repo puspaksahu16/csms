@@ -95,13 +95,8 @@ final class JsonMatches extends Constraint
             }
 
             $comparisonFailure = new ComparisonFailure(
-<<<<<<< HEAD
-                \json_decode($this->value),
-                \json_decode($other),
-=======
                 json_decode($this->value),
                 json_decode($other),
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                 Json::prettify($recodedValue),
                 Json::prettify($recodedOther),
                 false,

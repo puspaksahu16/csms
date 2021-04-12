@@ -723,11 +723,7 @@ class Request
         }
 
         if (null === $session) {
-<<<<<<< HEAD
-            @trigger_error(sprintf('Calling "%s()" when no session has been set is deprecated since Symfony 4.1 and will throw an exception in 5.0. Use "hasSession()" instead.', __METHOD__), E_USER_DEPRECATED);
-=======
             @trigger_error(sprintf('Calling "%s()" when no session has been set is deprecated since Symfony 4.1 and will throw an exception in 5.0. Use "hasSession()" instead.', __METHOD__), \E_USER_DEPRECATED);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             // throw new \BadMethodCallException('Session has not been set.');
         }
 
@@ -1582,11 +1578,7 @@ class Request
     /**
      * Gets the preferred format for the response by inspecting, in the following order:
      *   * the request format set using setRequestFormat
-<<<<<<< HEAD
-     *   * the values of the Accept HTTP header
-=======
      *   * the values of the Accept HTTP header.
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
      *
      * Note that if you use this method, you should send the "Vary: Accept" header
      * in the response to prevent any issues with intermediary HTTP caches.

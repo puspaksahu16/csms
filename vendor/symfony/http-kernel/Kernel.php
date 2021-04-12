@@ -76,21 +76,12 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
 
     private static $freshCache = [];
 
-<<<<<<< HEAD
-    const VERSION = '4.4.7';
-    const VERSION_ID = 40407;
-    const MAJOR_VERSION = 4;
-    const MINOR_VERSION = 4;
-    const RELEASE_VERSION = 7;
-    const EXTRA_VERSION = '';
-=======
     public const VERSION = '4.4.20';
     public const VERSION_ID = 40420;
     public const MAJOR_VERSION = 4;
     public const MINOR_VERSION = 4;
     public const RELEASE_VERSION = 20;
     public const EXTRA_VERSION = '';
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
     public const END_OF_MAINTENANCE = '11/2022';
     public const END_OF_LIFE = '11/2023';
@@ -237,14 +228,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
     public function getBundle($name)
     {
         if (!isset($this->bundles[$name])) {
-<<<<<<< HEAD
-            $class = static::class;
-            $class = 'c' === $class[0] && 0 === strpos($class, "class@anonymous\0") ? get_parent_class($class).'@anonymous' : $class;
-
-            throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist or it is not enabled. Maybe you forgot to add it in the "registerBundles()" method of your "%s.php" file?', $name, $class));
-=======
             throw new \InvalidArgumentException(sprintf('Bundle "%s" does not exist or it is not enabled. Maybe you forgot to add it in the "registerBundles()" method of your "%s.php" file?', $name, get_debug_type($this)));
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
         }
 
         return $this->bundles[$name];
@@ -544,11 +528,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
             is_dir($cacheDir) ?: mkdir($cacheDir, 0777, true);
 
             if ($lock = fopen($cachePath.'.lock', 'w')) {
-<<<<<<< HEAD
-                flock($lock, LOCK_EX | LOCK_NB, $wouldBlock);
-=======
                 flock($lock, \LOCK_EX | \LOCK_NB, $wouldBlock);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
                 if (!flock($lock, $wouldBlock ? \LOCK_SH : \LOCK_EX)) {
                     fclose($lock);
@@ -556,11 +536,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
                 } elseif (!\is_object($this->container = include $cachePath)) {
                     $this->container = null;
                 } elseif (!$oldContainer || \get_class($this->container) !== $oldContainer->name) {
-<<<<<<< HEAD
-                    flock($lock, LOCK_UN);
-=======
                     flock($lock, \LOCK_UN);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                     fclose($lock);
                     $this->container->set('kernel', $this);
 
@@ -630,11 +606,7 @@ abstract class Kernel implements KernelInterface, RebootableInterface, Terminabl
         $this->dumpContainer($cache, $container, $class, $this->getContainerBaseClass());
 
         if ($lock) {
-<<<<<<< HEAD
-            flock($lock, LOCK_UN);
-=======
             flock($lock, \LOCK_UN);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
             fclose($lock);
         }
 

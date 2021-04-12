@@ -33,11 +33,7 @@ final class Json
      */
     public static function prettify(string $json): string
     {
-<<<<<<< HEAD
-        $decodedJson = \json_decode($json, false);
-=======
         $decodedJson = json_decode($json, false);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 
         if (json_last_error()) {
             throw new Exception(

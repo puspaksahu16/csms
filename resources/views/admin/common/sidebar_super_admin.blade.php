@@ -95,7 +95,7 @@
                     <li><a href="{{url('/qualification')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Qualification</span></a></li>
                     <li><a href="{{url('/publisher')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Publisher</span></a></li>
                     <li><a href="{{url('/subject')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Subject</span></a></li>
-                    <li><a href="{{url('/employees_roles')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Employee Roles</span></a></li>
+                    <li><a href="{{route('employees_roles.index')}}"><i class="fa fa-circle-o"></i><span class="menu-item" data-i18n="example">Create Employee Roles</span></a></li>
                 </ul>
             </li>
         </ul>

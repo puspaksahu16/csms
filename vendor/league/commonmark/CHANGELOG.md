@@ -4,8 +4,6 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) princi
 
 ## [Unreleased][unreleased]
 
-<<<<<<< HEAD
-=======
 ## [1.5.7] - 2020-10-31
 
 ### Fixed
@@ -161,7 +159,6 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) princi
    - `removeGaps()`
  - The `ListBlock::TYPE_UNORDERED` constant has been deprecated, use `ListBlock::TYPE_BULLET` instead
 
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 ## [1.3.4] - 2020-04-13
 
 ### Fixed
@@ -401,9 +398,6 @@ No changes were made since 1.0.0-rc1.
    - Removed `DelimiterStack::iterateByCharacters()` (use the new `processDelimiters()` method instead)
    - Removed the protected `DelimiterStack::findMatchingOpener()` method
 
-<<<<<<< HEAD
-[unreleased]: https://github.com/thephpleague/commonmark/compare/1.3.4...HEAD
-=======
 [unreleased]: https://github.com/thephpleague/commonmark/compare/1.5.7...1.5
 [1.5.7]: https://github.com/thephpleague/commonmark/compare/1.5.6...1.5.7
 [1.5.6]: https://github.com/thephpleague/commonmark/compare/1.5.5...1.5.6
@@ -417,7 +411,6 @@ No changes were made since 1.0.0-rc1.
 [1.4.2]: https://github.com/thephpleague/commonmark/compare/1.4.1...1.4.2
 [1.4.1]: https://github.com/thephpleague/commonmark/compare/1.4.0...1.4.1
 [1.4.0]: https://github.com/thephpleague/commonmark/compare/1.3.4...1.4.0
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
 [1.3.4]: https://github.com/thephpleague/commonmark/compare/1.3.3...1.3.4
 [1.3.3]: https://github.com/thephpleague/commonmark/compare/1.3.2...1.3.3
 [1.3.2]: https://github.com/thephpleague/commonmark/compare/1.3.1...1.3.2

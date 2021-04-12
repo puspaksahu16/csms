@@ -10,4 +10,9 @@ class Role extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function employee_role()
+    {
+        return $this->hasMany(EmployeeRole::class,'role_id');
+    }
 }

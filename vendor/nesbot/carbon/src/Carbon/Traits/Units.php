@@ -260,11 +260,7 @@ trait Units
                     /** @var static $date */
                     $date = $date->addDays($sign);
 
-<<<<<<< HEAD
-                    while (in_array($date->dayOfWeek, $weekendDays)) {
-=======
                     while (\in_array($date->dayOfWeek, $weekendDays)) {
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                         $date = $date->addDays($sign);
                     }
                 }

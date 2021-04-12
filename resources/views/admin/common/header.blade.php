@@ -93,7 +93,7 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 <span  class="user-name text-bold-600">{{ Auth::user()->name }}</span>
-                                <span class="user-status">{{ Auth::user()->role->name == "super_admin" ? 'Super Admin' :  Auth::user()->role->name }}</span>
+                                <span class="user-status">{{ Auth::user()->role->name == "super_admin" ? 'Super Admin' :  (Auth::user()->role->name == "employee" ? auth()->user()->user_employee_role->employee_role->role_name : Auth::user()->role->name) }}</span>
                             </div>
                             <span>
 

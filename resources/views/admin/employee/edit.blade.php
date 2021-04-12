@@ -219,6 +219,27 @@
                                                                             <label for="email-id-column">Caste</label>
                                                                         </div>
                                                                     </div>
+                                                                        <div class="col-md-12 col-12">
+                                                                            <label for="email-id-column">Employee Menu</label>
+                                                                            <div class="form-label-group">
+                                                                                <br/>
+                                                                                <div class="row">
+                                                                                    @foreach($menu_items as $menu_item)
+
+                                                                                            <div class="col-md-4">
+                                                                                                @if(!empty($menu_item->item))
+                                                                                                    <input type="checkbox" @foreach($employee->menu as $emp_menu) {{$menu_item->id == $emp_menu->menu_item_id ? "checked" : " " }} @endforeach name="employee_menu_item[]" value="{{$menu_item->id}}">&nbsp; {{$menu_item->category." ".'/'." ".$menu_item->item}}
+                                                                                                @else
+                                                                                                    <input type="checkbox" @foreach($employee->menu as $emp_menu) {{$menu_item->id == $emp_menu->menu_item_id ? "checked" : " " }}  @endforeach name="employee_menu_item[]" value="{{$menu_item->id}}">&nbsp; {{$menu_item->category}}
+                                                                                                @endif
+                                                                                            </div>
+
+                                                                                    @endforeach
+                                                                                </div>
+
+                                                                            </div>
+                                                                            {{--                                                                            <span style="color: red">{{ $errors->first('caste') }}</span>--}}
+                                                                        </div>
                                                                 </div>
                                                                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
                                                             </div>

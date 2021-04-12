@@ -196,13 +196,8 @@ final class Test
         if (!empty($required['PHP'])) {
             $operator = new VersionComparisonOperator(empty($required['PHP']['operator']) ? '>=' : $required['PHP']['operator']);
 
-<<<<<<< HEAD
-            if (!\version_compare(\PHP_VERSION, $required['PHP']['version'], $operator->asString())) {
-                $missing[] = \sprintf('PHP %s %s is required.', $operator->asString(), $required['PHP']['version']);
-=======
             if (!version_compare(PHP_VERSION, $required['PHP']['version'], $operator->asString())) {
                 $missing[] = sprintf('PHP %s %s is required.', $operator->asString(), $required['PHP']['version']);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                 $hint      = 'PHP';
             }
         } elseif (!empty($required['PHP_constraint'])) {
@@ -223,13 +218,8 @@ final class Test
 
             $operator = new VersionComparisonOperator(empty($required['PHPUnit']['operator']) ? '>=' : $required['PHPUnit']['operator']);
 
-<<<<<<< HEAD
-            if (!\version_compare($phpunitVersion, $required['PHPUnit']['version'], $operator->asString())) {
-                $missing[] = \sprintf('PHPUnit %s %s is required.', $operator->asString(), $required['PHPUnit']['version']);
-=======
             if (!version_compare($phpunitVersion, $required['PHPUnit']['version'], $operator->asString())) {
                 $missing[] = sprintf('PHPUnit %s %s is required.', $operator->asString(), $required['PHPUnit']['version']);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                 $hint      = $hint ?? 'PHPUnit';
             }
         } elseif (!empty($required['PHPUnit_constraint'])) {
@@ -304,13 +294,8 @@ final class Test
 
                 $operator = new VersionComparisonOperator(empty($req['operator']) ? '>=' : $req['operator']);
 
-<<<<<<< HEAD
-                if ($actualVersion === false || !\version_compare($actualVersion, $req['version'], $operator->asString())) {
-                    $missing[] = \sprintf('Extension %s %s %s is required.', $extension, $operator->asString(), $req['version']);
-=======
                 if ($actualVersion === false || !version_compare($actualVersion, $req['version'], $operator->asString())) {
                     $missing[] = sprintf('Extension %s %s %s is required.', $extension, $operator->asString(), $req['version']);
->>>>>>> 1aa4f6ec618a4cb59f09630c26cefd534a93eaad
                     $hint      = $hint ?? 'extension_' . $extension;
                 }
             }
